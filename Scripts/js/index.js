@@ -77,26 +77,4 @@ function init() {
 // بدء التطبيق عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', init);
 
-  // Scroll to subjects section
-        function scrollToSubjects() {
-            document.getElementById('subjects').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Animate cards when they come into view
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all subject cards
-        document.querySelectorAll('.subject-card').forEach(card => {
-            observer.observe(card);
-        });
+ 

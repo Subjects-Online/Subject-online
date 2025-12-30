@@ -493,6 +493,8 @@
 
         .card-body {
             padding: 20px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
             background: white;
             transition: background 0.3s ease;
         }
@@ -503,6 +505,7 @@
 
         .card-header {
             height: 120px;
+            border-radius: 5px;
             background: linear-gradient(45deg, #6366f1, #8b5cf6);
             display: flex;
             flex-direction: column;
@@ -621,6 +624,10 @@
         }
 
         @media (max-width: 768px) {
+           .hero{
+            max-height: 100vh;
+           }
+           
             h1 {
                 font-size: 2.2rem;
             }
