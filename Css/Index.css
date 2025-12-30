@@ -625,7 +625,7 @@
 
         @media (max-width: 768px) {
            .hero{
-            max-height: 100vh;
+            max-height: 90vh;
            }
            
             h1 {
