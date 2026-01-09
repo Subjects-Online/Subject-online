@@ -94,7 +94,7 @@
             content: '';
             position: absolute;
             inset: 5px;
-            border-radius: 32px;
+            border-radius: 20px;
             padding: 2px;
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.5), rgba(139, 92, 246, 0.5), rgba(6, 182, 212, 0.5));
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -832,7 +832,7 @@
             }
         }
 
-        @media (max-width: 1000px) , (min-width: 200px) {
+        @media (max-width: 768px) and (min-width: 200px) {
            .hero{
             max-height: 100vh;
             min-height: 600px
@@ -851,8 +851,14 @@
                 padding: 40px 25px;
                 border-radius: 18px;
                 margin: auto  40px;
+                box-shadow: none;
+                border: none;
+                background:none;
+                
             }
-
+.hero-content::before {
+    content: none;
+}
             .hero-actions {
                 gap: 10px;
             }
