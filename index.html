@@ -14,10 +14,10 @@
 </head>
 <body>
     <section class="hero">
-        <div class="hero-bg" aria-hidden="true">
-            <span class="blob blob-1"></span>
-            <span class="blob blob-2"></span>
-            <span class="blob blob-3"></span>
+        <div class="hero-bg">
+            <div class="bg-shape shape-1"></div>
+            <div class="bg-shape shape-2"></div>
+            <div class="bg-shape shape-3"></div>
         </div>
         <div class="hero-content">
             <div class="hero-decor" aria-hidden="true">
@@ -31,29 +31,12 @@
                 <input type="text" placeholder="Search a subject, e.g. Accounting, English, MIS..." aria-label="Search subjects">
                 <button class="search-btn" onclick="scrollToSubjects()">Search</button>
             </div>
-            <div class="hero-pills" aria-label="Popular subjects">
-                <a href="#subjects" class="pill">Accounting</a>
-                <a href="#subjects" class="pill">Economics</a>
-                <a href="#subjects" class="pill">Public Admin</a>
-                <a href="#subjects" class="pill">English</a>
-                <a href="#subjects" class="pill">Statistics</a>
-                <a href="#subjects" class="pill">Production</a>
-                <a href="#subjects" class="pill">MIS</a>
-            </div>
-            <!-- <div class="hero-kpis" aria-hidden="false">
-                <div class="kpi"><span class="num">120+</span><span class="label">Lessons</span></div>
-                <div class="kpi"><span class="num">30K+</span><span class="label">Students</span></div>
-                <div class="kpi"><span class="num">50+</span><span class="label">Experts</span></div>
-            </div> -->
             <div class="hero-actions">
-                <a href="#subjects" class="btn btn-hero" onclick="scrollToSubjects(); return false;">Browse Subjects</a>
+                <!-- <a href="#subjects" class="btn btn-hero" onclick="scrollToSubjects(); return false;">Browse Subjects</a> -->
                 <a href="#subjects" class="btn btn-hero btn-hero-secondary" onclick="scrollToSubjects(); return false;">Get Started</a>
             </div>
         </div>
-        <!-- <div class="scroll-down" onclick="scrollToSubjects()">
-            <span>↓</span>
-        </div> -->
-    </section>
+        </section>
 
     <section class="subjects" id="subjects">
         <div class="subjects-bg">
