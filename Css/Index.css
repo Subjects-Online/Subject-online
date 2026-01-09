@@ -832,15 +832,14 @@
             }
         }
 
-        @media (max-width: 850px) {
+        @media (max-width: 1000px) , (min-width: 200px) {
            .hero{
             max-height: 100vh;
-            min-height: 600px;
-            background-color: #fff;
+            min-height: 600px
            }
            
             h1 {
-                font-size: 2.2rem;
+                font-size: 2px;
                 background: linear-gradient(to right, #fff, #e0e7ff);
             }
             
@@ -849,9 +848,9 @@
             }
 
             .hero-content {
-                padding: 28px 18px;
+                padding: 40px 25px;
                 border-radius: 18px;
-                margin: auto  20px;
+                margin: auto  40px;
             }
 
             .hero-actions {
