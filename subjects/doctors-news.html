@@ -8,16 +8,871 @@
     <link rel="stylesheet" href="../Css/animations.css">
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Professional Essay Section Design */
+        .essay-container {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 60px 40px;
+            margin-bottom: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .essay-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+            border-radius: 30px 30px 0 0;
+        }
+
+        .essay-container::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .essay-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .essay-header h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), 0 0 20px rgba(102, 126, 234, 0.5); }
+            50% { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), 0 0 30px rgba(102, 126, 234, 0.8); }
+        }
+
+        .essay-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+            animation: lineExpand 2s ease-in-out infinite;
+        }
+
+        @keyframes lineExpand {
+            0%, 100% { width: 150px; opacity: 0.7; }
+            50% { width: 200px; opacity: 1; }
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .subject-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9));
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            animation: cardEntry 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+        }
+
+        .subject-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            border-radius: 25px 25px 0 0;
+            animation: shimmerLine 3s ease-in-out infinite;
+        }
+
+        .subject-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .subject-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .subject-card:nth-child(1) { animation-delay: 0.1s; }
+        .subject-card:nth-child(2) { animation-delay: 0.2s; }
+        .subject-card:nth-child(3) { animation-delay: 0.3s; }
+        .subject-card:nth-child(4) { animation-delay: 0.4s; }
+        .subject-card:nth-child(5) { animation-delay: 0.5s; }
+        .subject-card:nth-child(6) { animation-delay: 0.6s; }
+        .subject-card:nth-child(7) { animation-delay: 0.7s; }
+
+        @keyframes cardEntry {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Unique Colors for Each Subject */
+        .subject-card:nth-child(1)::before { background: linear-gradient(90deg, #8b5cf6, #a78bfa, #8b5cf6); }
+        .subject-card:nth-child(2)::before { background: linear-gradient(90deg, #3b82f6, #60a5fa, #3b82f6); }
+        .subject-card:nth-child(3)::before { background: linear-gradient(90deg, #22c55e, #4ade80, #22c55e); }
+        .subject-card:nth-child(4)::before { background: linear-gradient(90deg, #fb923c, #fdba74, #fb923c); }
+        .subject-card:nth-child(5)::before { background: linear-gradient(90deg, #ef4444, #f87171, #ef4444); }
+        .subject-card:nth-child(6)::before { background: linear-gradient(90deg, #14b8a6, #2dd4bf, #14b8a6); }
+        .subject-card:nth-child(7)::before { background: linear-gradient(90deg, #6366f1, #818cf8, #6366f1); }
+
+        .subject-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+
+        .subject-title i {
+            font-size: 2rem;
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .subject-card:nth-child(1) .subject-title { color: #8b5cf6; }
+        .subject-card:nth-child(2) .subject-title { color: #3b82f6; }
+        .subject-card:nth-child(3) .subject-title { color: #22c55e; }
+        .subject-card:nth-child(4) .subject-title { color: #fb923c; }
+        .subject-card:nth-child(5) .subject-title { color: #ef4444; }
+        .subject-card:nth-child(6) .subject-title { color: #14b8a6; }
+        .subject-card:nth-child(7) .subject-title { color: #6366f1; }
+
+        .quote-box {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .quote-box::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 4rem;
+            color: rgba(102, 126, 234, 0.2);
+            font-family: Georgia, serif;
+        }
+
+        .quote-content {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-style: italic;
+            color: #374151;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .quote-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 2px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .doctor-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .doctor-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .doctor-details h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #374151;
+            margin-bottom: 5px;
+        }
+
+        .doctor-details span {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .quote-date {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        @keyframes shimmerLine {
+            0%, 100% { opacity: 0.7; transform: scaleX(1); }
+            50% { opacity: 1; transform: scaleX(1.1); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .essay-container {
+                padding: 40px 20px;
+                margin-bottom: 40px;
+            }
+
+            .essay-header h2 {
+                font-size: 2rem;
+            }
+
+            .subjects-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .subject-card {
+                padding: 30px 20px;
+            }
+
+            .subject-title {
+                font-size: 1.5rem;
+            }
+
+            .quote-content {
+                font-size: 1.1rem;
+            }
+
+            .quote-meta {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+
+    <style>
+        /* Professional Exams Section Design */
+        .exams-container {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 60px 40px;
+            margin-bottom: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exams-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+            border-radius: 30px 30px 0 0;
+        }
+
+        .exams-container::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .exams-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .exams-header h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        .exams-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+            animation: lineExpand 2s ease-in-out infinite;
+        }
+
+        .subjects-exams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .subject-exams-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9));
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            animation: cardEntry 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+        }
+
+        .subject-exams-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            border-radius: 25px 25px 0 0;
+            animation: shimmerLine 3s ease-in-out infinite;
+        }
+
+        .subject-exams-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+            pointer-events: none;
+        }
+
+        .subject-exams-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .subject-exams-card:nth-child(1) { animation-delay: 0.1s; }
+        .subject-exams-card:nth-child(2) { animation-delay: 0.2s; }
+        .subject-exams-card:nth-child(3) { animation-delay: 0.3s; }
+        .subject-exams-card:nth-child(4) { animation-delay: 0.4s; }
+        .subject-exams-card:nth-child(5) { animation-delay: 0.5s; }
+        .subject-exams-card:nth-child(6) { animation-delay: 0.6s; }
+        .subject-exams-card:nth-child(7) { animation-delay: 0.7s; }
+
+        /* Unique Colors for Each Subject in Exams */
+        .subject-exams-card:nth-child(1)::before { background: linear-gradient(90deg, #8b5cf6, #a78bfa, #8b5cf6); }
+        .subject-exams-card:nth-child(2)::before { background: linear-gradient(90deg, #3b82f6, #60a5fa, #3b82f6); }
+        .subject-exams-card:nth-child(3)::before { background: linear-gradient(90deg, #22c55e, #4ade80, #22c55e); }
+        .subject-exams-card:nth-child(4)::before { background: linear-gradient(90deg, #fb923c, #fdba74, #fb923c); }
+        .subject-exams-card:nth-child(5)::before { background: linear-gradient(90deg, #ef4444, #f87171, #ef4444); }
+        .subject-exams-card:nth-child(6)::before { background: linear-gradient(90deg, #14b8a6, #2dd4bf, #14b8a6); }
+        .subject-exams-card:nth-child(7)::before { background: linear-gradient(90deg, #6366f1, #818cf8, #6366f1); }
+
+        .subject-exams-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+
+        .subject-exams-title i {
+            font-size: 2rem;
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+
+        .subject-exams-card:nth-child(1) .subject-exams-title { color: #8b5cf6; }
+        .subject-exams-card:nth-child(2) .subject-exams-title { color: #3b82f6; }
+        .subject-exams-card:nth-child(3) .subject-exams-title { color: #22c55e; }
+        .subject-exams-card:nth-child(4) .subject-exams-title { color: #fb923c; }
+        .subject-exams-card:nth-child(5) .subject-exams-title { color: #ef4444; }
+        .subject-exams-card:nth-child(6) .subject-exams-title { color: #14b8a6; }
+        .subject-exams-card:nth-child(7) .subject-exams-title { color: #6366f1; }
+
+        .questions-grid {
+            display: grid;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .question-item {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            position: relative;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .question-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-item::before {
+            content: '?';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 3rem;
+            color: rgba(102, 126, 234, 0.2);
+            font-weight: bold;
+            font-family: Georgia, serif;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .question-number {
+            font-weight: 900;
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.1));
+            padding: 10px 20px;
+            border-radius: 15px;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            color: #667eea;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+        }
+
+        .question-marks {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .question-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #374151;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .question-content strong {
+            color: #667eea;
+            font-weight: 700;
+        }
+
+        .expected-answer {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.05));
+            border-left: 4px solid #667eea;
+            padding: 20px 25px;
+            border-radius: 0 15px 15px 0;
+            font-style: italic;
+            color: #667eea;
+            margin-top: 15px;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expected-answer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+        }
+
+        .expected-answer strong {
+            color: #764ba2;
+            font-weight: 800;
+        }
+
+        /* Responsive Design for Exams */
+        @media (max-width: 768px) {
+            .exams-container {
+                padding: 40px 20px;
+                margin-bottom: 40px;
+            }
+
+            .exams-header h2 {
+                font-size: 2rem;
+            }
+
+            .subjects-exams-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .subject-exams-card {
+                padding: 30px 20px;
+            }
+
+            .subject-exams-title {
+                font-size: 1.5rem;
+            }
+
+            .question-content {
+                font-size: 1rem;
+            }
+
+            .question-header {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+
+    <style>
+        /* Enhanced Section Tabs */
+        .section-tabs {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 50px;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+            padding: 25px 30px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-tabs::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+            border-radius: 25px 25px 0 0;
+            animation: shimmerLine 4s ease-in-out infinite;
+        }
+
+        .section-tabs::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.05) 0%, transparent 70%);
+            animation: rotate 12s linear infinite;
+            pointer-events: none;
+        }
+
+        .tab-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 35px;
+            background: rgba(102, 126, 234, 0.08);
+            border: 2px solid rgba(102, 126, 234, 0.25);
+            border-radius: 18px;
+            color: #667eea;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .tab-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .tab-btn:hover::before {
+            left: 100%;
+        }
+
+        .tab-btn:hover {
+            background: rgba(102, 126, 234, 0.18);
+            border-color: rgba(102, 126, 234, 0.4);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-color: #667eea;
+            color: white;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 45px rgba(102, 126, 234, 0.5);
+        }
+
+        .tab-btn.active::before {
+            display: none;
+        }
+
+        .tab-btn i {
+            font-size: 1.4rem;
+            animation: none;
+        }
+
+        .tab-btn.active i {
+            animation: iconPulse 2.5s ease-in-out infinite;
+        }
+
+        /* Enhanced Section separation */
+        .content-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            clear: both;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .content-section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Enhanced Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .back-button:hover::before {
+            left: 100%;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.12));
+        }
+
+        /* Enhanced Subject Header */
+        .subject-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .subject-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+            border-radius: 30px 30px 0 0;
+        }
+
+        .subject-header h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            animation: titleGlow 4s ease-in-out infinite;
+        }
+
+        .subject-header p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Additional animations */
+        @keyframes shimmerLine {
+            0%, 100% { opacity: 0.6; transform: scaleX(1); }
+            50% { opacity: 1; transform: scaleX(1.1); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), 0 0 30px rgba(102, 126, 234, 0.6); }
+            50% { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), 0 0 40px rgba(102, 126, 234, 0.9); }
+        }
+
+        /* Responsive enhancements */
+        @media (max-width: 768px) {
+            .section-tabs {
+                gap: 15px;
+                padding: 20px;
+                margin-bottom: 30px;
+            }
+
+            .tab-btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+                gap: 10px;
+            }
+
+            .tab-btn i {
+                font-size: 1.1rem;
+            }
+
+            .subject-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .subject-header p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <!-- Breadcrumb -->
-        <nav class="breadcrumb">
-            <a href="../index.html">Home</a>
-            <span>/</span>
-            <span>Doctors News</span>
-        </nav>
-
         <!-- Back Button -->
         <a href="../index.html" class="back-button">
             <i class="fas fa-arrow-right"></i>
@@ -26,7 +881,7 @@
 
         <!-- Subject Header -->
         <header class="subject-header">
-            <h1>Doctors News & Medical Updates</h1>
+            <h1>Doctors News</h1>
             <p>Stay informed with the latest medical breakthroughs, healthcare news, research findings, and industry developments that shape modern medicine.</p>
         </header>
 
@@ -44,406 +899,433 @@
 
         <!-- Theory Section -->
         <div id="theory-section" class="content-section active">
-            <h2 class="materials-heading">Essay</h2>
-            
-            <!-- Doctor's Say Section -->
-            <div class="doctors-say-section">
-                <div class="doctors-say-header">
-                    <h3><i class="fas fa-user-md"></i>Accounting</h3>
+            <div class="essay-container">
+                <div class="essay-header">
+                    <h2>Essay</h2>
                 </div>
                 
-                <div class="doctors-say-grid">
-                    <div class="doctor-quote">
-                        <div class="quote-header">
-                            <span class="doctor-name">Dr. Mahmoud Zatout</span>
-                            <span class="quote-date">اليوم</span>
+                <div class="subjects-grid">
+                    <!-- Accounting -->
+                    <div class="subject-card">
+                        <div class="subject-title">
+                            <i class="fas fa-calculator"></i>
+                            Accounting
                         </div>
-                        <div class="quote-content">
-                            "التطورات في تكنولوجيا الطب تفتح آفاقاً جديدة للتشخيص والعلاج. الذكاء الاصطناعي سيغير مستقبل الرعاية الصحية."
+                        <div class="quote-box">
+                            <div class="quote-content">
+                                "The future of accounting lies in the integration of artificial intelligence and blockchain technology. These innovations will revolutionize financial reporting and audit processes."
+                            </div>
+                            <div class="quote-meta">
+                                <div class="doctor-info">
+                                    <div class="doctor-avatar">MZ</div>
+                                    <div class="doctor-details">
+                                        <h4>Dr. Mahmoud Zatout</h4>
+                                        <span>Professor of Accounting</span>
+                                    </div>
+                                </div>
+                                <span class="quote-date">Today</span>
+                            </div>
                         </div>
                     </div>
-                    
-                    
-                    
-                    
-                </div>
-            </div>
 
-            <div class="doctors-say-section">
-                <div class="doctors-say-header">
-                    <h3><i class="fas fa-user-md"></i>Macro Economics</h3>
-                </div>
-                
-                <div class="doctors-say-grid">
-                    <div class="doctor-quote">
-                        <div class="quote-header">
-                            <span class="doctor-name">Dr. Mahmoud Zatout</span>
-                            <span class="quote-date">اليوم</span>
+                    <!-- Macro Economics -->
+                    <div class="subject-card">
+                        <div class="subject-title">
+                            <i class="fas fa-chart-line"></i>
+                            Macro Economics
                         </div>
-                        <div class="quote-content">
-                            "التطورات في تكنولوجيا الطب تفتح آفاقاً جديدة للتشخيص والعلاج. الذكاء الاصطناعي سيغير مستقبل الرعاية الصحية."
+                        <div class="quote-box">
+                            <div class="quote-content">
+                                "Global economic policies must adapt to the challenges of climate change and digital transformation. Sustainable growth requires innovative monetary and fiscal strategies."
+                            </div>
+                            <div class="quote-meta">
+                                <div class="doctor-info">
+                                    <div class="doctor-avatar">MZ</div>
+                                    <div class="doctor-details">
+                                        <h4>Dr. Mahmoud Zatout</h4>
+                                        <span>Professor of Economics</span>
+                                    </div>
+                                </div>
+                                <span class="quote-date">Today</span>
+                            </div>
                         </div>
                     </div>
-                    
-                    
-                    
-                    
-                </div>
-            </div>
 
-            <div class="doctors-say-section">
-                <div class="doctors-say-header">
-                    <h3><i class="fas fa-user-md"></i>Markiting</h3>
-                </div>
-                
-                <div class="doctors-say-grid">
-                    <div class="doctor-quote">
-                        <div class="quote-header">
-                            <span class="doctor-name">Dr. Mahmoud Zatout</span>
-                            <span class="quote-date">اليوم</span>
+                    <!-- Marketing -->
+                    <div class="subject-card">
+                        <div class="subject-title">
+                            <i class="fas fa-bullhorn"></i>
+                            Marketing
                         </div>
-                        <div class="quote-content">
-                            "التطورات في تكنولوجيا الطب تفتح آفاقاً جديدة للتشخيص والعلاج. الذكاء الاصطناعي سيغير مستقبل الرعاية الصحية."
+                        <div class="quote-box">
+                            <div class="quote-content">
+                                "Digital marketing evolution demands data-driven strategies and personalized customer experiences. The future belongs to brands that can balance technology with human connection."
+                            </div>
+                            <div class="quote-meta">
+                                <div class="doctor-info">
+                                    <div class="doctor-avatar">MZ</div>
+                                    <div class="doctor-details">
+                                        <h4>Dr. Mahmoud Zatout</h4>
+                                        <span>Professor of Marketing</span>
+                                    </div>
+                                </div>
+                                <span class="quote-date">Today</span>
+                            </div>
                         </div>
                     </div>
-                    
-                    
-                    
-                    
-                </div>
-            </div>
 
-            <div class="doctors-say-section">
-                <div class="doctors-say-header">
-                    <h3><i class="fas fa-user-md"></i>English</h3>
-                </div>
-                
-                <div class="doctors-say-grid">
-                    <div class="doctor-quote">
-                        <div class="quote-header">
-                            <span class="doctor-name">Dr. Mahmoud Zatout</span>
-                            <span class="quote-date">اليوم</span>
+                    <!-- English -->
+                    <div class="subject-card">
+                        <div class="subject-title">
+                            <i class="fas fa-book"></i>
+                            English
                         </div>
-                        <div class="quote-content">
-                            "التطورات في تكنولوجيا الطب تفتح آفاقاً جديدة للتشخيص والعلاج. الذكاء الاصطناعي سيغير مستقبل الرعاية الصحية."
+                        <div class="quote-box">
+                            <div class="quote-content">
+                                "Literature in the digital age bridges cultures and generations. The written word remains our most powerful tool for empathy, understanding, and social change."
+                            </div>
+                            <div class="quote-meta">
+                                <div class="doctor-info">
+                                    <div class="doctor-avatar">MZ</div>
+                                    <div class="doctor-details">
+                                        <h4>Dr. Mahmoud Zatout</h4>
+                                        <span>Professor of English</span>
+                                    </div>
+                                </div>
+                                <span class="quote-date">Today</span>
+                            </div>
                         </div>
                     </div>
-                    
-                    
-                    
-                    
-                </div>
-            </div>
 
-            <div class="doctors-say-section">
-                <div class="doctors-say-header">
-                    <h3><i class="fas fa-user-md"></i>Statistics</h3>
-                </div>
-                
-                <div class="doctors-say-grid">
-                    <div class="doctor-quote">
-                        <div class="quote-header">
-                            <span class="doctor-name">Dr. Mahmoud Zatout</span>
-                            <span class="quote-date">اليوم</span>
+                    <!-- Statistics -->
+                    <div class="subject-card">
+                        <div class="subject-title">
+                            <i class="fas fa-chart-bar"></i>
+                            Statistics
                         </div>
-                        <div class="quote-content">
-                            "التطورات في تكنولوجيا الطب تفتح آفاقاً جديدة للتشخيص والعلاج. الذكاء الاصطناعي سيغير مستقبل الرعاية الصحية."
+                        <div class="quote-box">
+                            <div class="quote-content">
+                                "Big data analytics transforms how we understand patterns and make predictions. Statistical literacy is becoming essential for informed decision-making in every field."
+                            </div>
+                            <div class="quote-meta">
+                                <div class="doctor-info">
+                                    <div class="doctor-avatar">MZ</div>
+                                    <div class="doctor-details">
+                                        <h4>Dr. Mahmoud Zatout</h4>
+                                        <span>Professor of Statistics</span>
+                                    </div>
+                                </div>
+                                <span class="quote-date">Today</span>
+                            </div>
                         </div>
                     </div>
-                    
-                    
-                    
-                    
-                </div>
-            </div>
 
-            <div class="doctors-say-section">
-                <div class="doctors-say-header">
-                    <h3><i class="fas fa-user-md"></i>Mis</h3>
-                </div>
-                
-                <div class="doctors-say-grid">
-                    <div class="doctor-quote">
-                        <div class="quote-header">
-                            <span class="doctor-name">Dr. Mahmoud Zatout</span>
-                            <span class="quote-date">اليوم</span>
+                    <!-- MIS -->
+                    <div class="subject-card">
+                        <div class="subject-title">
+                            <i class="fas fa-laptop"></i>
+                            MIS
                         </div>
-                        <div class="quote-content">
-                            "التطورات في تكنولوجيا الطب تفتح آفاقاً جديدة للتشخيص والعلاج. الذكاء الاصطناعي سيغير مستقبل الرعاية الصحية."
+                        <div class="quote-box">
+                            <div class="quote-content">
+                                "Information systems are the nervous system of modern organizations. Effective MIS design bridges the gap between technology and business strategy."
+                            </div>
+                            <div class="quote-meta">
+                                <div class="doctor-info">
+                                    <div class="doctor-avatar">MZ</div>
+                                    <div class="doctor-details">
+                                        <h4>Dr. Mahmoud Zatout</h4>
+                                        <span>Professor of MIS</span>
+                                    </div>
+                                </div>
+                                <span class="quote-date">Today</span>
+                            </div>
                         </div>
                     </div>
-                    
-                    
-                    
-                    
-                </div>
-            </div>
 
-            <div class="doctors-say-section">
-                <div class="doctors-say-header">
-                    <h3><i class="fas fa-user-md"></i>Puplic Finance</h3>
-                </div>
-                
-                <div class="doctors-say-grid">
-                    <div class="doctor-quote">
-                        <div class="quote-header">
-                            <span class="doctor-name">Dr. Mahmoud Zatout</span>
-                            <span class="quote-date">اليوم</span>
+                    <!-- Public Finance -->
+                    <div class="subject-card">
+                        <div class="subject-title">
+                            <i class="fas fa-university"></i>
+                            Public Finance
                         </div>
-                        <div class="quote-content">
-                            "التطورات في تكنولوجيا الطب تفتح آفاقاً جديدة للتشخيص والعلاج. الذكاء الاصطناعي سيغير مستقبل الرعاية الصحية."
+                        <div class="quote-box">
+                            <div class="quote-content">
+                                "Public finance must evolve to address global challenges while maintaining fiscal responsibility. Smart taxation and strategic investment drive sustainable development."
+                            </div>
+                            <div class="quote-meta">
+                                <div class="doctor-info">
+                                    <div class="doctor-avatar">MZ</div>
+                                    <div class="doctor-details">
+                                        <h4>Dr. Mahmoud Zatout</h4>
+                                        <span>Professor of Finance</span>
+                                    </div>
+                                </div>
+                                <span class="quote-date">Today</span>
+                            </div>
                         </div>
                     </div>
-                    
-                    
-                    
-                    
                 </div>
-            </div>
-            
-            <div class="chapters">
             </div>
         </div>
 
         <!-- Exams Section -->
         <div id="exams-section" class="content-section">
-            <h2 class="materials-heading">الأسئلة والامتحانات</h2>
-            
-            <!-- Accounting Questions -->
-            <div class="doctors-say-section">
-                <div class="doctors-say-header">
-                    <h3><i class="fas fa-question-circle"></i> أسئلة الدكتور - Accounting</h3>
-                    <p>أسئلة الدكتور Mahmoud Zatout المتوقعة في امتحان Accounting</p>
+            <div class="exams-container">
+                <div class="exams-header">
+                    <h2>الأسئلة والامتحانات</h2>
                 </div>
                 
-                <div class="doctors-questions-grid">
-                    <div class="question-card">
-                        <div class="question-header">
-                            <span class="question-number">سؤال 1</span>
-                            <span class="question-marks">(10 درجات)</span>
+                <div class="subjects-exams-grid">
+                    <!-- Accounting Questions -->
+                    <div class="subject-exams-card">
+                        <div class="subject-exams-title">
+                            <i class="fas fa-calculator"></i>
+                            أسئلة الدكتور - Accounting
                         </div>
-                        <div class="question-content">
-                            <p><strong>س:</strong> اشرح مبادئ المحاسبة المتعارف عليها (GAAP) وأهميتها في إعداد القوائم المالية؟</p>
-                            <p class="expected-answer"><strong>الإجابة المتوقعة:</strong> يتوقع الدكتور التركيز على مبادئ التكلفة، الإقراض، الموضوعية، وغيرها...</p>
+                        <div class="questions-grid">
+                            <div class="question-item">
+                                <div class="question-header">
+                                    <span class="question-number">سؤال 1</span>
+                                    <span class="question-marks">(10 درجات)</span>
+                                </div>
+                                <div class="question-content">
+                                    <p><strong>س:</strong> اشرح مبادئ المحاسبة المتعارف عليها (GAAP) وأهميتها في إعداد القوائم المالية؟</p>
+                                    <div class="expected-answer">
+                                        <strong>الإجابة المتوقعة:</strong> يتوقع الدكتور التركيز على مبادئ التكلفة، الإقراض، الموضوعية، وغيرها من المبادئ الأساسية التي تضمن دقة وموثوقية المعلومات المالية.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="question-item">
+                                <div class="question-header">
+                                    <span class="question-number">سؤال 2</span>
+                                    <span class="question-marks">(15 درجة)</span>
+                                </div>
+                                <div class="question-content">
+                                    <p><strong>س:</strong> قم بإعداد ميزانية تقديرية لشركة تجارية لمدة سنة واحدة مع شرح تفصيلي للبنود؟</p>
+                                    <div class="expected-answer">
+                                        <strong>الإجابة المتوقعة:</strong> يجب على الطالب إظهار مهاراته في تصنيف المصروفات والإيرادات، وتقدير الأرقام بشكل منطقي، وشرح كل بند في الميزانية.
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="question-card">
-                        <div class="question-header">
-                            <span class="question-number">سؤال 2</span>
-                            <span class="question-marks">(15 درجة)</span>
-                        </div>
-                        <div class="question-content">
-                            <p><strong>س:</strong> قم بإعداد ميزانية عمومية وقائمة دخل لشركة معينة بناءً على المعطيات التالية...</p>
-                            <p class="expected-answer"><strong>الإجابة المتوقعة:</strong> تطبيق معادلات المحاسبة الأساسية وتصنيف الحسابات...</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Macro Economics Questions -->
-            <div class="doctors-say-section">
-                <div class="doctors-say-header">
-                    <h3><i class="fas fa-question-circle"></i> أسئلة الدكتور - Macro Economics</h3>
-                    <p>أسئلة الدكتور Mahmoud Zatout المتوقعة في امتحان Macro Economics</p>
-                </div>
-                
-                <div class="doctors-questions-grid">
-                    <div class="question-card">
-                        <div class="question-header">
-                            <span class="question-number">سؤال 1</span>
-                            <span class="question-marks">(10 درجات)</span>
+                    <!-- Macro Economics Questions -->
+                    <div class="subject-exams-card">
+                        <div class="subject-exams-title">
+                            <i class="fas fa-chart-line"></i>
+                            أسئلة الدكتور - Macro Economics
                         </div>
-                        <div class="question-content">
-                            <p><strong>س:</strong> اشرح علاقة التضخم بالبطالة وأثرهما على الاقتصاد الكلي؟</p>
-                            <p class="expected-answer"><strong>الإجابة المتوقعة:</strong> منحنى فيليبس، السياسات النقدية والمالية...</p>
+                        <div class="questions-grid">
+                            <div class="question-item">
+                                <div class="question-header">
+                                    <span class="question-number">سؤال 1</span>
+                                    <span class="question-marks">(10 درجات)</span>
+                                </div>
+                                <div class="question-content">
+                                    <p><strong>س:</strong> اشرح العلاقة بين التضخم والبطالة مع رسم منحنى فيليبس؟</p>
+                                    <div class="expected-answer">
+                                        <strong>الإجابة المتوقعة:</strong> يتوقع الدكتور شرح العلاقة العكسية بينهما في المدى القصير، والعلاقة الطبيعية في المدى الطويل، مع تحليل الأسباب والآثار.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="question-item">
+                                <div class="question-header">
+                                    <span class="question-number">سؤال 2</span>
+                                    <span class="question-marks">(15 درجة)</span>
+                                </div>
+                                <div class="question-content">
+                                    <p><strong>س:</strong> قارن بين السياسة النقدية والسياسة المالية من حيث الأدوات والأهداف؟</p>
+                                    <div class="expected-answer">
+                                        <strong>الإجابة المتوقعة:</strong> يجب على الطالب توضيح الفروق بين السياسيتين، الأدوات المستخدمة في كل منهما، وكيفية تأثيرهما على الاقتصاد الكلي.
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="question-card">
-                        <div class="question-header">
-                            <span class="question-number">سؤال 2</span>
-                            <span class="question-marks">(15 درجة)</span>
-                        </div>
-                        <div class="question-content">
-                            <p><strong>س:</strong> حلل أثر السياسة النقدية على الناتج المحلي الإجمالي ومستوى الأسعار؟</p>
-                            <p class="expected-answer"><strong>الإجابة المتوقعة:</strong> أدوات البنك المركزي، نظرية النقود...</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Marketing Questions -->
-            <div class="doctors-say-section">
-                <div class="doctors-say-header">
-                    <h3><i class="fas fa-question-circle"></i> أسئلة الدكتور - Marketing</h3>
-                    <p>أسئلة الدكتور Mahmoud Zatout المتوقعة في امتحان Marketing</p>
-                </div>
-                
-                <div class="doctors-questions-grid">
-                    <div class="question-card">
-                        <div class="question-header">
-                            <span class="question-number">سؤال 1</span>
-                            <span class="question-marks">(10 درجات)</span>
+                    <!-- Marketing Questions -->
+                    <div class="subject-exams-card">
+                        <div class="subject-exams-title">
+                            <i class="fas fa-bullhorn"></i>
+                            أسئلة الدكتور - Marketing
                         </div>
-                        <div class="question-content">
-                            <p><strong>س:</strong> اشرح أهمية دراسة السوق وتحليل المنافسين في استراتيجية التسويق؟</p>
-                            <p class="expected-answer"><strong>الإجابة المتوقعة:</strong> SWOT analysis، تحديد الجمهور المستهدف...</p>
+                        <div class="questions-grid">
+                            <div class="question-item">
+                                <div class="question-header">
+                                    <span class="question-number">سؤال 1</span>
+                                    <span class="question-marks">(10 درجات)</span>
+                                </div>
+                                <div class="question-content">
+                                    <p><strong>س:</strong> اشرح أهمية دراسة السوق في نجاح المنتجات الجديدة؟</p>
+                                    <div class="expected-answer">
+                                        <strong>الإجابة المتوقعة:</strong> يتوقع الدكتور التركيز على تحليل السوق، فهم العملاء، تحليل المنافسين، وتحديد الفرص والتهديدات.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="question-item">
+                                <div class="question-header">
+                                    <span class="question-number">سؤال 2</span>
+                                    <span class="question-marks">(15 درجة)</span>
+                                </div>
+                                <div class="question-content">
+                                    <p><strong>س:</strong> قم بوضع خطة تسويق متكاملة لمنتج جديد مع تحديد استراتيجية التسعير؟</p>
+                                    <div class="expected-answer">
+                                        <strong>الإجابة المتوقعة:</strong> يجب على الطالب تصميم خطة شاملة تشمل تحديد السوق المستهدف، استراتيجية الترويج، قنوات التوزيع، واستراتيجية التسعير المناسبة.
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="question-card">
-                        <div class="question-header">
-                            <span class="question-number">سؤال 2</span>
-                            <span class="question-marks">(15 درجة)</span>
-                        </div>
-                        <div class="question-content">
-                            <p><strong>س:</strong> قم بتصميم خطة تسويق متكاملة لمنتج جديد مع تحديد المزيج التسويقي؟</p>
-                            <p class="expected-answer"><strong>الإجابة المتوقعة:</strong> 4Ps، استراتيجيات التسعير، قنوات التوزيع...</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- English Questions -->
-            <div class="doctors-say-section">
-                <div class="doctors-say-header">
-                    <h3><i class="fas fa-question-circle"></i> أسئلة الدكتور - English</h3>
-                    <p>أسئلة الدكتور Mahmoud Zatout المتوقعة في امتحان English</p>
-                </div>
-                
-                <div class="doctors-questions-grid">
-                    <div class="question-card">
-                        <div class="question-header">
-                            <span class="question-number">سؤال 1</span>
-                            <span class="question-marks">(10 درجات)</span>
+                    <!-- English Questions -->
+                    <div class="subject-exams-card">
+                        <div class="subject-exams-title">
+                            <i class="fas fa-book"></i>
+                            أسئلة الدكتور - English
                         </div>
-                        <div class="question-content">
-                            <p><strong>س:</strong> Write an essay about "The Impact of Technology on Modern Education"</p>
-                            <p class="expected-answer"><strong>الإجابة المتوقعة:</strong> Introduction, body paragraphs with examples, conclusion...</p>
+                        <div class="questions-grid">
+                            <div class="question-item">
+                                <div class="question-header">
+                                    <span class="question-number">سؤال 1</span>
+                                    <span class="question-marks">(10 درجات)</span>
+                                </div>
+                                <div class="question-content">
+                                    <p><strong>Q:</strong> Write an essay about the importance of technology in modern education.</p>
+                                    <div class="expected-answer">
+                                        <strong>Expected Answer:</strong> Students should focus on how technology enhances learning, provides access to information, and prepares students for the future workforce.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="question-item">
+                                <div class="question-header">
+                                    <span class="question-number">سؤال 2</span>
+                                    <span class="question-marks">(15 درجة)</span>
+                                </div>
+                                <div class="question-content">
+                                    <p><strong>Q:</strong> Analyze the following text and explain the main themes and literary devices used.</p>
+                                    <div class="expected-answer">
+                                        <strong>Expected Answer:</strong> Students should identify themes, analyze characters, discuss symbolism, and explain how literary devices contribute to the overall meaning.
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="question-card">
-                        <div class="question-header">
-                            <span class="question-number">سؤال 2</span>
-                            <span class="question-marks">(15 درجة)</span>
-                        </div>
-                        <div class="question-content">
-                            <p><strong>س:</strong> Analyze the following text and answer the comprehension questions...</p>
-                            <p class="expected-answer"><strong>الإجابة المتوقعة:</strong> Main idea, supporting details, vocabulary analysis...</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Statistics Questions -->
-            <div class="doctors-say-section">
-                <div class="doctors-say-header">
-                    <h3><i class="fas fa-question-circle"></i> أسئلة الدكتور - Statistics</h3>
-                    <p>أسئلة الدكتور Mahmoud Zatout المتوقعة في امتحان Statistics</p>
-                </div>
-                
-                <div class="doctors-questions-grid">
-                    <div class="question-card">
-                        <div class="question-header">
-                            <span class="question-number">سؤال 1</span>
-                            <span class="question-marks">(10 درجات)</span>
+                    <!-- Statistics Questions -->
+                    <div class="subject-exams-card">
+                        <div class="subject-exams-title">
+                            <i class="fas fa-chart-bar"></i>
+                            أسئلة الدكتور - Statistics
                         </div>
-                        <div class="question-content">
-                            <p><strong>س:</strong> اشرح الفرق بين المتوسط الحسابي والوسيط والمنوال ومتى نستخدم كل منها؟</p>
-                            <p class="expected-answer"><strong>الإجابة المتوقعة:</strong> مقاييس النزعة المركزية، تأثير القيم المتطرفة...</p>
+                        <div class="questions-grid">
+                            <div class="question-item">
+                                <div class="question-header">
+                                    <span class="question-number">سؤال 1</span>
+                                    <span class="question-marks">(10 درجات)</span>
+                                </div>
+                                <div class="question-content">
+                                    <p><strong>س:</strong> اشرح الفرق بين المتوسط الحسابي والوسيط ومتى نستخدم كل منهما؟</p>
+                                    <div class="expected-answer">
+                                        <strong>الإجابة المتوقعة:</strong> يتوقع الدكتور شرح التعريف، طريقة الحساب، والفرق في الاستخدام، مع أمثلة توضح متى يكون كل مقياس أكثر ملاءمة.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="question-item">
+                                <div class="question-header">
+                                    <span class="question-number">سؤال 2</span>
+                                    <span class="question-marks">(15 درجة)</span>
+                                </div>
+                                <div class="question-content">
+                                    <p><strong>س:</strong> احسب معامل الارتباط بين متغيرين واشرح أهميته في التحليل الإحصائي؟</p>
+                                    <div class="expected-answer">
+                                        <strong>الإجابة المتوقعة:</strong> يجب على الطالب إظهار القدرة على حساب معامل الارتباط، تفسير قيمته، وشرح أهميته في فهم العلاقة بين المتغيرات.
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="question-card">
-                        <div class="question-header">
-                            <span class="question-number">سؤال 2</span>
-                            <span class="question-marks">(15 درجة)</span>
-                        </div>
-                        <div class="question-content">
-                            <p><strong>س:</strong> قم بحساب معامل الارتباط وتفسير نتائجه للبيانات التالية...</p>
-                            <p class="expected-answer"><strong>الإجابة المتوقعة:</strong> Pearson correlation، قوة واتجاه العلاقة...</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- MIS Questions -->
-            <div class="doctors-say-section">
-                <div class="doctors-say-header">
-                    <h3><i class="fas fa-question-circle"></i> أسئلة الدكتور - MIS</h3>
-                    <p>أسئلة الدكتور Mahmoud Zatout المتوقعة في امتحان MIS</p>
-                </div>
-                
-                <div class="doctors-questions-grid">
-                    <div class="question-card">
-                        <div class="question-header">
-                            <span class="question-number">سؤال 1</span>
-                            <span class="question-marks">(10 درجات)</span>
+                    <!-- MIS Questions -->
+                    <div class="subject-exams-card">
+                        <div class="subject-exams-title">
+                            <i class="fas fa-laptop"></i>
+                            أسئلة الدكتور - MIS
                         </div>
-                        <div class="question-content">
-                            <p><strong>س:</strong> اشرح دور أنظمة المعلومات في اتخاذ القرارات الإدارية؟</p>
-                            <p class="expected-answer"><strong>الإجابة المتوقعة:</strong> DSS, ESS, TPS، مستوى القرارات...</p>
+                        <div class="questions-grid">
+                            <div class="question-item">
+                                <div class="question-header">
+                                    <span class="question-number">سؤال 1</span>
+                                    <span class="question-marks">(10 درجات)</span>
+                                </div>
+                                <div class="question-content">
+                                    <p><strong>س:</strong> اشرح دور أنظمة المعلومات في دعم اتخاذ القرارات الإدارية؟</p>
+                                    <div class="expected-answer">
+                                        <strong>الإجابة المتوقعة:</strong> يتوقع الدكتور التركيز على كيفية توفير المعلومات الدقيقة والموقتة، تحليل البيانات، ودعم عملية اتخاذ القرار على مختلف المستويات.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="question-item">
+                                <div class="question-header">
+                                    <span class="question-number">سؤال 2</span>
+                                    <span class="question-marks">(15 درجة)</span>
+                                </div>
+                                <div class="question-content">
+                                    <p><strong>س:</strong> قم بتصميم قاعدة بيانات لنظام إدارة الموارد البشرية مع شرح الجداول والعلاقات؟</p>
+                                    <div class="expected-answer">
+                                        <strong>الإجابة المتوقعة:</strong> يجب على الطالب تصميم هيكل قاعدة بيانات منطقي، تحديد الجداول الرئيسية، العلاقات بينها، وشرح كيفية تحقيق التطبيع.
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="question-card">
-                        <div class="question-header">
-                            <span class="question-number">سؤال 2</span>
-                            <span class="question-marks">(15 درجة)</span>
-                        </div>
-                        <div class="question-content">
-                            <p><strong>س:</strong> قم بتصميم قاعدة بيانات لنظام إدارة طلاب مع تحديد الكيانات والعلاقات؟</p>
-                            <p class="expected-answer"><strong>الإجابة المتوقعة:</strong> ER diagram, normalization, relationships...</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Public Finance Questions -->
-            <div class="doctors-say-section">
-                <div class="doctors-say-header">
-                    <h3><i class="fas fa-question-circle"></i> أسئلة الدكتور - Public Finance</h3>
-                    <p>أسئلة الدكتور Mahmoud Zatout المتوقعة في امتحان Public Finance</p>
-                </div>
-                
-                <div class="doctors-questions-grid">
-                    <div class="question-card">
-                        <div class="question-header">
-                            <span class="question-number">سؤال 1</span>
-                            <span class="question-marks">(10 درجات)</span>
+                    <!-- Public Finance Questions -->
+                    <div class="subject-exams-card">
+                        <div class="subject-exams-title">
+                            <i class="fas fa-university"></i>
+                            أسئلة الدكتور - Public Finance
                         </div>
-                        <div class="question-content">
-                            <p><strong>س:</strong> اشرح مبادئ الميزانية العامة وأهدافها في الاقتصاد؟</p>
-                            <p class="expected-answer"><strong>الإجابة المتوقعة:</strong> مبادئ الشمولية، الوحدة، السنوية، التخصيص...</p>
+                        <div class="questions-grid">
+                            <div class="question-item">
+                                <div class="question-header">
+                                    <span class="question-number">سؤال 1</span>
+                                    <span class="question-marks">(10 درجات)</span>
+                                </div>
+                                <div class="question-content">
+                                    <p><strong>س:</strong> اشرح مبادئ الميزانية العامة وأهميتها في الإدارة المالية الحكومية؟</p>
+                                    <div class="expected-answer">
+                                        <strong>الإجابة المتوقعة:</strong> يتوقع الدكتور شرح مبادئ الشفافية، المساءلة، الكفاءة، والعدالة في تخصيص الموارد العامة.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="question-item">
+                                <div class="question-header">
+                                    <span class="question-number">سؤال 2</span>
+                                    <span class="question-marks">(15 درجة)</span>
+                                </div>
+                                <div class="question-content">
+                                    <p><strong>س:</strong> قارن بين الضرائب المباشرة وغير المباشرة من حيث الأثر الاقتصادي والكفاءة؟</p>
+                                    <div class="expected-answer">
+                                        <strong>الإجابة المتوقعة:</strong> يجب على الطالب تحليل أنواع الضرائب، تأثيرها على الاقتصاد، كفاءة التحصيل، والعدالة في توزيع الأعباء.
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="question-card">
-                        <div class="question-header">
-                            <span class="question-number">سؤال 2</span>
-                            <span class="question-marks">(15 درجة)</span>
-                        </div>
-                        <div class="question-content">
-                            <p><strong>س:</strong> حلل أثر الضرائب المباشرة وغير المباشرة على الاقتصاد الوطني؟</p>
-                            <p class="expected-answer"><strong>الإجابة المتوقعة:</strong> أنواع الضرائب، الإيرادات، التوزيع...</p>
-                        </div>
-                    </div>
                 </div>
-            </div>
-            
-            <div class="chapters">
             </div>
         </div>
     </div>
 
     <script>
-        // Tab switching function
-        function showSection(section) {
+        // Enhanced Tab switching function
+        function showSection(sectionName) {
             // Hide all sections
-            document.getElementById('theory-section').classList.remove('active');
-            document.getElementById('exams-section').classList.remove('active');
+            document.querySelectorAll('.content-section').forEach(sec => {
+                sec.classList.remove('active');
+            });
             
             // Remove active class from all tabs
             document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -451,7 +1333,10 @@
             });
             
             // Show selected section
-            document.getElementById(section + '-section').classList.add('active');
+            const targetSection = document.getElementById(sectionName + '-section');
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
             
             // Add active class to clicked tab
             event.target.classList.add('active');
@@ -459,7 +1344,7 @@
 
         // Add smooth scrolling and interactive features
         document.addEventListener('DOMContentLoaded', function() {
-            // Animate chapter cards on scroll
+            // Animate cards on scroll
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -469,9 +1354,21 @@
                 });
             }, { threshold: 0.1 });
 
-            document.querySelectorAll('.chapter-card').forEach(card => {
+            document.querySelectorAll('.subject-card, .subject-exams-card').forEach(card => {
                 observer.observe(card);
             });
+
+            // Initialize with proper active state
+            const activeSection = document.querySelector('.content-section.active');
+            const activeTab = document.querySelector('.tab-btn.active');
+            
+            if (activeSection && !activeSection.classList.contains('active')) {
+                activeSection.classList.add('active');
+            }
+            
+            if (activeTab && !activeTab.classList.contains('active')) {
+                activeTab.classList.add('active');
+            }
         });
     </script>
 </body>

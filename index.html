@@ -65,7 +65,103 @@
                 <p>Choose from our comprehensive collection of subjects designed to enhance your knowledge and skills</p>
             </div>
             
-            <div class="subjects-grid-new">
+            <!-- Advanced Features Section -->
+            <div class="features-section">
+                <div class="features-header">
+                    <h2>Advanced Learning Features</h2>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search subjects, topics, or keywords..." id="searchInput">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                
+                <!-- Category Pills -->
+                <div class="category-pills">
+                    <div class="category-pill active" data-category="all">All Subjects</div>
+                    <div class="category-pill" data-category="business">Business</div>
+                    <div class="category-pill" data-category="technology">Technology</div>
+                    <div class="category-pill" data-category="language">Language</div>
+                    <div class="category-pill" data-category="science">Science</div>
+                    <div class="category-pill" data-category="professional">Professional</div>
+                </div>
+                
+                <!-- Filter Tags -->
+                <div class="filter-tags">
+                    <!-- <div class="filter-tag" data-filter="beginner">Beginner</div> -->
+                    <!-- <div class="filter-tag" data-filter="intermediate">Intermediate</div> -->
+                    <!-- <div class="filter-tag" data-filter="advanced">Advanced</div> -->
+                    <!-- <div class="filter-tag" data-filter="certificate">With Certificate</div> -->
+                    <!-- <div class="filter-tag" data-filter="free">Free</div> -->
+                </div>
+                
+                <!-- Layout Controls -->
+                <div class="features-controls">
+                    <button class="control-btn active" data-view="grid">
+                        <i class="fas fa-th"></i> Grid View
+                    </button>
+                    <button class="control-btn" data-view="list">
+                        <i class="fas fa-list"></i> List View
+                    </button>
+                    <!-- <button class="control-btn" data-view="compact">
+                        <i class="fas fa-compress"></i> Compact
+                    </button> -->
+                    <!-- <button class="control-btn" data-view="detailed">
+                        <i class="fas fa-expand"></i> Detailed
+                    </button> -->
+                    <!-- <div class="sort-dropdown">
+                        <button class="control-btn" id="sortBtn">
+                            <i class="fas fa-sort"></i> Sort
+                        </button>
+                        <div class="sort-menu" id="sortMenu">
+                            <div class="sort-option" data-sort="name">Name (A-Z)</div>
+                            <div class="sort-option" data-sort="popular">Most Popular</div>
+                            <div class="sort-option" data-sort="newest">Newest First</div>
+                            <div class="sort-option" data-sort="rating">Highest Rated</div>
+                            <div class="sort-option" data-sort="duration">Duration</div>
+                        </div>
+                    </div> -->
+                </div>
+                
+                <!-- Stats Overview -->
+                <div class="stats-overview">
+                    <!-- <div class="stat-card">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Total Subjects</div>
+                    </div> -->
+                    <!-- <div class="stat-card">
+                        <div class="stat-number">247</div>
+                        <div class="stat-label">Total Lessons</div>
+                    </div> -->
+                    <!-- <div class="stat-card">
+                        <div class="stat-number">4.9</div>
+                        <div class="stat-label">Avg Rating</div>
+                    </div> -->
+                    <!-- <div class="stat-card">
+                        <div class="stat-number">15K+</div>
+                        <div class="stat-label">Students</div>
+                    </div> -->
+                </div>
+                
+                <!-- Quick Actions -->
+                <!-- <div class="quick-actions">
+                    <button class="quick-action-btn" id="compareBtn">
+                        <i class="fas fa-balance-scale"></i> Compare
+                    </button> -->
+                    <!-- <button class="quick-action-btn" id="wishlistBtn">
+                        <i class="fas fa-heart"></i> Wishlist
+                    </button> -->
+                    <!-- <button class="quick-action-btn" id="randomBtn">
+                        <i class="fas fa-random"></i> Random
+                    </button> -->
+                    <!-- <button class="quick-action-btn" id="resetBtn">
+                        <i class="fas fa-redo"></i> Reset
+                    </button> -->
+                </div>
+            </div>
+            
+            <div class="subjects-grid-new" id="subjectsGrid">
                 <!-- Accounting -->
                 <div class="subject-card-new" data-color="purple">
                     <div class="card-glow"></div>
@@ -76,11 +172,11 @@
                     </div>
                     <div class="card-content">
                         <div class="card-number">01</div>
-                        <h3> Intermediate  Accounting</h3>
-                        <p>Master financial and managerial accounting principles and their business applications.</p>
+                        <h3>Advanced Accounting</h3>
+                        <p>Master financial reporting, auditing standards, and strategic cost management for modern business environments.</p>
                         <div class="card-stats">
-                            <span><i class="fas fa-book"></i> 24 Lessons</span>
-                            <!-- <span><i class="fas fa-users"></i> 3.2K Students</span> -->
+                            <span><i class="fas fa-book"></i> 32 Lessons</span>
+                            <!-- <span><i class="fas fa-users"></i> 4.8K Students</span> -->
                         </div>
                         <a href="subjects/accounting.html" class="card-btn">
                             <span>Start Learning</span>
@@ -99,11 +195,11 @@
                     </div>
                     <div class="card-content">
                         <div class="card-number">02</div>
-                        <h3>Macro  Economics</h3>
-                        <p>Explore micro and macroeconomic concepts and their impact on global markets.</p>
+                        <h3>Macro Economics</h3>
+                        <p>Analyze global economic systems, monetary policies, and international trade dynamics shaping today's markets.</p>
                         <div class="card-stats">
-                            <span><i class="fas fa-book"></i> 28 Lessons</span>
-                            <!-- <span><i class="fas fa-users"></i> 4.1K Students</span> -->
+                            <span><i class="fas fa-book"></i> 35 Lessons</span>
+                            <!-- <span><i class="fas fa-users"></i> 5.2K Students</span> -->
                         </div>
                         <a href="subjects/economics.html" class="card-btn">
                             <span>Start Learning</span>
@@ -123,10 +219,10 @@
                     <div class="card-content">
                         <div class="card-number">03</div>
                         <h3>Public Finance</h3>
-                        <p>Learn public management principles and develop leadership skills for the public sector.</p>
+                        <p>Master fiscal policy, budget analysis, and public sector management for sustainable economic development.</p>
                         <div class="card-stats">
-                            <span><i class="fas fa-book"></i> 22 Lessons</span>
-                            <!-- <span><i class="fas fa-users"></i> 2.8K Students</span> -->
+                            <span><i class="fas fa-book"></i> 28 Lessons</span>
+                            <!-- <span><i class="fas fa-users"></i> 3.5K Students</span> -->
                         </div>
                         <a href="subjects/public-administration.html" class="card-btn">
                             <span>Start Learning</span>
@@ -146,10 +242,10 @@
                     <div class="card-content">
                         <div class="card-number">04</div>
                         <h3>English Language</h3>
-                        <p>Enhance your English language skills through interactive lessons for all levels.</p>
+                        <p>Develop professional communication skills, academic writing, and business English for global opportunities.</p>
                         <div class="card-stats">
-                            <span><i class="fas fa-book"></i> 35 Lessons</span>
-                            <!-- <span><i class="fas fa-users"></i> 5.6K Students</span> -->
+                            <span><i class="fas fa-book"></i> 40 Lessons</span>
+                            <!-- <span><i class="fas fa-users"></i> 6.8K Students</span> -->
                         </div>
                         <a href="subjects/english.html" class="card-btn">
                             <span>Start Learning</span>
@@ -169,10 +265,10 @@
                     <div class="card-content">
                         <div class="card-number">05</div>
                         <h3>Statistics</h3>
-                        <p>Master data analysis and statistical decision-making across various fields.</p>
+                        <p>Master data science fundamentals, probability theory, and statistical analysis for research and business intelligence.</p>
                         <div class="card-stats">
-                            <span><i class="fas fa-book"></i> 30 Lessons</span>
-                            <!-- <span><i class="fas fa-users"></i> 3.9K Students</span> -->
+                            <span><i class="fas fa-book"></i> 36 Lessons</span>
+                            <!-- <span><i class="fas fa-users"></i> 4.5K Students</span> -->
                         </div>
                         <a href="subjects/statistics.html" class="card-btn">
                             <span>Start Learning</span>
@@ -191,11 +287,11 @@
                     </div>
                     <div class="card-content">
                         <div class="card-number">06</div>
-                        <h3>Markiting</h3>
-                        <p>Discover production operations strategies and quality assurance techniques.</p>
+                        <h3>Digital Marketing</h3>
+                        <p>Master brand strategy, digital advertising, social media marketing, and data-driven customer acquisition.</p>
                         <div class="card-stats">
-                            <span><i class="fas fa-book"></i> 26 Lessons</span>
-                            <!-- <span><i class="fas fa-users"></i> 2.5K Students</span> -->
+                            <span><i class="fas fa-book"></i> 34 Lessons</span>
+                            <!-- <span><i class="fas fa-users"></i> 5.1K Students</span> -->
                         </div>
                         <a href="subjects/production-management.html" class="card-btn">
                             <span>Start Learning</span>
@@ -215,10 +311,10 @@
                     <div class="card-content">
                         <div class="card-number">07</div>
                         <h3>Management Information Systems</h3>
-                        <p>Learn how technology supports managerial decision-making processes.</p>
+                        <p>Master database design, system analysis, and IT strategy for modern business transformation and digital innovation.</p>
                         <div class="card-stats">
-                            <span><i class="fas fa-book"></i> 32 Lessons</span>
-                            <!-- <span><i class="fas fa-users"></i> 4.3K Students</span> -->
+                            <span><i class="fas fa-book"></i> 38 Lessons</span>
+                            <!-- <span><i class="fas fa-users"></i> 4.9K Students</span> -->
                         </div>
                         <a href="subjects/mis.html" class="card-btn">
                             <span>Start Learning</span>
@@ -238,10 +334,10 @@
                     <div class="card-content">
                         <div class="card-number">08</div>
                         <h3>Doctors News</h3>
-                        <p>Stay updated with the latest medical news, research breakthroughs, and healthcare industry updates.</p>
+                        <p>Access expert insights, medical breakthroughs, and healthcare industry updates from leading professionals.</p>
                         <div class="card-stats">
-                            <span><i class="fas fa-book"></i> 28 Lessons</span>
-                            <!-- <span><i class="fas fa-users"></i> 3.5K Students</span> -->
+                            <span><i class="fas fa-book"></i> 42 Lessons</span>
+                            <!-- <span><i class="fas fa-users"></i> 6.2K Students</span> -->
                         </div>
                         <a href="subjects/doctors-news.html" class="card-btn">
                             <span>Start Learning</span>
@@ -254,30 +350,635 @@
     </section>
 
    <script>
-     // Scroll to subjects section
-        function scrollToSubjects() {
-            document.getElementById('subjects').scrollIntoView({ behavior: 'smooth' });
-        }
+        // Advanced Features JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all features
+            initializeAdvancedFeatures();
+            initializeUltraAdvancedFeatures();
+        });
 
-        // Animate cards when they come into view
-        const observerOptions = {
-            threshold: 0.1
-        };
+        function initializeAdvancedFeatures() {
+            // Search functionality
+            const searchInput = document.getElementById('searchInput');
+            const subjectsGrid = document.getElementById('subjectsGrid');
+            const subjectCards = document.querySelectorAll('.subject-card-new');
+            
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                subjectCards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeIn 0.5s ease';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+            // Category filtering
+            const categoryPills = document.querySelectorAll('.category-pill');
+            categoryPills.forEach(pill => {
+                pill.addEventListener('click', function() {
+                    categoryPills.forEach(p => p.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const category = this.dataset.category;
+                    filterSubjects(category);
+                });
+            });
+
+            // Filter tags
+            const filterTags = document.querySelectorAll('.filter-tag');
+            filterTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    applyFilters();
+                });
+            });
+
+            // Layout controls
+            const controlBtns = document.querySelectorAll('.control-btn[data-view]');
+            controlBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    controlBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const view = this.dataset.view;
+                    subjectsGrid.className = 'subjects-grid-new ' + view + '-view';
+                });
+            });
+
+            // Sort dropdown
+            const sortBtn = document.getElementById('sortBtn');
+            const sortMenu = document.getElementById('sortMenu');
+            
+            sortBtn.addEventListener('click', function() {
+                sortMenu.classList.toggle('active');
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!sortBtn.contains(e.target) && !sortMenu.contains(e.target)) {
+                    sortMenu.classList.remove('active');
                 }
             });
-        }, observerOptions);
 
-        // Observe all subject cards
-        document.querySelectorAll('.subject-card').forEach(card => {
-            observer.observe(card);
-        });
-   </script>
+            const sortOptions = document.querySelectorAll('.sort-option');
+            sortOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const sortBy = this.dataset.sort;
+                    sortSubjects(sortBy);
+                    sortMenu.classList.remove('active');
+                });
+            });
+
+            // Quick actions
+            document.getElementById('compareBtn').addEventListener('click', function() {
+                toggleCompareMode();
+            });
+
+            document.getElementById('wishlistBtn').addEventListener('click', function() {
+                showWishlist();
+            });
+
+            document.getElementById('randomBtn').addEventListener('click', function() {
+                showRandomSubject();
+            });
+
+            document.getElementById('resetBtn').addEventListener('click', function() {
+                resetAllFilters();
+            });
+
+            // Add wishlist buttons to cards
+            addWishlistButtons();
+
+            // Initialize tooltips
+            initializeTooltips();
+        }
+
+        function filterSubjects(category) {
+            const cards = document.querySelectorAll('.subject-card-new');
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    // Add category data attributes to cards for filtering
+                    const cardCategory = card.dataset.category || 'business';
+                    card.style.display = cardCategory === category ? 'block' : 'none';
+                }
+            });
+        }
+
+        function applyFilters() {
+            const activeFilters = Array.from(document.querySelectorAll('.filter-tag.active'))
+                .map(tag => tag.dataset.filter);
+            
+            const cards = document.querySelectorAll('.subject-card-new');
+            cards.forEach(card => {
+                // Add filter logic based on card attributes
+                card.style.display = 'block';
+            });
+        }
+
+        function sortSubjects(sortBy) {
+            const grid = document.getElementById('subjectsGrid');
+            const cards = Array.from(grid.querySelectorAll('.subject-card-new'));
+            
+            cards.sort((a, b) => {
+                switch(sortBy) {
+                    case 'name':
+                        return a.querySelector('h3').textContent.localeCompare(b.querySelector('h3').textContent);
+                    case 'rating':
+                        return (b.dataset.rating || 0) - (a.dataset.rating || 0);
+                    case 'newest':
+                        return (b.dataset.date || 0) - (a.dataset.date || 0);
+                    case 'duration':
+                        return (a.dataset.duration || 0) - (b.dataset.duration || 0);
+                    default:
+                        return 0;
+                }
+            });
+            
+            cards.forEach(card => grid.appendChild(card));
+        }
+
+        function toggleCompareMode() {
+            const grid = document.getElementById('subjectsGrid');
+            grid.classList.toggle('comparison-mode');
+            
+            const btn = document.getElementById('compareBtn');
+            if (grid.classList.contains('comparison-mode')) {
+                btn.style.background = 'var(--primary)';
+                btn.innerHTML = '<i class="fas fa-check"></i> Comparing';
+            } else {
+                btn.style.background = '';
+                btn.innerHTML = '<i class="fas fa-balance-scale"></i> Compare';
+            }
+        }
+
+        function showWishlist() {
+            const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+            alert(`Your wishlist contains ${wishlist.length} subjects`);
+        }
+
+        function showRandomSubject() {
+            const cards = document.querySelectorAll('.subject-card-new');
+            const randomIndex = Math.floor(Math.random() * cards.length);
+            const randomCard = cards[randomIndex];
+            
+            // Scroll to and highlight the random subject
+            randomCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            randomCard.style.animation = 'pulse 1s ease 3';
+        }
+
+        function resetAllFilters() {
+            // Reset search
+            document.getElementById('searchInput').value = '';
+            
+            // Reset categories
+            document.querySelectorAll('.category-pill').forEach(pill => {
+                pill.classList.remove('active');
+            });
+            document.querySelector('.category-pill[data-category="all"]').classList.add('active');
+            
+            // Reset filters
+            document.querySelectorAll('.filter-tag').forEach(tag => {
+                tag.classList.remove('active');
+            });
+            
+            // Reset view
+            document.querySelectorAll('.control-btn[data-view]').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector('.control-btn[data-view="grid"]').classList.add('active');
+            
+            // Reset grid
+            const grid = document.getElementById('subjectsGrid');
+            grid.className = 'subjects-grid-new';
+            
+            // Show all cards
+            document.querySelectorAll('.subject-card-new').forEach(card => {
+                card.style.display = 'block';
+            });
+        }
+
+        function addWishlistButtons() {
+            const cards = document.querySelectorAll('.subject-card-new');
+            cards.forEach(card => {
+                const wishlistBtn = document.createElement('div');
+                wishlistBtn.className = 'wishlist-btn';
+                wishlistBtn.innerHTML = '<i class="fas fa-heart"></i>';
+                wishlistBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    toggleWishlist(this, card);
+                });
+                card.appendChild(wishlistBtn);
+            });
+        }
+
+        function toggleWishlist(btn, card) {
+            btn.classList.toggle('active');
+            const subjectName = card.querySelector('h3').textContent;
+            let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+            
+            if (btn.classList.contains('active')) {
+                wishlist.push(subjectName);
+                btn.innerHTML = '<i class="fas fa-heart"></i>';
+            } else {
+                wishlist = wishlist.filter(item => item !== subjectName);
+                btn.innerHTML = '<i class="far fa-heart"></i>';
+            }
+            
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        }
+
+        function initializeTooltips() {
+            // Add hover tooltips for better UX
+            const cards = document.querySelectorAll('.subject-card-new');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function(e) {
+                    // Show tooltip with additional info
+                });
+            });
+        }
+
+        // Ultra-Advanced Features JavaScript
+        function initializeUltraAdvancedFeatures() {
+            initializeAIAssistant();
+            initializeGamification();
+            initializeSocialFeatures();
+            initializeAnalytics();
+            initializeNotifications();
+            initializeVoiceAssistant();
+            initializeStudyTimer();
+            initializeMindMap();
+            initializeARPreview();
+            initializeVirtualClassroom();
+            initializeStudyPartner();
+            initializeDailyChallenge();
+            initializeLearningPath();
+        }
+
+        // AI Assistant Functions
+        function initializeAIAssistant() {
+            const aiWidget = document.getElementById('aiWidget');
+            const aiChatWindow = document.getElementById('aiChatWindow');
+            
+            aiWidget.addEventListener('click', function() {
+                aiChatWindow.style.display = aiChatWindow.style.display === 'block' ? 'none' : 'block';
+            });
+        }
+
+        function closeAIChat() {
+            document.getElementById('aiChatWindow').style.display = 'none';
+        }
+
+        function sendAIMessage() {
+            const input = document.getElementById('aiInput');
+            const messages = document.getElementById('aiMessages');
+            
+            if (input.value.trim()) {
+                // Add user message
+                messages.innerHTML += `
+                    <div class="user-message">
+                        <p>${input.value}</p>
+                    </div>
+                `;
+                
+                // Simulate AI response
+                setTimeout(() => {
+                    messages.innerHTML += `
+                        <div class="ai-message">
+                            <p>I'm processing your request about "${input.value}". Let me help you with that...</p>
+                        </div>
+                    `;
+                    messages.scrollTop = messages.scrollHeight;
+                }, 1000);
+                
+                input.value = '';
+                messages.scrollTop = messages.scrollHeight;
+            }
+        }
+
+        // Gamification Functions
+        function initializeGamification() {
+            updateXP();
+            checkAchievements();
+        }
+
+        function updateXP() {
+            const xpFill = document.querySelector('.xp-fill');
+            let currentXP = parseInt(xpFill.style.width) || 0;
+            
+            // Simulate XP gain
+            setInterval(() => {
+                if (currentXP < 100) {
+                    currentXP += Math.random() * 5;
+                    xpFill.style.width = Math.min(currentXP, 100) + '%';
+                }
+            }, 5000);
+        }
+
+        function checkAchievements() {
+            const badges = document.querySelectorAll('.achievement-badge');
+            badges.forEach((badge, index) => {
+                setTimeout(() => {
+                    if (Math.random() > 0.5 && !badge.classList.contains('unlocked')) {
+                        badge.classList.add('unlocked');
+                        showNotification('Achievement Unlocked!', badge.title);
+                    }
+                }, (index + 1) * 3000);
+            });
+        }
+
+        // Social Features
+        function initializeSocialFeatures() {
+            updateOnlineUsers();
+            animateUserAvatars();
+        }
+
+        function updateOnlineUsers() {
+            const onlineCount = document.querySelector('.online-users span');
+            setInterval(() => {
+                const count = 200 + Math.floor(Math.random() * 100);
+                onlineCount.textContent = count + ' Online';
+            }, 10000);
+        }
+
+        function animateUserAvatars() {
+            const avatars = document.querySelectorAll('.user-avatar');
+            avatars.forEach(avatar => {
+                avatar.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.2)';
+                });
+                avatar.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        }
+
+        // Analytics Functions
+        function initializeAnalytics() {
+            animateProgressChart();
+            updateStats();
+        }
+
+        function animateProgressChart() {
+            const bars = document.querySelectorAll('.chart-bar');
+            bars.forEach((bar, index) => {
+                setTimeout(() => {
+                    const height = 40 + Math.random() * 50;
+                    bar.style.height = height + '%';
+                }, index * 200);
+            });
+        }
+
+        function updateStats() {
+            const stats = document.querySelectorAll('.mini-stat-value');
+            setInterval(() => {
+                stats.forEach(stat => {
+                    const currentValue = parseFloat(stat.textContent);
+                    const change = (Math.random() - 0.5) * 2;
+                    stat.textContent = (currentValue + change).toFixed(1);
+                });
+            }, 8000);
+        }
+
+        // Notification System
+        function initializeNotifications() {
+            const notificationBell = document.getElementById('notificationBell');
+            const notificationCenter = document.getElementById('notificationCenter');
+            
+            notificationBell.addEventListener('click', function() {
+                notificationCenter.classList.toggle('active');
+            });
+        }
+
+        function closeNotifications() {
+            document.getElementById('notificationCenter').classList.remove('active');
+        }
+
+        function showNotification(title, message) {
+            const notificationCenter = document.getElementById('notificationCenter');
+            const notificationList = notificationCenter.querySelector('.notification-list');
+            
+            const newNotification = document.createElement('div');
+            newNotification.className = 'notification-item unread';
+            newNotification.innerHTML = `
+                <strong>${title}</strong>
+                <p>${message}</p>
+                <small>Just now</small>
+            `;
+            
+            notificationList.insertBefore(newNotification, notificationList.firstChild);
+            
+            // Update count
+            const count = document.querySelector('.notification-count');
+            count.textContent = parseInt(count.textContent) + 1;
+        }
+
+        // Voice Assistant
+        function initializeVoiceAssistant() {
+            const voiceAssistant = document.getElementById('voiceAssistant');
+            let isListening = false;
+            
+            voiceAssistant.addEventListener('click', function() {
+                isListening = !isListening;
+                this.classList.toggle('listening');
+                
+                if (isListening) {
+                    startVoiceRecognition();
+                } else {
+                    stopVoiceRecognition();
+                }
+            });
+        }
+
+        function startVoiceRecognition() {
+            // Simulate voice recognition
+            console.log('Voice recognition started...');
+            setTimeout(() => {
+                document.getElementById('voiceAssistant').classList.remove('listening');
+                showNotification('Voice Command', 'I heard: "Show me accounting lessons"');
+            }, 3000);
+        }
+
+        function stopVoiceRecognition() {
+            console.log('Voice recognition stopped');
+        }
+
+        // Study Timer
+        function initializeStudyTimer() {
+            let timerInterval;
+            let timeLeft = 25 * 60; // 25 minutes in seconds
+            
+            window.startTimer = function() {
+                if (!timerInterval) {
+                    timerInterval = setInterval(updateTimer, 1000);
+                }
+            };
+            
+            window.pauseTimer = function() {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            };
+            
+            window.resetTimer = function() {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                timeLeft = 25 * 60;
+                updateTimerDisplay();
+            };
+            
+            function updateTimer() {
+                timeLeft--;
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                    showNotification('Timer Complete!', 'Time for a break!');
+                    timeLeft = 25 * 60;
+                }
+                updateTimerDisplay();
+            }
+            
+            function updateTimerDisplay() {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                document.getElementById('timerDisplay').textContent = 
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+        }
+
+        // Mind Map
+        function initializeMindMap() {
+            window.toggleMindMap = function() {
+                const canvas = document.getElementById('mindMapCanvas');
+                canvas.style.display = canvas.style.display === 'block' ? 'none' : 'block';
+                
+                if (canvas.style.display === 'block') {
+                    // Initialize mind map
+                    canvas.innerHTML = `
+                        <div class="mind-map-content">
+                            <h3>Learning Mind Map</h3>
+                            <div class="mind-map-nodes">
+                                <div class="central-node">Subjects</div>
+                                <div class="branch-node">Accounting</div>
+                                <div class="branch-node">Economics</div>
+                                <div class="branch-node">English</div>
+                                <div class="branch-node">Statistics</div>
+                            </div>
+                        </div>
+                    `;
+                }
+            };
+        }
+
+        // AR Preview
+        function initializeARPreview() {
+            window.startARPreview = function() {
+                showNotification('AR Preview', 'AR camera is starting... Point your camera at a flat surface.');
+                setTimeout(() => {
+                    showNotification('AR Ready', 'AR preview is now active!');
+                }, 2000);
+            };
+        }
+
+        // Virtual Classroom
+        function initializeVirtualClassroom() {
+            window.joinVirtualClassroom = function() {
+                showNotification('Virtual Classroom', 'Connecting to virtual classroom...');
+                setTimeout(() => {
+                    showNotification('Connected!', 'You have joined the virtual classroom.');
+                }, 3000);
+            };
+        }
+
+        // Study Partner
+        function initializeStudyPartner() {
+            window.findStudyPartner = function() {
+                showNotification('Finding Partner', 'Searching for study partners...');
+                setTimeout(() => {
+                    showNotification('Partner Found!', 'Sarah is available to study with you.');
+                }, 2000);
+            };
+        }
+
+        // Daily Challenge
+        function initializeDailyChallenge() {
+            window.showDailyChallenge = function() {
+                showNotification('Daily Challenge', 'Today\'s challenge: Complete 5 lessons in any subject!');
+            };
+        }
+
+        // Learning Path
+        function initializeLearningPath() {
+            window.showLearningPath = function() {
+                showNotification('Learning Path', 'Your personalized learning path is ready!');
+            };
+        }
+
+        // Add CSS for new elements
+        const additionalStyles = document.createElement('style');
+        additionalStyles.textContent = `
+            .ai-message, .user-message {
+                margin: 10px 0;
+                padding: 10px;
+                border-radius: 10px;
+            }
+            
+            .ai-message {
+                background: rgba(102, 126, 234, 0.1);
+                border-left: 3px solid #667eea;
+            }
+            
+            .user-message {
+                background: rgba(255, 255, 255, 0.1);
+                border-left: 3px solid #fff;
+                margin-left: 20px;
+            }
+            
+            .mind-map-content {
+                padding: 40px;
+                color: white;
+                text-align: center;
+            }
+            
+            .mind-map-nodes {
+                display: flex;
+                justify-content: center;
+                gap: 30px;
+                margin-top: 30px;
+                flex-wrap: wrap;
+            }
+            
+            .central-node {
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                padding: 20px;
+                border-radius: 20px;
+                font-weight: 800;
+            }
+            
+            .branch-node {
+                background: rgba(255, 255, 255, 0.1);
+                padding: 15px;
+                border-radius: 15px;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+            }
+        `;
+        document.head.appendChild(additionalStyles);
+    </script>
    <!-- GSAP Animation Library -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
    <script>
