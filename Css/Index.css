@@ -819,6 +819,17 @@
             border-color: rgba(99, 102, 241, 0.4);
         }
 
+        .subject-card-new[data-color="teal"] .card-btn {
+            background: linear-gradient(135deg, #14b8a6, #2dd4bf);
+        }
+        .subject-card-new[data-color="teal"] .card-btn::before {
+            background: linear-gradient(135deg, #2dd4bf, #14b8a6);
+        }
+        .subject-card-new[data-color="teal"] .card-stats i,
+        .subject-card-new[data-color="teal"] .icon-ring {
+            border-color: rgba(20, 184, 166, 0.4);
+        }
+
         @media (max-width: 768px) {
             .subjects-header h2 {
                 font-size: 2.2rem;
