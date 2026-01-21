@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 1: Introduction to Economics - Subject Online</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../Css/main.css" />
+  <link rel="stylesheet" href="../../Css/subject-theme.css" />
+  <!-- PDF Viewer Modal -->
+  <div id="pdfModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div class="modal-header">
+        <h3 id="modalTitle"></h3>
+        <button id="downloadPdf" class="download-btn">
+          <i class="fas fa-download"></i> Download PDF
+        </button>
+      </div>
+      <div class="pdf-container">
+        <iframe id="pdfViewer" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(5px);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.show {
+      display: block;
+      opacity: 1;
+    }
+
+    .modal-content {
+      position: relative;
+      background-color: var(--card-bg);
+      margin: 5% auto;
+      padding: 25px;
+      width: 90%;
+      max-width: 1000px;
+      border-radius: 12px;
+      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 7px dotted var(--border-color);
+    }
+
+    .close-btn {
+      position: absolute;
+      right: 25px;
+      top: 20px;
+      color: var(--text-secondary);
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .close-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .download-btn {
+      background: var(--accent);
+      color: white;
+      border: 7px double rgba(0, 0, 0, 0.534);
+      padding: 8px 16px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0px;
+      transition: all 0.3s ease;
+    }
+
+    .download-btn:hover {
+      background: blanchedalmond;
+      transform: translateY(-2px);
+      color: black;
+      box-shadow: 0 -2px 10px 50px rgba(137, 194, 216, 0.411) inset;
+      filter: blur(0.2px);
+      filter: drop-shadow(0 10px 8px black);
+    }
+
+    .pdf-container {
+      flex: 1;
+      min-height: 60vh;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #1a1a2e;
+    }
+
+    #pdfViewer {
+      width: 100%;
+      height: 100%;
+      min-height: 60vh;
+      border: none;
+      border-radius: 8px;
+    }
+
+    :root {
+      /* Dark theme colors */
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --card-hover: #334155;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --border-color: #2d3748;
+      --breadcrumb-bg: #1e293b;
+      --breadcrumb-text: #94a3b8;
+      --breadcrumb-active: #f8fafc;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      font-family: "Inter", sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Breadcrumb Styling */
+    .breadcrumb {
+      padding: 20px 0;
+      margin: 0 0 25px 0;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      background: rgb(15, 20, 50);
+      padding: 12px 20px;
+      border-radius: 50px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .breadcrumb a {
+      color: rgb(19, 228, 217);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--accent-hover);
+      transform: translateX(2px);
+    }
+
+    .breadcrumb span {
+      margin: 0 5px;
+      color: var(--text-secondary);
+      opacity: 0.7;
+    }
+
+    .breadcrumb span:last-child {
+      color: var(--text-primary);
+      font-weight: 500;
+      opacity: 1;
+    }
+
+    .breadcrumb a::after {
+      content: "›";
+      margin-left: 10px;
+      color: var(--text-secondary);
+      opacity: 0.7;
+    }
+
+    .breadcrumb a:last-child::after {
+      display: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .subject-header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 20px;
+      background: var(--card-bg);
+      border-radius: 10px;
+      border-left: 4px solid var(--accent);
+    }
+
+    .subject-header h1 {
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-size: 2rem;
+    }
+
+    .subject-header p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    .pdf-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+      padding: 0 15px;
+    }
+
+    .pdf-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 10px double rgba(255, 255, 255, 0.08);
+      border-radius: 50px;
+      padding: 25px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      color: #e6edf7;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      min-height: 200px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+
+    .card-glow {
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle,
+          rgba(99, 102, 241, 0.2) 0%,
+          rgba(0, 0, 0, 0) 60%);
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      pointer-events: none;
+    }
+
+    .card-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(circle at 80% 20%,
+          rgba(255, 255, 255, 0.03) 0%,
+          transparent 50%),
+        linear-gradient(45deg,
+          transparent 60%,
+          rgba(255, 255, 255, 0.02) 60.5%,
+          transparent 61%),
+        linear-gradient(-45deg,
+          transparent 60%,
+          rgba(255, 255, 255, 0.02) 60.5%,
+          transparent 61%);
+      opacity: 0.8;
+      background-size:
+        200% 200%,
+        30px 30px,
+        30px 30px;
+      z-index: 1;
+    }
+
+    .card-shape-1,
+    .card-shape-2,
+    .card-shape-3 {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(15px);
+      opacity: 0.2;
+      z-index: 0;
+      transition: all 0.5s ease;
+    }
+
+    .card-shape-1 {
+      width: 100px;
+      height: 100px;
+      top: -30px;
+      right: -30px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    }
+
+    .card-shape-2 {
+      width: 60px;
+      height: 60px;
+      bottom: -20px;
+      left: -20px;
+      background: linear-gradient(135deg, #10b981, #34d399);
+    }
+
+    .card-shape-3 {
+      width: 40px;
+      height: 40px;
+      top: 50%;
+      right: -15px;
+      background: linear-gradient(135deg, #f59e0b, #ec4899);
+      opacity: 0.4;
+    }
+
+    .pdf-card:hover .card-shape-1 {
+      transform: translate(10px, 10px) scale(1.1);
+    }
+
+    .pdf-card:hover .card-shape-2 {
+      transform: translate(-5px, -5px) scale(1.2);
+    }
+
+    .pdf-card:hover .card-shape-3 {
+      transform: translate(5px, 5px) scale(1.3);
+    }
+
+    .pdf-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .pdf-card:hover .card-glow {
+      opacity: 0.8;
+    }
+
+    .pdf-header {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-icon-wrapper {
+      position: relative;
+      margin-right: 20px;
+      flex-shrink: 0;
+    }
+
+    .card-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      background: linear-gradient(135deg, #10b981, #34d399);
+      color: white;
+      position: relative;
+      z-index: 1;
+    }
+
+    .icon-ring {
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border: 2px solid rgba(16, 185, 129, 0.4);
+      border-radius: 18px;
+      animation: pulse 3s infinite;
+    }
+
+    .pdf-content {
+      flex: 1;
+      text-align: left;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-number {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 3rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.03);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .pdf-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0 0 10px 0;
+      color: #e6edf7;
+      line-height: 1.4;
+      position: relative;
+    }
+
+    .pdf-card p {
+      color: #9aa7bd;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .card-stats {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+      font-size: 0.85rem;
+      color: #9aa7bd;
+    }
+
+    .card-stats span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .card-stats i {
+      font-size: 1rem;
+    }
+
+    .card-btn {
+      display: inline-flex;
+      align-items: center;
+      color: #10b981;
+      font-weight: 500;
+      text-decoration: none;
+      margin-top: 15px;
+      position: relative;
+      padding-right: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .card-btn i {
+      position: absolute;
+      right: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .card-btn:hover {
+      color: #34d399;
+    }
+
+    .card-btn:hover i {
+      transform: translateX(3px);
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+
+      50% {
+        transform: scale(1.05);
+        opacity: 0.4;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 30px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      padding: 8px 16px;
+      border-radius: 50px;
+      background: var(--card-bg);
+      border: 5px double var(--border-color);
+    }
+
+    .back-button:hover {
+      color: var(--accent-hover);
+      background: var(--card-hover);
+      border-color: var(--accent);
+    }
+
+    .back-button svg {
+      margin-right: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .back-button:hover svg {
+      transform: translateX(-3px);
+    }
+
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      grid-column: 1 / -1;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .pdf-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .subject-header h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-XXXXXXX");
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb">
+      <a href="../../../../index.html">Home</a>
+      <!-- <span> &gt; </span> -->
+      <a href="../../../../index.html#subjects">Subjects</a>
+      <!-- <span> &gt; </span> -->
+      <a href="../../../english.html">English</a>
+      <!-- <span> &gt; </span> -->
+      <span>Quiz 4</span>
+    </nav>
+
+    <a href="../../../english.html" class="back-button">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      Back to English
+    </a>
+
+    <div class="subject-header">
+      <h1>📚 Quiz 4</h1>
+    </div>
+
+    <div class="pdf-grid" id="pdfGrid">
+      <div class="loading">Loading Quizzes...</div>
+    </div>
+  </div>
+
+  <script>
+    // List of PDF files in the assets folder with metadata
+    const pdfFiles = [
+      {
+        path: "lect 1.pdf",
+        title: "",
+        size: "1.2 MB",
+        date: "2025-01-15",
+        icon: "<i class='fas fa-book-open'></i>",
+      },
+      {
+        path: "",
+        title: "",
+        size: "980 KB",
+        date: "2025-01-22",
+        icon: "<i class='fas fa-chart-line'></i>",
+      },
+      {
+        path: "",
+        title: "",
+        size: "1.5 MB",
+        date: "2025-01-29",
+        icon: "<i class='fas fa-globe-americas'></i>",
+      },
+      {
+        path: "",
+        title: "",
+        size: "1.1 MB",
+        date: "2025-02-05",
+        icon: "<i class='fas fa-project-diagram'></i>",
+      },
+      {
+        path: "",
+        title: "",
+        size: "1.3 MB",
+        date: "2025-02-12",
+        icon: "<i class='fas fa-book'></i>",
+      },
+      {
+        path: "",
+        title: "",
+        size: "1.3 MB",
+        date: "2025-02-12",
+        icon: "<i class='fas fa-book'></i>",
+      },
+      {
+        path: "",
+        title: "",
+        size: "1.3 MB",
+        date: "2025-02-12",
+        icon: "<i class='fas fa-book'></i>",
+      },
+      {
+        path: "",
+        title: "",
+        size: "1.3 MB",
+        date: "2025-02-12",
+        icon: "<i class='fas fa-book'></i>",
+      },
+    ];
+
+    // Format date to be more readable
+    function formatDate(dateString) {
+      const options = { year: "numeric", month: "short", day: "numeric" };
+      return new Date(dateString).toLocaleDateString("en-US", options);
+    }
+
+    // Function to open PDF in modal
+    function openPdfModal(pdfPath, pdfTitle) {
+      const modal = document.getElementById("pdfModal");
+      const pdfViewer = document.getElementById("pdfViewer");
+      const modalTitle = document.getElementById("modalTitle");
+      const downloadBtn = document.getElementById("downloadPdf");
+
+      // Set PDF title
+      modalTitle.textContent = pdfTitle;
+
+      // Set PDF source
+      pdfViewer.src = pdfPath + "#toolbar=0&navpanes=0&scrollbar=0";
+
+      // Set download button
+      downloadBtn.onclick = () => {
+        const link = document.createElement("a");
+        link.href = pdfPath;
+        link.download = pdfTitle.toLowerCase().replace(/\s+/g, "-") + ".pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      };
+
+      // Show modal
+      modal.classList.add("show");
+
+      // Close modal when clicking the close button
+      document.querySelector(".close-btn").onclick = () => {
+        modal.classList.remove("show");
+        pdfViewer.src = ""; // Unload PDF when closing
+      };
+
+      // Close modal when clicking outside the content
+      window.onclick = (event) => {
+        if (event.target === modal) {
+          modal.classList.remove("show");
+          pdfViewer.src = ""; // Unload PDF when closing
+        }
+      };
+    }
+
+    // Function to create PDF cards
+    function createPdfCards() {
+      const pdfGrid = document.getElementById("pdfGrid");
+
+      // Show loading state
+      pdfGrid.innerHTML = '<div class="loading">Loading PDFs...</div>';
+
+      // Simulate loading delay for better UX
+      setTimeout(() => {
+        pdfGrid.innerHTML = ""; // Clear loading message
+
+        if (pdfFiles.length === 0) {
+          pdfGrid.innerHTML =
+            '<div class="loading">No PDFs found in the assets folder.</div>';
+          return;
+        }
+
+        pdfFiles.forEach((pdf, index) => {
+          const pdfCard = document.createElement("div");
+          pdfCard.className = "pdf-card";
+          pdfCard.dataset.pdfPath = pdf.path; // Store PDF path in data attribute
+          pdfCard.dataset.pdfTitle = pdf.title; // Store PDF title
+          pdfCard.style.animation = `fadeIn 0.3s ease-out ${index * 0.1}s both`;
+
+          // Add data-color attribute for different card colors
+          const colors = ["green", "blue", "purple", "red", "orange"];
+          const colorIndex = index % colors.length;
+          pdfCard.setAttribute("data-color", colors[colorIndex]);
+
+          pdfCard.innerHTML = `
+                        <div class="card-glow"></div>
+                        <div class="card-pattern"></div>
+                        <div class="card-shape-1"></div>
+                        <div class="card-shape-2"></div>
+                        <div class="card-shape-3"></div>
+                        <div class="pdf-header">
+                            <div class="card-icon-wrapper">
+                                <div class="card-icon">${pdf.icon}</div>
+                                <div class="icon-ring"></div>
+                            </div>
+                            <div class="pdf-content">
+                                <div class="card-number">0${index + 1}</div>
+                                <h3 class="pdf-title">${pdf.title}</h3>
+                                <p>Click to view the PDF document</p>
+                                <div class="card-stats">
+                                    <span><i class="fas fa-file-pdf"></i> ${pdf.size}</span>
+                                    <span><i class="far fa-calendar-alt"></i> ${formatDate(pdf.date)}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+          pdfGrid.appendChild(pdfCard);
+        });
+
+        // Add color-specific styles
+        addCardColorStyles();
+
+        // Add click event listeners to PDF cards
+        document.querySelectorAll(".pdf-card").forEach((card) => {
+          card.addEventListener("click", (e) => {
+            const pdfPath = card.dataset.pdfPath;
+            const pdfTitle = card.dataset.pdfTitle;
+            openPdfModal(pdfPath, pdfTitle);
+          });
+        });
+      }, 300); // Shorter loading delay
+    }
+
+    // Add color-specific styles for cards
+    function addCardColorStyles() {
+      const style = document.createElement("style");
+      style.textContent = `
+                .pdf-card[data-color="green"] .card-icon,
+                .pdf-card[data-color="green"] .card-btn::before {
+                    background: linear-gradient(135deg, #10b981, #34d399);
+                }
+                .pdf-card[data-color="green"] .icon-ring {
+                    border-color: rgba(16, 185, 129, 0.4);
+                }
+                .pdf-card[data-color="green"] .card-btn {
+                    color: #10b981;
+                }
+                .pdf-card[data-color="green"] .card-btn:hover {
+                    color: #34d399;
+                }
+                
+                .pdf-card[data-color="blue"] .card-icon,
+                .pdf-card[data-color="blue"] .card-btn::before {
+                    background: linear-gradient(135deg, #3b82f6, #6366f1);
+                }
+                .pdf-card[data-color="blue"] .icon-ring {
+                    border-color: rgba(59, 130, 246, 0.4);
+                }
+                .pdf-card[data-color="blue"] .card-btn {
+                    color: #3b82f6;
+                }
+                .pdf-card[data-color="blue"] .card-btn:hover {
+                    color: #6366f1;
+                }
+                
+                .pdf-card[data-color="purple"] .card-icon,
+                .pdf-card[data-color="purple"] .card-btn::before {
+                    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+                }
+                .pdf-card[data-color="purple"] .icon-ring {
+                    border-color: rgba(139, 92, 246, 0.4);
+                }
+                .pdf-card[data-color="purple"] .card-btn {
+                    color: #8b5cf6;
+                }
+                .pdf-card[data-color="purple"] .card-btn:hover {
+                    color: #6366f1;
+                }
+                
+                .pdf-card[data-color="red"] .card-icon,
+                .pdf-card[data-color="red"] .card-btn::before {
+                    background: linear-gradient(135deg, #ef4444, #f97316);
+                }
+                .pdf-card[data-color="red"] .icon-ring {
+                    border-color: rgba(239, 68, 68, 0.4);
+                }
+                .pdf-card[data-color="red"] .card-btn {
+                    color: #ef4444;
+                }
+                .pdf-card[data-color="red"] .card-btn:hover {
+                    color: #f97316;
+                }
+                
+                .pdf-card[data-color="orange"] .card-icon,
+                .pdf-card[data-color="orange"] .card-btn::before {
+                    background: linear-gradient(135deg, #f59e0b, #ec4899);
+                }
+                .pdf-card[data-color="orange"] .icon-ring {
+                    border-color: rgba(245, 158, 11, 0.4);
+                }
+                .pdf-card[data-color="orange"] .card-btn {
+                    color: #f59e0b;
+                }
+                .pdf-card[data-color="orange"] .card-btn:hover {
+                    color: #ec4899;
+                }
+            `;
+      document.head.appendChild(style);
+    }
+
+    // Load PDFs when the page loads
+    document.addEventListener("DOMContentLoaded", createPdfCards);
+  </script>
+</body>
+
+</html>
