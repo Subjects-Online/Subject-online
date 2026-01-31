@@ -1,0 +1,168 @@
+@media (max-width: 768px) {
+   
+  .subjects-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .subjects-header p {
+    font-size: 1rem;
+  }
+
+  .subjects-grid-new {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    max-width: 100%;
+  }
+
+  .subject-card-new {
+    padding: 30px 20px;
+  }
+
+  .card-icon-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  .card-icon {
+    width: 80px;
+    height: 80px;
+    font-size: 2.5rem;
+  }
+
+  .card-number {
+    font-size: 4rem;
+  }
+
+  .card-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .card-content p {
+    font-size: 0.95rem;
+  }
+   .breadcrumb{
+        color: transparent;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+     .breadcrumb{
+        display: none;
+    }
+  .subjects-grid-new {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 100%;
+  }
+   .breadcrumb{
+        display: none;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 200px) {
+    
+  .hero {
+    max-height: 100vh;
+    min-height: 600px;
+  }
+
+  h1 {
+    font-size: 2px;
+    background: linear-gradient(to right, #fff, #e0e7ff);
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  .hero-content {
+    padding: 40px 25px;
+    border-radius: 18px;
+    margin: auto 40px;
+    box-shadow: none;
+    border: none;
+    background: none;
+  }
+  .hero-content::before {
+    content: none;
+  }
+  .hero-actions {
+    gap: 10px;
+  }
+
+  .btn.btn-hero {
+    padding: 11px 22px;
+    font-size: 0.92rem;
+  }
+
+  .subjects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-header {
+    min-height: 120px;
+    padding: 20px 15px !important;
+  }
+
+  .subject-card .card-header span {
+    font-size: 2.2rem !important;
+  }
+
+  .card-body h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+
+  .card-body p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .subject-card .btn {
+    padding: 10px 22px;
+    font-size: 0.95rem;
+    width: 100%;
+    margin-top: 10px;
+  }
+   .breadcrumb{
+        display: none;
+    }
+}
+
+/* Animation for the cards when they come into view */
+@keyframes fadeInUpCards {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes new {
+  from{
+color: aqua;
+  }
+  to{
+color: rgb(110, 255, 97);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero,
+  .hero-content,
+  .hero-content::before,
+  .hero-content::after,
+  .hero-bg .blob,
+  .hero-decor,
+  .hero-decor::before,
+  .hero-decor .orbit,
+  .scroll-down,
+  .subject-card {
+    animation: none !important;
+    transition: none !important;
+  }
+}

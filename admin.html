@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Subjects Online</title>
+    <link rel="stylesheet" href="Css/Index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 120px 20px 50px;
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .admin-header h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff6b6b, #ffd93d, #6bcf7f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .admin-header p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .stat-card:nth-child(1) { animation-delay: 0.1s; }
+        .stat-card:nth-child(2) { animation-delay: 0.2s; }
+        .stat-card:nth-child(3) { animation-delay: 0.3s; }
+        .stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .users-table {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .table-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .table-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-export, .btn-clear {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-export {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+
+        .btn-clear {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+        }
+
+        .btn-export:hover, .btn-clear:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .users-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .users-table th,
+        .users-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .users-table th {
+            background: rgba(255, 255, 255, 0.05);
+            color: #a5b4fc;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .users-table td {
+            color: #e2e8f0;
+        }
+
+        .users-table tr:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .user-id {
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .favorite-count {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(239, 68, 68, 0.2));
+            color: #f87171;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .visit-count {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(16, 185, 129, 0.2));
+            color: #4ade80;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .date-cell {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #94a3b8;
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .access-control {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(220, 38, 38, 0.2));
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .access-control h3 {
+            color: #f87171;
+            margin-bottom: 15px;
+        }
+
+        .access-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 1rem;
+            margin-right: 10px;
+            width: 200px;
+        }
+
+        .access-input::placeholder {
+            color: #94a3b8;
+        }
+
+        .btn-access {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-access:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+<!-- Start Nav Bar  -->
+<nav class="nav">
+    <h2 style="margin-left: 20px;" class="title">Subjects Online</h2>
+    <div> <a href="index.html#subjects">Subjects</a>
+    <a class="New" href="subjects/doctors-news.html">Doctors News</a>
+    <a href="Favorites.html">Favorites <span></span></a>
+    <a href="admin.html">Admin</a>
+    <a href="">Contact Us</a></div>
+</nav>
+<!-- End Nav Bar  -->
+
+<div class="admin-container">
+    <div class="access-control" id="accessControl">
+        <h3>🔐 Admin Access Required</h3>
+        <p style="color: #94a3b8; margin-bottom: 20px;">Enter your admin credentials to access the dashboard</p>
+        <div style="display: flex; gap: 10px; justify-content: center; align-items: center; margin-bottom: 20px;">
+            <input type="text" id="adminUsername" class="access-input" placeholder="Username" style="width: 150px;">
+            <input type="password" id="adminPassword" class="access-input" placeholder="Password" style="width: 150px;">
+        </div>
+        <button class="btn-access" onclick="checkAdminAccess()">Access Dashboard</button>
+    </div>
+
+    <div id="adminContent" style="display: none;">
+        <div class="admin-header">
+            <h1>Admin Dashboard 📊</h1>
+            <p>Monitor user activity, statistics, and manage platform data</p>
+            <div style="margin-top: 20px; display: flex; gap: 20px; justify-content: center; align-items: center;">
+                <div style="padding: 10px 20px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2)); border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.3);">
+                    <span style="color: #a5b4fc; font-weight: 600;">Role: </span>
+                    <span id="userRole" style="color: #ffffff; margin-left: 5px;"></span>
+                </div>
+                <div style="padding: 10px 20px; background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(16, 185, 129, 0.2)); border-radius: 10px; border: 1px solid rgba(34, 197, 94, 0.3);">
+                    <span style="color: #4ade80; font-weight: 600;">Permissions: </span>
+                    <span id="userPermissions" style="color: #ffffff; margin-left: 5px;"></span>
+                </div>
+                <button onclick="adminLogout()" style="padding: 10px 20px; background: linear-gradient(135deg, #ef4444, #dc2626); color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+
+        <div class="admin-stats">
+            <div class="stat-card">
+                <span class="stat-icon">👥</span>
+                <div class="stat-number" id="totalUsers">0</div>
+                <div class="stat-label">Total Users</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">❤️</span>
+                <div class="stat-number" id="totalFavorites">0</div>
+                <div class="stat-label">Total Favorites</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">👁️</span>
+                <div class="stat-number" id="totalVisits">0</div>
+                <div class="stat-label">Total Visits</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">📈</span>
+                <div class="stat-number" id="avgFavorites">0</div>
+                <div class="stat-label">Avg Favorites/User</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">📊</span>
+                <div class="stat-number" id="avgVisits">0</div>
+                <div class="stat-label">Avg Visits/User</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">🔥</span>
+                <div class="stat-number" id="mostPopularSubject">-</div>
+                <div class="stat-label">Most Popular</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">📅</span>
+                <div class="stat-number" id="todayUsers">0</div>
+                <div class="stat-label">Today's Users</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">⏱️</span>
+                <div class="stat-number" id="avgSessionTime">0s</div>
+                <div class="stat-label">Avg Session</div>
+            </div>
+        </div>
+
+        <div class="users-table">
+            <div class="table-header">
+                <h2 class="table-title">User Management</h2>
+                <div class="table-actions">
+                    <button class="btn-export" onclick="exportAllUserData()">
+                        <i class="fas fa-download"></i> Export All Data
+                    </button>
+                    <button class="btn-clear" onclick="clearAllUserData()">
+                        <i class="fas fa-trash"></i> Clear All Data
+                    </button>
+                    <button onclick="showBlockedUsers()" style="padding: 10px 20px; background: linear-gradient(135deg, #f59e0b, #d97706); color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
+                        <i class="fas fa-ban"></i> Blocked Users
+                    </button>
+                </div>
+            </div>
+            <div id="usersTableContent">
+                <!-- Table will be populated here -->
+            </div>
+        </div>
+
+        <div id="blockedUsersModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.8); z-index: 10000; display: flex; align-items: center; justify-content: center;">
+            <div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)); backdrop-filter: blur(20px); border-radius: 20px; padding: 30px; border: 1px solid rgba(255, 255, 255, 0.2); max-width: 600px; width: 90%;">
+                <h3 style="color: #ffffff; margin-bottom: 20px;">🚫 Blocked Users</h3>
+                <div id="blockedUsersList" style="color: #94a3b8; margin-bottom: 20px; max-height: 300px; overflow-y: auto;">
+                    <!-- Blocked users will be listed here -->
+                </div>
+                <button onclick="closeBlockedUsersModal()" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; font-weight: 600;">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Admin users and their permissions
+    const ADMIN_USERS = {
+        'admin': 'admin123'
+    };
+
+    // User roles and permissions
+    const USER_ROLES = {
+        'admin': { level: 1, name: 'Super Admin', permissions: ['view', 'export', 'clear', 'manage_users'] }
+    };
+
+    let currentUser = null;
+
+    // Check admin access
+    function checkAdminAccess() {
+        const username = document.getElementById('adminUsername').value;
+        const password = document.getElementById('adminPassword').value;
+        
+        if (ADMIN_USERS[username] && ADMIN_USERS[username] === password) {
+            currentUser = { username: username, ...USER_ROLES[username] };
+            document.getElementById('accessControl').style.display = 'none';
+            document.getElementById('adminContent').style.display = 'block';
+            document.getElementById('userRole').textContent = currentUser.name;
+            document.getElementById('userPermissions').textContent = currentUser.permissions.join(', ');
+            loadAdminData();
+            showNotification(`Welcome ${currentUser.name}! 🔐`, '#10b981');
+        } else {
+            showNotification('Invalid username or password! ❌', '#ef4444');
+            // Add shake animation
+            const accessControl = document.getElementById('accessControl');
+            accessControl.style.animation = 'shake 0.5s';
+            setTimeout(() => {
+                accessControl.style.animation = '';
+            }, 500);
+        }
+    }
+
+    // Check user permissions
+    function hasPermission(permission) {
+        return currentUser && currentUser.permissions.includes(permission);
+    }
+
+    // Logout function
+    function adminLogout() {
+        currentUser = null;
+        document.getElementById('accessControl').style.display = 'block';
+        document.getElementById('adminContent').style.display = 'none';
+        document.getElementById('adminUsername').value = '';
+        document.getElementById('adminPassword').value = '';
+        showNotification('Logged out successfully! 👋', '#6366f1');
+    }
+
+    // Get all users data
+    function getAllUsersData() {
+        const users = [];
+        const keys = Object.keys(localStorage);
+        
+        keys.forEach(key => {
+            if (key.startsWith('favorites_')) {
+                const userId = key.replace('favorites_', '');
+                const favorites = JSON.parse(localStorage.getItem(key) || '[]');
+                const firstVisit = localStorage.getItem(`first_visit_${userId}`) || 'Unknown';
+                const visitCount = parseInt(localStorage.getItem(`visit_count_${userId}`) || '0');
+                const userName = localStorage.getItem(`user_name_${userId}`) || 'Anonymous';
+                
+                users.push({
+                    userId: userId,
+                    userName: userName,
+                    favorites: favorites,
+                    favoritesCount: favorites.length,
+                    visitCount: visitCount,
+                    firstVisit: firstVisit
+                });
+            }
+        });
+        
+        return users;
+    }
+
+    // Load admin dashboard data
+    function loadAdminData() {
+        const users = getAllUsersData();
+        
+        // Calculate advanced statistics
+        const totalUsers = users.length;
+        const totalFavorites = users.reduce((sum, user) => sum + user.favoritesCount, 0);
+        const totalVisits = users.reduce((sum, user) => sum + user.visitCount, 0);
+        const avgFavorites = totalUsers > 0 ? (totalFavorites / totalUsers).toFixed(1) : 0;
+        const avgVisits = totalUsers > 0 ? (totalVisits / totalUsers).toFixed(1) : 0;
+        
+        // Get most popular subject
+        const subjectCounts = {};
+        users.forEach(user => {
+            user.favorites.forEach(favId => {
+                subjectCounts[favId] = (subjectCounts[favId] || 0) + 1;
+            });
+        });
+        
+        const subjects = [
+            { id: 1, name: 'Accounting', icon: '📊' },
+            { id: 2, name: 'Economics', icon: '📈' },
+            { id: 3, name: 'Public Finance', icon: '🏛️' },
+            { id: 4, name: 'English', icon: '🌐' },
+            { id: 5, name: 'Statistics', icon: '📊' },
+            { id: 6, name: 'Marketing', icon: '🏭' },
+            { id: 7, name: 'MIS', icon: '💻' }
+        ];
+        
+        let mostPopularSubject = '-';
+        let maxCount = 0;
+        for (const [favId, count] of Object.entries(subjectCounts)) {
+            if (count > maxCount) {
+                maxCount = count;
+                const subject = subjects.find(s => s.id === parseInt(favId));
+                mostPopularSubject = subject ? subject.icon : '-';
+            }
+        }
+        
+        // Get today's users
+        const today = new Date().toDateString();
+        const todayUsers = users.filter(user => {
+            const userDate = new Date(user.firstVisit).toDateString();
+            return userDate === today;
+        }).length;
+        
+        // Calculate average session time (simulated)
+        const avgSessionTime = Math.floor(Math.random() * 300) + 60; // 60-360 seconds
+        
+        // Update statistics
+        document.getElementById('totalUsers').textContent = totalUsers;
+        document.getElementById('totalFavorites').textContent = totalFavorites;
+        document.getElementById('totalVisits').textContent = totalVisits;
+        document.getElementById('avgFavorites').textContent = avgFavorites;
+        document.getElementById('avgVisits').textContent = avgVisits;
+        document.getElementById('mostPopularSubject').textContent = mostPopularSubject;
+        document.getElementById('todayUsers').textContent = todayUsers;
+        document.getElementById('avgSessionTime').textContent = avgSessionTime + 's';
+        
+        // Populate users table
+        populateUsersTable(users);
+        
+        // Add animated counter effect
+        animateCounters();
+    }
+
+    // Animate counter numbers
+    function animateCounters() {
+        const counters = document.querySelectorAll('.stat-number');
+        counters.forEach(counter => {
+            const target = parseInt(counter.textContent) || 0;
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    counter.textContent = Math.floor(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target;
+                }
+            };
+            
+            updateCounter();
+        });
+    }
+
+    // Populate users table
+    function populateUsersTable(users) {
+        const tableContent = document.getElementById('usersTableContent');
+        
+        if (users.length === 0) {
+            tableContent.innerHTML = `
+                <div class="empty-state">
+                    <i class="fas fa-users"></i>
+                    <h3>No users found</h3>
+                    <p>No user data available yet</p>
+                </div>
+            `;
+            return;
+        }
+        
+        let tableHTML = `
+            <table>
+                <thead>
+                    <tr>
+                        <th>User Name</th>
+                        <th>Favorites</th>
+                        <th>Visits</th>
+                        <th>First Visit</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+        
+        users.forEach(user => {
+            const firstVisitDate = user.firstVisit !== 'Unknown' ? 
+                new Date(user.firstVisit).toLocaleDateString() : 'Unknown';
+            
+            tableHTML += `
+                <tr>
+                    <td><span class="user-id">${user.userName}</span><br><small style="color: #6b7280; font-size: 0.8rem;">${user.userId}</small></td>
+                    <td><span class="favorite-count">${user.favoritesCount}</span></td>
+                    <td><span class="visit-count">${user.visitCount}</span></td>
+                    <td><span class="date-cell">${firstVisitDate}</span></td>
+                    <td>
+                        <button onclick="viewUserDetails('${user.userId}')" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; border: none; padding: 5px 15px; border-radius: 5px; cursor: pointer; margin-right: 5px;">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                        <button onclick="blockUser('${user.userId}')" style="background: linear-gradient(135deg, #f59e0b, #d97706); color: white; border: none; padding: 5px 15px; border-radius: 5px; cursor: pointer; margin-right: 5px;">
+                            <i class="fas fa-ban"></i> Block
+                        </button>
+                        <button onclick="deleteUser('${user.userId}')" style="background: linear-gradient(135deg, #ef4444, #dc2626); color: white; border: none; padding: 5px 15px; border-radius: 5px; cursor: pointer;">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </td>
+                </tr>
+            `;
+        });
+        
+        tableHTML += `
+                </tbody>
+            </table>
+        `;
+        
+        tableContent.innerHTML = tableHTML;
+    }
+
+    // Block user
+    function blockUser(userId) {
+        if (!hasPermission('manage_users')) {
+            showNotification('You don\'t have permission to block users! ❌', '#ef4444');
+            return;
+        }
+        
+        if (confirm(`⚠️ Are you sure you want to block user ${userId}? This will prevent them from accessing their favorites.`)) {
+            // Add user to blocked list
+            const blockedUsers = JSON.parse(localStorage.getItem('blocked_users') || '[]');
+            if (!blockedUsers.includes(userId)) {
+                blockedUsers.push(userId);
+                localStorage.setItem('blocked_users', JSON.stringify(blockedUsers));
+                
+                // Clear user's favorites to block access
+                localStorage.removeItem(`favorites_${userId}`);
+                
+                loadAdminData();
+                showNotification(`User ${userId} has been blocked! 🚫`, '#f59e0b');
+            } else {
+                showNotification('User is already blocked! ⚠️', '#f59e0b');
+            }
+        }
+    }
+
+    // Unblock user
+    function unblockUser(userId) {
+        if (!hasPermission('manage_users')) {
+            showNotification('You don\'t have permission to unblock users! ❌', '#ef4444');
+            return;
+        }
+        
+        const blockedUsers = JSON.parse(localStorage.getItem('blocked_users') || '[]');
+        const index = blockedUsers.indexOf(userId);
+        
+        if (index > -1) {
+            blockedUsers.splice(index, 1);
+            localStorage.setItem('blocked_users', JSON.stringify(blockedUsers));
+            loadAdminData();
+            showNotification(`User ${userId} has been unblocked! ✅`, '#10b981');
+        }
+    }
+
+    // Delete user
+    function deleteUser(userId) {
+        if (!hasPermission('manage_users')) {
+            showNotification('You don\'t have permission to delete users! ❌', '#ef4444');
+            return;
+        }
+        
+        if (confirm(`⚠️ Are you sure you want to DELETE user ${userId}? This will permanently remove all their data!`)) {
+            // Remove all user data
+            localStorage.removeItem(`favorites_${userId}`);
+            localStorage.removeItem(`first_visit_${userId}`);
+            localStorage.removeItem(`visit_count_${userId}`);
+            
+            // Remove from blocked list if exists
+            const blockedUsers = JSON.parse(localStorage.getItem('blocked_users') || '[]');
+            const blockedIndex = blockedUsers.indexOf(userId);
+            if (blockedIndex > -1) {
+                blockedUsers.splice(blockedIndex, 1);
+                localStorage.setItem('blocked_users', JSON.stringify(blockedUsers));
+            }
+            
+            loadAdminData();
+            showNotification(`User ${userId} has been permanently deleted! 🗑️`, '#ef4444');
+        }
+    }
+
+    // Check if user is blocked
+    function isUserBlocked(userId) {
+        const blockedUsers = JSON.parse(localStorage.getItem('blocked_users') || '[]');
+        return blockedUsers.includes(userId);
+    }
+
+    // Get blocked users list
+    function getBlockedUsers() {
+        return JSON.parse(localStorage.getItem('blocked_users') || '[]');
+    }
+    // Show blocked users modal
+    function showBlockedUsers() {
+        const blockedUsers = getBlockedUsers();
+        const modal = document.getElementById('blockedUsersModal');
+        const list = document.getElementById('blockedUsersList');
+        
+        if (blockedUsers.length === 0) {
+            list.innerHTML = '<p>No blocked users found.</p>';
+        } else {
+            let html = '<div style="margin-bottom: 15px;"><strong>Total Blocked:</strong> ' + blockedUsers.length + '</div>';
+            blockedUsers.forEach(userId => {
+                html += `
+                    <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 10px; padding: 15px; margin-bottom: 10px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: #ffffff; font-family: monospace;">${userId}</span>
+                            <button onclick="unblockUser('${userId}')" style="background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; padding: 5px 15px; border-radius: 5px; cursor: pointer;">
+                                <i class="fas fa-unlock"></i> Unblock
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            list.innerHTML = html;
+        }
+        
+        modal.style.display = 'flex';
+    }
+
+    // Close blocked users modal
+    function closeBlockedUsersModal() {
+        document.getElementById('blockedUsersModal').style.display = 'none';
+    }
+
+    // View user details
+    function viewUserDetails(userId) {
+        const favorites = JSON.parse(localStorage.getItem(`favorites_${userId}`) || '[]');
+        const visitCount = localStorage.getItem(`visit_count_${userId}`) || '0';
+        const firstVisit = localStorage.getItem(`first_visit_${userId}`) || 'Unknown';
+        const userName = localStorage.getItem(`user_name_${userId}`) || 'Anonymous';
+        const isBlocked = isUserBlocked(userId);
+        
+        const subjects = [
+            { id: 1, name: 'Intermediate Accounting 2', icon: '📊' },
+            { id: 2, name: 'Macro Economics', icon: '📈' },
+            { id: 3, name: 'Public Finance', icon: '🏛️' },
+            { id: 4, name: 'English', icon: '🌐' },
+            { id: 5, name: 'Statistics', icon: '📊' },
+            { id: 6, name: 'Marketing', icon: '🏭' },
+            { id: 7, name: 'Management Information Systems', icon: '💻' }
+        ];
+        
+        let favoriteSubjects = favorites.map(id => {
+            const subject = subjects.find(s => s.id === id);
+            return subject ? `${subject.icon} ${subject.name}` : 'Unknown';
+        }).join(', ');
+        
+        const status = isBlocked ? '🚫 BLOCKED' : '✅ Active';
+        const statusColor = isBlocked ? '#ef4444' : '#10b981';
+        
+        alert(`User Details:\n\nName: ${userName}\nUser ID: ${userId}\nStatus: ${status}\nTotal Visits: ${visitCount}\nFirst Visit: ${firstVisit}\nFavorites (${favorites.length}): ${favoriteSubjects || 'None'}`);
+    }
+
+    // Export all user data
+    function exportAllUserData() {
+        if (!hasPermission('export')) {
+            showNotification('You don\'t have permission to export data! ❌', '#ef4444');
+            return;
+        }
+        
+        const users = getAllUsersData();
+        const exportData = {
+            exportDate: new Date().toISOString(),
+            exportedBy: currentUser.username,
+            totalUsers: users.length,
+            users: users
+        };
+        
+        const dataStr = JSON.stringify(exportData, null, 2);
+        const dataBlob = new Blob([dataStr], {type: 'application/json'});
+        const url = URL.createObjectURL(dataBlob);
+        
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `subjects_online_admin_export_${Date.now()}.json`;
+        link.click();
+        
+        URL.revokeObjectURL(url);
+        showNotification('All user data exported successfully! 💾', '#10b981');
+    }
+
+    // Clear all user data
+    function clearAllUserData() {
+        if (!hasPermission('clear')) {
+            showNotification('You don\'t have permission to clear data! ❌', '#ef4444');
+            return;
+        }
+        
+        if (confirm('⚠️ Are you sure you want to delete ALL user data? This action cannot be undone!')) {
+            const keys = Object.keys(localStorage);
+            keys.forEach(key => {
+                if (key.startsWith('favorites_') || key.startsWith('first_visit_') || key.startsWith('visit_count_')) {
+                    localStorage.removeItem(key);
+                }
+            });
+            localStorage.removeItem('subjects_online_user_id');
+            
+            loadAdminData();
+            showNotification('All user data has been cleared! 🗑️', '#ef4444');
+        }
+    }
+
+    // Show notification
+    function showNotification(message, color = '#6366f1') {
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: ${color};
+            color: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            z-index: 10000;
+            animation: slideInRight 0.5s ease-out;
+            font-weight: 600;
+        `;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+            notification.style.animation = 'slideOutRight 0.5s ease-out';
+            setTimeout(() => notification.remove(), 500);
+        }, 3000);
+    }
+
+    // Add CSS animations
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOutRight {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        .btn-export:disabled, .btn-clear:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Allow Enter key to submit login
+    document.getElementById('adminPassword').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            checkAdminAccess();
+        }
+    });
+
+    document.getElementById('adminUsername').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            checkAdminAccess();
+        }
+    });
+</script>
+
+</body>
+
+</html>

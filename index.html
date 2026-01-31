@@ -13,6 +13,7 @@
     <meta name="google" content="notranslate">
     <title>Subjects Online </title>
     <link rel="stylesheet" href="Css/Index.css">
+    <link rel="stylesheet" href="Css/media&animation.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Storm&display=swap" rel="stylesheet">
@@ -24,29 +25,40 @@
 </head>
 
 <body>
-
+<!-- Start Nav Bar  -->
+<nav class="nav">
+    <h2 style="margin-left: 20px;" class="title">Subjects Online</h2>
+    <div> <a href="#subjects">Subjects</a>
+    <a class="New" href="subjects/doctors-news.html">Doctors News</a>
+    <a href="Favorites.html">Favorites <span></span></a>
+    <a href="admin.html">Admin</a>
+    <a href="">Contact Us</a></div>
+   
+</nav>
+<!-- End Nav Bar  -->
     <section class="hero">
-
-        </div>
         <div class="hero-content">
-            <div class="hero-decor" aria-hidden="true">
-                <span class="orbit orbit-1"><span class="dot"></span></span>
-                <span class="orbit orbit-2"><span class="dot"></span></span>
-            </div>
-            <div class="hero-badge">Subjects Online</div>
-            <h1 class="learn">Learn Faster. Learn Smarter.</h1>
-            <p>Search what you want to learn, jump into curated subjects, and track your progress with smart insights.
-            </p>
-            <div class="hero-search">
-
-            </div>
-            <div class="hero-actions">
+            <div class="container">
+                <div class="hero-badge">Subjects Online</div>
+            <br>
+            <div style="margin: 70px auto 0px auto; display: flex; width: 200%;" class="hero-actions">
                 <a href="#subjects" class="btn btn-hero btn-hero-secondary"
                     onclick="scrollToSubjects(); return false;">Get Started</a>
             </div>
         </div>
+        <div class="icons">
+            <div class="learn">College In One Link</div>
+            <span>📊</span>
+            <span>📈</span>
+            <span>🏛️</span>
+            <span>🌐</span>
+            <span>📊</span>
+            <span>🏭</span>
+            <span>💻</span>
+        </div>
+            </div>
+            
     </section>
-
     <section class="subjects" id="subjects">
 
         <div class="subjects-container">
@@ -80,7 +92,7 @@
                     </div>
                     <a href="subjects/accounting.html" class="card-btn">
                         <span>Start Learning</span>
-                        <i class="fas fa-arrow-right"></i>
+                        <i class="fas fa-heart"></i>
                     </a>
                 </div>
             </div>
@@ -102,8 +114,8 @@
                         <span><i class="fas fa-book"></i> 0 Lessons</span>
                     </div>
                     <a href="subjects/economics.html" class="card-btn">
-                        <span>Start Learning</span>
-                        <i class="fas fa-arrow-right"></i>
+                        <span class="strat">Start Learning</span>
+                        <i class="fas fa-heart"></i>
                     </a>
                 </div>
             </div>
@@ -125,8 +137,8 @@
                         <span><i class="fas fa-book"></i> 0 Lessons</span>
                     </div>
                     <a href="subjects/public-Finance.html" class="card-btn">
-                        <span>Start Learning</span>
-                        <i class="fas fa-arrow-right"></i>
+                        <span class="strat">Start Learning</span>
+                        <i class="fas fa-heart"></i>
                     </a>
                 </div>
             </div>
@@ -148,8 +160,8 @@
                         <span><i class="fas fa-book"></i> 0 Lessons</span>
                     </div>
                     <a href="subjects/english.html" class="card-btn">
-                        <span>Start Learning</span>
-                        <i class="fas fa-arrow-right"></i>
+                        <span class="strat">Start Learning</span>
+                        <i class="fas fa-heart"></i>
                     </a>
                 </div>
             </div>
@@ -171,8 +183,8 @@
                         <span><i class="fas fa-book"></i> 0 Lessons</span>
                     </div>
                     <a href="subjects/statistics.html" class="card-btn">
-                        <span>Start Learning</span>
-                        <i class="fas fa-arrow-right"></i>
+                        <span class="strat">Start Learning</span>
+                        <i class="fas fa-heart"></i>
                     </a>
                 </div>
             </div>
@@ -194,8 +206,8 @@
                         <span><i class="fas fa-book"></i> 0 Lessons</span>
                     </div>
                     <a href="subjects/production-management.html" class="card-btn">
-                        <span>Start Learning</span>
-                        <i class="fas fa-arrow-right"></i>
+                        <span class="strat">Start Learning</span>
+                        <i class="fas fa-heart"></i>
                     </a>
                 </div>
             </div>
@@ -217,14 +229,14 @@
                         <span><i class="fas fa-book"></i> 0 Lessons</span>
                     </div>
                     <a href="subjects/mis.html" class="card-btn">
-                        <span>Start Learning</span>
-                        <i class="fas fa-arrow-right"></i>
+                        <span class="strat">Start Learning</span>
+                        <i class="fas fa-heart"></i>
                     </a>
                 </div>
             </div>
 
             <!-- Doctors News -->
-            <div class="subject-card-new" data-color="teal">
+            <!-- <div class="subject-card-new" data-color="teal">
                 <div class="card-glow"></div>
                 <div class="card-pattern"></div>
                 <div class="card-icon-wrapper">
@@ -240,16 +252,464 @@
                         <span><i class="fas fa-book"></i> 0 Lessons</span>
                     </div>
                     <a href="subjects/doctors-news.html" class="card-btn">
-                        <span>Start Learning</span>
+                        <span class="strat">Start Learning</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
+        </div>
+    </div>
+
+    <!-- Economics -->
+    <div class="subject-card-new" data-color="green">
+        <div class="card-glow"></div>
+        <div class="card-pattern"></div>
+        <div class="card-icon-wrapper">
+            <div class="card-icon">📈</div>
+            <div class="icon-ring"></div>
+        </div>
+        <div class="card-content">
+            <div class="card-number">02</div>
+            <h3>Macro Economics</h3>
+            <p>Analyze global economic systems, monetary policies, and international trade dynamics shaping
+                today's markets.</p>
+            <div class="card-stats">
+                <span><i class="fas fa-book"></i> 0 Lessons</span>
             </div>
+            <a href="subjects/economics.html" class="card-btn">
+                <span class="strat">Start Learning</span>
+                <i class="far fa-heart"></i>
+            </a>
         </div>
+    </div>
+
+    <!-- Public Administration -->
+    <div class="subject-card-new" data-color="orange">
+        <div class="card-glow"></div>
+        <div class="card-pattern"></div>
+        <div class="card-icon-wrapper">
+            <div class="card-icon">🏛️</div>
+            <div class="icon-ring"></div>
         </div>
-    </section>
+        <div class="card-content">
+            <div class="card-number">03</div>
+            <h3>Public Finance</h3>
+            <p>Master fiscal policy, budget analysis, and public sector management for sustainable economic
+                development.</p>
+            <div class="card-stats">
+                <span><i class="fas fa-book"></i> 0 Lessons</span>
+            </div>
+            <a href="subjects/public-Finance.html" class="card-btn">
+                <span class="strat">Start Learning</span>
+                <i class="far fa-heart"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- English -->
+    <div class="subject-card-new" data-color="blue">
+        <div class="card-glow"></div>
+        <div class="card-pattern"></div>
+        <div class="card-icon-wrapper">
+            <div class="card-icon">🌐</div>
+            <div class="icon-ring"></div>
+        </div>
+        <div class="card-content">
+            <div class="card-number">04</div>
+            <h3>English </h3>
+            <p>Develop professional communication skills, academic writing, and business English for global
+                opportunities.</p>
+            <div class="card-stats">
+                <span><i class="fas fa-book"></i> 0 Lessons</span>
+            </div>
+            <a href="subjects/english.html" class="card-btn">
+                <span class="strat">Start Learning</span>
+                <i class="far fa-heart"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Statistics -->
+    <div class="subject-card-new" data-color="violet">
+        <div class="card-glow"></div>
+        <div class="card-pattern"></div>
+        <div class="card-icon-wrapper">
+            <div class="card-icon">📊</div>
+            <div class="icon-ring"></div>
+        </div>
+        <div class="card-content">
+            <div class="card-number">05</div>
+            <h3>Statistics</h3>
+            <p>Master data science fundamentals, probability theory, and statistical analysis for research and
+                business intelligence.</p>
+            <div class="card-stats">
+                <span><i class="fas fa-book"></i> 0 Lessons</span>
+            </div>
+            <a href="subjects/statistics.html" class="card-btn">
+                <span class="strat">Start Learning</span>
+                <i class="far fa-heart"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Production Management -->
+    <div class="subject-card-new" data-color="pink">
+        <div class="card-glow"></div>
+        <div class="card-pattern"></div>
+        <div class="card-icon-wrapper">
+            <div class="card-icon">🏭</div>
+            <div class="icon-ring"></div>
+        </div>
+        <div class="card-content">
+            <div class="card-number">06</div>
+            <h3> Marketing</h3>
+            <p>Master brand strategy, digital advertising, social media marketing, and data-driven customer
+                acquisition.</p>
+            <div class="card-stats">
+                <span><i class="fas fa-book"></i> 0 Lessons</span>
+            </div>
+            <a href="subjects/production-management.html" class="card-btn">
+                <span class="strat">Start Learning</span>
+                <i class="far fa-heart"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- MIS -->
+    <div class="subject-card-new" data-color="indigo">
+        <div class="card-glow"></div>
+        <div class="card-pattern"></div>
+        <div class="card-icon-wrapper">
+            <div class="card-icon">💻</div>
+            <div class="icon-ring"></div>
+        </div>
+        <div class="card-content">
+            <div class="card-number">07</div>
+            <h3>Management Information Systems</h3>
+            <p>Master database design, system analysis, and IT strategy for modern business transformation and
+                digital innovation.</p>
+            <div class="card-stats">
+                <span><i class="fas fa-book"></i> 0 Lessons</span>
+            </div>
+            <a href="subjects/mis.html" class="card-btn">
+                <span class="strat">Start Learning</span>
+                <i class="far fa-heart"></i>
+            </a>
+        </div>
+    </div>
+</div>
+</div>
+</section>
 
 <script src="vendor/typed.js/typed.umd.min.js"></script>
-</body>
+<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
 
+<script>
+    // Sample subjects data (same as favorites.html)
+    const subjects = [
+        { id: 1, name: 'Intermediate Accounting 2', icon: '📊', description: 'Master financial reporting and auditing', url: 'subjects/accounting.html' },
+        { id: 2, name: 'Macro Economics', icon: '📈', description: 'Analyze global economic systems', url: 'subjects/economics.html' },
+        { id: 3, name: 'Public Finance', icon: '🏛️', description: 'Master fiscal policy and budget analysis', url: 'subjects/public-Finance.html' },
+        { id: 4, name: 'English', icon: '🌐', description: 'Develop professional communication skills', url: 'subjects/english.html' },
+        { id: 5, name: 'Statistics', icon: '📊', description: 'Master data science fundamentals', url: 'subjects/statistics.html' },
+        { id: 6, name: 'Marketing', icon: '🏭', description: 'Master brand strategy and digital advertising', url: 'subjects/production-management.html' },
+        { id: 7, name: 'Management Information Systems', icon: '💻', description: 'Master database design and IT strategy', url: 'subjects/mis.html' }
+    ];
+
+    // Load favorites from localStorage with user-specific storage
+    function loadFavorites() {
+        // Create a unique key for each user based on browser/session
+        const userId = getUserId();
+        const favorites = JSON.parse(localStorage.getItem(`favorites_${userId}`) || '[]');
+        return favorites;
+    }
+
+    // Save favorites to localStorage with user-specific storage
+    function saveFavorites(favorites) {
+        const userId = getUserId();
+        localStorage.setItem(`favorites_${userId}`, JSON.stringify(favorites));
+    }
+
+    // Get or create a unique user ID
+    function getUserId() {
+        let userId = localStorage.getItem('subjects_online_user_id');
+        if (!userId) {
+            // Check if user is already registered
+            const hasVisitedBefore = localStorage.getItem('subjects_online_visited');
+            if (!hasVisitedBefore) {
+                // First time visitor - ask for name
+                const username = prompt('Please enter your name to continue:');
+                if (username && username.trim()) {
+                    // Create user ID with username
+                    const cleanUsername = username.trim().replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+                    const timestamp = Date.now();
+                    const random = Math.random().toString(36).substr(2, 5);
+                    userId = `${cleanUsername}_${timestamp}_${random}`;
+                    localStorage.setItem('subjects_online_user_id', userId);
+                    localStorage.setItem(`user_name_${userId}`, username.trim());
+                    
+                    // Show welcome notification for new user
+                    setTimeout(() => {
+                        showNotification(`Welcome ${username.trim()}! 👋 Your favorites will be saved automatically.`);
+                    }, 1000);
+                } else {
+                    // If user cancels, use default ID
+                    userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                    localStorage.setItem('subjects_online_user_id', userId);
+                    localStorage.setItem(`user_name_${userId}`, 'Anonymous');
+                    
+                    setTimeout(() => {
+                        showNotification('Welcome to Subjects Online! 👋 Your favorites will be saved automatically.');
+                    }, 1000);
+                }
+                // Mark as visited
+                localStorage.setItem('subjects_online_visited', 'true');
+            } else {
+                // Returning visitor but no ID (cleared data)
+                userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('subjects_online_user_id', userId);
+                localStorage.setItem(`user_name_${userId}`, 'Returning User');
+                
+                setTimeout(() => {
+                    showNotification('Welcome back! 👋 Your favorites will be saved automatically.');
+                }, 1000);
+            }
+        }
+        return userId;
+    }
+
+    // Get user display name
+    function getUserName() {
+        const userId = getUserId();
+        return localStorage.getItem(`user_name_${userId}`) || 'Anonymous';
+    }
+
+    // Get user statistics
+    function getUserStats() {
+        const userId = getUserId();
+        const favorites = loadFavorites();
+        const firstVisit = localStorage.getItem(`first_visit_${userId}`) || new Date().toISOString();
+        const visitCount = parseInt(localStorage.getItem(`visit_count_${userId}`) || '0') + 1;
+        
+        // Update visit count
+        localStorage.setItem(`visit_count_${userId}`, visitCount.toString());
+        if (!localStorage.getItem(`first_visit_${userId}`)) {
+            localStorage.setItem(`first_visit_${userId}`, firstVisit);
+        }
+        
+        return {
+            userId: userId,
+            favoritesCount: favorites.length,
+            visitCount: visitCount,
+            firstVisit: firstVisit,
+            lastVisit: new Date().toISOString()
+        };
+    }
+
+    // Clear user data (for testing or reset)
+    function clearUserData() {
+        const userId = getUserId();
+        localStorage.removeItem(`favorites_${userId}`);
+        localStorage.removeItem(`first_visit_${userId}`);
+        localStorage.removeItem(`visit_count_${userId}`);
+        localStorage.removeItem('subjects_online_user_id');
+        showNotification('All your data has been cleared! 🗑️');
+    }
+
+    // Export user data (for backup)
+    function exportUserData() {
+        const userId = getUserId();
+        const userData = {
+            userId: userId,
+            favorites: loadFavorites(),
+            stats: getUserStats(),
+            exportDate: new Date().toISOString()
+        };
+        
+        const dataStr = JSON.stringify(userData, null, 2);
+        const dataBlob = new Blob([dataStr], {type: 'application/json'});
+        const url = URL.createObjectURL(dataBlob);
+        
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `subjects_online_backup_${userId}.json`;
+        link.click();
+        
+        URL.revokeObjectURL(url);
+        showNotification('Your data has been exported! 💾');
+    }
+
+    // Import user data (for restore)
+    function importUserData(file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                const userData = JSON.parse(e.target.result);
+                
+                if (userData.favorites && Array.isArray(userData.favorites)) {
+                    const userId = getUserId();
+                    localStorage.setItem(`favorites_${userId}`, JSON.stringify(userData.favorites));
+                    updateFavoriteButtons();
+                    showNotification('Data imported successfully! 📥');
+                } else {
+                    showNotification('Invalid data format! ❌');
+                }
+            } catch (error) {
+                showNotification('Failed to import data! ❌');
+            }
+        };
+        reader.readAsText(file);
+    }
+
+    // Add subject to favorites
+    function addToFavorites(subjectId) {
+        const favorites = loadFavorites();
+        if (!favorites.includes(subjectId)) {
+            favorites.push(subjectId);
+            saveFavorites(favorites);
+            showNotification('Added to favorites! ❤️');
+            updateFavoriteButtons();
+        }
+    }
+
+    // Remove subject from favorites
+    function removeFromFavorites(subjectId) {
+        const favorites = loadFavorites();
+        const index = favorites.indexOf(subjectId);
+        if (index > -1) {
+            favorites.splice(index, 1);
+            saveFavorites(favorites);
+            showNotification('Removed from favorites 💔');
+            updateFavoriteButtons();
+        }
+    }
+
+    // Check if subject is in favorites
+    function isFavorite(subjectId) {
+        const favorites = loadFavorites();
+        return favorites.includes(subjectId);
+    }
+
+    // Update favorite buttons on the page
+    function updateFavoriteButtons() {
+        const cards = document.querySelectorAll('.subject-card-new');
+        cards.forEach((card, index) => {
+            const subjectId = index + 1;
+            const heartIcon = card.querySelector('.card-btn i');
+            
+            if (isFavorite(subjectId)) {
+                heartIcon.classList.remove('far');
+                heartIcon.classList.add('fas');
+                heartIcon.style.color = '#ef4444';
+            } else {
+                heartIcon.classList.remove('fas');
+                heartIcon.classList.add('far');
+                heartIcon.style.color = '';
+            }
+        });
+    }
+
+    // Show notification
+    function showNotification(message) {
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+            z-index: 10000;
+            animation: slideInRight 0.5s ease-out;
+            font-weight: 600;
+        `;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+            notification.style.animation = 'slideOutRight 0.5s ease-out';
+            setTimeout(() => notification.remove(), 500);
+        }, 3000);
+    }
+
+    // Check if user is blocked
+    function isUserBlocked() {
+        const userId = getUserId();
+        const blockedUsers = JSON.parse(localStorage.getItem('blocked_users') || '[]');
+        return blockedUsers.includes(userId);
+    }
+
+    // Add click handlers to favorite buttons
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if user is blocked
+        if (isUserBlocked()) {
+            showNotification('Your account has been blocked! 🚫 Please contact support.', '#ef4444');
+            // Disable all interactive elements
+            document.querySelectorAll('.card-btn').forEach(btn => {
+                btn.style.pointerEvents = 'none';
+                btn.style.opacity = '0.5';
+                btn.style.background = 'linear-gradient(135deg, #6b7280, #4b5563)';
+            });
+            return;
+        }
+        
+        const cards = document.querySelectorAll('.subject-card-new');
+        
+        cards.forEach((card, index) => {
+            const subjectId = index + 1;
+            const cardBtn = card.querySelector('.card-btn');
+            const heartIcon = card.querySelector('.card-btn i');
+            
+            // Initialize heart icon
+            heartIcon.classList.remove('fas');
+            heartIcon.classList.add('far');
+            
+            // Update initial state
+            updateFavoriteButtons();
+            
+            // Add click handler
+            cardBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (isUserBlocked()) {
+                    showNotification('Your account is blocked! 🚫', '#ef4444');
+                    return;
+                }
+                
+                if (isFavorite(subjectId)) {
+                    removeFromFavorites(subjectId);
+                } else {
+                    addToFavorites(subjectId);
+                }
+            });
+        });
+    });
+
+    // Add CSS animations
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOutRight {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+        .card-btn i {
+            transition: all 0.3s ease;
+        }
+        .card-btn i.fas {
+            color: #ef4444 !important;
+            animation: heartBeat 0.6s ease-in-out;
+        }
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+    `;
+    document.head.appendChild(style);
+</script>
+</body>
 </html>

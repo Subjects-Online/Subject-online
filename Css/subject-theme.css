@@ -111,7 +111,12 @@ body {
   gap: 25px;
   margin-top: 30px;
 }
-
+.chapters:has(.chapter-card:hover) .chapter-card:not(:hover){
+   opacity: 0.3;
+  transform: scale(0.95);
+  filter: blur(3px);
+  transition: all 0.3s ease;
+} 
 /* Chapter Cards */
 .chapter-card {
   background: var(--card-bg);
@@ -126,10 +131,10 @@ body {
 }
 
 .chapter-card:hover {
-  transform: translateY(-5px);
+  /* transform: translateY(-5px);
   box-shadow: 20px 10px 1000px 10px rgb(0, 0, 0) inset;
   background: var(--card-hover);
-  border-color: rgba(139, 92, 246, 0.3);
+  border-color: rgba(139, 92, 246, 0.3); */
 }
 
 .chapter-card h2 {
@@ -160,7 +165,12 @@ body {
   flex-direction: column;
   gap: 12px;
 }
-
+.lessons:has(.lesson-item a:hover) .lesson-item a:not(:hover){
+   opacity: 0.3;
+  transform: scale(0.95);
+  filter: blur(3px);
+  transition: all 0.3s ease;
+} 
 .lesson-item {
   position: relative;
 }
@@ -200,10 +210,10 @@ body {
   transition: all 0.3s ease;
 }
 
-.lesson-item a:hover .lesson-number {
+/* .lesson-item a:hover .lesson-number {
   background: var(--accent);
   color: rgb(5, 66, 107);
-}
+} */
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -218,8 +228,36 @@ body {
   .subject-header h1 {
     font-size: 25px;
   }
+   .breadcrumb{
+        display: none;
+    }
+    .back-button{
+      position: sticky;
+      top: 20px;
+      display: flex;
+        justify-content: center;
+        /* background-color: red; */
+        width: 70%;
+        margin: 30px auto;
+        z-index: 999;
+        /* padding: 0; */
+        /* text-align: center;*/
+    }
 }
-
+@media (max-width: 425px) {
+.back-button{
+      position: sticky;
+      top: 10px;
+      display: flex;
+        justify-content: center;
+        /* background-color: red; */
+        width: 100%;
+        margin: 30px auto;
+        z-index: 999;
+        /* padding: 0; */
+        /* text-align: center;*/
+    }
+}
 /* Animations */
 @keyframes fadeIn {
   from {

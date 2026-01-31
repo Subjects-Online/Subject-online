@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <script defer src="https://cloud.umami.is/script.js"
+        data-website-id="31d71665-7827-44ae-934b-7f68bc397123"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Subjects Online">
+    <meta property="og:description" content="College in one link">
+    <meta property="og:image" content="https://subjects-online.github.io/Subject-online/preview.png">
+    <meta property="og:url" content="https://subjects-online.github.io/Subject-online/">
+    <meta name="google" content="notranslate">
+    <title>My Favorites - Subjects Online</title>
+    <link rel="stylesheet" href="Css/Index.css">
+    <link rel="stylesheet" href="Css/media&animation.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Storm&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .favorites-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 20px 50px;
+            min-height: 100vh;
+        }
+
+        .favorites-header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .favorites-header h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff6b6b, #ffd93d, #6bcf7f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+
+        .favorites-header p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .favorite-item {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: cardEntry 0.8s ease-out backwards;
+        }
+
+        .favorite-item:nth-child(1) { animation-delay: 0.1s; }
+        .favorite-item:nth-child(2) { animation-delay: 0.2s; }
+        .favorite-item:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes cardEntry {
+            from { 
+                opacity: 0; 
+                transform: translateY(50px) scale(0.9); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+
+        .favorite-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4);
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .favorite-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .favorite-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .favorite-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .favorite-info p {
+            color: #94a3b8;
+            margin: 5px 0 0 0;
+            font-size: 0.9rem;
+        }
+
+        .remove-favorite {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .remove-favorite:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4);
+        }
+
+        .empty-favorites {
+            text-align: center;
+            padding: 80px 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .empty-favorites .empty-icon {
+            font-size: 5rem;
+            margin-bottom: 30px;
+            opacity: 0.5;
+        }
+
+        .empty-favorites h2 {
+            font-size: 2rem;
+            color: #e2e8f0;
+            margin-bottom: 20px;
+        }
+
+        .empty-favorites p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .browse-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 35px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .browse-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(99, 102, 241, 0.5);
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes textGlow {
+            from { filter: brightness(1) drop-shadow(0 0 20px rgba(255, 107, 107, 0.5)); }
+            to { filter: brightness(1.2) drop-shadow(0 0 40px rgba(255, 217, 61, 0.8)); }
+        }
+
+        .heart-animation {
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
+</head>
+
+<body>
+<!-- Start Nav Bar  -->
+<nav class="nav">
+    <h2 style="margin-left: 20px;" class="title">Subjects Online</h2>
+    <div> <a href="index.html#subjects">Subjects</a>
+    <a class="New" href="subjects/doctors-news.html">Doctors News</a>
+    <a href="Favorites.html">Favorites <span></span></a>
+    <a href="admin.html">Admin</a>
+    <a href="">Contact Us</a></div>
+</nav>
+<!-- End Nav Bar  -->
+
+<div class="favorites-container">
+    <div class="favorites-header">
+        <h1>My Favorites ❤️</h1>
+        <p>Your favorite subjects all in one place. Quick access to the courses you love!</p>
+        <div style="margin-top: 20px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <button onclick="exportUserData()" style="padding: 10px 20px; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
+                <i class="fas fa-download"></i> Export Data
+            </button>
+            <button onclick="clearUserData()" style="padding: 10px 20px; background: linear-gradient(135deg, #ef4444, #dc2626); color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
+                <i class="fas fa-trash"></i> Clear Data
+            </button>
+        </div>
+    </div>
+
+    <div class="favorites-grid" id="favoritesGrid">
+        <!-- Favorites will be dynamically added here -->
+    </div>
+
+    <div class="empty-favorites" id="emptyFavorites" style="display: none;">
+        <div class="empty-icon">💔</div>
+        <h2>No favorites yet!</h2>
+        <p>Start exploring subjects and add your favorites to see them here.</p>
+        <a href="index.html#subjects" class="browse-btn">
+            <i class="fas fa-book-open"></i>
+            Browse Subjects
+        </a>
+    </div>
+</div>
+
+<script>
+    // Sample subjects data (in real app, this would come from a database)
+    const subjects = [
+        { id: 1, name: 'Intermediate Accounting 2', icon: '📊', description: 'Master financial reporting and auditing', url: 'subjects/accounting.html' },
+        { id: 2, name: 'Macro Economics', icon: '📈', description: 'Analyze global economic systems', url: 'subjects/economics.html' },
+        { id: 3, name: 'Public Finance', icon: '🏛️', description: 'Master fiscal policy and budget analysis', url: 'subjects/public-Finance.html' },
+        { id: 4, name: 'English', icon: '🌐', description: 'Develop professional communication skills', url: 'subjects/english.html' },
+        { id: 5, name: 'Statistics', icon: '📊', description: 'Master data science fundamentals', url: 'subjects/statistics.html' },
+        { id: 6, name: 'Marketing', icon: '🏭', description: 'Master brand strategy and digital advertising', url: 'subjects/production-management.html' },
+        { id: 7, name: 'Management Information Systems', icon: '💻', description: 'Master database design and IT strategy', url: 'subjects/mis.html' }
+    ];
+
+    // Load favorites from localStorage with user-specific storage
+    function loadFavorites() {
+        // Create a unique key for each user based on browser/session
+        const userId = getUserId();
+        const favorites = JSON.parse(localStorage.getItem(`favorites_${userId}`) || '[]');
+        return favorites;
+    }
+
+    // Save favorites to localStorage with user-specific storage
+    function saveFavorites(favorites) {
+        const userId = getUserId();
+        localStorage.setItem(`favorites_${userId}`, JSON.stringify(favorites));
+    }
+
+    // Get or create a unique user ID
+    function getUserId() {
+        let userId = localStorage.getItem('subjects_online_user_id');
+        if (!userId) {
+            // Check if user is already registered
+            const hasVisitedBefore = localStorage.getItem('subjects_online_visited');
+            if (!hasVisitedBefore) {
+                // First time visitor - ask for name
+                const username = prompt('Please enter your name to continue:');
+                if (username && username.trim()) {
+                    // Create user ID with username
+                    const cleanUsername = username.trim().replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+                    const timestamp = Date.now();
+                    const random = Math.random().toString(36).substr(2, 5);
+                    userId = `${cleanUsername}_${timestamp}_${random}`;
+                    localStorage.setItem('subjects_online_user_id', userId);
+                    localStorage.setItem(`user_name_${userId}`, username.trim());
+                    
+                    // Show welcome notification for new user
+                    setTimeout(() => {
+                        showNotification(`Welcome ${username.trim()}! 👋 Your favorites will be saved automatically.`);
+                    }, 1000);
+                } else {
+                    // If user cancels, use default ID
+                    userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                    localStorage.setItem('subjects_online_user_id', userId);
+                    localStorage.setItem(`user_name_${userId}`, 'Anonymous');
+                    
+                    setTimeout(() => {
+                        showNotification('Welcome to Subjects Online! 👋 Your favorites will be saved automatically.');
+                    }, 1000);
+                }
+                // Mark as visited
+                localStorage.setItem('subjects_online_visited', 'true');
+            } else {
+                // Returning visitor but no ID (cleared data)
+                userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('subjects_online_user_id', userId);
+                localStorage.setItem(`user_name_${userId}`, 'Returning User');
+                
+                setTimeout(() => {
+                    showNotification('Welcome back! 👋 Your favorites will be saved automatically.');
+                }, 1000);
+            }
+        }
+        return userId;
+    }
+
+    // Get user display name
+    function getUserName() {
+        const userId = getUserId();
+        return localStorage.getItem(`user_name_${userId}`) || 'Anonymous';
+    }
+
+    // Get user statistics
+    function getUserStats() {
+        const userId = getUserId();
+        const favorites = loadFavorites();
+        const firstVisit = localStorage.getItem(`first_visit_${userId}`) || new Date().toISOString();
+        const visitCount = parseInt(localStorage.getItem(`visit_count_${userId}`) || '0') + 1;
+        
+        // Update visit count
+        localStorage.setItem(`visit_count_${userId}`, visitCount.toString());
+        if (!localStorage.getItem(`first_visit_${userId}`)) {
+            localStorage.setItem(`first_visit_${userId}`, firstVisit);
+        }
+        
+        return {
+            userId: userId,
+            favoritesCount: favorites.length,
+            visitCount: visitCount,
+            firstVisit: firstVisit,
+            lastVisit: new Date().toISOString()
+        };
+    }
+
+    // Clear user data (for testing or reset)
+    function clearUserData() {
+        const userId = getUserId();
+        localStorage.removeItem(`favorites_${userId}`);
+        localStorage.removeItem(`first_visit_${userId}`);
+        localStorage.removeItem(`visit_count_${userId}`);
+        localStorage.removeItem('subjects_online_user_id');
+        showNotification('All your data has been cleared! 🗑️');
+        updateFavoritesDisplay();
+    }
+
+    // Export user data (for backup)
+    function exportUserData() {
+        const userId = getUserId();
+        const userData = {
+            userId: userId,
+            favorites: loadFavorites(),
+            stats: getUserStats(),
+            exportDate: new Date().toISOString()
+        };
+        
+        const dataStr = JSON.stringify(userData, null, 2);
+        const dataBlob = new Blob([dataStr], {type: 'application/json'});
+        const url = URL.createObjectURL(dataBlob);
+        
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `subjects_online_backup_${userId}.json`;
+        link.click();
+        
+        URL.revokeObjectURL(url);
+        showNotification('Your data has been exported! 💾');
+    }
+
+    // Import user data (for restore)
+    function importUserData(file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                const userData = JSON.parse(e.target.result);
+                
+                if (userData.favorites && Array.isArray(userData.favorites)) {
+                    const userId = getUserId();
+                    localStorage.setItem(`favorites_${userId}`, JSON.stringify(userData.favorites));
+                    updateFavoritesDisplay();
+                    showNotification('Data imported successfully! 📥');
+                } else {
+                    showNotification('Invalid data format! ❌');
+                }
+            } catch (error) {
+                showNotification('Failed to import data! ❌');
+            }
+        };
+        reader.readAsText(file);
+    }
+
+    // Add subject to favorites
+    function addToFavorites(subjectId) {
+        const favorites = loadFavorites();
+        if (!favorites.includes(subjectId)) {
+            favorites.push(subjectId);
+            saveFavorites(favorites);
+            showNotification('Added to favorites! ❤️');
+            updateFavoritesDisplay();
+        }
+    }
+
+    // Remove subject from favorites
+    function removeFromFavorites(subjectId) {
+        const favorites = loadFavorites();
+        const index = favorites.indexOf(subjectId);
+        if (index > -1) {
+            favorites.splice(index, 1);
+            saveFavorites(favorites);
+            showNotification('Removed from favorites 💔');
+            updateFavoritesDisplay();
+        }
+    }
+
+    // Check if subject is in favorites
+    function isFavorite(subjectId) {
+        const favorites = loadFavorites();
+        return favorites.includes(subjectId);
+    }
+
+    // Update favorites display
+    function updateFavoritesDisplay() {
+        const favorites = loadFavorites();
+        const favoritesGrid = document.getElementById('favoritesGrid');
+        const emptyFavorites = document.getElementById('emptyFavorites');
+
+        if (favorites.length === 0) {
+            favoritesGrid.style.display = 'none';
+            emptyFavorites.style.display = 'block';
+            return;
+        }
+
+        favoritesGrid.style.display = 'grid';
+        emptyFavorites.style.display = 'none';
+
+        favoritesGrid.innerHTML = '';
+        
+        favorites.forEach((subjectId, index) => {
+            const subject = subjects.find(s => s.id === subjectId);
+            if (subject) {
+                const favoriteItem = document.createElement('div');
+                favoriteItem.className = 'favorite-item';
+                favoriteItem.style.animationDelay = `${index * 0.1}s`;
+                
+                favoriteItem.innerHTML = `
+                    <button class="remove-favorite" onclick="removeFromFavorites(${subject.id})">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="favorite-header">
+                        <div class="favorite-icon">${subject.icon}</div>
+                        <div class="favorite-info">
+                            <h3>${subject.name}</h3>
+                            <p>${subject.description}</p>
+                        </div>
+                    </div>
+                    <a href="${subject.url}" class="browse-btn" style="width: 100%; justify-content: center; margin-top: 20px;">
+                        <i class="fas fa-arrow-right"></i>
+                        Continue Learning
+                    </a>
+                `;
+                
+                favoritesGrid.appendChild(favoriteItem);
+            }
+        });
+    }
+
+    // Show notification
+    function showNotification(message) {
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+            z-index: 10000;
+            animation: slideInRight 0.5s ease-out;
+            font-weight: 600;
+        `;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+            notification.style.animation = 'slideOutRight 0.5s ease-out';
+            setTimeout(() => notification.remove(), 500);
+        }, 3000);
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+        updateFavoritesDisplay();
+    });
+
+    // Add CSS animations
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOutRight {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(style);
+</script>
+
+</body>
+
+</html>
