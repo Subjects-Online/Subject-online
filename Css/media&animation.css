@@ -36,6 +36,21 @@
     gap: 30px;
   }
 
+  .hero .hero-content .container {
+    order: 1;
+  }
+
+  .hero .hero-content .icons {
+    order: 3;
+  }
+
+  .hero-actions {
+    order: 2;
+    width:  100%;
+    display: flex;
+    justify-content: center;
+  }
+
   .hero .hero-content .container .hero-badge {
     font-size: clamp(2rem, 6vw, 3.5rem);
     line-height: 1.2;
@@ -54,7 +69,6 @@
     padding: 14px 30px;
     font-size: 1rem;
   }
-
   /* Subjects Section */
   .subjects {
     padding: 60px 15px;
@@ -141,6 +155,47 @@
     gap: 30px !important;
   }
 
+  /* Contact section centering on mobile */
+  footer > div > div > div:last-child {
+    text-align: center;
+  }
+
+  footer > div > div > div:last-child > div > div {
+    justify-content: center;
+  }
+
+  footer > div > div > div:last-child > div > div:last-child {
+    text-align: center;
+  }
+
+  footer > div > div > div:last-child > div > div:last-child > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  /* Quick Links and Popular Subjects centering on mobile */
+  footer > div > div > div:nth-child(2),
+  footer > div > div > div:nth-child(3) {
+    text-align: center;
+  }
+
+  footer > div > div > div:nth-child(2) ul,
+  footer > div > div > div:nth-child(3) ul {
+    display: inline-block;
+    text-align: left;
+  }
+
+  /* Social media icons centering on mobile */
+  footer > div > div > div:first-child {
+    text-align: center;
+  }
+
+  footer > div > div > div:first-child > div {
+    justify-content: center;
+  }
+
   .breadcrumb {
     display: none;
   }
@@ -179,7 +234,7 @@
   /* Extra small mobile devices */
   .nav {
     width: 95%;
-    padding: 12px 15px;
+    padding: 5px 0px;
   }
 
   .nav .title {
@@ -197,6 +252,7 @@
 
   .hero .hero-content .container .hero-badge {
     font-size: 1.8rem;
+    margin-bottom: -45px;
   }
 
   .subject-card-new {
@@ -211,7 +267,7 @@
   .card-icon {
     width: 60px;
     height: 60px;
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   .card-content h3 {
@@ -287,8 +343,8 @@ color: rgb(110, 255, 97);
   .favorite-btn {
     min-height: 44px;
     min-width: 44px;
+    padding: 11px;
   }
-  
   .card-stats span {
     min-height: 36px;
     display: flex;
