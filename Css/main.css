@@ -95,42 +95,42 @@ body {
   }
 }
 
-.subject-header::before,
+/* .subject-header::before,
 .subject-header::after {
   content: "";
   position: absolute;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
   animation: float 6s ease-in-out infinite;
-}
+} */
 
-.subject-header::before {
+/* .subject-header::before {
   width: 100px;
   height: 100px;
   top: -30px;
   right: -30px;
   animation-delay: 0.5s;
-}
+} */
 
-.subject-header::after {
+/* .subject-header::after {
   width: 60px;
   height: 60px;
   bottom: -20px;
   left: 10%;
   animation-delay: 1s;
-}
+} */
 
-.subject-header:hover::before {
+/* .subject-header:hover::before {
   transform: scale(1.1);
   transition: transform 0.5s ease;
-}
+} */
 
 .subject-header h1 {
   position: relative;
   display: inline-block;
 }
 
-.subject-header h1::after {
+/* .subject-header h1::after {
   content: "";
   position: absolute;
   bottom: -5px;
@@ -139,11 +139,11 @@ body {
   height: 2px;
   background: white;
   transition: width 0.5s ease;
-}
+} */
 
-.subject-header:hover h1::after {
+/* .subject-header:hover h1::after {
   width: 100%;
-}
+} */
 
 .subject-header h1 {
   font-size: 35px;
@@ -197,7 +197,7 @@ body {
   animation-delay: 0.5s;
 }
 
-.chapter-card::before {
+/* .chapter-card::before {
   content: "";
   position: absolute;
   top: 0;
@@ -212,7 +212,7 @@ body {
   transform: translateX(-100%) skewX(-15deg);
   transition: transform 0.6s ease;
   z-index: 1;
-}
+} */
 
 .chapter-card:hover::before {
   transform: translateX(100%) skewX(-15deg);

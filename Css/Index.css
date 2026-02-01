@@ -25,7 +25,8 @@ html{
 }
 
 body {
-  background: #0a0e27;
+  /* background: #0a0e27; */
+   background-image: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   color: var(--text);
   font-size: 16px;
   line-height: 1.6;
@@ -51,13 +52,13 @@ body {
 
 .nav{
   position: relative;
-  top: 20px;
+  top: 10px;
   /* left: 50%; */
   /* transform: translateX(-50%); */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 95%;
+  width: 99%;
   margin: 0px auto;
   padding: 20px 30px;
   background: rgba(255, 255, 255, 0.1);
@@ -123,9 +124,9 @@ body {
   text-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
 }
 .nav .New{
-  position: relative;
-  background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(239, 68, 68, 0.2));
-  border-color: rgba(236, 72, 153, 0.4);
+ position: relative;
+    background: linear-gradient(135deg, rgb(46 255 10 / 20%), rgb(86 239 68 / 20%));
+    border-color: rgb(103 236 72 / 40%);
 }
 
 .nav .New::before {
@@ -133,7 +134,7 @@ body {
   position: absolute;
   top: -8px;
   right: -8px;
-  background: linear-gradient(135deg, #ec4899, #ef4444);
+  background: linear-gradient(135deg, #6fec48, #ef4444);
   color: white;
   font-size: 10px;
   font-weight: bold;
@@ -391,7 +392,8 @@ margin: 0 auto;
 .subjects {
   padding: 120px 20px;
   position: relative;
-  background: #0a0e27;
+  /* background: #0a0e27; */
+   background-image: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   overflow: hidden;
   min-height: 100vh;
 }

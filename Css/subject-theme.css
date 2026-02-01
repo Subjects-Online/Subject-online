@@ -11,7 +11,7 @@
 }
 
 body {
-  background-color: var(--bg-color);
+   background-image: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   color: var(--text-primary);
    font-family:ui-serif;
 
