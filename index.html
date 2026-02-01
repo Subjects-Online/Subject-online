@@ -677,10 +677,20 @@
                     return;
                 }
                 
-                if (isFavorite(subjectId)) {
-                    removeFromFavorites(subjectId);
+                // Check if click is on heart icon (favorite button)
+                if (e.target === heartIcon || heartIcon.contains(e.target)) {
+                    // Toggle favorite
+                    if (isFavorite(subjectId)) {
+                        removeFromFavorites(subjectId);
+                    } else {
+                        addToFavorites(subjectId);
+                    }
                 } else {
-                    addToFavorites(subjectId);
+                    // Navigate to subject page
+                    const subject = subjects.find(s => s.id === subjectId);
+                    if (subject && subject.url) {
+                        window.location.href = subject.url;
+                    }
                 }
             });
         });

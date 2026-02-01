@@ -13,7 +13,7 @@
 body {
   background-color: var(--bg-color);
   color: var(--text-primary);
-   font-family:ui-serif
+   font-family:ui-serif;
 
   line-height: 1.6;
 }
