@@ -1,7 +1,68 @@
 @media (max-width: 768px) {
    
+  /* Navigation */
+  .nav {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 20px;
+    width: 90%;
+  }
+  
+  .nav > div {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .nav > div > a {
+    font-size: 12px;
+    padding: 8px 15px;
+  }
+  
+  .nav .title {
+    font-size: 1.4rem;
+  }
+
+  /* Hero Section */
+  .hero {
+    height: auto;
+    min-height: 100vh;
+    padding: 15px;
+  }
+
+  .hero .hero-content {
+    flex-direction: column;
+    padding: 50px 20px;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .hero .hero-content .container .hero-badge {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    line-height: 1.2;
+  }
+
+  .hero .hero-content .icons .learn {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+  }
+
+  .hero .hero-content .icons span {
+    font-size: 2rem;
+    margin: 0 8px;
+  }
+
+  .btn-hero {
+    padding: 14px 30px;
+    font-size: 1rem;
+  }
+
+  /* Subjects Section */
+  .subjects {
+    padding: 60px 15px;
+  }
+
   .subjects-header h2 {
-    font-size: 2.2rem;
+    font-size: 2rem;
+    letter-spacing: 2px;
   }
 
   .subjects-header p {
@@ -10,124 +71,156 @@
 
   .subjects-grid-new {
     grid-template-columns: 1fr;
-    gap: 25px;
+    gap: 20px;
     max-width: 100%;
   }
 
   .subject-card-new {
-    padding: 30px 20px;
+    padding: 25px 20px;
   }
 
   .card-icon-wrapper {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 20px;
   }
 
   .card-icon {
-    width: 80px;
-    height: 80px;
-    font-size: 2.5rem;
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+    border-radius: 20px;
   }
 
   .card-number {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 
   .card-content h3 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    margin-bottom: 12px;
   }
 
   .card-content p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
   }
-   .breadcrumb{
-        color: transparent;
-    }
+
+  .card-stats {
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .card-stats span {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+
+  .card-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .start-btn {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+
+  .favorite-btn {
+    width: 45px;
+    height: 45px;
+  }
+
+  /* Footer */
+  footer {
+    padding: 40px 15px !important;
+  }
+
+  footer > div > div {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+
+  .breadcrumb {
+    display: none;
+  }
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {
-     .breadcrumb{
-        display: none;
-    }
   .subjects-grid-new {
     grid-template-columns: repeat(2, 1fr);
     gap: 25px;
     max-width: 100%;
   }
-   .breadcrumb{
-        display: none;
-    }
+
+  .nav {
+    width: 95%;
+    padding: 18px 25px;
+  }
+
+  .nav .title {
+    font-size: 1.6rem;
+  }
+
+  .hero .hero-content {
+    padding: 100px 40px;
+  }
+
+  .subjects {
+    padding: 80px 20px;
+  }
+
+  .breadcrumb {
+    display: none;
+  }
 }
 
-@media (max-width: 768px) and (min-width: 200px) {
-    
-  .hero {
-    max-height: 100vh;
-    min-height: 600px;
+@media (max-width: 480px) {
+  /* Extra small mobile devices */
+  .nav {
+    width: 95%;
+    padding: 12px 15px;
   }
 
-  h1 {
-    font-size: 2px;
-    background: linear-gradient(to right, #fff, #e0e7ff);
+  .nav .title {
+    font-size: 1.2rem;
   }
 
-  .hero p {
-    font-size: 15px;
+  .nav > div > a {
+    font-size: 11px;
+    padding: 6px 12px;
   }
 
-  .hero-content {
-    padding: 40px 25px;
-    border-radius: 18px;
-    margin: auto 40px;
-    box-shadow: none;
-    border: none;
-    background: none;
-  }
-  .hero-content::before {
-    content: none;
-  }
-  .hero-actions {
-    gap: 10px;
+  .hero .hero-content {
+    padding: 30px 15px;
   }
 
-  .btn.btn-hero {
-    padding: 11px 22px;
-    font-size: 0.92rem;
+  .hero .hero-content .container .hero-badge {
+    font-size: 1.8rem;
   }
 
-  .subjects-grid {
-    grid-template-columns: 1fr;
+  .subject-card-new {
+    padding: 20px 15px;
   }
 
-  .card-header {
-    min-height: 120px;
-    padding: 20px 15px !important;
+  .card-icon-wrapper {
+    width: 60px;
+    height: 60px;
   }
 
-  .subject-card .card-header span {
-    font-size: 2.2rem !important;
+  .card-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
   }
 
-  .card-body h3 {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
+  .card-content h3 {
+    font-size: 1.1rem;
   }
 
-  .card-body p {
-    font-size: 1rem;
-    margin-bottom: 20px;
-    line-height: 1.6;
+  .card-content p {
+    font-size: 0.85rem;
   }
-
-  .subject-card .btn {
-    padding: 10px 22px;
-    font-size: 0.95rem;
-    width: 100%;
-    margin-top: 10px;
-  }
-   .breadcrumb{
-        display: none;
-    }
 }
 
 /* Animation for the cards when they come into view */
@@ -151,6 +244,87 @@ color: rgb(110, 255, 97);
   }
 }
 
+/* Tablet optimizations */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero {
+    min-height: auto;
+    padding: 20px 15px;
+  }
+  
+  .hero .hero-content {
+    padding: 30px 20px;
+    flex-direction: row;
+    gap: 40px;
+  }
+  
+  .subjects {
+    padding: 40px 15px;
+  }
+  
+  .subject-card-new {
+    padding: 20px 15px;
+  }
+}
+
+/* Large mobile and small tablets */
+@media (min-width: 769px) and (max-width: 900px) {
+  .subjects-grid-new {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .nav > div > a {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+}
+
+/* Improve touch targets for mobile */
+@media (max-width: 768px) {
+  .nav > div > a,
+  .btn-hero,
+  .start-btn,
+  .favorite-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .card-stats span {
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Fix for iOS Safari */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 768px) {
+    .hero {
+      min-height: -webkit-fill-available;
+    }
+    
+    .subjects {
+      min-height: -webkit-fill-available;
+    }
+  }
+}
+
+/* High DPI displays optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .card-icon {
+    border-width: 2px;
+  }
+  
+  .nav {
+    border-width: 0.5px;
+  }
+  
+  .subject-card-new {
+    border-width: 0.5px;
+  }
+}
+
+/* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
   .hero,
   .hero-content,
@@ -164,5 +338,13 @@ color: rgb(110, 255, 97);
   .subject-card {
     animation: none !important;
     transition: none !important;
+  }
+  
+  .card-glow {
+    transition: none !important;
+  }
+  
+  .subject-card-new:hover .card-glow {
+    opacity: 0 !important;
   }
 }
