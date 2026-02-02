@@ -1,456 +1,1832 @@
 <!doctype html>
+
+
+
 <html lang="en" dir="ltr">
+
+
+
   <head>
+
+
+
     <meta charset="UTF-8" />
+
+
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+
     <title>Economics - Subject Online</title>
+
+
+
     <link
+
+
+
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+
+
+
       rel="stylesheet"
+
+
+
     />
+
+
+
     <link rel="stylesheet" href="../Css/main.css" />
+
+
+
     <link rel="stylesheet" href="../Css/subject-theme.css" />
 
+
+
+
+
+
+
     <style>
+
+
+
       /* Modern Subject-specific styling */
+
+
+
       :root {
+
+
+
         --accent: #22c55e;
+
+
+
         --accent-hover: #16a34a;
+
+
+
         --accent-light: #4ade80;
+
+
+
         --accent-dark: #15803d;
+
+
+
       }
+
+
+
+body{
+
+
+
+  background-color:  #0f172a;
+
+
+
+}
+
+
 
       /* Enhanced Subject Header */
+
+
+
       .subject-header {
+
+
+
         background: linear-gradient(135deg, #15803d, #22c55e, #4ade80);
+
+
+
         position: relative;
+
+
+
         overflow: hidden;
+
+
+
       }
+
+
+
+
+
+
 
       .subject-header::before {
+
+
+
         content: "";
+
+
+
         position: absolute;
+
+
+
         top: 0;
+
+
+
         left: 0;
+
+
+
         right: 0;
+
+
+
         height: 6px;
+
+
+
         background: linear-gradient(90deg, #22c55e, #4ade80, #22c55e);
+
+
+
         animation: shimmerLine 3s ease-in-out infinite;
+
+
+
       }
+
+
+
+
+
+
 
       .subject-header::after {
+
+
+
         content: "";
+
+
+
         position: absolute;
+
+
+
         top: -50%;
+
+
+
         right: -50%;
+
+
+
         width: 200%;
+
+
+
         height: 200%;
+
+
+
         background: radial-gradient(
+
+
+
           circle,
+
+
+
           rgba(34, 197, 94, 0.1) 0%,
+
+
+
           transparent 70%
+
+
+
         );
+
+
+
         animation: float 8s ease-in-out infinite;
+
+
+
         pointer-events: none;
+
+
+
       }
+
+
+
+
+
+
 
       .subject-header h1 {
+
+
+
         font-size: 3.5rem;
+
+
+
         font-weight: 900;
+
+
+
         color: white;
+
+
+
         text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+
+
+
         animation: titleGlow 4s ease-in-out infinite;
+
+
+
         position: relative;
+
+
+
         z-index: 2;
+
+
+
       }
+
+
+
+
+
+
 
       /* Enhanced Back Button */
+
+
+
       .back-button {
+
+
+
         display: inline-flex;
+
+
+
         align-items: center;
+
+
+
         gap: 12px;
+
+
+
         padding: 15px 30px;
+
+
+
         background: linear-gradient(
+
+
+
           135deg,
+
+
+
           rgba(34, 197, 94, 0.15),
+
+
+
           rgba(34, 197, 94, 0.08)
+
+
+
         );
+
+
+
         backdrop-filter: blur(15px);
+
+
+
         border: 2px solid rgba(34, 197, 94, 0.3);
+
+
+
         border-radius: 15px;
+
+
+
         color: white;
+
+
+
         text-decoration: none;
+
+
+
         font-weight: 700;
+
+
+
         font-size: 1rem;
+
+
+
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+
+
         margin-bottom: 30px;
+
+
+
         position: relative;
+
+
+
         overflow: hidden;
+
+
+
       }
+
+
+
+
+
+
 
       .back-button::before {
+
+
+
         content: "";
+
+
+
         position: absolute;
+
+
+
         top: 0;
+
+
+
         left: -100%;
+
+
+
         width: 100%;
+
+
+
         height: 100%;
+
+
+
         background: linear-gradient(
+
+
+
           90deg,
+
+
+
           transparent,
+
+
+
           rgba(255, 255, 255, 0.2),
+
+
+
           transparent
+
+
+
         );
+
+
+
         transition: left 0.5s ease;
+
+
+
       }
+
+
+
+
+
+
 
       .back-button:hover::before {
+
+
+
         left: 100%;
+
+
+
       }
+
+
+
+
+
+
 
       .back-button:hover {
+
+
+
         transform: translateY(-3px);
+
+
+
         box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+
+
+
         background: linear-gradient(
+
+
+
           135deg,
+
+
+
           rgba(34, 197, 94, 0.25),
+
+
+
           rgba(34, 197, 94, 0.12)
+
+
+
         );
+
+
+
       }
+
+
+
+
+
+
 
       /* Enhanced Breadcrumb */
+
+
+
       .breadcrumb {
+
+
+
         background: linear-gradient(
+
+
+
           135deg,
+
+
+
           rgba(34, 197, 94, 0.1),
+
+
+
           rgba(34, 197, 94, 0.05)
+
+
+
         );
+
+
+
         backdrop-filter: blur(15px);
+
+
+
         border: 1px solid rgba(34, 197, 94, 0.2);
+
+
+
         border-radius: 12px;
+
+
+
         padding: 12px 20px;
+
+
+
         margin-bottom: 20px;
+
+
+
       }
+
+
+
+
+
+
 
       .breadcrumb a {
+
+
+
         color: #4ade80;
+
+
+
         font-weight: 600;
+
+
+
         transition: all 0.3s ease;
+
+
+
       }
+
+
+
+
+
+
 
       .breadcrumb a:hover {
+
+
+
         color: #22c55e;
+
+
+
         text-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+
+
+
       }
+
+
+
+
+
+
 
       /* Enhanced Lesson Items */
+
+
+
       .lesson-item {
+
+
+
         background: linear-gradient(
+
+
+
           135deg,
+
+
+
           rgba(255, 255, 255, 0.08),
+
+
+
           rgba(255, 255, 255, 0.04)
+
+
+
         );
+
+
+
         backdrop-filter: blur(20px);
+
+
+
         border: 2px solid rgba(34, 197, 94, 0.2);
+
+
+
         border-radius: 20px;
+
+
+
         padding: 30px;
+
+
+
         margin-bottom: 25px;
+
+
+
         transition: all 0.4s ease;
+
+
+
         position: relative;
+
+
+
         overflow: hidden;
+
+
+
       }
+
+
+
+
+
+
 
       .lesson-item::before {
+
+
+
         content: "";
+
+
+
         position: absolute;
+
+
+
         top: 0;
+
+
+
         left: 0;
+
+
+
         right: 0;
+
+
+
         height: 3px;
+
+
+
         background: linear-gradient(90deg, #22c55e, #4ade80, #22c55e);
+
+
+
         border-radius: 20px 20px 0 0;
+
+
+
       }
+
+
+
+
+
+
 
       .lesson-item:hover {
+
+
+
         transform: translateY(-5px);
+
+
+
         box-shadow: 0 15px 35px rgba(34, 197, 94, 0.2);
+
+
+
         border-color: rgba(34, 197, 94, 0.3);
+
+
+
       }
+
+
+
+
+
+
 
       .lesson-item a:hover {
+
+
+
         color: #22c55e;
+
+
+
         text-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+
+
+
       }
+
+
+
+
+
+
 
       .lesson-item .lesson-number {
+
+
+
         background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+
+
+
         color: #15803d;
+
+
+
         font-weight: 800;
+
+
+
         box-shadow: 0 5px 15px rgba(34, 197, 94, 0.2);
+
+
+
       }
+
+
+
+
+
+
 
       /* Modern Animations */
+
+
+
       @keyframes shimmerLine {
+
+
+
         0%,
+
+
+
         100% {
+
+
+
           opacity: 0.6;
+
+
+
           transform: scaleX(1);
+
+
+
         }
+
+
+
         50% {
+
+
+
           opacity: 1;
+
+
+
           transform: scaleX(1.1);
+
+
+
         }
+
+
+
       }
+
+
+
+
+
+
 
       @keyframes float {
+
+
+
         0%,
+
+
+
         100% {
+
+
+
           transform: translateY(0) rotate(0deg);
+
+
+
         }
+
+
+
         50% {
+
+
+
           transform: translateY(-20px) rotate(180deg);
+
+
+
         }
+
+
+
       }
+
+
+
+
+
+
 
       @keyframes titleGlow {
+
+
+
         0%,
+
+
+
         100% {
+
+
+
           text-shadow:
+
+
+
             3px 3px 6px rgba(0, 0, 0, 0.3),
+
+
+
             0 0 30px rgba(34, 197, 94, 0.6);
+
+
+
         }
+
+
+
         50% {
+
+
+
           text-shadow:
+
+
+
             3px 3px 6px rgba(0, 0, 0, 0.3),
+
+
+
             0 0 40px rgba(34, 197, 94, 0.9);
+
+
+
         }
+
+
+
       }
+
+
+
       @media (max-width:768px){
+
+
+
 .subject-header h1{
+
+
+
             font-size:  25px;
+
+
+
 }
+
+
+
 .breadcrumb{
+
+
+
     padding: 10px 5px;
+
+
+
 }
+
+
+
 }
+
+
+
     </style>
+
+
+
     <script
+
+
+
       async
+
+
+
       src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
+
+
+
     ></script>
+
+
+
     <script>
+
+
+
       window.dataLayer = window.dataLayer || [];
+
+
+
       function gtag() {
+
+
+
         dataLayer.push(arguments);
+
+
+
       }
+
+
+
       gtag("js", new Date());
+
+
+
       gtag("config", "G-XXXXXXX");
+
+
+
     </script>
+
+
+
   </head>
+
+
+
   <body>
+
+
+
     <div class="container">
+
+
+
       <!-- Breadcrumb Navigation -->
+
+
+
       <nav class="breadcrumb">
+
+
+
         <a href="../index.html">Home</a>
+
+
+
         <span> &gt; </span>
+
+
+
         <a href="../index.html#subjects">Subjects</a>
+
+
+
         <span> &gt; </span>
+
+
+
         <span>Economics</span>
+
+
+
       </nav>
 
+
+
+
+
+
+
       <a href="../index.html#subjects" class="back-button">
+
+
+
         Back to Subjects
+
+
+
       </a>
 
+
+
+
+
+
+
       <div class="subject-header">
+
+
+
         <h1>📈 Economics</h1>
+
+
+
         <p>
+
+
+
           Explore micro and macroeconomic concepts and their impact on global
+
+
+
           markets through interactive lessons and real-world examples.
+
+
+
         </p>
+
+
+
       </div>
+
+
+
       <div class="materials-heading">
+
+
+
         <h2>Sections</h2>
+
+
+
       </div>
+
+
+
+
+
+
 
       <div class="chapters">
+
+
+
         <!-- Course Content -->
+
+
+
         <div class="chapter-card">
+
+
+
           <h2><span>1</span> Course Content</h2>
+
+
+
           <div class="lessons">
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="economics/Chapters/chapter1/index.html">
+
+
+
                 <span class="lesson-number">1</span>
+
+
+
                 <span>Chapter 1: Introduction to Economics</span>
+
+
+
               </a>
+
+
+
             </div>
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="economics/Chapters/chapter2/index.html">
+
+
+
                 <span class="lesson-number">2</span>
+
+
+
                 <span>Chapter 2: Supply and Demand</span>
+
+
+
               </a>
+
+
+
             </div>
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="#">
+
+
+
                 <span class="lesson-number">3</span>
+
+
+
                 <span>Chapter 3: Market Structures</span>
+
+
+
               </a>
+
+
+
             </div>
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="#">
+
+
+
                 <span class="lesson-number">4</span>
+
+
+
                 <span>Chapter 4: Macroeconomics Basics</span>
+
+
+
               </a>
+
+
+
             </div>
+
+
+
           </div>
+
+
+
         </div>
+
+
+
+
+
+
 
         <!-- Summaries & Key Words -->
+
+
+
         <div class="chapter-card">
+
+
+
           <h2><span>2</span> Summaries & Key Words</h2>
+
+
+
           <div class="lessons">
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="./economics/Summarise and key words/chapter1/index.html">
+
+
+
                 <span class="lesson-number">1</span>
+
+
+
                 <span>Chapter 1 Summary & Key Words</span>
+
+
+
               </a>
+
+
+
             </div>
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="./economics/Summarise and key words/chapter2/index.html">
+
+
+
                 <span class="lesson-number">2</span>
+
+
+
                 <span>Chapter 2 Summary & Key Words</span>
+
+
+
               </a>
+
+
+
             </div>
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="./economics/Summarise and key words/chapter3/index.html">
+
+
+
                 <span class="lesson-number">3</span>
+
+
+
                 <span>Chapter 3 Summary & Key Words</span>
+
+
+
               </a>
+
+
+
             </div>
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="#">
+
+
+
                 <span class="lesson-number">4</span>
+
+
+
                 <span>Chapter 4 Summary & Key Words</span>
+
+
+
               </a>
+
+
+
             </div>
+
+
+
           </div>
+
+
+
         </div>
+
+
+
+
+
+
 
         <!-- Quizzes -->
+
+
+
         <div class="chapter-card">
+
+
+
           <h2><span>3</span> Quizzes</h2>
+
+
+
           <div class="lessons">
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="./economics/Quizes/Quiz 1/index.html">
+
+
+
                 <span class="lesson-number">1</span>
+
+
+
                 <span>Quiz 1: Chapters 1-2</span>
+
+
+
               </a>
+
+
+
             </div>
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="./economics/Quizes/Quiz 2/index.html">
+
+
+
                 <span class="lesson-number">2</span>
+
+
+
                 <span>Quiz 2: Chapters 3-4</span>
+
+
+
               </a>
+
+
+
             </div>
 
+
+
+
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="./economics/Quizes/Quiz 3/index.html">
+
+
+
                 <span class="lesson-number">2</span>
+
+
+
                 <span>Quiz 3: Chapters 3-4</span>
+
+
+
               </a>
+
+
+
             </div>
 
+
+
+
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="./economics/Quizes/Quiz 4/index.html">
+
+
+
                 <span class="lesson-number">2</span>
+
+
+
                 <span>Quiz 4: Chapters 3-4</span>
+
+
+
               </a>
+
+
+
             </div>
+
+
+
+
+
+
 
             <!-- <div class="lesson-item">
+
+
+
               <a href="./economics/Quizes/Quiz 5/index.html">
+
+
+
                 <span class="lesson-number">2</span>
+
+
+
                 <span>Quiz 5: Chapters 3-4</span>
+
+
+
               </a>
+
+
+
             </div>
 
+
+
+
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="./economics/Quizes/Quiz 6/index.html">
+
+
+
                 <span class="lesson-number">3</span>
+
+
+
                 <span>Quiz 6</span>
+
+
+
               </a>
+
+
+
             </div>
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="#">
+
+
+
                 <span class="lesson-number">4</span>
+
+
+
                 <span>Final Quiz</span>
+
+
+
               </a>
+
+
+
             </div> -->
+
+
+
           </div>
+
+
+
         </div>
+
+
+
+
+
+
 
         <!-- Final Review -->
+
+
+
         <div class="chapter-card">
+
+
+
           <h2><span>4</span> Final Review</h2>
+
+
+
           <div class="lessons">
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="#">
+
+
+
                 <span class="lesson-number">1</span>
+
+
+
                 <span>Comprehensive Review</span>
+
+
+
               </a>
+
+
+
             </div>
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="#">
+
+
+
                 <span class="lesson-number">2</span>
+
+
+
                 <span>Important Concepts</span>
+
+
+
               </a>
+
+
+
             </div>
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="#">
+
+
+
                 <span class="lesson-number">3</span>
+
+
+
                 <span>Practice Tests</span>
+
+
+
               </a>
+
+
+
             </div>
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="#">
+
+
+
                 <span class="lesson-number">4</span>
+
+
+
                 <span>Exam Preparation</span>
+
+
+
               </a>
+
+
+
             </div>
+
+
+
           </div>
+
+
+
         </div>
 
+
+
+
+
+
+
         <!-- Questions & Answers -->
+
+
+
         <div class="chapter-card">
+
+
+
           <h2><span>5</span> Questions & Answers</h2>
+
+
+
           <div class="lessons">
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="./economics/Questions & Answers/chapter1/index.html">
+
+
+
                 <span class="lesson-number">1</span>
+
+
+
                 <span>Chapter 1 Questions</span>
+
+
+
               </a>
+
+
+
             </div>
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="./economics/Questions & Answers/chapter2/index.html">
+
+
+
                 <span class="lesson-number">2</span>
+
+
+
                 <span>Chapter 2 Questions</span>
+
+
+
               </a>
+
+
+
             </div>
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="./economics/Questions & Answers/chapter3/index.html">
+
+
+
                 <span class="lesson-number">3</span>
+
+
+
                 <span>Chapter 3 Questions</span>
+
+
+
               </a>
+
+
+
             </div>
+
+
+
             <div class="lesson-item">
+
+
+
               <a href="#">
+
+
+
                 <span class="lesson-number">4</span>
+
+
+
                 <span>Chapter 4 Questions</span>
+
+
+
               </a>
+
+
+
             </div>
+
+
+
           </div>
+
+
+
         </div>
+
+
+
       </div>
+
+
+
     </div>
+
+
+
   </body>
+
+
+
 </html>
+
+
+
