@@ -220,7 +220,7 @@ body {
 
 .chapter-card:hover {
   transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 30px 50px 50px rgb(0, 0, 0);
+  box-shadow: 0 30px 20px 20px rgb(0, 0, 0);
   z-index: 2;
   border-style: ridge;
 }
@@ -452,7 +452,7 @@ body {
 }
 
 /* Materials Heading */
-.materials-heading{
+/* .materials-heading{
   position: relative;
 margin: 0 auto 80px;
 width: fit-content;
@@ -464,7 +464,7 @@ z-index: 1;
 transition: 1s;
 overflow: hidden;
 background-color: #861f8b19;
-}
+} */
 
 /* .materials-heading::before{
   content: "";

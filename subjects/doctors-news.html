@@ -171,6 +171,7 @@
         .subject-card:nth-child(5)::before { background: linear-gradient(90deg, #ef4444, #f87171, #ef4444); }
         .subject-card:nth-child(6)::before { background: linear-gradient(90deg, #14b8a6, #2dd4bf, #14b8a6); }
         .subject-card:nth-child(7)::before { background: linear-gradient(90deg, #6366f1, #818cf8, #6366f1); }
+        .subject-card:nth-child(8)::before { background: linear-gradient(90deg, #000000, #030941, #010233); }
 
         .subject-title {
             font-size: 1.8rem;
@@ -337,15 +338,15 @@
     <style>
         /* Professional Exams Section Design */
         .exams-container {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            backdrop-filter: blur(20px);
-            border-radius: 30px;
-            padding: 60px 40px;
-            margin-bottom: 60px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
+          background-image: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 60px 40px;
+    margin-bottom: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
         }
 
         .exams-container::before {
@@ -359,7 +360,7 @@
             border-radius: 30px 30px 0 0;
         }
 
-        .exams-container::after {
+        /* .exams-container::after {
             content: '';
             position: absolute;
             top: -50%;
@@ -369,7 +370,7 @@
             background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
             animation: float 8s ease-in-out infinite;
             pointer-events: none;
-        }
+        } */
 
         .exams-header {
             text-align: center;
@@ -399,7 +400,7 @@
             height: 4px;
             background: linear-gradient(90deg, #667eea, #764ba2);
             border-radius: 2px;
-            animation: lineExpand 2s ease-in-out infinite;
+            /* animation: lineExpand 2s ease-in-out infinite; */
         }
 
         .subjects-exams-grid {
@@ -434,7 +435,7 @@
             right: 0;
             height: 6px;
             border-radius: 25px 25px 0 0;
-            animation: shimmerLine 3s ease-in-out infinite;
+            /* animation: shimmerLine 3s ease-in-out infinite; */
         }
 
         .subject-exams-card::after {
@@ -470,6 +471,7 @@
         .subject-exams-card:nth-child(5)::before { background: linear-gradient(90deg, #ef4444, #f87171, #ef4444); }
         .subject-exams-card:nth-child(6)::before { background: linear-gradient(90deg, #14b8a6, #2dd4bf, #14b8a6); }
         .subject-exams-card:nth-child(7)::before { background: linear-gradient(90deg, #6366f1, #818cf8, #6366f1); }
+        .subject-exams-card:nth-child(8)::before { background: linear-gradient(90deg, #000000, #030941, #010233); }
 
         .subject-exams-title {
             font-size: 1.8rem;
@@ -813,14 +815,14 @@
         }
 
         .subject-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
-            border-radius: 30px 30px 0 0;
+          content: "";
+     position: absolute; 
+     top: 0; 
+     left: 0; 
+     right: 0; 
+     bottom: 0; 
+     background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==); 
+     opacity: 0.3;
         }
 
         .subject-header h1 {
@@ -896,15 +898,22 @@
     <div class="container">
         <!-- Back Button -->
         <a href="../index.html#subjects" class="back-button">
-            <i class="fas fa-arrow-right"></i>
-            Back to Subjects
+            <!-- <i class="fas fa-arrow-right"></i> -->
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+        
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        
+        Back to Subjects
         </a>
 
         <!-- Subject Header -->
         <header class="subject-header">
-            <h1>Doctors News</h1>
-            <p>Stay informed with the latest medical breakthroughs, healthcare news, research findings, and industry developments that shape modern medicine.</p>
-        </header>
+            <h1 style="margin: 0;">Doctors News</h1>
+            <!-- <p>Stay informed with the latest medical breakthroughs, healthcare news, research findings, and industry developments that shape modern medicine.</p>-->
+        </header> 
 
         <!-- Section Tabs -->
         <div class="section-tabs">
@@ -941,7 +950,7 @@
                                     <div class="doctor-avatar">...</div>
                                     <div class="doctor-details">
                                         <h4>Dr. ...</h4>
-                                        <span>Professor of Accounting </span>
+                                        <span>Doctor of Accounting </span>
                                     </div>
                                 </div>
                                 <span class="quote-date">../../</span>
@@ -964,7 +973,7 @@
                                     <div class="doctor-avatar">...</div>
                                     <div class="doctor-details">
                                         <h4>Dr. ...</h4>
-                                        <span>Professor of Economics</span>
+                                        <span>Doctor of Economics</span>
                                     </div>
                                 </div>
                                 <span class="quote-date">../../</span>
@@ -987,7 +996,7 @@
                                     <div class="doctor-avatar">...</div>
                                     <div class="doctor-details">
                                         <h4>Dr. ...</h4>
-                                        <span>Professor of Marketing</span>
+                                        <span>Doctor of Marketing</span>
                                     </div>
                                 </div>
                                 <span class="quote-date">../../</span>
@@ -1010,7 +1019,7 @@
                                     <div class="doctor-avatar">...</div>
                                     <div class="doctor-details">
                                         <h4>Dr. ...</h4>
-                                        <span>Professor of English</span>
+                                        <span>Doctor of English</span>
                                     </div>
                                 </div>
                                 <span class="quote-date">../../</span>
@@ -1033,7 +1042,7 @@
                                     <div class="doctor-avatar">...</div>
                                     <div class="doctor-details">
                                         <h4>Dr. ...</h4>
-                                        <span>Professor of Statistics</span>
+                                        <span>Doctor of Statistics</span>
                                     </div>
                                 </div>
                                 <span class="quote-date">../../</span>
@@ -1056,7 +1065,7 @@
                                     <div class="doctor-avatar">...</div>
                                     <div class="doctor-details">
                                         <h4>Dr. ...</h4>
-                                        <span>Professor of MIS</span>
+                                        <span>Doctor of AIS</span>
                                     </div>
                                 </div>
                                 <span class="quote-date">../../</span>
@@ -1079,13 +1088,35 @@
                                     <div class="doctor-avatar">...</div>
                                     <div class="doctor-details">
                                         <h4>Dr. ...</h4>
-                                        <span>Professor of Finance</span>
+                                        <span>Doctor of Finance</span>
                                     </div>
                                 </div>
                                 <span class="quote-date">../../</span>
                             </div>
                         </div>
                     </div>
+                    <!-- Political -->
+                        <div class="subject-card">
+                            <div style="color: black;" class="subject-title">
+                                <!-- <i class="fas fa-university"></i> -->
+                                Political Science
+                            </div>
+                            <div class="quote-box">
+                                <div class="quote-content">
+                                    "Coming Soon..."
+                                </div>
+                                <div class="quote-meta">
+                                    <div class="doctor-info">
+                                        <div class="doctor-avatar">...</div>
+                                        <div class="doctor-details">
+                                            <h4>Dr. ...</h4>
+                                            <span >Doctor of Political Science</span>
+                                        </div>
+                                    </div>
+                                    <span class="quote-date">../../</span>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -1094,7 +1125,7 @@
         <div id="exams-section" class="content-section">
             <div class="exams-container">
                 <div class="exams-header">
-                    <h2>الأسئلة والامتحانات</h2>
+                    <h2>Questions & Exams</h2>
                 </div>
                 
                 <div class="subjects-exams-grid">
@@ -1102,33 +1133,34 @@
                     <div class="subject-exams-card">
                         <div class="subject-exams-title">
                             <i class="fas fa-calculator"></i>
-                            أسئلة الدكتور - Accounting
+                            Accounting
                         </div>
                         <div class="questions-grid">
                             <div class="question-item">
                                 <div class="question-header">
-                                    <span class="question-number">سؤال 1</span>
-                                    <span class="question-marks">(10 درجات)</span>
+                                    <span class="question-number">Question 1</span>
+                                    <span class="question-marks">(10 Deg)</span>
                                 </div>
                                 <div class="question-content">
-                                    <p><strong>س:</strong> اشرح مبادئ المحاسبة المتعارف عليها (GAAP) وأهميتها في إعداد القوائم المالية؟</p>
+                                    <p><strong>Q  : </strong></p>
                                     <div class="expected-answer">
-                                        <strong>الإجابة المتوقعة:</strong> يتوقع الدكتور التركيز على مبادئ التكلفة، الإقراض، الموضوعية، وغيرها من المبادئ الأساسية التي تضمن دقة وموثوقية المعلومات المالية.
+                                        <strong>Answer : </strong> 
                                     </div>
                                 </div>
                             </div>
                             <div class="question-item">
                                 <div class="question-header">
-                                    <span class="question-number">سؤال 2</span>
-                                    <span class="question-marks">(15 درجة)</span>
+                                    <span class="question-number">Question 2</span>
+                                    <span class="question-marks">(10 Deg)</span>
                                 </div>
                                 <div class="question-content">
-                                    <p><strong>س:</strong> قم بإعداد ميزانية تقديرية لشركة تجارية لمدة سنة واحدة مع شرح تفصيلي للبنود؟</p>
+                                    <p><strong>Q : </strong></p>
                                     <div class="expected-answer">
-                                        <strong>الإجابة المتوقعة:</strong> يجب على الطالب إظهار مهاراته في تصنيف المصروفات والإيرادات، وتقدير الأرقام بشكل منطقي، وشرح كل بند في الميزانية.
+                                        <strong>Answer : </strong>
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
 
@@ -1136,30 +1168,30 @@
                     <div class="subject-exams-card">
                         <div class="subject-exams-title">
                             <i class="fas fa-chart-line"></i>
-                            أسئلة الدكتور - Macro Economics
+                            Macro Economics
                         </div>
                         <div class="questions-grid">
                             <div class="question-item">
                                 <div class="question-header">
-                                    <span class="question-number">سؤال 1</span>
-                                    <span class="question-marks">(10 درجات)</span>
+                                    <span class="question-number">Questions 1</span>
+                                    <span class="question-marks">(10 Deg)</span>
                                 </div>
                                 <div class="question-content">
-                                    <p><strong>س:</strong> اشرح العلاقة بين التضخم والبطالة مع رسم منحنى فيليبس؟</p>
+                                    <p><strong>Q : </strong> </p>
                                     <div class="expected-answer">
-                                        <strong>الإجابة المتوقعة:</strong> يتوقع الدكتور شرح العلاقة العكسية بينهما في المدى القصير، والعلاقة الطبيعية في المدى الطويل، مع تحليل الأسباب والآثار.
+                                        <strong>Answer :</strong> 
                                     </div>
                                 </div>
                             </div>
                             <div class="question-item">
                                 <div class="question-header">
-                                    <span class="question-number">سؤال 2</span>
-                                    <span class="question-marks">(15 درجة)</span>
+                                    <span class="question-number">Questions 2</span>
+                                    <span class="question-marks">(10 Deg)</span>
                                 </div>
                                 <div class="question-content">
-                                    <p><strong>س:</strong> قارن بين السياسة النقدية والسياسة المالية من حيث الأدوات والأهداف؟</p>
+                                    <p><strong>Q : </strong> </p>
                                     <div class="expected-answer">
-                                        <strong>الإجابة المتوقعة:</strong> يجب على الطالب توضيح الفروق بين السياسيتين، الأدوات المستخدمة في كل منهما، وكيفية تأثيرهما على الاقتصاد الكلي.
+                                        <strong>Answer :</strong>
                                     </div>
                                 </div>
                             </div>
@@ -1170,33 +1202,33 @@
                     <div class="subject-exams-card">
                         <div class="subject-exams-title">
                             <i class="fas fa-bullhorn"></i>
-                            أسئلة الدكتور - Marketing
+                            Marketing
                         </div>
                         <div class="questions-grid">
                             <div class="question-item">
                                 <div class="question-header">
-                                    <span class="question-number">سؤال 1</span>
-                                    <span class="question-marks">(10 درجات)</span>
+                                    <span class="question-number">Question 1</span>
+                                    <span class="question-marks">(10 Deg)</span>
                                 </div>
                                 <div class="question-content">
-                                    <p><strong>س:</strong> اشرح أهمية دراسة السوق في نجاح المنتجات الجديدة؟</p>
+                                    <p><strong>Q : </strong></p>
                                     <div class="expected-answer">
-                                        <strong>الإجابة المتوقعة:</strong> يتوقع الدكتور التركيز على تحليل السوق، فهم العملاء، تحليل المنافسين، وتحديد الفرص والتهديدات.
+                                        <strong>Answer : </strong>  
                                     </div>
                                 </div>
                             </div>
-                            <div class="question-item">
-                                <div class="question-header">
-                                    <span class="question-number">سؤال 2</span>
-                                    <span class="question-marks">(15 درجة)</span>
-                                </div>
-                                <div class="question-content">
-                                    <p><strong>س:</strong> قم بوضع خطة تسويق متكاملة لمنتج جديد مع تحديد استراتيجية التسعير؟</p>
-                                    <div class="expected-answer">
-                                        <strong>الإجابة المتوقعة:</strong> يجب على الطالب تصميم خطة شاملة تشمل تحديد السوق المستهدف، استراتيجية الترويج، قنوات التوزيع، واستراتيجية التسعير المناسبة.
-                                    </div>
+                        <div class="question-item">
+                            <div class="question-header">
+                                <span class="question-number">Question 2</span>
+                                <span class="question-marks">(10 Deg)</span>
+                            </div>
+                            <div class="question-content">
+                                <p><strong>Q : </strong></p>
+                                <div class="expected-answer">
+                                    <strong>Answer : </strong>
                                 </div>
                             </div>
+                        </div>
                         </div>
                     </div>
 
@@ -1204,30 +1236,30 @@
                     <div class="subject-exams-card">
                         <div class="subject-exams-title">
                             <i class="fas fa-book"></i>
-                            أسئلة الدكتور - English
+                            English
                         </div>
                         <div class="questions-grid">
                             <div class="question-item">
                                 <div class="question-header">
-                                    <span class="question-number">سؤال 1</span>
-                                    <span class="question-marks">(10 درجات)</span>
+                                    <span class="question-number">Question  1</span>
+                                    <span class="question-marks">(10 Deg )</span>
                                 </div>
                                 <div class="question-content">
-                                    <p><strong>Q:</strong> Write an essay about the importance of technology in modern education.</p>
+                                    <p><strong>Q :</strong> </p>
                                     <div class="expected-answer">
-                                        <strong>Expected Answer:</strong> Students should focus on how technology enhances learning, provides access to information, and prepares students for the future workforce.
+                                        <strong> Answer:</strong> 
                                     </div>
                                 </div>
                             </div>
                             <div class="question-item">
                                 <div class="question-header">
-                                    <span class="question-number">سؤال 2</span>
-                                    <span class="question-marks">(15 درجة)</span>
+                                    <span class="question-number">Question  2</span>
+                                    <span class="question-marks">(15 Deg )</span>
                                 </div>
                                 <div class="question-content">
-                                    <p><strong>Q:</strong> Analyze the following text and explain the main themes and literary devices used.</p>
+                                    <p><strong>Q :</strong> </p>
                                     <div class="expected-answer">
-                                        <strong>Expected Answer:</strong> Students should identify themes, analyze characters, discuss symbolism, and explain how literary devices contribute to the overall meaning.
+                                        <strong> Answer:</strong>
                                     </div>
                                 </div>
                             </div>
@@ -1238,33 +1270,33 @@
                     <div class="subject-exams-card">
                         <div class="subject-exams-title">
                             <i class="fas fa-chart-bar"></i>
-                            أسئلة الدكتور - Statistics
+                            Statistics
                         </div>
                         <div class="questions-grid">
                             <div class="question-item">
                                 <div class="question-header">
-                                    <span class="question-number">سؤال 1</span>
-                                    <span class="question-marks">(10 درجات)</span>
+                                    <span class="question-number">Question  1</span>
+                                    <span class="question-marks">(10 Deg )</span>
                                 </div>
                                 <div class="question-content">
-                                    <p><strong>س:</strong> اشرح الفرق بين المتوسط الحسابي والوسيط ومتى نستخدم كل منهما؟</p>
+                                    <p><strong>ََQ :</strong></p>
                                     <div class="expected-answer">
-                                        <strong>الإجابة المتوقعة:</strong> يتوقع الدكتور شرح التعريف، طريقة الحساب، والفرق في الاستخدام، مع أمثلة توضح متى يكون كل مقياس أكثر ملاءمة.
+                                        <strong> Answer :</strong> 
                                     </div>
                                 </div>
                             </div>
-                            <div class="question-item">
-                                <div class="question-header">
-                                    <span class="question-number">سؤال 2</span>
-                                    <span class="question-marks">(15 درجة)</span>
-                                </div>
-                                <div class="question-content">
-                                    <p><strong>س:</strong> احسب معامل الارتباط بين متغيرين واشرح أهميته في التحليل الإحصائي؟</p>
-                                    <div class="expected-answer">
-                                        <strong>الإجابة المتوقعة:</strong> يجب على الطالب إظهار القدرة على حساب معامل الارتباط، تفسير قيمته، وشرح أهميته في فهم العلاقة بين المتغيرات.
-                                    </div>
+                        <div class="question-item">
+                            <div class="question-header">
+                                <span class="question-number">Question 2</span>
+                                <span class="question-marks">(10 Deg )</span>
+                            </div>
+                            <div class="question-content">
+                                <p><strong>ََQ :</strong></p>
+                                <div class="expected-answer">
+                                    <strong> Answer :</strong>
                                 </div>
                             </div>
+                        </div>
                         </div>
                     </div>
 
@@ -1272,30 +1304,30 @@
                     <div class="subject-exams-card">
                         <div class="subject-exams-title">
                             <i class="fas fa-laptop"></i>
-                            أسئلة الدكتور - MIS
+                            MIS
                         </div>
                         <div class="questions-grid">
                             <div class="question-item">
                                 <div class="question-header">
-                                    <span class="question-number">سؤال 1</span>
-                                    <span class="question-marks">(10 درجات)</span>
+                                    <span class="question-number">Question  1</span>
+                                    <span class="question-marks">(10 Deg )</span>
                                 </div>
                                 <div class="question-content">
-                                    <p><strong>س:</strong> اشرح دور أنظمة المعلومات في دعم اتخاذ القرارات الإدارية؟</p>
+                                    <p><strong>Q :</strong> </p>
                                     <div class="expected-answer">
-                                        <strong>الإجابة المتوقعة:</strong> يتوقع الدكتور التركيز على كيفية توفير المعلومات الدقيقة والموقتة، تحليل البيانات، ودعم عملية اتخاذ القرار على مختلف المستويات.
+                                        <strong>Answer :</strong> 
                                     </div>
                                 </div>
                             </div>
                             <div class="question-item">
                                 <div class="question-header">
-                                    <span class="question-number">سؤال 2</span>
-                                    <span class="question-marks">(15 درجة)</span>
+                                    <span class="question-number">Question 2</span>
+                                    <span class="question-marks">(10 Deg )</span>
                                 </div>
                                 <div class="question-content">
-                                    <p><strong>س:</strong> قم بتصميم قاعدة بيانات لنظام إدارة الموارد البشرية مع شرح الجداول والعلاقات؟</p>
+                                    <p><strong>Q :</strong> </p>
                                     <div class="expected-answer">
-                                        <strong>الإجابة المتوقعة:</strong> يجب على الطالب تصميم هيكل قاعدة بيانات منطقي، تحديد الجداول الرئيسية، العلاقات بينها، وشرح كيفية تحقيق التطبيع.
+                                        <strong>Answer :</strong>
                                     </div>
                                 </div>
                             </div>
@@ -1306,30 +1338,72 @@
                     <div class="subject-exams-card">
                         <div class="subject-exams-title">
                             <i class="fas fa-university"></i>
-                            أسئلة الدكتور - Public Finance
+                            Public Finance
                         </div>
                         <div class="questions-grid">
                             <div class="question-item">
                                 <div class="question-header">
-                                    <span class="question-number">سؤال 1</span>
-                                    <span class="question-marks">(10 درجات)</span>
+                                    <span class="question-number">Question  1</span>
+                                    <span class="question-marks">(10 Deg )</span>
                                 </div>
                                 <div class="question-content">
-                                    <p><strong>س:</strong> اشرح مبادئ الميزانية العامة وأهميتها في الإدارة المالية الحكومية؟</p>
+                                    <p><strong>Q :</strong> </p>
                                     <div class="expected-answer">
-                                        <strong>الإجابة المتوقعة:</strong> يتوقع الدكتور شرح مبادئ الشفافية، المساءلة، الكفاءة، والعدالة في تخصيص الموارد العامة.
+                                        <strong>Answer :</strong> 
                                     </div>
                                 </div>
                             </div>
                             <div class="question-item">
                                 <div class="question-header">
-                                    <span class="question-number">سؤال 2</span>
-                                    <span class="question-marks">(15 درجة)</span>
+                                    <span class="question-number">Question 2</span>
+                                    <span class="question-marks">(10 Deg )</span>
                                 </div>
                                 <div class="question-content">
-                                    <p><strong>س:</strong> قارن بين الضرائب المباشرة وغير المباشرة من حيث الأثر الاقتصادي والكفاءة؟</p>
+                                    <p><strong>Q :</strong> </p>
                                     <div class="expected-answer">
-                                        <strong>الإجابة المتوقعة:</strong> يجب على الطالب تحليل أنواع الضرائب، تأثيرها على الاقتصاد، كفاءة التحصيل، والعدالة في توزيع الأعباء.
+                                        <strong>Answer :</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Political Science Questions -->
+                    <div class="subject-exams-card">
+                        <div style="color: black;
+                        .subject-exams-card::before{
+                            content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    border-radius: 25px 25px 0 0;
+                        }" class="subject-exams-title">
+                            <!-- <i class="fas fa-university"></i> -->
+                            Political Science
+                        </div>
+                        <div class="questions-grid">
+                            <div class="question-item">
+                                <div class="question-header">
+                                    <span class="question-number">Question 1</span>
+                                    <span class="question-marks">(10 Deg )</span>
+                                </div>
+                                <div class="question-content">
+                                    <p><strong>Q :</strong> </p>
+                                    <div class="expected-answer">
+                                        <strong>Answer :</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="question-item">
+                                <div class="question-header">
+                                    <span class="question-number">Question 2</span>
+                                    <span class="question-marks">(10 Deg )</span>
+                                </div>
+                                <div class="question-content">
+                                    <p><strong>Q :</strong> </p>
+                                    <div class="expected-answer">
+                                        <strong>Answer :</strong>
                                     </div>
                                 </div>
                             </div>

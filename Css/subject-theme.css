@@ -155,7 +155,7 @@ body {
 
   padding: 40px;
 
-  border-radius: 50px;
+  border-radius: 10px;
 
   margin-bottom: 40px;
 
@@ -185,7 +185,7 @@ body {
 .subject-header h1 {
   font-size: 2.5rem;
 
-  margin: 0 0 15px 0;
+  margin: 0;
 
   position: relative;
 
@@ -206,6 +206,7 @@ body {
   margin: auto;
 
   position: relative;
+  line-height: 20px;
 }
 
 /* Chapters Grid */
@@ -225,7 +226,7 @@ body {
 
   transform: scale(0.95);
 
-  filter: blur(3px);
+  filter: blur(2px);
 
   transition: all 0.3s ease;
 }
@@ -235,7 +236,7 @@ body {
 .chapter-card {
   background: var(--card-bg);
 
-  border-radius: 50px;
+  border-radius: 20px;
 
   padding: 25px;
 
@@ -252,7 +253,7 @@ body {
   overflow: hidden;
 }
 
-.chapter-card:hover {
+/* .chapter-card:hover { */
   /* transform: translateY(-5px);
 
 
@@ -266,7 +267,7 @@ body {
 
 
   border-color: rgba(139, 92, 246, 0.3); */
-}
+/* } */
 
 .chapter-card h2 {
   font-size: 1.4rem;
@@ -351,7 +352,7 @@ body {
 .lesson-item a:hover {
   background: rgba(139, 92, 246, 0.1);
 
-  color: rgb(0, 0, 0);
+  /* color: rgb(0, 0, 0); */
 
   font-weight: bold;
 
@@ -408,11 +409,14 @@ body {
   }
 
   .subject-header {
-    padding: 30px 20px;
+           padding: 30px 20px;
+        width: 90%;
+        margin: 45px auto;
   }
 
   .subject-header h1 {
-    font-size: 25px;
+    font-size: 28px;
+    margin: 0;
   }
 
   .breadcrumb {
@@ -430,7 +434,7 @@ body {
 
     /* background-color: red; */
 
-    width: 70%;
+    width: 40%;
 
     margin: 30px auto;
 
@@ -454,7 +458,7 @@ body {
 
     /* background-color: red; */
 
-    width: 100%;
+    width: 72%;
 
     margin: 30px auto;
 

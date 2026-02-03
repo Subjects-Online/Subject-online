@@ -188,7 +188,7 @@
   footer > div > div > div:nth-child(2) ul,
   footer > div > div > div:nth-child(3) ul {
     display: inline-block;
-    text-align: left;
+    text-align: center;
   }
 
   /* Social media icons centering on mobile */
@@ -235,7 +235,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 425px) {
   /* Extra small mobile devices */
   .nav {
     width: 95%;
@@ -281,6 +281,9 @@
 
   .card-content p {
     font-size: 0.85rem;
+  }
+  .lesson-item .lesson-number {
+    margin: 0;
   }
 }
 

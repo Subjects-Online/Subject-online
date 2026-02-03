@@ -11,9 +11,6 @@
 
 
     <script defer src="https://cloud.umami.is/script.js"
-
-
-
         data-website-id="31d71665-7827-44ae-934b-7f68bc397123"></script>
 
 
@@ -62,11 +59,13 @@
 
 
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 
 
-<link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Storm&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Storm&display=swap"
+        rel="stylesheet">
 
 
 
@@ -74,11 +73,13 @@
 
 
 
-<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
 
 
 
-<link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 
 
 
@@ -89,7 +90,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 
-
+    <link rel="shortcut icon" href="Imgs/IMG-20260122-WA0000.jpg" type="image/x-icon">
 </head>
 
 
@@ -102,47 +103,48 @@
 
 
 
-<!-- Start Nav Bar  -->
+    <!-- Start Nav Bar  -->
 
 
 
-<nav class="nav">
+    <nav class="nav">
 
 
 
-    <h2 style="margin-left: 20px;" class="title">Subjects Online</h2>
+        <h2 style="margin-left: 20px;" class="title">Subjects Online</h2>
 
 
 
-    <div> <a href="#subjects">Subjects</a>
+        <div> <a href="#subjects">Subjects</a>
 
 
 
-    <a class="New" href="subjects/doctors-news.html">Doctors News</a>
+            <a class="New" href="subjects/doctors-news.html">Doctors News</a>
 
 
 
-    <a href="Favorites.html">Favorites <span></span></a>
+            <a href="Favorites.html">Favorites <span></span></a>
 
 
 
-    <!-- <a href="admin.html">Admin</a> -->
+            <!-- <a href="admin.html">Admin</a> -->
 
 
 
-    <a href="#contact">Contact Us</a></div>
+            <a href="#contact">Contact Us</a>
+        </div>
 
 
 
-   
 
 
 
-</nav>
+
+    </nav>
 
 
 
-<!-- End Nav Bar  -->
+    <!-- End Nav Bar  -->
 
 
 
@@ -162,19 +164,60 @@
 
 
 
-            <br>
+                <br>
 
 
 
-            <div style="margin: 70px auto 0px auto; display: flex;" class="hero-actions">
+                <div style="margin: 70px auto 0px auto; display: flex;" class="hero-actions">
 
 
 
-                <a href="#subjects" class="btn btn-hero btn-hero-secondary"
+                    <a href="#subjects" class="btn btn-hero btn-hero-secondary"
+                        onclick="scrollToSubjects(); return false;">Get Started</a>
 
 
 
-                    onclick="scrollToSubjects(); return false;">Get Started</a>
+                </div>
+
+
+
+            </div>
+
+
+
+            <div class="icons">
+
+
+
+                <div class="learn">College In One Link</div>
+
+
+
+                <!-- <span>📊</span> -->
+                <span><i class="fas fa-calculator fa-1.9x"></i> </span>
+
+
+                <span>📈</span>
+
+
+
+                <span>🏛️</span>
+
+
+
+                <span>🌐</span>
+
+
+
+                <span>📊</span>
+
+
+
+                <span>🏭</span>
+
+
+
+                <span>💻</span>
 
 
 
@@ -186,51 +229,7 @@
 
 
 
-        <div class="icons">
 
-
-
-            <div class="learn">College In One Link</div>
-
-
-
-            <span>📊</span>
-
-
-
-            <span>📈</span>
-
-
-
-            <span>🏛️</span>
-
-
-
-            <span>🌐</span>
-
-
-
-            <span>📊</span>
-
-
-
-            <span>🏭</span>
-
-
-
-            <span>💻</span>
-
-
-
-        </div>
-
-
-
-            </div>
-
-
-
-            
 
 
 
@@ -306,7 +305,9 @@
 
 
 
-                    <div class="card-icon">📊</div>
+                    <!-- <div class="card-icon">📊</div>-->
+                    <div class="card-icon"><i class="  fas fa-calculator fa-1.9x"></i></div>
+
 
 
 
@@ -360,9 +361,9 @@
 
                         </a>
 
-                        <button class="favorite-btn" onclick="toggleFavorite(1)">
+                        <button class="favorite-btn" style="width: 100px;" onclick="toggleFavorite(1)">
 
-                            <i class="far fa-heart"></i>
+                            <i class="far fa-heart fa-2x"></i>
 
                         </button>
 
@@ -452,9 +453,9 @@
 
                         </a>
 
-                        <button class="favorite-btn" onclick="toggleFavorite(2)">
+                        <button class="favorite-btn" style="width: 100px;" onclick="toggleFavorite(2)">
 
-                            <i class="far fa-heart"></i>
+                            <i class="far fa-heart fa-2x"></i>
 
                         </button>
 
@@ -544,9 +545,9 @@
 
                         </a>
 
-                        <button class="favorite-btn" onclick="toggleFavorite(3)">
+                        <button class="favorite-btn" style="width: 100px;" onclick="toggleFavorite(3)">
 
-                            <i class="far fa-heart"></i>
+                            <i class="far fa-heart fa-2x"></i>
 
                         </button>
 
@@ -640,9 +641,9 @@
 
                         </a>
 
-                        <button class="favorite-btn" onclick="toggleFavorite(4)">
+                        <button class="favorite-btn" style="width: 100px;" onclick="toggleFavorite(4)">
 
-                            <i class="far fa-heart"></i>
+                            <i class="far fa-heart fa-2x"></i>
 
                         </button>
 
@@ -736,9 +737,9 @@
 
                         </a>
 
-                        <button class="favorite-btn" onclick="toggleFavorite(5)">
+                        <button class="favorite-btn" style="width: 100px;" onclick="toggleFavorite(5)">
 
-                            <i class="far fa-heart"></i>
+                            <i class="far fa-heart fa-2x"></i>
 
                         </button>
 
@@ -758,7 +759,7 @@
 
 
 
-            <!-- Production Management -->
+            <!-- Marketing -->
 
 
 
@@ -832,9 +833,9 @@
 
                         </a>
 
-                        <button class="favorite-btn" onclick="toggleFavorite(6)">
+                        <button class="favorite-btn " style="width: 100px;" onclick="toggleFavorite(6)">
 
-                            <i class="far fa-heart"></i>
+                            <i class="far fa-heart fa-2x"></i>
 
                         </button>
 
@@ -854,7 +855,7 @@
 
 
 
-            <!-- MIS -->
+            <!-- AIS -->
 
 
 
@@ -894,7 +895,7 @@
 
 
 
-                    <h3>Management Information Systems</h3>
+                    <h3>Accounting Information Systems</h3>
 
 
 
@@ -928,9 +929,9 @@
 
                         </a>
 
-                        <button class="favorite-btn" onclick="toggleFavorite(7)">
+                        <button class="favorite-btn" style="width: 100px;" onclick="toggleFavorite(7)">
 
-                            <i class="far fa-heart"></i>
+                            <i class="far fa-heart fa-2x"></i>
 
                         </button>
 
@@ -939,68 +940,154 @@
                 </div>
 
             </div>
+            <!-- Political  -->
+            <div class="subject-card-new" data-color="pink">
+
+
+
+                <div class="card-glow"></div>
+
+
+
+                <div class="card-pattern"></div>
+
+
+
+                <div class="card-icon-wrapper">
+
+
+
+                    <div class="card-icon">🏭</div>
+
+
+
+                    <div class="icon-ring"></div>
+
+
+
+                </div>
+
+
+
+                <div class="card-content">
+
+
+
+                    <div class="card-number">08</div>
+
+
+
+                    <h3> Political Science</h3>
+
+
+
+                    <p>Master brand strategy, digital advertising, social media marketing, and data-driven customer
+
+
+
+                        acquisition.</p>
+
+
+
+                    <div class="card-stats">
+
+
+
+                        <span><i class="fas fa-book"></i> 0 Lessons</span>
+
+
+
+                    </div>
+
+
+
+                    <div class="card-actions">
+
+                        <a href="subjects/Political.html" class="start-btn">
+
+                            <i class="fas fa-play"></i>
+
+                            Start Learning
+
+                        </a>
+
+                        <button class="favorite-btn " style="width: 100px;" onclick="toggleFavorite(6)">
+
+                            <i class="far fa-heart fa-2x"></i>
+
+                        </button>
+
+                    </div>
+
+
+
+                </div>
+
+
+
+            </div>
 
         </div>
 
-    </div>
+        </div>
 
-    </div>
+        </div>
 
-    </div>
+        </div>
 
-</div>
+        </div>
 
-</div>
+        </div>
 
-</section>
+    </section>
 
 
 
-<script src="vendor/typed.js/typed.umd.min.js"></script>
+    <script src="vendor/typed.js/typed.umd.min.js"></script>
 
-<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
 
-<script>
+    <script>
 
 
 
-    // Sample subjects data (same as favorites.html)
+        // Sample subjects data (same as favorites.html)
 
 
 
-    const subjects = [
+        const subjects = [
 
 
 
-        { id: 1, name: 'Intermediate Accounting 2', icon: '📊', description: 'Master financial reporting and auditing', url: 'subjects/accounting.html' },
+            { id: 1, name: 'Intermediate Accounting 2', icon: '📊', description: 'Master financial reporting and auditing', url: 'subjects/accounting.html' },
 
 
 
-        { id: 2, name: 'Macro Economics', icon: '📈', description: 'Analyze global economic systems', url: 'subjects/economics.html' },
+            { id: 2, name: 'Macro Economics', icon: '📈', description: 'Analyze global economic systems', url: 'subjects/economics.html' },
 
 
 
-        { id: 3, name: 'Public Finance', icon: '🏛️', description: 'Master fiscal policy and budget analysis', url: 'subjects/public-Finance.html' },
+            { id: 3, name: 'Public Finance', icon: '🏛️', description: 'Master fiscal policy and budget analysis', url: 'subjects/public-Finance.html' },
 
 
 
-        { id: 4, name: 'English', icon: '🌐', description: 'Develop professional communication skills', url: 'subjects/english.html' },
+            { id: 4, name: 'English', icon: '🌐', description: 'Develop professional communication skills', url: 'subjects/english.html' },
 
 
 
-        { id: 5, name: 'Statistics', icon: '📊', description: 'Master data science fundamentals', url: 'subjects/statistics.html' },
+            { id: 5, name: 'Statistics', icon: '📊', description: 'Master data science fundamentals', url: 'subjects/statistics.html' },
 
 
 
-        { id: 6, name: 'Marketing', icon: '🏭', description: 'Master brand strategy and digital advertising', url: 'subjects/marketing.html' },
+            { id: 6, name: 'Marketing', icon: '🏭', description: 'Master brand strategy and digital advertising', url: 'subjects/marketing.html' },
 
 
 
-        { id: 7, name: 'Management Information Systems', icon: '💻', description: 'Master database design and IT strategy', url: 'subjects/mis.html' }
+            { id: 7, name: 'Management Information Systems', icon: '💻', description: 'Master database design and IT strategy', url: 'subjects/mis.html' }
 
 
 
-    ];
+        ];
 
 
 
@@ -1008,31 +1095,31 @@
 
 
 
-    // Load favorites from localStorage with user-specific storage
+        // Load favorites from localStorage with user-specific storage
 
 
 
-    function loadFavorites() {
+        function loadFavorites() {
 
 
 
-        // Create a unique key for each user based on browser/session
+            // Create a unique key for each user based on browser/session
 
 
 
-        const userId = getUserId();
+            const userId = getUserId();
 
 
 
-        const favorites = JSON.parse(localStorage.getItem(`favorites_${userId}`) || '[]');
+            const favorites = JSON.parse(localStorage.getItem(`favorites_${userId}`) || '[]');
 
 
 
-        return favorites;
+            return favorites;
 
 
 
-    }
+        }
 
 
 
@@ -1040,23 +1127,23 @@
 
 
 
-    // Save favorites to localStorage with user-specific storage
+        // Save favorites to localStorage with user-specific storage
 
 
 
-    function saveFavorites(favorites) {
+        function saveFavorites(favorites) {
 
 
 
-        const userId = getUserId();
+            const userId = getUserId();
 
 
 
-        localStorage.setItem(`favorites_${userId}`, JSON.stringify(favorites));
+            localStorage.setItem(`favorites_${userId}`, JSON.stringify(favorites));
 
 
 
-    }
+        }
 
 
 
@@ -1064,91 +1151,139 @@
 
 
 
-    // Get or create a unique user ID
+        // Get or create a unique user ID
 
 
 
-    function getUserId() {
+        function getUserId() {
 
 
 
-        let userId = localStorage.getItem('subjects_online_user_id');
+            let userId = localStorage.getItem('subjects_online_user_id');
 
 
 
-        if (!userId) {
+            if (!userId) {
 
 
 
-            // Check if user is already registered
+                // Check if user is already registered
 
 
 
-            const hasVisitedBefore = localStorage.getItem('subjects_online_visited');
+                const hasVisitedBefore = localStorage.getItem('subjects_online_visited');
 
 
 
-            if (!hasVisitedBefore) {
+                if (!hasVisitedBefore) {
 
 
 
-                // First time visitor - ask for name
+                    // First time visitor - ask for name
 
 
 
-                const username = prompt('Please enter your name to continue:');
+                    const username = prompt('Please enter your name to continue:');
 
 
 
-                if (username && username.trim()) {
+                    if (username && username.trim()) {
 
 
 
-                    // Create user ID with username
+                        // Create user ID with username
 
 
 
-                    const cleanUsername = username.trim().replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+                        const cleanUsername = username.trim().replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
 
 
 
-                    const timestamp = Date.now();
+                        const timestamp = Date.now();
 
 
 
-                    const random = Math.random().toString(36).substr(2, 5);
+                        const random = Math.random().toString(36).substr(2, 5);
 
 
 
-                    userId = `${cleanUsername}_${timestamp}_${random}`;
+                        userId = `${cleanUsername}_${timestamp}_${random}`;
 
 
 
-                    localStorage.setItem('subjects_online_user_id', userId);
+                        localStorage.setItem('subjects_online_user_id', userId);
 
 
 
-                    localStorage.setItem(`user_name_${userId}`, username.trim());
+                        localStorage.setItem(`user_name_${userId}`, username.trim());
 
 
 
-                    
 
 
 
-                    // Show welcome notification for new user
 
+                        // Show welcome notification for new user
 
 
-                    setTimeout(() => {
 
+                        setTimeout(() => {
 
 
-                        showNotification(`Welcome ${username.trim()}! 👋 Your favorites will be saved automatically.`);
 
+                            showNotification(`Welcome ${username.trim()}! 👋 Your favorites will be saved automatically.`);
 
 
-                    }, 1000);
+
+                        }, 1000);
+
+
+
+                    } else {
+
+
+
+                        // If user cancels, use default ID
+
+
+
+                        userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+
+
+
+                        localStorage.setItem('subjects_online_user_id', userId);
+
+
+
+                        localStorage.setItem(`user_name_${userId}`, 'Anonymous');
+
+
+
+
+
+
+
+                        setTimeout(() => {
+
+
+
+                            showNotification('Welcome to Subjects Online! 👋 Your favorites will be saved automatically.');
+
+
+
+                        }, 1000);
+
+
+
+                    }
+
+
+
+                    // Mark as visited
+
+
+
+                    localStorage.setItem('subjects_online_visited', 'true');
 
 
 
@@ -1156,7 +1291,7 @@
 
 
 
-                    // If user cancels, use default ID
+                    // Returning visitor but no ID (cleared data)
 
 
 
@@ -1168,11 +1303,11 @@
 
 
 
-                    localStorage.setItem(`user_name_${userId}`, 'Anonymous');
+                    localStorage.setItem(`user_name_${userId}`, 'Returning User');
 
 
 
-                    
+
 
 
 
@@ -1180,7 +1315,7 @@
 
 
 
-                        showNotification('Welcome to Subjects Online! 👋 Your favorites will be saved automatically.');
+                        showNotification('Welcome back! 👋 Your favorites will be saved automatically.');
 
 
 
@@ -1192,47 +1327,87 @@
 
 
 
-                // Mark as visited
+            }
 
 
 
-                localStorage.setItem('subjects_online_visited', 'true');
+            return userId;
 
 
 
-            } else {
+        }
 
 
 
-                // Returning visitor but no ID (cleared data)
 
 
 
-                userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+
+        // Get user display name
 
 
 
-                localStorage.setItem('subjects_online_user_id', userId);
+        function getUserName() {
 
 
 
-                localStorage.setItem(`user_name_${userId}`, 'Returning User');
+            const userId = getUserId();
 
 
 
-                
+            return localStorage.getItem(`user_name_${userId}`) || 'Anonymous';
 
 
 
-                setTimeout(() => {
+        }
 
 
 
-                    showNotification('Welcome back! 👋 Your favorites will be saved automatically.');
 
 
 
-                }, 1000);
+
+        // Get user statistics
+
+
+
+        function getUserStats() {
+
+
+
+            const userId = getUserId();
+
+
+
+            const favorites = loadFavorites();
+
+
+
+            const firstVisit = localStorage.getItem(`first_visit_${userId}`) || new Date().toISOString();
+
+
+
+            const visitCount = parseInt(localStorage.getItem(`visit_count_${userId}`) || '0') + 1;
+
+
+
+
+
+
+
+            // Update visit count
+
+
+
+            localStorage.setItem(`visit_count_${userId}`, visitCount.toString());
+
+
+
+            if (!localStorage.getItem(`first_visit_${userId}`)) {
+
+
+
+                localStorage.setItem(`first_visit_${userId}`, firstVisit);
 
 
 
@@ -1240,87 +1415,35 @@
 
 
 
-        }
-
-
-
-        return userId;
-
-
-
-    }
 
 
 
 
+            return {
 
 
 
-    // Get user display name
+                userId: userId,
 
 
 
-    function getUserName() {
+                favoritesCount: favorites.length,
 
 
 
-        const userId = getUserId();
+                visitCount: visitCount,
 
 
 
-        return localStorage.getItem(`user_name_${userId}`) || 'Anonymous';
+                firstVisit: firstVisit,
 
 
 
-    }
+                lastVisit: new Date().toISOString()
 
 
 
-
-
-
-
-    // Get user statistics
-
-
-
-    function getUserStats() {
-
-
-
-        const userId = getUserId();
-
-
-
-        const favorites = loadFavorites();
-
-
-
-        const firstVisit = localStorage.getItem(`first_visit_${userId}`) || new Date().toISOString();
-
-
-
-        const visitCount = parseInt(localStorage.getItem(`visit_count_${userId}`) || '0') + 1;
-
-
-
-        
-
-
-
-        // Update visit count
-
-
-
-        localStorage.setItem(`visit_count_${userId}`, visitCount.toString());
-
-
-
-        if (!localStorage.getItem(`first_visit_${userId}`)) {
-
-
-
-            localStorage.setItem(`first_visit_${userId}`, firstVisit);
+            };
 
 
 
@@ -1328,231 +1451,207 @@
 
 
 
-        
 
 
 
-        return {
 
+        // Clear user data (for testing or reset)
 
 
-            userId: userId,
 
+        function clearUserData() {
 
 
-            favoritesCount: favorites.length,
 
+            const userId = getUserId();
 
 
-            visitCount: visitCount,
 
+            localStorage.removeItem(`favorites_${userId}`);
 
 
-            firstVisit: firstVisit,
 
+            localStorage.removeItem(`first_visit_${userId}`);
 
 
-            lastVisit: new Date().toISOString()
 
+            localStorage.removeItem(`visit_count_${userId}`);
 
 
-        };
 
+            localStorage.removeItem('subjects_online_user_id');
 
 
-    }
 
+            showNotification('All your data has been cleared! 🗑️');
 
 
 
+        }
 
 
 
-    // Clear user data (for testing or reset)
 
 
 
-    function clearUserData() {
 
+        // Export user data (for backup)
 
 
-        const userId = getUserId();
 
+        function exportUserData() {
 
 
-        localStorage.removeItem(`favorites_${userId}`);
 
+            const userId = getUserId();
 
 
-        localStorage.removeItem(`first_visit_${userId}`);
 
+            const userData = {
 
 
-        localStorage.removeItem(`visit_count_${userId}`);
 
+                userId: userId,
 
 
-        localStorage.removeItem('subjects_online_user_id');
 
+                favorites: loadFavorites(),
 
 
-        showNotification('All your data has been cleared! 🗑️');
 
+                stats: getUserStats(),
 
 
-    }
 
+                exportDate: new Date().toISOString()
 
 
 
+            };
 
 
 
-    // Export user data (for backup)
 
 
 
-    function exportUserData() {
 
+            const dataStr = JSON.stringify(userData, null, 2);
 
 
-        const userId = getUserId();
 
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
 
 
-        const userData = {
 
+            const url = URL.createObjectURL(dataBlob);
 
 
-            userId: userId,
 
 
 
-            favorites: loadFavorites(),
 
 
+            const link = document.createElement('a');
 
-            stats: getUserStats(),
 
 
+            link.href = url;
 
-            exportDate: new Date().toISOString()
 
 
+            link.download = `subjects_online_backup_${userId}.json`;
 
-        };
 
 
+            link.click();
 
-        
 
 
 
-        const dataStr = JSON.stringify(userData, null, 2);
 
 
 
-        const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            URL.revokeObjectURL(url);
 
 
 
-        const url = URL.createObjectURL(dataBlob);
+            showNotification('Your data has been exported! 💾');
 
 
 
-        
+        }
 
 
 
-        const link = document.createElement('a');
 
 
 
-        link.href = url;
 
+        // Import user data (for restore)
 
 
-        link.download = `subjects_online_backup_${userId}.json`;
 
+        function importUserData(file) {
 
 
-        link.click();
 
+            const reader = new FileReader();
 
 
-        
 
+            reader.onload = function (e) {
 
 
-        URL.revokeObjectURL(url);
 
+                try {
 
 
-        showNotification('Your data has been exported! 💾');
 
+                    const userData = JSON.parse(e.target.result);
 
 
-    }
 
 
 
 
 
+                    if (userData.favorites && Array.isArray(userData.favorites)) {
 
 
-    // Import user data (for restore)
 
+                        const userId = getUserId();
 
 
-    function importUserData(file) {
 
+                        localStorage.setItem(`favorites_${userId}`, JSON.stringify(userData.favorites));
 
 
-        const reader = new FileReader();
 
+                        updateFavoriteButtons();
 
 
-        reader.onload = function(e) {
 
+                        showNotification('Data imported successfully! 📥');
 
 
-            try {
 
+                    } else {
 
 
-                const userData = JSON.parse(e.target.result);
 
+                        showNotification('Invalid data format! ❌');
 
 
-                
 
+                    }
 
 
-                if (userData.favorites && Array.isArray(userData.favorites)) {
 
+                } catch (error) {
 
 
-                    const userId = getUserId();
 
-
-
-                    localStorage.setItem(`favorites_${userId}`, JSON.stringify(userData.favorites));
-
-
-
-                    updateFavoriteButtons();
-
-
-
-                    showNotification('Data imported successfully! 📥');
-
-
-
-                } else {
-
-
-
-                    showNotification('Invalid data format! ❌');
+                    showNotification('Failed to import data! ❌');
 
 
 
@@ -1560,11 +1659,51 @@
 
 
 
-            } catch (error) {
+            };
 
 
 
-                showNotification('Failed to import data! ❌');
+            reader.readAsText(file);
+
+
+
+        }
+
+
+
+
+
+
+
+        // Add subject to favorites
+
+
+
+        function addToFavorites(subjectId) {
+
+
+
+            const favorites = loadFavorites();
+
+
+
+            if (!favorites.includes(subjectId)) {
+
+
+
+                favorites.push(subjectId);
+
+
+
+                saveFavorites(favorites);
+
+
+
+                showNotification('Added to favorites! ❤️');
+
+
+
+                updateFavoriteButtons();
 
 
 
@@ -1572,15 +1711,7 @@
 
 
 
-        };
-
-
-
-        reader.readAsText(file);
-
-
-
-    }
+        }
 
 
 
@@ -1588,35 +1719,43 @@
 
 
 
-    // Add subject to favorites
+        // Remove subject from favorites
 
 
 
-    function addToFavorites(subjectId) {
+        function removeFromFavorites(subjectId) {
 
 
 
-        const favorites = loadFavorites();
+            const favorites = loadFavorites();
 
 
 
-        if (!favorites.includes(subjectId)) {
+            const index = favorites.indexOf(subjectId);
 
 
 
-            favorites.push(subjectId);
+            if (index > -1) {
 
 
 
-            saveFavorites(favorites);
+                favorites.splice(index, 1);
 
 
 
-            showNotification('Added to favorites! ❤️');
+                saveFavorites(favorites);
 
 
 
-            updateFavoriteButtons();
+                showNotification('Removed from favorites 💔');
+
+
+
+                updateFavoriteButtons();
+
+
+
+            }
 
 
 
@@ -1624,47 +1763,23 @@
 
 
 
-    }
 
 
 
 
+        // Check if subject is in favorites
 
 
 
-    // Remove subject from favorites
+        function isFavorite(subjectId) {
 
 
 
-    function removeFromFavorites(subjectId) {
+            const favorites = loadFavorites();
 
 
 
-        const favorites = loadFavorites();
-
-
-
-        const index = favorites.indexOf(subjectId);
-
-
-
-        if (index > -1) {
-
-
-
-            favorites.splice(index, 1);
-
-
-
-            saveFavorites(favorites);
-
-
-
-            showNotification('Removed from favorites 💔');
-
-
-
-            updateFavoriteButtons();
+            return favorites.includes(subjectId);
 
 
 
@@ -1672,95 +1787,11 @@
 
 
 
-    }
+        // Toggle favorite (add/remove)
 
 
 
-
-
-
-
-    // Check if subject is in favorites
-
-
-
-    function isFavorite(subjectId) {
-
-
-
-        const favorites = loadFavorites();
-
-
-
-        return favorites.includes(subjectId);
-
-
-
-    }
-
-
-
-    // Toggle favorite (add/remove)
-
-
-
-    function toggleFavorite(subjectId) {
-
-
-
-        if (isFavorite(subjectId)) {
-
-
-
-            removeFromFavorites(subjectId);
-
-
-
-        } else {
-
-
-
-            addToFavorites(subjectId);
-
-
-
-        }
-
-
-
-        updateFavoriteButtons();
-
-
-
-    }
-
-
-
-    // Update favorite buttons on the page
-
-
-
-    function updateFavoriteButtons() {
-
-
-
-        const cards = document.querySelectorAll('.subject-card-new');
-
-
-
-        cards.forEach((card, index) => {
-
-
-
-            const subjectId = index + 1;
-
-
-
-            const heartIcon = card.querySelector('.favorite-btn i');
-
-
-
-            
+        function toggleFavorite(subjectId) {
 
 
 
@@ -1768,15 +1799,7 @@
 
 
 
-                heartIcon.classList.remove('far');
-
-
-
-                heartIcon.classList.add('fas');
-
-
-
-                heartIcon.style.color = '#ef4444';
+                removeFromFavorites(subjectId);
 
 
 
@@ -1784,15 +1807,7 @@
 
 
 
-                heartIcon.classList.remove('fas');
-
-
-
-                heartIcon.classList.add('far');
-
-
-
-                heartIcon.style.color = '';
+                addToFavorites(subjectId);
 
 
 
@@ -1800,11 +1815,35 @@
 
 
 
-        });
+            updateFavoriteButtons();
 
 
 
-    }
+        }
+
+
+
+        // Update favorite buttons on the page
+
+
+
+        function updateFavoriteButtons() {
+
+
+
+            const cards = document.querySelectorAll('.subject-card-new');
+
+
+
+            cards.forEach((card, index) => {
+
+
+
+                const subjectId = index + 1;
+
+
+
+                const heartIcon = card.querySelector('.favorite-btn i');
 
 
 
@@ -1812,19 +1851,67 @@
 
 
 
-    // Show notification
+                if (isFavorite(subjectId)) {
 
 
 
-    function showNotification(message) {
+                    heartIcon.classList.remove('far');
 
 
 
-        const notification = document.createElement('div');
+                    heartIcon.classList.add('fas');
 
 
 
-        notification.style.cssText = `
+                    heartIcon.style.color = '#ef4444';
+
+
+
+                } else {
+
+
+
+                    heartIcon.classList.remove('fas');
+
+
+
+                    heartIcon.classList.add('far');
+
+
+
+                    heartIcon.style.color = '';
+
+
+
+                }
+
+
+
+            });
+
+
+
+        }
+
+
+
+
+
+
+
+        // Show notification
+
+
+
+        function showNotification(message) {
+
+
+
+            const notification = document.createElement('div');
+
+
+
+            notification.style.cssText = `
 
 
 
@@ -1876,35 +1963,11 @@
 
 
 
-        notification.textContent = message;
+            notification.textContent = message;
 
 
 
-        document.body.appendChild(notification);
-
-
-
-
-
-
-
-        setTimeout(() => {
-
-
-
-            notification.style.animation = 'slideOutRight 0.5s ease-out';
-
-
-
-            setTimeout(() => notification.remove(), 500);
-
-
-
-        }, 3000);
-
-
-
-    }
+            document.body.appendChild(notification);
 
 
 
@@ -1912,39 +1975,27 @@
 
 
 
-    // Check if user is blocked
+            setTimeout(() => {
 
 
 
-    function isUserBlocked() {
+                notification.style.animation = 'slideOutRight 0.5s ease-out';
 
 
 
-        const userId = getUserId();
+                setTimeout(() => notification.remove(), 500);
 
 
 
-        const blockedUsers = JSON.parse(localStorage.getItem('blocked_users') || '[]');
+            }, 3000);
 
 
 
-        return blockedUsers.includes(userId);
-
-
-
-    }
+        }
 
 
 
 
-
-
-
-    // Add click handlers to favorite buttons
-
-
-
-    document.addEventListener('DOMContentLoaded', function() {
 
 
 
@@ -1952,79 +2003,116 @@
 
 
 
-        if (isUserBlocked()) {
+        function isUserBlocked() {
 
-            showNotification('Your account has been blocked! 🚫 Please contact support.', '#ef4444');
 
-            
 
-            // Disable all interactive elements
+            const userId = getUserId();
 
-            document.querySelectorAll('.start-btn, .favorite-btn').forEach(btn => {
 
-                btn.style.pointerEvents = 'none';
 
-                btn.style.opacity = '0.5';
+            const blockedUsers = JSON.parse(localStorage.getItem('blocked_users') || '[]');
 
-            });
 
-            return;
+
+            return blockedUsers.includes(userId);
+
+
 
         }
 
 
 
-        // Initialize favorite buttons
 
-        updateFavoriteButtons();
 
 
 
         // Add click handlers to favorite buttons
 
-        document.querySelectorAll('.favorite-btn').forEach((btn) => {
 
-            // Remove inline onclick handlers to prevent double execution
 
-            btn.removeAttribute('onclick');
+        document.addEventListener('DOMContentLoaded', function () {
 
-            
 
-            // Get subjectId from data attribute or use the button's position
 
-            const card = btn.closest('.subject-card-new');
+            // Check if user is blocked
 
-            const allCards = Array.from(document.querySelectorAll('.subject-card-new'));
 
-            const subjectId = allCards.indexOf(card) + 1;
 
-            
+            if (isUserBlocked()) {
 
-            btn.addEventListener('click', function(e) {
+                showNotification('Your account has been blocked! 🚫 Please contact support.', '#ef4444');
 
-                e.preventDefault();
 
-                e.stopPropagation();
 
-                
+                // Disable all interactive elements
 
-                if (isUserBlocked()) {
+                document.querySelectorAll('.start-btn, .favorite-btn').forEach(btn => {
 
-                    showNotification('Your account is blocked! 🚫', '#ef4444');
+                    btn.style.pointerEvents = 'none';
 
-                    return;
+                    btn.style.opacity = '0.5';
 
-                }
+                });
 
-                
+                return;
 
-                toggleFavorite(subjectId);
+            }
+
+
+
+            // Initialize favorite buttons
+
+            updateFavoriteButtons();
+
+
+
+            // Add click handlers to favorite buttons
+
+            document.querySelectorAll('.favorite-btn').forEach((btn) => {
+
+                // Remove inline onclick handlers to prevent double execution
+
+                btn.removeAttribute('onclick');
+
+
+
+                // Get subjectId from data attribute or use the button's position
+
+                const card = btn.closest('.subject-card-new');
+
+                const allCards = Array.from(document.querySelectorAll('.subject-card-new'));
+
+                const subjectId = allCards.indexOf(card) + 1;
+
+
+
+                btn.addEventListener('click', function (e) {
+
+                    e.preventDefault();
+
+                    e.stopPropagation();
+
+
+
+                    if (isUserBlocked()) {
+
+                        showNotification('Your account is blocked! 🚫', '#ef4444');
+
+                        return;
+
+                    }
+
+
+
+                    toggleFavorite(subjectId);
+
+                });
 
             });
 
         });
 
-    });
 
 
 
@@ -2035,12 +2123,11 @@
 
 
 
+        // Add CSS animations
 
-// Add CSS animations
+        const style = document.createElement('style');
 
-const style = document.createElement('style');
-
-style.textContent = `
+        style.textContent = `
 
     @keyframes slideInRight {
 
@@ -2166,15 +2253,15 @@ style.textContent = `
 
 `;
 
-document.head.appendChild(style);
+        document.head.appendChild(style);
 
 
 
-</script>
+    </script>
 
 
 
-<footer id="contact" style="
+    <footer id="contact" style="
 
      background-image: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
 
@@ -2186,161 +2273,43 @@ document.head.appendChild(style);
 
 ">
 
-    <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="max-width: 1200px; margin: 0 auto;">
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px;">
+            <div style="display: grid; grid-template-columns:  1fr 1fr 1fr; gap: 40px; margin-bottom: 40px;">
 
-            <!-- Company Info -->
+                <!-- Company Info -->
 
-            <div>
+                <div>
 
-                <h3 style="font-size: 1.5rem; margin-bottom: 20px; color: #ffffff;">Subjects Online</h3>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 20px; color: #ffffff;">Subjects Online</h3>
 
-                <p style="color: #94a3b8; line-height: 1.6; margin-bottom: 20px;">
+                    <p style="color: #94a3b8; line-height: 1.6; margin-bottom: 20px;">
 
-                    Your comprehensive platform for learning management, finance, economics, and more. Empowering students worldwide.
+                        Your comprehensive platform for learning management, finance, economics, and more. Empowering
+                        students worldwide.
 
-                </p>
+                    </p>
 
-                <div style="display: flex; gap: 15px;">
+                    <div style="display: flex; gap: 15px;">
 
-                    <a href="https://www.facebook.com/ahmed.tamer.952116?mibextid=ZbWKwL" style="width: 40px; height: 40px; background: linear-gradient(135deg, #6366f1, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
+                        <a href="https://www.facebook.com/ahmed.tamer.952116?mibextid=ZbWKwL"
+                            style="width: 40px; height: 40px; background: linear-gradient(135deg, #6366f1, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
 
-                        <i class="fab fa-facebook-f"></i>
+                            <i class="fab fa-facebook-f"></i>
 
-                    </a>
+                        </a>
 
-                    <a href="https://chat.whatsapp.com/BmUhhJti1rWFKQHWGpQSL1?mode=gi_t" style="width: 40px; height: 40px; background: linear-gradient(135deg, #1df21d, #37971e); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
+                        <a href="https://chat.whatsapp.com/BmUhhJti1rWFKQHWGpQSL1?mode=gi_t"
+                            style="width: 40px; height: 40px; background: linear-gradient(135deg, #1df21d, #37971e); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
 
-                        <i class="fab fa-whatsapp"></i>
+                            <i class="fab fa-whatsapp"></i>
 
-                    </a>
+                        </a>
 
-                    <a href="https://www.linkedin.com/in/ahmed-tamer-0b2b93356?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" style="width: 40px; height: 40px; background: linear-gradient(135deg, #0077b5, #005885); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
+                        <a href="https://www.linkedin.com/in/ahmed-tamer-0b2b93356?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                            style="width: 40px; height: 40px; background: linear-gradient(135deg, #0077b5, #005885); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
 
-                        <i class="fab fa-linkedin-in"></i>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- Quick Links -->
-
-            <div>
-
-                <h4 style="font-size: 1.2rem; margin-bottom: 20px; color: #ffffff;">Quick Links</h4>
-
-                <ul style="list-style: none; padding: 0; margin: 0;">
-
-                    <li style="margin-bottom: 12px;">
-
-                        <a href="#subjects" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">All Subjects</a>
-
-                    </li>
-
-                    <li style="margin-bottom: 12px;">
-
-                        <a href="Favorites.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">My Favorites</a>
-
-                    </li>
-
-                    <li style="margin-bottom: 12px;">
-
-                        <a href="admin.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">Admin Panel</a>
-
-                    </li>
-
-                    <li style="margin-bottom: 12px;">
-
-                        <a href="subjects/doctors-news.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">Doctors News</a>
-
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-
-            <!-- Subjects -->
-
-            <div>
-
-                <h4 style="font-size: 1.2rem; margin-bottom: 20px; color: #ffffff;">Popular Subjects</h4>
-
-                <ul style="list-style: none; padding: 0; margin: 0;">
-
-                    <li style="margin-bottom: 12px;">
-
-                        <a href="subjects/accounting.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">📊 Accounting</a>
-
-                    </li>
-
-                    <li style="margin-bottom: 12px;">
-
-                        <a href="subjects/economics.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">📈 Economics</a>
-
-                    </li>
-
-                    <li style="margin-bottom: 12px;">
-
-                        <a href="subjects/english.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">🌐 English</a>
-
-                    </li>
-
-                    <li style="margin-bottom: 12px;">
-
-                        <a href="subjects/statistics.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">📊 Statistics</a>
-
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-
-            <!-- Contact -->
-
-            <div>
-
-                <h4 style="font-size: 1.2rem; margin-bottom: 20px; color: #ffffff;">Contact Info</h4>
-
-                <div style="display: flex; flex-direction: column; gap: 12px;">
-
-                    <div style="display: flex; align-items: center; gap: 10px; color: #94a3b8;">
-
-                        <i class="fas fa-envelope"></i>
-
-                        <span>support@subjectsonline.com</span>
-
-                    </div>
-
-                    <div style="display: flex; align-items: center; gap: 10px; color: #94a3b8;">
-
-                        <i class="fas fa-phone"></i>
-
-                        <span>+20 123 456 7890</span>
-
-                    </div>
-
-                    <div style="display: flex; align-items: center; gap: 10px; color: #94a3b8;">
-
-                        <i class="fas fa-map-marker-alt"></i>
-
-                        <span>Cairo, Egypt</span>
-
-                    </div>
-
-                    <div style="margin-top: 15px;">
-
-                        <a href="#contact" style="display: inline-block; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
-
-                            <i class="fas fa-paper-plane"></i> Contact Us
+                            <i class="fab fa-linkedin-in"></i>
 
                         </a>
 
@@ -2348,15 +2317,154 @@ document.head.appendChild(style);
 
                 </div>
 
+
+
+                <!-- Quick Links -->
+
+                <div>
+
+                    <h4 style="font-size: 1.2rem; margin-bottom: 20px; color: #ffffff;">Quick Links</h4>
+
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+
+                        <li style="margin-bottom: 12px;">
+
+                            <a href="#subjects"
+                                style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">All
+                                Subjects</a>
+
+                        </li>
+
+                        <li style="margin-bottom: 12px;">
+
+                            <a href="Favorites.html"
+                                style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">My
+                                Favorites</a>
+
+                        </li>
+
+                        <li style="margin-bottom: 12px;">
+
+                            <a href="admin.html"
+                                style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">Admin
+                                Panel</a>
+
+                        </li>
+
+                        <li style="margin-bottom: 12px;">
+
+                            <a href="subjects/doctors-news.html"
+                                style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">Doctors
+                                News</a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <!-- Subjects -->
+
+                <!-- <div>
+
+                    <h4 style="font-size: 1.2rem; margin-bottom: 20px; color: #ffffff;">Popular Subjects</h4>
+
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+
+                        <li style="margin-bottom: 12px;">
+
+                            <a href="subjects/accounting.html"
+                                style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">📊
+                                Accounting</a>
+
+                        </li>
+
+                        <li style="margin-bottom: 12px;">
+
+                            <a href="subjects/economics.html"
+                                style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">📈
+                                Economics</a>
+
+                        </li>
+
+                        <li style="margin-bottom: 12px;">
+
+                            <a href="subjects/english.html"
+                                style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">🌐
+                                English</a>
+
+                        </li>
+
+                        <li style="margin-bottom: 12px;">
+
+                            <a href="subjects/statistics.html"
+                                style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">📊
+                                Statistics</a>
+
+                        </li>
+
+                    </ul>
+
+                </div> -->
+
+
+
+                <!-- Contact -->
+
+                <div>
+
+                    <h4 style="font-size: 1.2rem; margin-bottom: 20px; color: #ffffff;">Contact Info</h4>
+
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+
+                        <div style="display: flex; align-items: center; gap: 10px; color: #94a3b8;">
+
+                            <i class="fas fa-envelope"></i>
+
+                            <span>support@subjectsonline.com</span>
+
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 10px; color: #94a3b8;">
+
+                            <i class="fas fa-phone"></i>
+
+                            <span>+20 123 456 7890</span>
+
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 10px; color: #94a3b8;">
+
+                            <i class="fas fa-map-marker-alt"></i>
+
+                            <span>Cairo, Egypt</span>
+
+                        </div>
+
+                        <div style="margin-top: 15px;">
+
+                            <a href="#contact"
+                                style="display: inline-block; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+
+                                <i class="fas fa-paper-plane"></i> Contact Us
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
-        </div>
 
 
+            <!-- Bottom Bar -->
 
-        <!-- Bottom Bar -->
-
-        <div style="
+            <div style="
 
             border-top: 1px solid rgba(255, 255, 255, 0.1);
 
@@ -2368,17 +2476,17 @@ document.head.appendChild(style);
 
         ">
 
-            <p style="margin: 0;">
+                <p style="margin: 0;">
 
-                &copy; 2026 Subjects Online. All rights reserved. Developed By Ahmed Tamer for students worldwide.
+                    &copy; 2026 Subjects Online. All rights reserved. Developed By Ahmed Tamer for students worldwide.
 
-            </p>
+                </p>
+
+            </div>
 
         </div>
 
-    </div>
-
-</footer>
+    </footer>
 
 
 

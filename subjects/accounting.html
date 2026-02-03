@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Accounting - Subject Online</title>
-
+<link rel="shortcut icon" href="../Imgs/image.png" type="image/x-icon">
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
@@ -94,6 +94,8 @@
         position: relative;
 
         z-index: 2;
+
+        margin: 0;
       }
 
       @media (max-width: 768px) {
@@ -105,7 +107,7 @@
       /* Enhanced Back Button */
 
       .back-button {
-        display: inline-flex;
+        /* display: inline-flex; */
 
         align-items: center;
 
@@ -135,7 +137,7 @@
 
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
-        margin-bottom: 30px;
+        margin-bottom: 65px;
 
         position: relative;
 
@@ -224,7 +226,14 @@
 
         text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
       }
-
+@media (max-width: 425px) {
+  .container{
+    padding: 10px;
+  }
+  .lesson-item{
+    padding: 10px;
+  }
+}
       /* Modern Animations */
 
       @keyframes shimmerLine {
@@ -328,7 +337,7 @@
 
         backdrop-filter: blur(20px);
 
-        border: 2px solid rgba(34, 197, 94, 0.2);
+          border: 2px solid rgb(50 34 197 / 80% );
 
         border-radius: 20px;
 
@@ -396,16 +405,16 @@
       <div class="subject-header">
         <h1>📊 Accounting</h1>
 
-        <p>
+        <!-- <p>
           Master financial and managerial accounting principles and their
           business applications through comprehensive lessons and practical
           examples.
-        </p>
+        </p> -->
       </div>
 
-      <div class="materials-heading">
+      <!-- <div class="materials-heading">
         <h2 style="font-size: 30px">Sections</h2>
-      </div>
+      </div> -->
 
       <div class="chapters">
         <!-- Course Content -->
@@ -455,11 +464,112 @@
             </div>
           </div>
         </div>
+<!-- Quizzes -->
 
+<div class="chapter-card">
+  <h2><span>2</span> Quizzes</h2>
+
+  <div class="lessons">
+    <div class="lesson-item">
+      <a href="./accounting/Chapters/Quizes/Quiz 1/index.html">
+        <span class="lesson-number">1</span>
+
+        <span>Quiz 1: Chapters 1-2</span>
+      </a>
+    </div>
+
+    <div class="lesson-item">
+      <a href="./accounting/Chapters/Quizes/Quiz 2/index.html">
+        <span class="lesson-number">2</span>
+
+        <span>Quiz 2: Chapters 3-4</span>
+      </a>
+    </div>
+
+    <div class="lesson-item">
+      <a href="./accounting/Chapters/Quizes/Quiz 3/index.html">
+        <span class="lesson-number">3</span>
+
+        <span> Quiz 3</span>
+      </a>
+    </div>
+
+    <div class="lesson-item">
+      <a href="./accounting/Chapters/Quizes/Quiz 4/index.html">
+        <span class="lesson-number">4</span>
+
+        <span> Quiz 4</span>
+      </a>
+    </div>
+
+    <!-- <div class="lesson-item">
+
+                        <a href="./accounting/Chapters/Quizes/Quiz 5/index.html">
+
+                            <span class="lesson-number">5</span>
+
+                            <span>Quiz 5</span>
+
+                        </a>
+
+                    </div>
+
+                    <div class="lesson-item">
+
+                        <a href="./accounting/Chapters/Quizes/Quiz 6/index.html">
+
+                            <span class="lesson-number">6</span>
+
+                            <span> Quiz 6</span>
+
+                        </a>
+
+                    </div> -->
+  </div>
+</div>
+<!-- sections -->
+
+<div class="chapter-card">
+  <h2><span>3</span> Sections</h2>
+
+  <div class="lessons">
+    <div class="lesson-item">
+      <a href="../subjects/accounting/Chapters/Questions & Answers/chapter1/index.html">
+        <span class="lesson-number">1</span>
+
+        <span>Chapter 1 Questions</span>
+      </a>
+    </div>
+
+    <div class="lesson-item">
+      <a href="./accounting/Chapters/Questions & Answers/chapter2/index.html">
+        <span class="lesson-number">2</span>
+
+        <span>Chapter 2 Questions</span>
+      </a>
+    </div>
+
+    <div class="lesson-item">
+      <a href="./accounting/Chapters/Questions & Answers/chapter3/index.html">
+        <span class="lesson-number">3</span>
+
+        <span>Chapter 3 Questions</span>
+      </a>
+    </div>
+
+    <div class="lesson-item">
+      <a href="./accounting/Chapters/Questions & Answers/chapter4/index.html">
+        <span class="lesson-number">4</span>
+
+        <span>Chapter 4 Questions</span>
+      </a>
+    </div>
+  </div>
+</div>
         <!-- Summaries & Key Words -->
 
         <div class="chapter-card">
-          <h2><span>2</span> Summaries & Key Words</h2>
+          <h2><span>4</span> Summaries & Key Words</h2>
 
           <div class="lessons">
             <div class="lesson-item">
@@ -506,72 +616,12 @@
 
         <!-- Quizzes -->
 
-        <div class="chapter-card">
-          <h2><span>3</span> Quizzes</h2>
-
-          <div class="lessons">
-            <div class="lesson-item">
-              <a href="./accounting/Chapters/Quizes/Quiz 1/index.html">
-                <span class="lesson-number">1</span>
-
-                <span>Quiz 1: Chapters 1-2</span>
-              </a>
-            </div>
-
-            <div class="lesson-item">
-              <a href="./accounting/Chapters/Quizes/Quiz 2/index.html">
-                <span class="lesson-number">2</span>
-
-                <span>Quiz 2: Chapters 3-4</span>
-              </a>
-            </div>
-
-            <div class="lesson-item">
-              <a href="./accounting/Chapters/Quizes/Quiz 3/index.html">
-                <span class="lesson-number">3</span>
-
-                <span> Quiz 3</span>
-              </a>
-            </div>
-
-            <div class="lesson-item">
-              <a href="./accounting/Chapters/Quizes/Quiz 4/index.html">
-                <span class="lesson-number">4</span>
-
-                <span> Quiz 4</span>
-              </a>
-            </div>
-
-            <!-- <div class="lesson-item">
-
-                        <a href="./accounting/Chapters/Quizes/Quiz 5/index.html">
-
-                            <span class="lesson-number">5</span>
-
-                            <span>Quiz 5</span>
-
-                        </a>
-
-                    </div>
-
-                    <div class="lesson-item">
-
-                        <a href="./accounting/Chapters/Quizes/Quiz 6/index.html">
-
-                            <span class="lesson-number">6</span>
-
-                            <span> Quiz 6</span>
-
-                        </a>
-
-                    </div> -->
-          </div>
-        </div>
+        
 
         <!-- Final Review -->
 
         <div class="chapter-card">
-          <h2><span>4</span> Final Review</h2>
+          <h2><span>5</span> Final Review</h2>
 
           <div class="lessons">
             <div class="lesson-item">
@@ -608,53 +658,46 @@
           </div>
         </div>
 
+        
         <!-- Questions & Answers -->
 
-        <div class="chapter-card">
-          <h2><span>5</span> Questions & Answers</h2>
-
-          <div class="lessons">
-            <div class="lesson-item">
-              <a
-                href="../subjects/accounting/Chapters/Questions & Answers/chapter1/index.html"
-              >
-                <span class="lesson-number">1</span>
-
-                <span>Chapter 1 Questions</span>
-              </a>
+            <div class="chapter-card">
+              <h2><span>6</span> Questions & Answers</h2>
+            
+              <div class="lessons">
+                <div class="lesson-item">
+                  <a href="../subjects/accounting/Chapters/Questions & Answers/chapter1/index.html">
+                    <span class="lesson-number">1</span>
+            
+                    <span>Chapter 1 Questions</span>
+                  </a>
+                </div>
+            
+                <div class="lesson-item">
+                  <a href="./accounting/Chapters/Questions & Answers/chapter2/index.html">
+                    <span class="lesson-number">2</span>
+            
+                    <span>Chapter 2 Questions</span>
+                  </a>
+                </div>
+            
+                <div class="lesson-item">
+                  <a href="./accounting/Chapters/Questions & Answers/chapter3/index.html">
+                    <span class="lesson-number">3</span>
+            
+                    <span>Chapter 3 Questions</span>
+                  </a>
+                </div>
+            
+                <div class="lesson-item">
+                  <a href="./accounting/Chapters/Questions & Answers/chapter4/index.html">
+                    <span class="lesson-number">4</span>
+            
+                    <span>Chapter 4 Questions</span>
+                  </a>
+                </div>
+              </div>
             </div>
-
-            <div class="lesson-item">
-              <a
-                href="./accounting/Chapters/Questions & Answers/chapter2/index.html"
-              >
-                <span class="lesson-number">2</span>
-
-                <span>Chapter 2 Questions</span>
-              </a>
-            </div>
-
-            <div class="lesson-item">
-              <a
-                href="./accounting/Chapters/Questions & Answers/chapter3/index.html"
-              >
-                <span class="lesson-number">3</span>
-
-                <span>Chapter 3 Questions</span>
-              </a>
-            </div>
-
-            <div class="lesson-item">
-              <a
-                href="./accounting/Chapters/Questions & Answers/chapter4/index.html"
-              >
-                <span class="lesson-number">4</span>
-
-                <span>Chapter 4 Questions</span>
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </body>

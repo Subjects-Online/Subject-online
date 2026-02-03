@@ -490,7 +490,7 @@ margin: 0 auto;
 
 .subjects-grid-new {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
@@ -559,7 +559,7 @@ margin: 0 auto;
 .subjects-grid-new:has(.subject-card-new:hover) .subject-card-new:not(:hover) {
   opacity: 0.3;
   transform: scale(0.95);
-  filter: blur(3px);
+  filter: blur(1px);
   transition: all 0.3s ease;
 }
 .card-icon-wrapper {
