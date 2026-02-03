@@ -149,12 +149,18 @@
 
       /* Breadcrumb Styling */
       .breadcrumb {
-       background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05));
+        position: sticky;
+        top: 10px;
+     background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
     backdrop-filter: blur(15px);
-    border: 1px solid rgba(139, 92, 246, 0.2);
+    border: 1px solid rgba(34, 197, 94, 0.2);
     border-radius: 12px;
     padding: 12px 20px;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 40%;
+    margin: 20px auto;
       }
 
       .breadcrumb a {
@@ -184,7 +190,7 @@
 
       .breadcrumb a::after {
         content: "›";
-        margin-left: 10px;
+        margin-left: 20px;
         color: var(--text-secondary);
         opacity: 0.7;
       }
@@ -563,7 +569,7 @@
         <!-- <span> &gt; </span> -->
         <a href="../../../economics.html">Economics</a>
         <!-- <span> &gt; </span> -->
-        <span>Chapter 1: Introduction to Economics</span>
+        <span>Chapter 1</span>
       </nav>
 
       <a href="../../../economics.html" class="back-button">
@@ -584,11 +590,11 @@
       </a>
 
       <div class="subject-header">
-        <h1>📚 Chapter 1: Introduction to Economics</h1>
-        <p>
+        <h1>📚 Chapter 1</h1>
+        <!-- <p>
           Explore the fundamental concepts of economics through these lecture
           materials
-        </p>
+        </p> -->
       </div>
 
       <div class="pdf-grid" id="pdfGrid">
