@@ -2,7 +2,9 @@
 .subject-header {
   background: linear-gradient(135deg, #f59e0b, #fbbf24);
 }
-
+.chapter-card {
+  background: linear-gradient(135deg, #f59e0b00, #fbbf241c);
+}
 .lesson-item a:hover {
   color: #f59e0b;
 }
@@ -95,11 +97,9 @@
     rgba(255, 255, 255, 0.04)
   );
 
-  backdrop-filter: blur(20px);
-
   border: 2px solid rgb(255 190 0 / 20%);
 
-  border-radius: 20px;
+   border-radius: 10px 50px 10px 10px;
 
   padding: 30px;
 

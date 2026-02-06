@@ -6,8 +6,7 @@
     <title>Public Finance - Subject Online</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
     <link rel="stylesheet" href="../Css/main.css" />
     <link rel="stylesheet" href="../Css/subject-theme.css" />
     <script src="../Js/theme-toggle.js"></script>
@@ -17,6 +16,19 @@
       .subject-header {
         background: linear-gradient(135deg, #3b82f6, #60a5fa);
       }
+      .chapter-card {
+        background: linear-gradient(135deg, #3b82f60d, #60a5fa0d);
+
+        border-radius: 20px 100px 10px 10px;
+        padding: 25px;
+        border: 3px dotted var(--border-color);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .lesson-item {
+        border-radius: 10px 50px 10px 10px;
+      }
       .lesson-item a:hover {
         color: #3b82f6;
       }
@@ -24,7 +36,7 @@
         background: #dbeafe;
         color: #3b82f6;
       }
-     .back-button {
+      .back-button {
         /* display: inline-flex; */
 
         align-items: center;
@@ -38,8 +50,6 @@
           rgba(139, 92, 246, 0.15),
           rgba(139, 92, 246, 0.08)
         );
-
-        backdrop-filter: blur(15px);
 
         border: 2px solid rgba(139, 92, 246, 0.3);
 
@@ -100,26 +110,24 @@
           rgba(139, 92, 246, 0.12)
         );
       }
-      @media (max-width:768px){
-.subject-header h1{
-            font-size: 25px;
-}
-.breadcrumb{
-    padding: 10px 5px;
-}
-}
-.lesson-item {
+      @media (max-width: 768px) {
+        .subject-header h1 {
+          font-size: 25px;
+        }
+        .breadcrumb {
+          padding: 10px 5px;
+        }
+      }
+      .lesson-item {
         background: linear-gradient(
           135deg,
           rgba(255, 255, 255, 0.08),
           rgba(255, 255, 255, 0.04)
         );
 
-        backdrop-filter: blur(20px);
+        border: 2px solid rgb(0 232 255 / 20%);
 
-      border: 2px solid rgb(0 232 255 / 20%);
-
-        border-radius: 20px;
+        border-radius: 10px 50px 10px 10px;
 
         padding: 30px;
 
@@ -134,8 +142,7 @@
     </style>
     <script
       async
-      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
-    ></script>
+      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -157,28 +164,29 @@
       </nav>
 
       <a href="../index.html#subjects" class="back-button">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px">
-        <line x1="19" y1="12" x2="5" y2="12"></line>
-      
-        <polyline points="12 19 5 12 12 5"></polyline>
-      </svg>
-      
-      Back to Subjects
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          style="margin-right: 8px">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+
+        Back to Subjects
       </a>
 
       <div class="subject-header">
-        <h1>🏛️ Public Finance</h1>
-        <!-- <p>
-          Learn public management principles and develop leadership skills for
-          the public sector through comprehensive lessons and case studies.
-        </p> -->
+        <h1>🏛️ Public Finance 2</h1>
       </div>
 
-      <!--<div class="materials-heading">
-        <h2>Sections</h2>
-      </div> -->
-
+     
       <div class="chapters">
         <!-- Course Content -->
         <div class="chapter-card">
@@ -217,32 +225,28 @@
           <div class="lessons">
             <div class="lesson-item">
               <a
-                href="./public-Finance/Summarise and key words/chapter1/index.html"
-              >
+                href="./public-Finance/Summarise and key words/chapter1/index.html">
                 <span class="lesson-number">1</span>
                 <span>Chapter 1 Summary & Key Words</span>
               </a>
             </div>
             <div class="lesson-item">
               <a
-                href="./public-Finance/Summarise and key words/chapter2/index.html"
-              >
+                href="./public-Finance/Summarise and key words/chapter2/index.html">
                 <span class="lesson-number">2</span>
                 <span>Chapter 2 Summary & Key Words</span>
               </a>
             </div>
             <div class="lesson-item">
               <a
-                href="./public-Finance/Summarise and key words/chapter3/index.html"
-              >
+                href="./public-Finance/Summarise and key words/chapter3/index.html">
                 <span class="lesson-number">3</span>
                 <span>Chapter 3 Summary & Key Words</span>
               </a>
             </div>
             <div class="lesson-item">
               <a
-                href="./public-Finance/Summarise and key words/chapter4/index.html"
-              >
+                href="./public-Finance/Summarise and key words/chapter4/index.html">
                 <span class="lesson-number">4</span>
                 <span>Chapter 4 Summary & Key Words</span>
               </a>
@@ -278,18 +282,7 @@
                 <span> Quiz 4</span>
               </a>
             </div>
-            <!-- <div class="lesson-item">
-              <a href="./public-Finance/Quizes/Quiz 5/index.html">
-                <span class="lesson-number">4</span>
-                <span> Quiz 5</span>
-              </a>
-            </div>
-            <div class="lesson-item">
-              <a href="./public-Finance/Quizes/Quiz 6/index.html">
-                <span class="lesson-number">4</span>
-                <span> Quiz 6</span>
-              </a>
-            </div> -->
+           
           </div>
         </div>
 
@@ -330,32 +323,28 @@
           <div class="lessons">
             <div class="lesson-item">
               <a
-                href="./public-Finance/Questions & Answers/chapter1/index.html"
-              >
+                href="./public-Finance/Questions & Answers/chapter1/index.html">
                 <span class="lesson-number">1</span>
                 <span>Chapter 1 Questions</span>
               </a>
             </div>
             <div class="lesson-item">
               <a
-                href="./public-Finance/Questions & Answers/chapter2/index.html"
-              >
+                href="./public-Finance/Questions & Answers/chapter2/index.html">
                 <span class="lesson-number">2</span>
                 <span>Chapter 2 Questions</span>
               </a>
             </div>
             <div class="lesson-item">
               <a
-                href="./public-Finance/Questions & Answers/chapter3/index.html"
-              >
+                href="./public-Finance/Questions & Answers/chapter3/index.html">
                 <span class="lesson-number">3</span>
                 <span>Chapter 3 Questions</span>
               </a>
             </div>
             <div class="lesson-item">
               <a
-                href="./public-Finance/Questions & Answers/chapter4/index.html"
-              >
+                href="./public-Finance/Questions & Answers/chapter4/index.html">
                 <span class="lesson-number">4</span>
                 <span>Chapter 4 Questions</span>
               </a>

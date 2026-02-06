@@ -11,9 +11,7 @@
   --border-color: rgba(255, 255, 255, 0.1);
 }
 
-body {
- 
-}
+
 
 .container {
   max-width: 1200px;
@@ -45,22 +43,22 @@ body {
 .subject-header {
   background: linear-gradient(135deg, #6d28d9, #8b5cf6);
   padding: 40px;
-  border-radius: 10px;
+  border-radius: 10px 60px 10px 10px;
   margin-bottom: 40px;
   position: relative;
   overflow: hidden;
 }
-
-.subject-header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==");
-  opacity: 0.3;
+@media (max-width:375px) {
+  .subject-header {
+  background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+  padding: 40px;
+  border-radius: 10px 40px 10px 10px;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
 }
+} 
+
 
 .subject-header h1 {
   font-size: 2.5rem;
@@ -100,12 +98,10 @@ body {
 
 .chapter-card {
   background: var(--card-bg);
-  border-radius: 20px;
+  border-radius: 20px 100px 10px 10px;
   padding: 25px;
-  border: 3px groove var(--border-color);
+  border: 3px dotted var(--border-color);
   transition: all 0.3s ease;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   position: relative;
   overflow: hidden;
 }
@@ -152,13 +148,17 @@ body {
 .lesson-item {
   position: relative;
 }
-
+@media (max-width:375px){
+  .lesson-item {
+    padding: 15px;
+  }
+}
 .lesson-item a {
   display: flex;
   align-items: center;
   padding: 12px 15px;
   background: rgba(255, 255, 255, 0.03);
-  border-radius: 50px;
+  border-radius: 10px 30px;
   color: var(--text-secondary);
   text-decoration: none;
   transition: all 0.3s ease;

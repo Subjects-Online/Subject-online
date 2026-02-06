@@ -106,7 +106,10 @@
     font-size: 2rem;
     border-radius: 20px;
   }
-
+  .icon-ring {
+    border-radius: 20px;
+    inset: -5px;
+  }
   .card-number {
     font-size: 7rem;
     left: 41%;
@@ -233,12 +236,12 @@
     display: none;
   }
 }
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
   .media {
     top: 45%;
     left: 33%;
   }
-}
+} */
 @media (max-width: 425px) {
   /* Extra small mobile devices */
   .nav {
@@ -266,6 +269,7 @@
 
   .subject-card-new {
     padding: 20px 15px;
+            border-radius: 130px 130px 10px 10px;
   }
 
   .card-icon-wrapper {
@@ -301,6 +305,7 @@
     left: 33%;
     top: 30%;
   }
+  
 }
 @media (max-width: 320px) {
   .card-number {
@@ -418,7 +423,6 @@
 
 /* Start Doctors News Media */
 
-
 /* End Doctors News Media */
 /*  End Media */
 
@@ -526,7 +530,6 @@
 }
 
 /* ---------------------Start  Doctors News Animations---------------------  */
-
 
 /* End  Doctors News Animations  */
 /* End Animations */

@@ -32,22 +32,6 @@ body {
   padding: 20px;
 }
 
-/* .back-button {
-  display: inline-flex;
-  align-items: center;
-  margin-bottom: 30px;
-  color: #4f46e5;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  padding: 10px;
-  border-radius: 8px;
-  overflow: hidden;
-  background: rgba(99, 102, 241, 0.1);
-  border: 1px solid rgba(99, 102, 241, 0.2);
-} */
-
 .back-button:hover {
   color: #4338ca;
   transform: translateX(0);
@@ -82,7 +66,6 @@ body {
   transform: translateY(20px);
   opacity: 0;
   animation: fadeInUp 0.8s ease-out 0.2s forwards;
-  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
 }
 
 @keyframes fadeInUp {
@@ -106,55 +89,12 @@ body {
   }
 }
 
-/* .subject-header::before,
-.subject-header::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  animation: float 6s ease-in-out infinite;
-} */
-
-/* .subject-header::before {
-  width: 100px;
-  height: 100px;
-  top: -30px;
-  right: -30px;
-  animation-delay: 0.5s;
-} */
-
-/* .subject-header::after {
-  width: 60px;
-  height: 60px;
-  bottom: -20px;
-  left: 10%;
-  animation-delay: 1s;
-} */
-
-/* .subject-header:hover::before {
-  transform: scale(1.1);
-  transition: transform 0.5s ease;
-} */
 
 .subject-header h1 {
   position: relative;
   display: inline-block;
 }
 
-/* .subject-header h1::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: white;
-  transition: width 0.5s ease;
-} */
-
-/* .subject-header:hover h1::after {
-  width: 100%;
-} */
 
 .subject-header h1 {
   font-size: 35px;
@@ -172,18 +112,12 @@ body {
   z-index: 2;
 }
 
-/* .chapters {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
-    margin-top: 40px;
-} */
+
 
 .chapter-card {
   background: white;
   border-radius: 50px;
   padding: 25px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid #e5e7eb;
   position: relative;
@@ -225,13 +159,9 @@ body {
   z-index: 1;
 } */
 
-.chapter-card:hover::before {
-  transform: translateX(100%) skewX(-15deg);
-}
-
 .chapter-card:hover {
   transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 30px 20px 20px rgb(0, 0, 0);
+  box-shadow: 0 0px 20px 5px rgb(0, 0, 0);
   z-index: 2;
   border-style: ridge;
 }
@@ -368,6 +298,7 @@ body {
   font-size: 0.8rem;
   font-weight: 600;
   flex-shrink: 0;
+  margin: 0;
 }
 
 /* Breadcrumb Styles */
@@ -458,60 +389,16 @@ body {
   }
 }
 
-/* Materials Heading */
-/* .materials-heading{
-  position: relative;
-margin: 0 auto 80px;
-width: fit-content;
-border: 3px groove rgba(57, 14, 167, 0.679);
-border-radius: 50px;
-font-size: 30px;
-padding: 10px 20px;
-z-index: 1;
-transition: 1s;
-overflow: hidden;
-background-color: #861f8b19;
-} */
-
-/* .materials-heading::before{
-  content: "";
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  background-color:  #1786e069;
-  border-radius: 50%;
-  top: 50%;
-  left: -30px;
-  transform: translateY(-50%);
-  transition: .5s;
-
-}
-
-.materials-heading::after{
-  content: "";
-  position: absolute;
-    width: 12px;
-  height: 12px;
-    background-color: #1786e0a5;
-  border-radius: 50%;
-  top: 50%;
-  right: -30px;
-  transition: .5s;
-  transform: translateY(-50%);
-} */
-
 .materials-heading:hover::before {
   z-index: -1;
   transition: 0.5s;
   animation: left-move 0.5s linear forwards;
 }
 
-.materials-heading:hover::after {
+/* .materials-heading:hover::after {
   z-index: -1;
   transition: 0.5s;
-  animation: right-move 0.5s linear forwards;
-  /* background-color:color-mix(in srgb-linear, rgba(0, 187, 255, 0.635) 20%, rgba(87, 183, 18, 0.34) ); */
-}
+} */
 
 .materials-heading:hover {
   /* border-color: rgb(112, 49, 207); */
@@ -520,8 +407,6 @@ background-color: #861f8b19;
   border-style: ridge;
   color: white;
   transition: 0.5s;
-  box-shadow: 0 0 30px 10px black inset;
-  /* transition-delay: var(--main-transition); */
 }
 
 @keyframes left-move {
