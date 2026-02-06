@@ -25,22 +25,20 @@
   /* Hero Section */
   .hero {
     height: auto;
-    min-height: 100vh;
-    padding: 15px;
+    height: 100vh;
   }
 
-  .hero .hero-content {
+  .hero  {
     flex-direction: column;
-    padding: 50px 20px;
     text-align: center;
     gap: 30px;
   }
 
-  .hero .hero-content .container {
+  .hero  .container {
     order: 1;
   }
 
-  .hero .hero-content .icons {
+  .hero  .icons {
     order: 3;
     margin-top: -80px;
   }
@@ -52,16 +50,16 @@
     justify-content: center;
   }
 
-  .hero .hero-content .container .hero-badge {
+  .hero  .container .hero-badge {
     font-size: clamp(2rem, 6vw, 3.5rem);
     line-height: 1.2;
   }
 
-  .hero .hero-content .icons .learn {
+  .hero  .icons .learn {
     font-size: clamp(1.2rem, 3vw, 1.8rem);
   }
 
-  .hero .hero-content .icons span {
+  .hero  .icons span {
     font-size: 2rem;
     margin: 0 8px;
   }
@@ -151,7 +149,9 @@
     height: 45px; */
     margin: 0 auto;
   }
-
+.subject-card-new{
+  border-radius: 150px 150px 10px 10px;
+}
   /* Footer */
   footer {
     padding: 40px 15px !important;
@@ -206,6 +206,27 @@
   .breadcrumb {
     display: none;
   }
+  .subjects-grid-new:has(.subject-card-new:hover) .subject-card-new:not(:hover) {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0px);
+  /* transition: all 0.3s ease; */
+}
+.lessons:has(.lesson-item a:hover) .lesson-item a:not(:hover) {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0px);
+  /* transition: all 0.3s ease; */
+}
+.chapters:has(.chapter-card:hover) .chapter-card:not(:hover) {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0px);
+}
+.main{
+    width: 90%;
+    border-radius: 50px;
+  }
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {
@@ -216,6 +237,7 @@
   }
 
   .nav {
+    top: 0;
     width: 95%;
     padding: 18px 25px;
   }
@@ -224,9 +246,7 @@
     font-size: 1.6rem;
   }
 
-  .hero .hero-content {
-    padding: 100px 40px;
-  }
+ 
 
   .subjects {
     padding: 80px 20px;
@@ -245,6 +265,7 @@
 @media (max-width: 425px) {
   /* Extra small mobile devices */
   .nav {
+    display: none;
     width: 95%;
     padding: 5px 0px;
   }
@@ -258,11 +279,11 @@
     padding: 6px 12px;
   }
 
-  .hero .hero-content {
+  .hero  {
     padding: 30px 15px;
   }
 
-  .hero .hero-content .container .hero-badge {
+  .hero  .container .hero-badge {
     font-size: 1.8rem;
     margin-bottom: -45px;
   }
@@ -298,6 +319,7 @@
     left: 35%;
     top: 30%;
   }
+  
 }
 @media (max-width: 375px) {
   .card-number {
@@ -319,11 +341,11 @@
 @media (max-width: 768px) and (orientation: landscape) {
   .hero {
     min-height: auto;
-    padding: 20px 15px;
+    /* padding: 20px 15px; */
   }
 
-  .hero .hero-content {
-    padding: 30px 20px;
+  .hero  {
+    /* padding: 30px 20px; */
     flex-direction: column;
     gap: 40px;
   }
@@ -399,9 +421,8 @@
 /* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
   .hero,
-  .hero-content,
-  .hero-content::before,
-  .hero-content::after,
+  ::before,
+  ::after,
   .hero-bg .blob,
   .hero-decor,
   .hero-decor::before,

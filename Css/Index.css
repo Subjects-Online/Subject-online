@@ -57,11 +57,11 @@ body {
 
 .nav {
   position: relative;
-  top: 10px;
+  top: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 99%;
+  width: 98%;
   margin: 0px auto;
   padding: 20px 30px;
   background: rgba(255, 255, 255, 0.1);
@@ -104,9 +104,22 @@ body {
   box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
 }
 
+.nav > div > a:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  width: 0%;
+  height: 2px;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
 
-
-
+.nav > div > a:hover:after {
+  width: 80%;
+}
 
 .nav .title {
   font-size: 2rem;
@@ -140,14 +153,17 @@ body {
   font-weight: bold;
   padding: 2px 6px;
   border-radius: 10px;
+  animation: newBadge 2s ease-in-out infinite;
   z-index: 1;
 }
 
 .hero {
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   display: flex;
+  flex-direction: column;
   height: 100vh;
-  padding: 20px;
+  /* align-items: center; */
+  /* padding: 20px; */
   position: relative;
   overflow: hidden;
 }
@@ -161,7 +177,7 @@ body {
   bottom: 0;
   background:
     radial-gradient(
-      circle at 20% 50%,
+      circle at 0% 50%,
       rgba(99, 102, 241, 0.3) 0%,
       transparent 50%
     ),
@@ -177,7 +193,7 @@ body {
     );
 }
 
-.hero .hero-content {
+/* .hero .hero-content {
   display: flex;
   flex: 1;
   justify-content: space-evenly;
@@ -190,27 +206,41 @@ body {
   position: relative;
   z-index: 2;
   flex-direction: column;
+} */
+.main{
+ display: flex;
+    border:  1px solid rgb(255, 255, 255, .2);
+    flex-direction: column;
+    padding: 30px;
+    backdrop-filter: blur(50px);
+    border-radius: 200px 10px ;
+    width: 80%;
+    margin: auto auto;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    
 }
-
-.hero .hero-content .container .hero-badge {
-  font-size: clamp(3rem, 5vw, 6rem);
-  font-weight: 900;
-  background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 50%, #c084fc 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: -70px;
-  margin-top: -70px;
-  letter-spacing: -2px;
-  line-height: 160px;
+.hero .hero-badge {
+ font-size: clamp(3rem, 5vw, 6rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 50%, #c084fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /* margin-bottom: -70px; */
+    /* margin-top: -70px; */
+    letter-spacing: -2px;
+    /* line-height: 160px; */
+    text-align: center;
 }
-.hero .hero-content .icons {
+.hero  .icons {
   animation: slideInRight 1s ease-out;
   text-align: center;
   margin-bottom: 55px;
 }
 
-.hero .hero-content .icons .learn {
+.hero .icons .learn {
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   font-weight: 700;
   background: linear-gradient(90deg, #06b6d4, #8b5cf6, #ec4899);
@@ -224,7 +254,7 @@ body {
   text-transform: uppercase;
 }
 
-.hero .hero-content .icons span {
+.hero  .icons span {
   display: inline-block;
   font-size: 3rem;
   margin: 0 15px;
@@ -232,7 +262,7 @@ body {
   cursor: pointer;
 }
 
-.hero .hero-content .icons span:hover {
+.hero  .icons span:hover {
   transform: scale(1.3) rotate(15deg);
   filter: drop-shadow(0 0 30px rgba(99, 102, 241, 0.8));
 }
@@ -387,6 +417,12 @@ body {
   filter: blur(3px);
   transition: all 0.3s ease;
 }
+.chapters:has(.chapter-card:hover) .chapter-card:not(:hover) {
+  opacity: 0.3;
+  transform: scale(0.95);
+  filter: blur(3px);
+  transition: all 0.3s ease;
+}
 
 .card-icon-wrapper {
   position: relative;
@@ -407,7 +443,7 @@ body {
     rgba(255, 255, 255, 0.15),
     rgba(255, 255, 255, 0.08)
   );
-      border-radius: 10px 45px;
+      border-radius:30px;
   border: 3px solid rgba(255, 255, 255, 0.25);
   position: relative;
   z-index: 2;
@@ -419,7 +455,7 @@ body {
   position: absolute;
   inset: -12px;
   border: 3px solid rgba(99, 102, 241, 0.6);
-      border-radius: 10px 45px;
+      border-radius: 30px;
   opacity: 0;
   transition: all 0.6s ease;
   animation: pulseRing 3s ease-in-out infinite;
