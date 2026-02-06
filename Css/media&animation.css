@@ -262,7 +262,7 @@
     left: 33%;
   }
 } */
-@media (max-width: 425px) {
+@media (max-width: 480px) {
   /* Extra small mobile devices */
   .nav {
     top: 10px;
