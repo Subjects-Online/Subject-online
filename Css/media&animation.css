@@ -319,7 +319,10 @@
     left: 35%;
     top: 30%;
   }
-  
+  .main{
+    width: 99%;
+    border-radius: 50px;
+  }
 }
 @media (max-width: 375px) {
   .card-number {
