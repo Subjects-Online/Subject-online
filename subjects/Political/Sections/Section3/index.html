@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title Subject Online</title>
+    <title> Subject Online</title>
 
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
@@ -232,18 +232,22 @@
       /* Breadcrumb Styling */
 
       .breadcrumb {
-       position: sticky;
-    top: 10px;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05));
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(139, 92, 246, 0.2);
-    border-radius: 12px;
-    padding: 12px 20px;
-    margin-bottom: 20px;
-    width: 45%;
-    margin: 30px auto;
-    display: flex;
-    justify-content: space-evenly;
+        position: sticky;
+        top: 10px;
+        background: linear-gradient(
+          135deg,
+          rgba(139, 92, 246, 0.1),
+          rgba(139, 92, 246, 0.05)
+        );
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(139, 92, 246, 0.2);
+        border-radius: 12px;
+        padding: 12px 20px;
+        margin-bottom: 20px;
+        width: 40%;
+        margin: 30px auto;
+        display: flex;
+        justify-content: space-evenly;
       }
 
       .breadcrumb a {
@@ -256,7 +260,6 @@
         display: inline-flex;
 
         align-items: center;
-        gap: -20px;
       }
 
       .breadcrumb a:hover {
@@ -284,7 +287,7 @@
       .breadcrumb a::after {
         content: "›";
 
-        margin-left: 20px;
+        margin-left: 10px;
 
         color: var(--text-secondary);
 
@@ -866,56 +869,56 @@
 
       const pdfFiles = [
         // {
-        //   path: "../../../../../Assets/lect 1.pdf",
+        //   path: "",
         //   title: "",
         //   size: "1.2 MB",
         //   date: "2025-01-15",
         //   icon: "<i class='fas fa-book-open'></i>",
         // },
         // {
-        //   path: "../../../../../Assets/lect 1.pdf",
+        //   path: "",
         //   title: "",
         //   size: "980 KB",
         //   date: "2025-01-22",
         //   icon: "<i class='fas fa-chart-line'></i>",
         // },
         // {
-        //   path: "../../../../../Assets/lect 1.pdf",
+        //   path: "",
         //   title: "",
         //   size: "1.5 MB",
         //   date: "2025-01-29",
         //   icon: "<i class='fas fa-globe-americas'></i>",
         // },
         // {
-        //   path: "../../../../../Assets/lect 1.pdf",
+        //   path: "",
         //   title: "",
         //   size: "1.1 MB",
         //   date: "2025-02-05",
         //   icon: "<i class='fas fa-project-diagram'></i>",
         // },
         // {
-        //   path: "../../../../../Assets/lect 1.pdf",
+        //   path: "",
         //   title: "",
         //   size: "1.3 MB",
         //   date: "2025-02-12",
         //   icon: "<i class='fas fa-book'></i>",
         // },
         // {
-        //   path: "../../../../../Assets/lect 1.pdf",
+        //   path: "",
         //   title: "",
         //   size: "1.3 MB",
         //   date: "2025-02-12",
         //   icon: "<i class='fas fa-book'></i>",
         // },
         // {
-        //   path: "../../../../../Assets/lect 1.pdf",
+        //   path: "",
         //   title: "",
         //   size: "1.3 MB",
         //   date: "2025-02-12",
         //   icon: "<i class='fas fa-book'></i>",
         // },
         // {
-        //   path: "../../../../../Assets/lect 1.pdf",
+        //   path: "",
         //   title: "",
         //   size: "1.3 MB",
         //   date: "2025-02-12",
@@ -1004,7 +1007,7 @@
           pdfGrid.innerHTML = ""; // Clear loading message
 
           if (pdfFiles.length === 0) {
-            pdfGrid.innerHTML = '<div class="loading">Coming Soon...</div>';
+            pdfGrid.innerHTML = '<div class="loading">Coming Soon ...</div>';
 
             return;
           }
