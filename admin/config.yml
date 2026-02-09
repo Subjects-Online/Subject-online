@@ -4,7 +4,7 @@ backend:
   branch: main
 
 media_folder: "Assets"
-public_folder: "/Assets"
+public_folder: "../Assets"
 
 collections:
   - name: "pages"
