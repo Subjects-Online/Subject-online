@@ -4,28 +4,15 @@ backend:
   branch: main
 
 media_folder: "Assets"
-public_folder: "../Assets"
+public_folder: "/Assets"
 
 collections:
-  - name: "pages"
-    label: "Pages"
-    files:
-      - file: "content/home.json"
-        label: "Home Page"
-        name: "home"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
-
- - name: "subjects"
+  - name: "subjects"
     label: "المواد الدراسية"
     folder: "subjects"
     extension: "html"
     format: "frontmatter"
     create: true
-    identifier_field: "title"
-    # هذا السطر يخبر اللوحة بالبحث في كل المجلدات الفرعية عن أي ملف index.html
-    path: "{{route}}/index" 
     nested:
       depth: 10
     fields:
