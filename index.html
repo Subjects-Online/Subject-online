@@ -25,8 +25,6 @@
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="shortcut icon" href="Imgs/IMG-20260122-WA0000.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="Css/ramadan-full.css">
-    <link rel="stylesheet" href="Css/ramadan-full.css">
 </head>
 
 <body>
@@ -58,11 +56,8 @@
                     <span>🏭</span>
                     <span>💻</span>
                 </div>
-                
                     </div>
             </div>
-            
-        
     </section>
     <section class="subjects" id="subjects">
         <div class="subjects-container">
@@ -129,6 +124,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- Public Finance -->
             <div class="subject-card-new" data-color="orange">
                 <div class="card-glow"></div>
@@ -156,7 +152,6 @@
             </div>
 
             <!-- English -->
-
             <div class="subject-card-new" data-color="blue">
                 <div class="card-glow"></div>
                 <div class="card-pattern"></div>
@@ -259,6 +254,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- Political  -->
             <div class="subject-card-new" data-color="pink">
                 <div class="card-glow"></div>
@@ -271,7 +267,6 @@
                 <div class="card-content">
                     <div " class=" card-number">08</div>
                     <h3> Political Science</h3>
-
                     <div class="card-stats">
                         <span><i class="fas fa-book"></i> 0 Lessons</span>
                     </div>
@@ -297,6 +292,7 @@
     <script src="vendor/typed.js/typed.umd.min.js"></script>
     <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
     <script>
+        
         // Sample subjects data (same as favorites.html)
         const subjects = [
             { id: 1, name: 'Intermediate Accounting 2', icon: '📊', description: '', url: 'subjects/accounting.html' },
@@ -570,325 +566,174 @@
             });
         });
 
-
-
-
-
-
-
-
-
-
-
         // Add CSS animations
-
         const style = document.createElement('style');
-
         style.textContent = `
-
     @keyframes slideInRight {
-
         from { transform: translateX(100%); opacity: 0; }
-
         to { transform: translateX(0); opacity: 1; }
-
     }
 
     @keyframes slideOutRight {
-
         from { transform: translateX(0); opacity: 1; }
-
         to { transform: translateX(100%); opacity: 0; }
-
     }
 
     .favorite-btn i {
-
         transition: all 0.3s ease;
-
     }
 
     .favorite-btn i.fas {
-
         color: #ef4444 !important;
-
         animation: heartBeat 0.6s ease-in-out;
-
     }
 
     @keyframes heartBeat {
-
         0%, 100% { transform: scale(1); }
-
         50% { transform: scale(1.2); }
-
     }
 
     .card-actions {
-
         display: flex;
-
         gap: 10px;
-
         margin-top:130px;
-
     }
 
     .start-btn {
-
         flex: 1;
-
         background: linear-gradient(135deg, #6366f1, #8b5cf6);
-
         color: white;
-
         border: none;
-
         padding: 12px 20px;
-
         border-radius: 10px;
-
         text-decoration: none;
-
         display: flex;
-
         align-items: center;
-
         justify-content: center;
-
         gap: 8px;
-
         font-weight: 600;
-
         transition: all 0.3s ease;
-
     }
-
     .start-btn:hover {
-
         transform: translateY(-2px);
-
         box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
-
     }
 
     .favorite-btn {
-
         background: linear-gradient(135deg, #f59e0b, #d97706);
-
         color: white;
-
         border: none;
-
         padding: 12px;
-
         border-radius: 10px;
-
         cursor: pointer;
-
         transition: all 0.3s ease;
-
         width: 50px;
-
         height: 50px;
-
         display: flex;
-
         align-items: center;
-
         justify-content: center;
-
     }
 
     .favorite-btn:hover {
-
         transform: translateY(-2px);
-
         box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
-
     }
-
 `;
-
         document.head.appendChild(style);
-
-
-
     </script>
-
-
-
     <footer id="contact" style="
-
      background-image: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-
     color: white;
-
     padding: 60px 20px 30px;
-
     margin-top: 80px;
-
 ">
-
         <div style="max-width: 1200px; margin: 0 auto;">
-
             <div style="display: grid; grid-template-columns:  1fr 1fr 1fr; gap: 40px; margin-bottom: 40px;">
-
                 <!-- Company Info -->
-
                 <div>
-
                     <h3 style="font-size: 1.5rem; margin-bottom: 20px; color: #ffffff;">Subjects Online</h3>
-
                     <p style="color: #94a3b8; line-height: 1.6; margin-bottom: 20px;">
-
                         Your comprehensive platform for learning management, finance, economics, and more. Empowering
                         students worldwide.
-
                     </p>
-
                     <div style="display: flex; gap: 15px;">
-
                         <a href="https://www.facebook.com/ahmed.tamer.952116?mibextid=ZbWKwL"
                             style="width: 40px; height: 40px; background: linear-gradient(135deg, #6366f1, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
-
                             <i class="fab fa-facebook-f"></i>
-
                         </a>
-
                         <a href="https://chat.whatsapp.com/BmUhhJti1rWFKQHWGpQSL1?mode=gi_t"
                             style="width: 40px; height: 40px; background: linear-gradient(135deg, #1df21d, #37971e); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
-
                             <i class="fab fa-whatsapp"></i>
-
                         </a>
-
                         <a href="https://www.linkedin.com/in/ahmed-tamer-0b2b93356?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                             style="width: 40px; height: 40px; background: linear-gradient(135deg, #0077b5, #005885); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
-
                             <i class="fab fa-linkedin-in"></i>
-
                         </a>
-
                     </div>
-
                 </div>
-
-
-
                 <!-- Quick Links -->
 
                 <div>
-
                     <h4 style="font-size: 1.2rem; margin-bottom: 20px; color: #ffffff;">Quick Links</h4>
-
                     <ul style="list-style: none; padding: 0; margin: 0;">
-
                         <li style="margin-bottom: 12px;">
-
                             <a href="#subjects"
                                 style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">All
                                 Subjects</a>
-
                         </li>
-
                         <li style="margin-bottom: 12px;">
-
                             <a href="Favorites.html"
                                 style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">My
                                 Favorites</a>
-
                         </li>
-
                         <li style="margin-bottom: 12px;">
-
                             <a href="doctors-news.html"
                                 style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">Doctors
                                 News</a>
-
                         </li>
-
                     </ul>
-
                 </div>
-
                 <!-- Contact -->
-
                 <div>
-
                     <h4 style="font-size: 1.2rem; margin-bottom: 20px; color: #ffffff;">Contact Info</h4>
-
                     <div style="display: flex; flex-direction: column; gap: 12px;">
-
                         <div style="display: flex; align-items: center; gap: 10px; color: #94a3b8;">
-
                             <i class="fas fa-envelope"></i>
-
                             <span>support@subjectsonline.com</span>
-
                         </div>
-
                         <div style="display: flex; align-items: center; gap: 10px; color: #94a3b8;">
-
                             <i class="fas fa-phone"></i>
-
                             <span>+20 123 456 7890</span>
-
                         </div>
-
                         <div style="display: flex; align-items: center; gap: 10px; color: #94a3b8;">
-
                             <i class="fas fa-map-marker-alt"></i>
-
                             <span>Cairo, Egypt</span>
-
                         </div>
-
                         <div style="margin-top: 15px;">
 
                             <a href="#contact"
                                 style="display: inline-block; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
-
                                 <i class="fas fa-paper-plane"></i> Contact Us
-
                             </a>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
 
 
             <!-- Bottom Bar -->
-
             <div style="
-
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-
             padding-top: 30px;
-
             text-align: center;
-
             color: #94a3b8;
-
         ">
 
                 <p style="margin: 0;">
-
                     &copy; 2026 Subjects Online. All rights reserved. Developed By Ahmed Tamer for students worldwide.
-
                 </p>
-
             </div>
-
         </div>
-
     </footer>
-
 </body>
-
 </html>
