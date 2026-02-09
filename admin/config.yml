@@ -22,6 +22,7 @@ collections:
     folder: "../subjects"
     extension: "html"
     format: "frontmatter"
+    identifier_field:"title"
     create: true
     nested:
       depth: 10
