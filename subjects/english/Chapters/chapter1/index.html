@@ -1,8 +1,4 @@
----
-title: acc
----
 <!doctype html>
-
 <html lang="en" dir="ltr">
 
 <head>
@@ -546,9 +542,7 @@ title: acc
         }
     }
   </style>
-
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() {
@@ -557,7 +551,6 @@ title: acc
     gtag("js", new Date());
     gtag("config", "G-XXXXXXX");
   </script>
-
 </head>
 
 <body>
@@ -566,45 +559,42 @@ title: acc
     <nav class="breadcrumb">
       <a href="../../../../index.html">Home</a>
       <!-- <span> &gt; </span> -->
-      <a href="../../../../index.html#subjects">Subjects</a>
+      <a href="../../../../../index.html#subjects">Subjects</a>
       <!-- <span> &gt; </span> -->
       <a href="../../../english.html">English</a>
       <!-- <span> &gt; </span> -->
       <span>Chapter 1</span>
     </nav>
 
-```
-<a href="../../../english.html" class="back-button">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round">
-    <line x1="19" y1="12" x2="5" y2="12"></line>
-    <polyline points="12 19 5 12 12 5"></polyline>
-  </svg>
-  Back to English
-</a>
+    <a href="../../../english.html" class="back-button">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      Back to English
+    </a>
 
-<div class="subject-header">
-  <h1>📚 Chapter 1</h1>
-  
-</div>
+    <div class="subject-header">
+      <h1>📚 Chapter 1</h1>
+      
+    </div>
 
-<div class="pdf-grid" id="pdfGrid">
-  <div class="loading">Loading PDFs...</div>
-</div>
-```
-
+    <div class="pdf-grid" id="pdfGrid">
+      <div class="loading">Loading PDFs...</div>
+    </div>
   </div>
 
   <script>
     // List of PDF files in the assets folder with metadata
     const pdfFiles = [
-       {
-         path: "[Assets/screenshot-2026-02-09-191429.png](Assets/screenshot-2026-02-09-191429.png)",
-       title: "acc",
-        size: "1.2 MB",
-        date: "2025-01-15",
-        icon: "<i class='fas fa-book-open'></i>",
-      },
+      // {
+      //   path: "lect 1.pdf",
+      //   title: "",
+      //   size: "1.2 MB",
+      //   date: "2025-01-15",
+      //   icon: "<i class='fas fa-book-open'></i>",
+      // },
       // {
       //   path: "",
       //   title: "",
@@ -725,12 +715,12 @@ title: acc
           pdfCard.className = "pdf-card";
           pdfCard.dataset.pdfPath = pdf.path; // Store PDF path in data attribute
           pdfCard.dataset.pdfTitle = pdf.title; // Store PDF title
-          pdfCard.style.animation = \`fadeIn 0.3s ease-out ${index * 0.1}s both\`;
+          pdfCard.style.animation = `fadeIn 0.3s ease-out ${index * 0.1}s both`;
 
           // Add data-color attribute for different card colors
-          const colors = \["green", "blue", "purple", "red", "orange"];
+          const colors = ["green", "blue", "purple", "red", "orange"];
           const colorIndex = index % colors.length;
-          pdfCard.setAttribute("data-color", colors\[colorIndex]);
+          pdfCard.setAttribute("data-color", colors[colorIndex]);
 
           pdfCard.innerHTML = `
                         <div class="card-glow"></div>
@@ -753,7 +743,7 @@ title: acc
                                 </div>
                             </div>
                         </div>
-                    \`;
+                    `;
 
           pdfGrid.appendChild(pdfCard);
         });
@@ -775,74 +765,74 @@ title: acc
     // Add color-specific styles for cards
     function addCardColorStyles() {
       const style = document.createElement("style");
-      style.textContent = \`
-                .pdf-card\[data-color="green"] .card-icon,
-                .pdf-card\[data-color="green"] .card-btn::before {
+      style.textContent = `
+                .pdf-card[data-color="green"] .card-icon,
+                .pdf-card[data-color="green"] .card-btn::before {
                     background: linear-gradient(135deg, #10b981, #34d399);
                 }
-                .pdf-card\[data-color="green"] .icon-ring {
+                .pdf-card[data-color="green"] .icon-ring {
                     border-color: rgba(16, 185, 129, 0.4);
                 }
-                .pdf-card\[data-color="green"] .card-btn {
+                .pdf-card[data-color="green"] .card-btn {
                     color: #10b981;
                 }
-                .pdf-card\[data-color="green"] .card-btn:hover {
+                .pdf-card[data-color="green"] .card-btn:hover {
                     color: #34d399;
                 }
                 
-                .pdf-card\[data-color="blue"] .card-icon,
-                .pdf-card\[data-color="blue"] .card-btn::before {
+                .pdf-card[data-color="blue"] .card-icon,
+                .pdf-card[data-color="blue"] .card-btn::before {
                     background: linear-gradient(135deg, #3b82f6, #6366f1);
                 }
-                .pdf-card\[data-color="blue"] .icon-ring {
+                .pdf-card[data-color="blue"] .icon-ring {
                     border-color: rgba(59, 130, 246, 0.4);
                 }
-                .pdf-card\[data-color="blue"] .card-btn {
+                .pdf-card[data-color="blue"] .card-btn {
                     color: #3b82f6;
                 }
-                .pdf-card\[data-color="blue"] .card-btn:hover {
+                .pdf-card[data-color="blue"] .card-btn:hover {
                     color: #6366f1;
                 }
                 
-                .pdf-card\[data-color="purple"] .card-icon,
-                .pdf-card\[data-color="purple"] .card-btn::before {
+                .pdf-card[data-color="purple"] .card-icon,
+                .pdf-card[data-color="purple"] .card-btn::before {
                     background: linear-gradient(135deg, #8b5cf6, #6366f1);
                 }
-                .pdf-card\[data-color="purple"] .icon-ring {
+                .pdf-card[data-color="purple"] .icon-ring {
                     border-color: rgba(139, 92, 246, 0.4);
                 }
-                .pdf-card\[data-color="purple"] .card-btn {
+                .pdf-card[data-color="purple"] .card-btn {
                     color: #8b5cf6;
                 }
-                .pdf-card\[data-color="purple"] .card-btn:hover {
+                .pdf-card[data-color="purple"] .card-btn:hover {
                     color: #6366f1;
                 }
                 
-                .pdf-card\[data-color="red"] .card-icon,
-                .pdf-card\[data-color="red"] .card-btn::before {
+                .pdf-card[data-color="red"] .card-icon,
+                .pdf-card[data-color="red"] .card-btn::before {
                     background: linear-gradient(135deg, #ef4444, #f97316);
                 }
-                .pdf-card\[data-color="red"] .icon-ring {
+                .pdf-card[data-color="red"] .icon-ring {
                     border-color: rgba(239, 68, 68, 0.4);
                 }
-                .pdf-card\[data-color="red"] .card-btn {
+                .pdf-card[data-color="red"] .card-btn {
                     color: #ef4444;
                 }
-                .pdf-card\[data-color="red"] .card-btn:hover {
+                .pdf-card[data-color="red"] .card-btn:hover {
                     color: #f97316;
                 }
                 
-                .pdf-card\[data-color="orange"] .card-icon,
-                .pdf-card\[data-color="orange"] .card-btn::before {
+                .pdf-card[data-color="orange"] .card-icon,
+                .pdf-card[data-color="orange"] .card-btn::before {
                     background: linear-gradient(135deg, #f59e0b, #ec4899);
                 }
-                .pdf-card\[data-color="orange"] .icon-ring {
+                .pdf-card[data-color="orange"] .icon-ring {
                     border-color: rgba(245, 158, 11, 0.4);
                 }
-                .pdf-card\[data-color="orange"] .card-btn {
+                .pdf-card[data-color="orange"] .card-btn {
                     color: #f59e0b;
                 }
-                .pdf-card\[data-color="orange"] .card-btn:hover {
+                .pdf-card[data-color="orange"] .card-btn:hover {
                     color: #ec4899;
                 }
             `;
@@ -852,7 +842,6 @@ title: acc
     // Load PDFs when the page loads
     document.addEventListener("DOMContentLoaded", createPdfCards);
   </script>
-
 </body>
 
 </html>

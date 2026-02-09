@@ -1,20 +1,20 @@
-backend:
-  name: git-gateway
-  repo: ahmedtamer-20cm/Subjects-Online
-  branch: main
+# backend:
+#   name: git-gateway
+#   repo: ahmedtamer-20cm/Subjects-Online
+#   branch: main
 
-media_folder: "Assets"
-public_folder: "/Assets"
+# media_folder: "Assets"
+# public_folder: "/Assets"
 
-collections:
-  - name: "subjects"
-    label: "المواد الدراسية"
-    folder: "subjects"
-    extension: "html"
-    format: "frontmatter"
-    create: true
-    nested:
-      depth: 10
-    fields:
-      - { label: "اسم المادة/الفصل", name: "title", widget: "string" }
-      - { label: "المحتوى", name: "body", widget: "markdown" }
+# collections:
+#   - name: "subjects"
+#     label: "المواد الدراسية"
+#     folder: "subjects"
+#     extension: "html"
+#     format: "frontmatter"
+#     create: true
+#     nested:
+#       depth: 10
+#     fields:
+#       - { label: "اسم المادة/الفصل", name: "title", widget: "string" }
+#       - { label: "المحتوى", name: "body", widget: "markdown" }
