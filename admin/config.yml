@@ -16,13 +16,15 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "text" }
-           # الربط الجديد بفولدر المواد (subjects)
-  - name: "subjects"
+- name: "subjects"
     label: "المواد الدراسية"
-    folder: "../subjects" # الفولدر اللي فيه ملفات المواد
-    create: true # عشان تقدر تضيف مادة جديدة من اللوحة
-    slug: "{{slug}}"
+    folder: "../subjects"
+    filter: {field: "title", value: ""} # هيفلتر لو فيه ملفات زيادة
+    extension: "html" # عشان يقرأ ملفات الـ index.html
+    format: "frontmatter" # بيحاول يقرأ البيانات اللي فوق في الملف
+    create: true
+    nested:
+      depth: 10 # دي أهم خطوة عشان يدخل جوه الفولدراتaccounting و chapters
     fields:
-      - { label: "اسم المادة", name: "title", widget: "string" }
-      - { label: "وصف المادة", name: "description", widget: "text" }
+      - { label: "اسم الفصل/الدرس", name: "title", widget: "string" }
       - { label: "المحتوى", name: "body", widget: "markdown" }
