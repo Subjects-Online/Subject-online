@@ -16,8 +16,10 @@
       <span class="close-btn">&times;</span>
       <div class="modal-header">
         <h3 id="modalTitle"></h3>
-        <button id="downloadPdf" class="download-btn">
+        <a id="downloadPdf" class="download-btn" download="Explain of lect 1.pdf" href="../../../../Assets/Ais/Explain of lect 1.pdf">
           <i class="fas fa-download"></i> Download PDF
+        </a>
+          
         </button>
       </div>
       <div class="pdf-container">
@@ -27,6 +29,9 @@
   </div>
 
   <style>
+    a{
+      text-decoration: none;
+    }
     /* Modal Styles */
     .modal {
       display: none;
