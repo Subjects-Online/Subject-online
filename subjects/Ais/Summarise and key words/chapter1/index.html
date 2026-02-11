@@ -16,9 +16,9 @@
       <span class="close-btn">&times;</span>
       <div class="modal-header">
         <h3 id="modalTitle"></h3>
-        <button id="downloadPdf" class="download-btn">
+        <a style="text-decoration: none;" id="downloadPdf" class="download-btn" download="Summary of lect 1.pdf" href="../../../../Assets/Ais/lect_1.pdf">
           <i class="fas fa-download"></i> Download PDF
-        </button>
+        </a>
       </div>
       <div class="pdf-container">
         <iframe id="pdfViewer" frameborder="0"></iframe>
@@ -590,13 +590,13 @@
   <script>
     // List of PDF files in the assets folder with metadata
     const pdfFiles = [
-      // {
-      //   path: "lect 1.pdf",
-      //   title: "",
-      //   size: "1.2 MB",
-      //   date: "2025-01-15",
-      //   icon: "<i class='fas fa-book-open'></i>",
-      // },
+      {
+        path: "../../../../Assets/Ais/lect_1.pdf",
+        title: "Summary of lect 1",
+        size: "1.2 MB",
+        date: "2026-2-11",
+        icon: "<i class='fas fa-book-open'></i>",
+      },
       // {
       //   path: "",
       //   title: "",
