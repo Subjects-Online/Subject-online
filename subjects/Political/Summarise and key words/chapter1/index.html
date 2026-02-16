@@ -4,19 +4,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chapter 1: Introduction to Economics - Subject Online</title>
+  <title> Subject Online</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../Css/main.css" />
   <link rel="stylesheet" href="../../Css/subject-theme.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
   <!-- PDF Viewer Modal -->
   <div id="pdfModal" class="modal">
     <div class="modal-content">
       <span class="close-btn">&times;</span>
       <div class="modal-header">
         <h3 id="modalTitle"></h3>
-        <button id="downloadPdf" class="download-btn">
-          <i class="fas fa-download"></i> Download PDF
-        </button>
+         <a style="text-decoration: none;" id="downloadPdf" class="download-btn" download="1-2__Political_Science  Summary .pdf" href="../../../../Assets/Political Sceince/1-2__Political_Science  Summary .pdf">
+          <i class="fas fa-download"></i> Download Pdf
+        </a>
       </div>
       <div class="pdf-container">
         <iframe id="pdfViewer" frameborder="0"></iframe>
@@ -588,13 +590,13 @@
   <script>
     // List of PDF files in the assets folder with metadata
     const pdfFiles = [
-      //{
-      //   path: "lect 1.pdf",
-      //   title: "",
-      //   size: "1.2 MB",
-      //   date: "2025-01-15",
-      //   icon: "<i class='fas fa-book-open'></i>",
-      // },
+      {
+        path: "../../../../Assets/Political Sceince/1-2__Political_Science  Summary .pdf",
+        title: "Lect 1-2 DR.Ashraf سنة فاتت",
+        size: "1020 KB",
+        date: "2026-02-16",
+        icon: "<i class='fas fa-book-open'></i>",
+      },
       // {
       //   path: "",
       //   title: "",

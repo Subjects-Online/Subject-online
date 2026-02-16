@@ -11,13 +11,15 @@
       rel="stylesheet" />
     <link rel="stylesheet" href="../../Css/main.css" />
     <link rel="stylesheet" href="../../Css/subject-theme.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <!-- PDF Viewer Modal -->
     <div id="pdfModal" class="modal">
       <div class="modal-content">
         <span class="close-btn">&times;</span>
         <div class="modal-header">
           <h3 id="modalTitle"></h3>
-                  <a style="text-decoration: none;" id="downloadPdf" class="download-btn" download="Explain of lect 1.pdf" href="../../../../Assets/Ais/Explain of lect 1.pdf">
+                  <a style="text-decoration: none;" id="downloadPdf" class="download-btn" download="تحديد_تكلفة_الأصول_الثابتة.mp4" href="../../../../../Assets/Accounting/تحديد_تكلفة_الأصول_الثابتة.mp4">
           <i class="fas fa-download"></i> Download Video
         </a>
         </div>
@@ -210,7 +212,14 @@
         padding: 20px;
         animation: fadeIn 0.5s ease-out;
       }
-
+@media (max-width:500px){
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 0;
+        animation: fadeIn 0.5s ease-out;
+      }
+    }
       .subject-header {
         text-align: center;
         margin-bottom: 40px;
@@ -608,13 +617,14 @@
     <script>
       // List of PDF files in the assets folder with metadata
       const pdfFiles = [
-        // {
-        //   path: "../../../../../Assets/Accounting/What_is_Marketing,_Really_.mp4",
-        //   title: "Lect 1 Dr.MZ  chapter 1",
-        //   size: "1.2 MB",
-        //   date: "2025-01-15",
-        //   icon: "<i class='fas fa-book-open'></i>",
-        // },
+        {
+          path: "../../../../../Assets/Accounting/تحديد_تكلفة_الأصول_الثابتة.mp4",
+          title: "Lect 1-2 Dr.MZ chapter 1",
+          size: "63 MB",
+          date: "2026-02-16",
+          icon:"<i class=' fas fa-brands fa-youtube'></i>"
+
+        },
         // {
         //   path: "../../../../../Assets/Accounting/lect 1.pdf",
         //   title: "Lect 2 Dr.MZ chapter 1",
@@ -755,7 +765,7 @@
                             <div class="pdf-content">
                                 <div class="card-number">0${index + 1}</div>
                                 <h3 class="pdf-title">${pdf.title}</h3>
-                                <p>Click to view the PDF document</p>
+                                <p>Click to view the Video</p>
                                 <div class="card-stats">
                                     <span><i class="fas fa-file-pdf"></i> ${pdf.size}</span>
                                     <span><i class="far fa-calendar-alt"></i> ${formatDate(pdf.date)}</span>
