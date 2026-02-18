@@ -355,7 +355,7 @@ footer a:hover {
         radial-gradient(circle at 70% 50%, 
         rgba(255, 107, 53, 0.1) 0%, 
         transparent 50%);
-    animation: subjectPattern 25s ease-in-out infinite alternate;
+    /* animation: subjectPattern 25s ease-in-out infinite alternate; */
 }
 
 @keyframes subjectPattern {
@@ -477,7 +477,7 @@ footer a:hover {
         transparent, 
         rgba(244, 208, 63, 0.1), 
         transparent);
-    animation: contentShine 10s ease-in-out infinite;
+    /* animation: contentShine 10s ease-in-out infinite; */
 }
 
 @keyframes contentShine {
