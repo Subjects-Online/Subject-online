@@ -78,7 +78,7 @@ body {
   width: auto;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 5px;
 }
 
 .nav > div > a {
@@ -142,7 +142,7 @@ body {
   border-color: rgb(103 236 72 / 40%);
 }
 
-.nav .New::before {
+/* .nav .New::before {
   content: "New!";
   position: absolute;
   top: -8px;
@@ -155,7 +155,7 @@ body {
   border-radius: 10px;
   animation: newBadge 2s ease-in-out infinite;
   z-index: 1;
-}
+} */
 
 .hero {
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
