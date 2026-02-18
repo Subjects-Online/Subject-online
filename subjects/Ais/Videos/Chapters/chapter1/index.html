@@ -616,8 +616,16 @@
           date: "2026-02-15",
           icon:"<i class=' fas fa-brands fa-youtube'></i>"
         },
-        
-      ];
+        {
+          path: "../../../../../Assets/Ais/إزاي_تنظم_حسابات_البيزنس؟.mp4",
+          title: "Lect 1 Dr. S.R  chapter 1",
+          size: "43.5 MB",
+          date: "2026-02-15",
+          icon:"<i class=' fas fa-brands fa-youtube'></i>",
+          
+          
+        },
+      ]
 
       // Format date to be more readable
       function formatDate(dateString) {
@@ -626,45 +634,34 @@
       }
 
       // Function to open PDF in modal
-      function openPdfModal(pdfPath, pdfTitle) {
-        const modal = document.getElementById("pdfModal");
-        const pdfViewer = document.getElementById("pdfViewer");
-        const modalTitle = document.getElementById("modalTitle");
-        const downloadBtn = document.getElementById("downloadPdf");
+  // التعديل: إضافة downloadPath كمعامل للدالة
+function openPdfModal(pdfPath, pdfTitle) {
+    const modal = document.getElementById("pdfModal");
+    const pdfViewer = document.getElementById("pdfViewer");
+    const modalTitle = document.getElementById("modalTitle");
+    const downloadBtn = document.getElementById("downloadPdf");
 
-        // Set PDF title
-        modalTitle.textContent = pdfTitle;
+    modalTitle.textContent = pdfTitle;
+    pdfViewer.src = pdfPath + "#toolbar=0&navpanes=0&scrollbar=0";
 
-        // Set PDF source
-        pdfViewer.src = pdfPath + "#toolbar=0&navpanes=0&scrollbar=0";
+    // التعديل هنا: تحديث رابط الزرار ليطابق مسار الملف المفتوح
+    downloadBtn.href = pdfPath; 
+    downloadBtn.download = pdfTitle; // عشان ينزل باسم الفيديو
 
-        // Set download button
-        downloadBtn.onclick = () => {
-          const link = document.createElement("a");
-          link.href = pdfPath;
-          link.download = pdfTitle.toLowerCase().replace(/\s+/g, "-") + ".pdf";
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        };
+    modal.classList.add("show");
 
-        // Show modal
-        modal.classList.add("show");
+    document.querySelector(".close-btn").onclick = () => {
+        modal.classList.remove("show");
+        pdfViewer.src = "";
+    };
 
-        // Close modal when clicking the close button
-        document.querySelector(".close-btn").onclick = () => {
-          modal.classList.remove("show");
-          pdfViewer.src = ""; // Unload PDF when closing
-        };
-
-        // Close modal when clicking outside the content
-        window.onclick = (event) => {
-          if (event.target === modal) {
+    window.onclick = (event) => {
+        if (event.target === modal) {
             modal.classList.remove("show");
-            pdfViewer.src = ""; // Unload PDF when closing
-          }
-        };
-      }
+            pdfViewer.src = "";
+        }
+    };
+}
 
       // Function to create PDF cards
       function createPdfCards() {
