@@ -1,8 +1,10 @@
 <!doctype html>
 <html lang="en" dir="ltr">
   <head>
-     <script defer src="https://cloud.umami.is/script.js"
-        data-website-id="31d71665-7827-44ae-934b-7f68bc397123"></script>
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="31d71665-7827-44ae-934b-7f68bc397123"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chapter 1: Introduction to Economics - Subject Online</title>
@@ -11,19 +13,21 @@
       rel="stylesheet" />
     <link rel="stylesheet" href="../../Css/main.css" />
     <link rel="stylesheet" href="../../Css/subject-theme.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <!-- PDF Viewer Modal -->
     <div id="pdfModal" class="modal">
       <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <div class="modal-header">
-          <h3 id="modalTitle"></h3>
-                  <a style="text-decoration: none;" id="downloadPdf" class="download-btn" download="الشرح__الفرق_بين_البيانات_والمعلومات.mp4" href="../../../../../Assets/Ais/الشرح__الفرق_بين_البيانات_والمعلومات.mp4">
-          <i class="fas fa-download"></i> Download Video
-        </a>
-        </div>
+        <span class="close-btn">Close Window</span>
+        <div style="display: none" class="modal-header"></div>
         <div class="pdf-container">
-          <iframe id="pdfViewer" frameborder="0"></iframe>
+          <video
+            controls
+            width="100%"
+            type="video"
+            id="pdfViewer"
+            frameborder="0"></video>
         </div>
       </div>
     </div>
@@ -60,7 +64,6 @@
         box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
         max-height: 85vh;
         display: flex;
-        flex-direction: column;
       }
 
       .modal-header {
@@ -74,10 +77,12 @@
 
       .close-btn {
         position: absolute;
-        right: 25px;
-        top: 20px;
+        display: flex;
+        justify-content: center;
+        width: 95%;
+        top: -2px;
         color: var(--text-secondary);
-        font-size: 30px;
+        font-size: 20px;
         font-weight: bold;
         cursor: pointer;
         transition: color 0.3s;
@@ -211,7 +216,14 @@
         padding: 20px;
         animation: fadeIn 0.5s ease-out;
       }
-
+@media (max-width:425px){
+  .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 0;
+        animation: fadeIn 0.5s ease-out;
+      }
+}
       .subject-header {
         text-align: center;
         margin-bottom: 40px;
@@ -240,21 +252,29 @@
         margin-top: 30px;
         padding: 0 15px;
       }
-
-      .pdf-card {
-        background: rgba(255, 255, 255, 0.03);
-        border: 10px double rgba(255, 255, 255, 0.08);
-        border-radius: 50px;
-        padding: 25px;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        color: #e6edf7;
-        position: relative;
-        overflow: hidden;
-        backdrop-filter: blur(10px);
-        min-height: 200px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
+@media (max-width:425px){
+  .pdf-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        margin-top: 30px;
+        padding: 15px 0;
       }
+}
+     .pdf-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 3px solid rgba(255, 255, 255, 0.08);
+    border-radius: 25px;
+    padding: 25px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #e6edf7;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    min-height: 200px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
 
       .card-glow {
         position: absolute;
@@ -597,7 +617,7 @@
       </a>
 
       <div class="subject-header">
-        <h1> "Videos" 📚 Chapter 1</h1>
+        <h1>"Videos" 📚 Chapter 1</h1>
         <!--  -->
       </div>
 
@@ -614,18 +634,16 @@
           title: "Lect 1 Dr. S.R  chapter 1",
           size: "50 MB",
           date: "2026-02-15",
-          icon:"<i class=' fas fa-brands fa-youtube'></i>"
+          icon: "<i class=' fas fa-brands fa-youtube'></i>",
         },
         {
           path: "../../../../../Assets/Ais/إزاي_تنظم_حسابات_البيزنس؟.mp4",
           title: "Lect 1 Dr. S.R  chapter 1",
-          size: "43.5 MB",
+          size: "50 MB",
           date: "2026-02-15",
-          icon:"<i class=' fas fa-brands fa-youtube'></i>",
-          
-          
+          icon: "<i class=' fas fa-brands fa-youtube'></i>",
         },
-      ]
+      ];
 
       // Format date to be more readable
       function formatDate(dateString) {
@@ -634,34 +652,44 @@
       }
 
       // Function to open PDF in modal
-  // التعديل: إضافة downloadPath كمعامل للدالة
-function openPdfModal(pdfPath, pdfTitle) {
-    const modal = document.getElementById("pdfModal");
-    const pdfViewer = document.getElementById("pdfViewer");
-    const modalTitle = document.getElementById("modalTitle");
-    const downloadBtn = document.getElementById("downloadPdf");
+      function openPdfModal(pdfPath, pdfTitle) {
+        const modal = document.getElementById("pdfModal");
+        const pdfViewer = document.getElementById("pdfViewer");
+        // const modalTitle = document.getElementById("modalTitle");
 
-    modalTitle.textContent = pdfTitle;
-    pdfViewer.src = pdfPath + "#toolbar=0&navpanes=0&scrollbar=0";
+        // // Set PDF title
+        // modalTitle.textContent = pdfTitle;
 
-    // التعديل هنا: تحديث رابط الزرار ليطابق مسار الملف المفتوح
-    downloadBtn.href = pdfPath; 
-    downloadBtn.download = pdfTitle; // عشان ينزل باسم الفيديو
+        // Set PDF source
+        pdfViewer.src = pdfPath + "#toolbar=&scrollbar=0&pagemode=bookmarks";
 
-    modal.classList.add("show");
+        // Set download button
+        // downloadBtn.onclick = () => {
+        //   const link = document.createElement("a");
+        //   link.href = pdfPath;
+        //   link.download = pdfTitle.toLowerCase().replace(/\s+/g, "-") + ".pdf";
+        //   document.body.appendChild(link);
+        //   link.click();
+        //   document.body.removeChild(link);
+        // };
 
-    document.querySelector(".close-btn").onclick = () => {
-        modal.classList.remove("show");
-        pdfViewer.src = "";
-    };
+        // Show modal
+        modal.classList.add("show");
 
-    window.onclick = (event) => {
-        if (event.target === modal) {
+        // Close modal when clicking the close button
+        document.querySelector(".close-btn").onclick = () => {
+          modal.classList.remove("show");
+          pdfViewer.src = ""; // Unload PDF when closing
+        };
+
+        // Close modal when clicking outside the content
+        window.onclick = (event) => {
+          if (event.target === modal) {
             modal.classList.remove("show");
-            pdfViewer.src = "";
-        }
-    };
-}
+            pdfViewer.src = ""; // Unload PDF when closing
+          }
+        };
+      }
 
       // Function to create PDF cards
       function createPdfCards() {

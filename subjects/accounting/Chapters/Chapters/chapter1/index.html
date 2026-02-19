@@ -1,9 +1,10 @@
-
 <!doctype html>
 <html lang="en" dir="ltr">
   <head>
-     <script defer src="https://cloud.umami.is/script.js"
-        data-website-id="31d71665-7827-44ae-934b-7f68bc397123"></script>
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="31d71665-7827-44ae-934b-7f68bc397123"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chapter 1: Introduction to Economics - Subject Online</title>
@@ -12,20 +13,20 @@
       rel="stylesheet" />
     <link rel="stylesheet" href="../../Css/main.css" />
     <link rel="stylesheet" href="../../Css/subject-theme.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../../../../../Css/Subjects.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <!-- PDF Viewer Modal -->
     <div id="pdfModal" class="modal">
       <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <div class="modal-header">
+        <span class="close-btn">Close Window</span>
+        <div style="display: none" class="modal-header">
           <h3 id="modalTitle"></h3>
-          <a style="text-decoration: none;" id="downloadPdf" class="download-btn" download="Acquisition__Disposition_of_Property_Plant_and_Equipment.pdf" href="../../../../../Assets/Accounting/Acquisition__Disposition_of_Property_Plant_and_Equipment.pdf">
-          <i class="fas fa-download"></i> Download PDF
-        </a>
         </div>
         <div class="pdf-container">
-          <iframe id="pdfViewer" frameborder="0"></iframe>
+          <iframe id="pdfViewer" frameborder="1"></iframe>
         </div>
       </div>
     </div>
@@ -76,10 +77,12 @@
 
       .close-btn {
         position: absolute;
-        right: 25px;
-        top: 20px;
+        display: flex;
+        justify-content: center;
+        width: 95%;
+        top: -2px;
         color: var(--text-secondary);
-        font-size: 30px;
+        font-size: 20px;
         font-weight: bold;
         cursor: pointer;
         transition: color 0.3s;
@@ -213,13 +216,13 @@
         padding: 20px;
         animation: fadeIn 0.5s ease-out;
       }
-      @media (max-width:500px){
+      @media (max-width: 500px) {
         .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px 0;
-        animation: fadeIn 0.5s ease-out;
-      }
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 20px 0;
+          animation: fadeIn 0.5s ease-out;
+        }
       }
 
       .subject-header {
@@ -251,20 +254,7 @@
         padding: 0 15px;
       }
 
-      .pdf-card {
-        background: rgba(255, 255, 255, 0.03);
-        border: 10px double rgba(255, 255, 255, 0.08);
-        border-radius: 50px;
-        padding: 25px;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        color: #e6edf7;
-        position: relative;
-        overflow: hidden;
-        backdrop-filter: blur(10px);
-        min-height: 200px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-      }
+    
 
       .card-glow {
         position: absolute;
@@ -626,55 +616,6 @@
           date: "2026-02-16",
           icon: "<i class='fas fa-book-open'></i>",
         },
-        // {
-        //   path: "../../../../../Assets/Accounting/lect 1.pdf",
-        //   title: "Lect 2 Dr.MZ chapter 1",
-        //   size: "980 KB",
-        //   date: "2025-01-22",
-        //   icon: "<i class='fas fa-chart-line'></i>",
-        // },
-        // {
-        //   path: "../../../../../Assets/Accounting/lect 1.pdf",
-        //   title: "Lect 3  Dr. MZ chapter 1",
-        //   size: "1.5 MB",
-        //   date: "2025-01-29",
-        //   icon: "<i class='fas fa-globe-americas'></i>",
-        // },
-        // {
-        //   path: "../../../../../Assets/Accounting/lect 1.pdf",
-        //   title: "Lect 4  Dr. MZ chapter 2",
-        //   size: "1.1 MB",
-        //   date: "2025-02-05",
-        //   icon: "<i class='fas fa-project-diagram'></i>",
-        // },
-        // {
-        //   path: "../../../../../Assets/Accounting/lect 1.pdf",
-        //   title: "Lect 5  Dr. MZ chapter 2",
-        //   size: "1.3 MB",
-        //   date: "2025-02-12",
-        //   icon: "<i class='fas fa-book'></i>",
-        // },
-        // {
-        //   path: "../../../../../Assets/lect 1.pdf",
-        //   title: "",
-        //   size: "1.3 MB",
-        //   date: "2025-02-12",
-        //   icon: "<i class='fas fa-book'></i>",
-        // },
-        // {
-        //   path: "../../../../../Assets/lect 1.pdf",
-        //   title: "",
-        //   size: "1.3 MB",
-        //   date: "2025-02-12",
-        //   icon: "<i class='fas fa-book'></i>",
-        // },
-        // {
-        //   path: "../../../../../Assets/lect 1.pdf",
-        //   title: "",
-        //   size: "1.3 MB",
-        //   date: "2025-02-12",
-        //   icon: "<i class='fas fa-book'></i>",
-        // },
       ];
 
       // Format date to be more readable
@@ -694,17 +635,17 @@
         modalTitle.textContent = pdfTitle;
 
         // Set PDF source
-        pdfViewer.src = pdfPath + "#toolbar=0&navpanes=0&scrollbar=0";
+        pdfViewer.src = pdfPath + "#toolbar=&scrollbar=0&pagemode=bookmarks";
 
         // Set download button
-        downloadBtn.onclick = () => {
-          const link = document.createElement("a");
-          link.href = pdfPath;
-          link.download = pdfTitle.toLowerCase().replace(/\s+/g, "-") + ".pdf";
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        };
+        // downloadBtn.onclick = () => {
+        //   const link = document.createElement("a");
+        //   link.href = pdfPath;
+        //   link.download = pdfTitle.toLowerCase().replace(/\s+/g, "-") + ".pdf";
+        //   document.body.appendChild(link);
+        //   link.click();
+        //   document.body.removeChild(link);
+        // };
 
         // Show modal
         modal.classList.add("show");

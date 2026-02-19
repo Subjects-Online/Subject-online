@@ -97,13 +97,13 @@
 /* Chapter Cards */
 
 .chapter-card {
-  background: var(--card-bg);
-  border-radius: 20px 100px 10px 10px;
-  padding: 25px;
-  border: 3px solid transparent;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+    background: var(--card-bg);
+    border-radius: 20px 100px 10px 10px;
+    padding: 25px;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .chapter-card h2 {

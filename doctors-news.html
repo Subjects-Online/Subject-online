@@ -1,585 +1,586 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" dir="ltr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Doctors News - Subjects Online</title>
-    <link rel="stylesheet" href="Css/Index.css">
-    <link rel="stylesheet" href="Css/media&animation.css">
-    <link rel="stylesheet" href="Css/Doctors-news.css">
-    
-   
+    <link rel="stylesheet" href="Css/Index.css" />
+    <link rel="stylesheet" href="Css/media&animation.css" />
+    <link rel="stylesheet" href="Css/Doctors-news.css" />
+    <link rel="stylesheet" href="Css/ramadan-pages.css" />
+
     <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  </head>
+  <body>
     <script src="Js/ramadan-pages.js"></script>
-    <div class="container" >
-        <!-- Back Button -->
-        <a href="index.html#subjects" class="back-button">
-            <!-- <i class="fas fa-arrow-right"></i> -->
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
+    <div class="container">
+      <!-- Back Button -->
+      <a href="index.html#subjects" class="back-button">
+        <!-- <i class="fas fa-arrow-right"></i> -->
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          style="margin-right: 8px">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
         </svg>
         Back to Subjects
       </a>
-        <!-- Subject Header -->
-        <header class="subject-header">
-            <h1 style="margin: 0;">Doctors News</h1>
-        </header> 
-        
-        <!-- Section Tabs -->
-        <div class="section-tabs">
-            <button class="tab-btn active" onclick="showSection('theory')">
-                <i class="fas fa-book-open"></i>
-                Essay
-            </button>
-            <button class="tab-btn" onclick="showSection('exams')">
-                <i class="fas fa-question-circle"></i>
-                Questions And Exams
-            </button>
-        </div>
+      <!-- Subject Header -->
+      <header class="subject-header">
+        <h1 style="margin: 0">Doctors News</h1>
+      </header>
 
-        <!-- Theory Section -->
-        <div id="theory-section" class="content-section active">
-            <div class="essay-container">
-                <div class="essay-header">
-                    <h2>Essay</h2>
+      <!-- Section Tabs -->
+      <div class="section-tabs">
+        <button class="tab-btn active" onclick="showSection('theory')">
+          <i class="fas fa-book-open"></i>
+          Essay
+        </button>
+        <button class="tab-btn" onclick="showSection('exams')">
+          <i class="fas fa-question-circle"></i>
+          Questions And Exams
+        </button>
+      </div>
+
+      <!-- Theory Section -->
+      <div id="theory-section" class="content-section active">
+        <div class="essay-container">
+          <div class="essay-header">
+            <h2>Essay</h2>
+          </div>
+
+          <div class="subjects-grid">
+            <!-- Accounting -->
+            <div class="subject-card">
+              <div class="subject-title">
+                <i class="fas fa-calculator"></i>
+                Accounting
+              </div>
+              <div class="quote-box">
+                <div class="quote-content">"Coming Soon..."</div>
+                <div class="quote-meta">
+                  <div class="doctor-info">
+                    <div class="doctor-avatar">...</div>
+                    <div class="doctor-details">
+                      <h4>Dr. ...</h4>
+                      <span>Doctor of Accounting </span>
+                    </div>
+                  </div>
+                  <span class="quote-date">../../</span>
                 </div>
-                
-                <div class="subjects-grid">
-                    <!-- Accounting -->
-                    <div class="subject-card">
-                        <div class="subject-title">
-                            <i class="fas fa-calculator"></i>
-                            Accounting
-                        </div>
-                        <div class="quote-box">
-                            <div class="quote-content">
-                                "Coming Soon..."
-                            </div>
-                            <div class="quote-meta">
-                                <div class="doctor-info">
-                                    <div class="doctor-avatar">...</div>
-                                    <div class="doctor-details">
-                                        <h4>Dr. ...</h4>
-                                        <span>Doctor of Accounting </span>
-                                    </div>
-                                </div>
-                                <span class="quote-date">../../</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Micro Economics -->
-                    <div class="subject-card">
-                        <div class="subject-title">
-                            <i class="fas fa-chart-line"></i>
-                            Micro Economics
-                        </div>
-                        <div class="quote-box">
-                            <div class="quote-content">
-                                "Coming Soon..."
-                            </div>
-                            <div class="quote-meta">
-                                <div class="doctor-info">
-                                    <div class="doctor-avatar">...</div>
-                                    <div class="doctor-details">
-                                        <h4>Dr. ...</h4>
-                                        <span>Doctor of Economics</span>
-                                    </div>
-                                </div>
-                                <span class="quote-date">../../</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Marketing -->
-                    <div class="subject-card">
-                        <div class="subject-title">
-                            <i class="fas fa-bullhorn"></i>
-                            Marketing
-                        </div>
-                        <div class="quote-box">
-                            <div class="quote-content">
-                                "Coming Soon..."
-                            </div>
-                            <div class="quote-meta">
-                                <div class="doctor-info">
-                                    <div class="doctor-avatar">...</div>
-                                    <div class="doctor-details">
-                                        <h4>Dr. ...</h4>
-                                        <span>Doctor of Marketing</span>
-                                    </div>
-                                </div>
-                                <span class="quote-date">../../</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- English -->
-                    <div class="subject-card">
-                        <div class="subject-title">
-                            <i class="fas fa-book"></i>
-                            English
-                        </div>
-                        <div class="quote-box">
-                            <div class="quote-content">
-                                "Coming Soon..."
-                            </div>
-                            <div class="quote-meta">
-                                <div class="doctor-info">
-                                    <div class="doctor-avatar">...</div>
-                                    <div class="doctor-details">
-                                        <h4>Dr. ...</h4>
-                                        <span>Doctor of English</span>
-                                    </div>
-                                </div>
-                                <span class="quote-date">../../</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Statistics -->
-                    <div class="subject-card">
-                        <div class="subject-title">
-                            <i class="fas fa-chart-bar"></i>
-                            Statistics
-                        </div>
-                        <div class="quote-box">
-                            <div class="quote-content">
-                                "Coming Soon..."
-                            </div>
-                            <div class="quote-meta">
-                                <div class="doctor-info">
-                                    <div class="doctor-avatar">...</div>
-                                    <div class="doctor-details">
-                                        <h4>Dr. ...</h4>
-                                        <span>Doctor of Statistics</span>
-                                    </div>
-                                </div>
-                                <span class="quote-date">../../</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- AIS -->
-                    <div class="subject-card">
-                        <div class="subject-title">
-                            <i class="fas fa-laptop"></i>
-                            AIS
-                        </div>
-                        <div class="quote-box">
-                            <div class="quote-content">
-                                "Coming Soon..."
-                            </div>
-                            <div class="quote-meta">
-                                <div class="doctor-info">
-                                    <div class="doctor-avatar">...</div>
-                                    <div class="doctor-details">
-                                        <h4>Dr. ...</h4>
-                                        <span>Doctor of AIS</span>
-                                    </div>
-                                </div>
-                                <span class="quote-date">../../</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Public Finance -->
-                    <div class="subject-card">
-                        <div class="subject-title">
-                            <i class="fas fa-university"></i>
-                            Public Finance
-                        </div>
-                        <div class="quote-box">
-                            <div class="quote-content">
-                                "Coming Soon..."
-                            </div>
-                            <div class="quote-meta">
-                                <div class="doctor-info">
-                                    <div class="doctor-avatar">...</div>
-                                    <div class="doctor-details">
-                                        <h4>Dr. ...</h4>
-                                        <span>Doctor of Finance</span>
-                                    </div>
-                                </div>
-                                <span class="quote-date">../../</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Political -->
-                        <div class="subject-card">
-                            <div style="color: black;" class="subject-title">
-                                <!-- <i class="fas fa-university"></i> -->
-                                Political Science
-                            </div>
-                            <div class="quote-box">
-                                <div class="quote-content">
-                                    "Coming Soon..."
-                                </div>
-                                <div class="quote-meta">
-                                    <div class="doctor-info">
-                                        <div class="doctor-avatar">...</div>
-                                        <div class="doctor-details">
-                                            <h4>Dr. ...</h4>
-                                            <span >Doctor of Political Science</span>
-                                        </div>
-                                    </div>
-                                    <span class="quote-date">../../</span>
-                                </div>
-                            </div>
-                        </div>
-                </div>
+              </div>
             </div>
-        </div>
 
-        <!-- Exams Section -->
-        <div id="exams-section" class="content-section">
-            <div class="exams-container">
-                <div class="exams-header">
-                    <h2>Questions & Exams</h2>
+            <!-- Micro Economics -->
+            <div class="subject-card">
+              <div class="subject-title">
+                <i class="fas fa-chart-line"></i>
+                Micro Economics
+              </div>
+              <div class="quote-box">
+                <div class="quote-content">"Coming Soon..."</div>
+                <div class="quote-meta">
+                  <div class="doctor-info">
+                    <div class="doctor-avatar">...</div>
+                    <div class="doctor-details">
+                      <h4>Dr. ...</h4>
+                      <span>Doctor of Economics</span>
+                    </div>
+                  </div>
+                  <span class="quote-date">../../</span>
                 </div>
-                
-                <div class="subjects-exams-grid">
-                    <!-- Accounting Questions -->
-                    <div class="subject-exams-card">
-                        <div class="subject-exams-title">
-                            <i class="fas fa-calculator"></i>
-                            Accounting
-                        </div>
-                        <div class="questions-grid">
-                            <div class="question-item">
-                                <div class="question-header">
-                                    <span class="question-number">Question 1</span>
-                                    <span class="question-marks">(... Deg)</span>
-                                </div>
-                                <div class="question-content">
-                                    <p><strong>Q  : </strong></p>
-                                    <div class="expected-answer">
-                                        <strong>Answer : </strong> 
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question-item">
-                                <div class="question-header">
-                                    <span class="question-number">Question 2</span>
-                                    <span class="question-marks">(... Deg)</span>
-                                </div>
-                                <div class="question-content">
-                                    <p><strong>Q : </strong></p>
-                                    <div class="expected-answer">
-                                        <strong>Answer : </strong>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-
-                    <!-- Micro Economics Questions -->
-                    <div class="subject-exams-card">
-                        <div class="subject-exams-title">
-                            <i class="fas fa-chart-line"></i>
-                            Micro Economics
-                        </div>
-                        <div class="questions-grid">
-                            <div class="question-item">
-                                <div class="question-header">
-                                    <span class="question-number">Questions 1</span>
-                                    <span class="question-marks">(... Deg)</span>
-                                </div>
-                                <div class="question-content">
-                                    <p><strong>Q : </strong> </p>
-                                    <div class="expected-answer">
-                                        <strong>Answer :</strong> 
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question-item">
-                                <div class="question-header">
-                                    <span class="question-number">Questions 2</span>
-                                    <span class="question-marks">(... Deg)</span>
-                                </div>
-                                <div class="question-content">
-                                    <p><strong>Q : </strong> </p>
-                                    <div class="expected-answer">
-                                        <strong>Answer :</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Marketing Questions -->
-                    <div class="subject-exams-card">
-                        <div class="subject-exams-title">
-                            <i class="fas fa-bullhorn"></i>
-                            Marketing
-                        </div>
-                        <div class="questions-grid">
-                            <div class="question-item">
-                                <div class="question-header">
-                                    <span class="question-number">Question 1</span>
-                                    <span class="question-marks">(... Deg)</span>
-                                </div>
-                                <div class="question-content">
-                                    <p><strong>Q : </strong></p>
-                                    <div class="expected-answer">
-                                        <strong>Answer : </strong>  
-                                    </div>
-                                </div>
-                            </div>
-                        <div class="question-item">
-                            <div class="question-header">
-                                <span class="question-number">Question 2</span>
-                                <span class="question-marks">(... Deg)</span>
-                            </div>
-                            <div class="question-content">
-                                <p><strong>Q : </strong></p>
-                                <div class="expected-answer">
-                                    <strong>Answer : </strong>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-
-                    <!-- English Questions -->
-                    <div class="subject-exams-card">
-                        <div class="subject-exams-title">
-                            <i class="fas fa-book"></i>
-                            English
-                        </div>
-                        <div class="questions-grid">
-                            <div class="question-item">
-                                <div class="question-header">
-                                    <span class="question-number">Question  1</span>
-                                    <span class="question-marks">(... Deg )</span>
-                                </div>
-                                <div class="question-content">
-                                    <p><strong>Q :</strong> </p>
-                                    <div class="expected-answer">
-                                        <strong> Answer:</strong> 
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question-item">
-                                <div class="question-header">
-                                    <span class="question-number">Question  2</span>
-                                    <span class="question-marks">(... Deg )</span>
-                                </div>
-                                <div class="question-content">
-                                    <p><strong>Q :</strong> </p>
-                                    <div class="expected-answer">
-                                        <strong> Answer:</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Statistics Questions -->
-                    <div class="subject-exams-card">
-                        <div class="subject-exams-title">
-                            <i class="fas fa-chart-bar"></i>
-                            Statistics
-                        </div>
-                        <div class="questions-grid">
-                            <div class="question-item">
-                                <div class="question-header">
-                                    <span class="question-number">Question  1</span>
-                                    <span class="question-marks">(... Deg )</span>
-                                </div>
-                                <div class="question-content">
-                                    <p><strong>ََQ :</strong></p>
-                                    <div class="expected-answer">
-                                        <strong> Answer :</strong> 
-                                    </div>
-                                </div>
-                            </div>
-                        <div class="question-item">
-                            <div class="question-header">
-                                <span class="question-number">Question 2</span>
-                                <span class="question-marks">(... Deg )</span>
-                            </div>
-                            <div class="question-content">
-                                <p><strong>ََQ :</strong></p>
-                                <div class="expected-answer">
-                                    <strong> Answer :</strong>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-
-                    <!-- AIS Questions -->
-                    <div class="subject-exams-card">
-                        <div class="subject-exams-title">
-                            <i class="fas fa-laptop"></i>
-                            AIS
-                        </div>
-                        <div class="questions-grid">
-                            <div class="question-item">
-                                <div class="question-header">
-                                    <span class="question-number">Question  1</span>
-                                    <span class="question-marks">(... Deg )</span>
-                                </div>
-                                <div class="question-content">
-                                    <p><strong>Q :</strong> </p>
-                                    <div class="expected-answer">
-                                        <strong>Answer :</strong> 
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question-item">
-                                <div class="question-header">
-                                    <span class="question-number">Question 2</span>
-                                    <span class="question-marks">(... Deg )</span>
-                                </div>
-                                <div class="question-content">
-                                    <p><strong>Q :</strong> </p>
-                                    <div class="expected-answer">
-                                        <strong>Answer :</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Public Finance Questions -->
-                    <div class="subject-exams-card">
-                        <div class="subject-exams-title">
-                            <i class="fas fa-university"></i>
-                            Public Finance
-                        </div>
-                        <div class="questions-grid">
-                            <div class="question-item">
-                                <div class="question-header">
-                                    <span class="question-number">Question  1</span>
-                                    <span class="question-marks">(... Deg )</span>
-                                </div>
-                                <div class="question-content">
-                                    <p><strong>Q :</strong> </p>
-                                    <div class="expected-answer">
-                                        <strong>Answer :</strong> 
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question-item">
-                                <div class="question-header">
-                                    <span class="question-number">Question 2</span>
-                                    <span class="question-marks">(... Deg )</span>
-                                </div>
-                                <div class="question-content">
-                                    <p><strong>Q :</strong> </p>
-                                    <div class="expected-answer">
-                                        <strong>Answer :</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Political Science Questions -->
-                    <div class="subject-exams-card">
-                        <div style="color: black;
-                        .subject-exams-card::before{
-                            content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 6px;
-    border-radius: 25px 25px 0 0;
-                        }" class="subject-exams-title">
-                            Political Science
-                        </div>
-                        <div class="questions-grid">
-                            <div class="question-item">
-                                <div class="question-header">
-                                    <span class="question-number">Question 1</span>
-                                    <span class="question-marks">(... Deg )</span>
-                                </div>
-                                <div class="question-content">
-                                    <p><strong>Q :</strong> </p>
-                                    <div class="expected-answer">
-                                        <strong>Answer :</strong>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question-item">
-                                <div class="question-header">
-                                    <span class="question-number">Question 2</span>
-                                    <span class="question-marks">(... Deg )</span>
-                                </div>
-                                <div class="question-content">
-                                    <p><strong>Q :</strong> </p>
-                                    <div class="expected-answer">
-                                        <strong>Answer :</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
+
+            <!-- Marketing -->
+            <div class="subject-card">
+              <div class="subject-title">
+                <i class="fas fa-bullhorn"></i>
+                Marketing
+              </div>
+              <div class="quote-box">
+                <div class="quote-content">"Coming Soon..."</div>
+                <div class="quote-meta">
+                  <div class="doctor-info">
+                    <div class="doctor-avatar">...</div>
+                    <div class="doctor-details">
+                      <h4>Dr. ...</h4>
+                      <span>Doctor of Marketing</span>
+                    </div>
+                  </div>
+                  <span class="quote-date">../../</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- English -->
+            <div class="subject-card">
+              <div class="subject-title">
+                <i class="fas fa-book"></i>
+                English
+              </div>
+              <div class="quote-box">
+                <div class="quote-content">"Coming Soon..."</div>
+                <div class="quote-meta">
+                  <div class="doctor-info">
+                    <div class="doctor-avatar">...</div>
+                    <div class="doctor-details">
+                      <h4>Dr. ...</h4>
+                      <span>Doctor of English</span>
+                    </div>
+                  </div>
+                  <span class="quote-date">../../</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="subject-card">
+              <div class="subject-title">
+                <i class="fas fa-chart-bar"></i>
+                Statistics
+              </div>
+              <div class="quote-box">
+                <div class="quote-content">"Coming Soon..."</div>
+                <div class="quote-meta">
+                  <div class="doctor-info">
+                    <div class="doctor-avatar">...</div>
+                    <div class="doctor-details">
+                      <h4>Dr. ...</h4>
+                      <span>Doctor of Statistics</span>
+                    </div>
+                  </div>
+                  <span class="quote-date">../../</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- AIS -->
+            <div class="subject-card">
+              <div class="subject-title">
+                <i class="fas fa-laptop"></i>
+                AIS
+              </div>
+              <div class="quote-box">
+                <div class="quote-content">"Coming Soon..."</div>
+                <div class="quote-meta">
+                  <div class="doctor-info">
+                    <div class="doctor-avatar">...</div>
+                    <div class="doctor-details">
+                      <h4>Dr. ...</h4>
+                      <span>Doctor of AIS</span>
+                    </div>
+                  </div>
+                  <span class="quote-date">../../</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Public Finance -->
+            <div class="subject-card">
+              <div class="subject-title">
+                <i class="fas fa-university"></i>
+                Public Finance
+              </div>
+              <div class="quote-box">
+                <div class="quote-content">"Coming Soon..."</div>
+                <div class="quote-meta">
+                  <div class="doctor-info">
+                    <div class="doctor-avatar">...</div>
+                    <div class="doctor-details">
+                      <h4>Dr. ...</h4>
+                      <span>Doctor of Finance</span>
+                    </div>
+                  </div>
+                  <span class="quote-date">../../</span>
+                </div>
+              </div>
+            </div>
+            <!-- Political -->
+            <div class="subject-card">
+              <div style="color: black" class="subject-title">
+                <!-- <i class="fas fa-university"></i> -->
+                Political Science
+              </div>
+              <div class="quote-box">
+                <div class="quote-content">"Coming Soon..."</div>
+                <div class="quote-meta">
+                  <div class="doctor-info">
+                    <div class="doctor-avatar">...</div>
+                    <div class="doctor-details">
+                      <h4>Dr. ...</h4>
+                      <span>Doctor of Political Science</span>
+                    </div>
+                  </div>
+                  <span class="quote-date">../../</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Exams Section -->
+      <div id="exams-section" class="content-section">
+        <div class="exams-container">
+          <div class="exams-header">
+            <h2>Questions & Exams</h2>
+          </div>
+
+          <div class="subjects-exams-grid">
+            <!-- Accounting Questions -->
+            <div class="subject-exams-card">
+              <div class="subject-exams-title">
+                <i class="fas fa-calculator"></i>
+                Accounting
+              </div>
+              <div class="questions-grid">
+                <div class="question-item">
+                  <div class="question-header">
+                    <span class="question-number">Question 1</span>
+                    <span class="question-marks">(... Deg)</span>
+                  </div>
+                  <div class="question-content">
+                    <p><strong>Q : </strong></p>
+                    <div class="expected-answer">
+                      <strong>Answer : </strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-item">
+                  <div class="question-header">
+                    <span class="question-number">Question 2</span>
+                    <span class="question-marks">(... Deg)</span>
+                  </div>
+                  <div class="question-content">
+                    <p><strong>Q : </strong></p>
+                    <div class="expected-answer">
+                      <strong>Answer : </strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Micro Economics Questions -->
+            <div class="subject-exams-card">
+              <div class="subject-exams-title">
+                <i class="fas fa-chart-line"></i>
+                Micro Economics
+              </div>
+              <div class="questions-grid">
+                <div class="question-item">
+                  <div class="question-header">
+                    <span class="question-number">Questions 1</span>
+                    <span class="question-marks">(... Deg)</span>
+                  </div>
+                  <div class="question-content">
+                    <p><strong>Q : </strong></p>
+                    <div class="expected-answer">
+                      <strong>Answer :</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-item">
+                  <div class="question-header">
+                    <span class="question-number">Questions 2</span>
+                    <span class="question-marks">(... Deg)</span>
+                  </div>
+                  <div class="question-content">
+                    <p><strong>Q : </strong></p>
+                    <div class="expected-answer">
+                      <strong>Answer :</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Marketing Questions -->
+            <div class="subject-exams-card">
+              <div class="subject-exams-title">
+                <i class="fas fa-bullhorn"></i>
+                Marketing
+              </div>
+              <div class="questions-grid">
+                <div class="question-item">
+                  <div class="question-header">
+                    <span class="question-number">Question 1</span>
+                    <span class="question-marks">(... Deg)</span>
+                  </div>
+                  <div class="question-content">
+                    <p><strong>Q : </strong></p>
+                    <div class="expected-answer">
+                      <strong>Answer : </strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-item">
+                  <div class="question-header">
+                    <span class="question-number">Question 2</span>
+                    <span class="question-marks">(... Deg)</span>
+                  </div>
+                  <div class="question-content">
+                    <p><strong>Q : </strong></p>
+                    <div class="expected-answer">
+                      <strong>Answer : </strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- English Questions -->
+            <div class="subject-exams-card">
+              <div class="subject-exams-title">
+                <i class="fas fa-book"></i>
+                English
+              </div>
+              <div class="questions-grid">
+                <div class="question-item">
+                  <div class="question-header">
+                    <span class="question-number">Question 1</span>
+                    <span class="question-marks">(... Deg )</span>
+                  </div>
+                  <div class="question-content">
+                    <p><strong>Q :</strong></p>
+                    <div class="expected-answer">
+                      <strong> Answer:</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-item">
+                  <div class="question-header">
+                    <span class="question-number">Question 2</span>
+                    <span class="question-marks">(... Deg )</span>
+                  </div>
+                  <div class="question-content">
+                    <p><strong>Q :</strong></p>
+                    <div class="expected-answer">
+                      <strong> Answer:</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Statistics Questions -->
+            <div class="subject-exams-card">
+              <div class="subject-exams-title">
+                <i class="fas fa-chart-bar"></i>
+                Statistics
+              </div>
+              <div class="questions-grid">
+                <div class="question-item">
+                  <div class="question-header">
+                    <span class="question-number">Question 1</span>
+                    <span class="question-marks">(... Deg )</span>
+                  </div>
+                  <div class="question-content">
+                    <p><strong>ََQ :</strong></p>
+                    <div class="expected-answer">
+                      <strong> Answer :</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-item">
+                  <div class="question-header">
+                    <span class="question-number">Question 2</span>
+                    <span class="question-marks">(... Deg )</span>
+                  </div>
+                  <div class="question-content">
+                    <p><strong>ََQ :</strong></p>
+                    <div class="expected-answer">
+                      <strong> Answer :</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- AIS Questions -->
+            <div class="subject-exams-card">
+              <div class="subject-exams-title">
+                <i class="fas fa-laptop"></i>
+                AIS
+              </div>
+              <div class="questions-grid">
+                <div class="question-item">
+                  <div class="question-header">
+                    <span class="question-number">Question 1</span>
+                    <span class="question-marks">(... Deg )</span>
+                  </div>
+                  <div class="question-content">
+                    <p><strong>Q :</strong></p>
+                    <div class="expected-answer">
+                      <strong>Answer :</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-item">
+                  <div class="question-header">
+                    <span class="question-number">Question 2</span>
+                    <span class="question-marks">(... Deg )</span>
+                  </div>
+                  <div class="question-content">
+                    <p><strong>Q :</strong></p>
+                    <div class="expected-answer">
+                      <strong>Answer :</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Public Finance Questions -->
+            <div class="subject-exams-card">
+              <div class="subject-exams-title">
+                <i class="fas fa-university"></i>
+                Public Finance
+              </div>
+              <div class="questions-grid">
+                <div class="question-item">
+                  <div class="question-header">
+                    <span class="question-number">Question 1</span>
+                    <span class="question-marks">(... Deg )</span>
+                  </div>
+                  <div class="question-content">
+                    <p><strong>Q :</strong></p>
+                    <div class="expected-answer">
+                      <strong>Answer :</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-item">
+                  <div class="question-header">
+                    <span class="question-number">Question 2</span>
+                    <span class="question-marks">(... Deg )</span>
+                  </div>
+                  <div class="question-content">
+                    <p><strong>Q :</strong></p>
+                    <div class="expected-answer">
+                      <strong>Answer :</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Political Science Questions -->
+            <div class="subject-exams-card">
+              <div
+                style="
+                  color: black;
+                  .subject-exams-card::before {
+                    content: &quot;&quot;;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    height: 6px;
+                    border-radius: 25px 25px 0 0;
+                  }
+                "
+                class="subject-exams-title">
+                Political Science
+              </div>
+              <div class="questions-grid">
+                <div class="question-item">
+                  <div class="question-header">
+                    <span class="question-number">Question 1</span>
+                    <span class="question-marks">(... Deg )</span>
+                  </div>
+                  <div class="question-content">
+                    <p><strong>Q :</strong></p>
+                    <div class="expected-answer">
+                      <strong>Answer :</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-item">
+                  <div class="question-header">
+                    <span class="question-number">Question 2</span>
+                    <span class="question-marks">(... Deg )</span>
+                  </div>
+                  <div class="question-content">
+                    <p><strong>Q :</strong></p>
+                    <div class="expected-answer">
+                      <strong>Answer :</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script>
-        // Enhanced Tab switching function
-        function showSection(sectionName) {
-            // Hide all sections
-            document.querySelectorAll('.content-section').forEach(sec => {
-                sec.classList.remove('active');
-            });
-            
-            // Remove active class from all tabs
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Show selected section
-            const targetSection = document.getElementById(sectionName + '-section');
-            if (targetSection) {
-                targetSection.classList.add('active');
-            }
-            
-            // Add active class to clicked tab
-            event.target.classList.add('active');
+      // Enhanced Tab switching function
+      function showSection(sectionName) {
+        // Hide all sections
+        document.querySelectorAll(".content-section").forEach((sec) => {
+          sec.classList.remove("active");
+        });
+
+        // Remove active class from all tabs
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+
+        // Show selected section
+        const targetSection = document.getElementById(sectionName + "-section");
+        if (targetSection) {
+          targetSection.classList.add("active");
         }
 
-        // Add smooth scrolling and interactive features
-        document.addEventListener('DOMContentLoaded', function() {
-            // Animate cards on scroll
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
+        // Add active class to clicked tab
+        event.target.classList.add("active");
+      }
 
-            document.querySelectorAll('.subject-card, .subject-exams-card').forEach(card => {
-                observer.observe(card);
+      // Add smooth scrolling and interactive features
+      document.addEventListener("DOMContentLoaded", function () {
+        // Animate cards on scroll
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+              }
             });
+          },
+          { threshold: 0.1 },
+        );
 
-            // Initialize with proper active state
-            const activeSection = document.querySelector('.content-section.active');
-            const activeTab = document.querySelector('.tab-btn.active');
-            
-            if (activeSection && !activeSection.classList.contains('active')) {
-                activeSection.classList.add('active');
-            }
-            
-            if (activeTab && !activeTab.classList.contains('active')) {
-                activeTab.classList.add('active');
-            }
-        });
+        document
+          .querySelectorAll(".subject-card, .subject-exams-card")
+          .forEach((card) => {
+            observer.observe(card);
+          });
+
+        // Initialize with proper active state
+        const activeSection = document.querySelector(".content-section.active");
+        const activeTab = document.querySelector(".tab-btn.active");
+
+        if (activeSection && !activeSection.classList.contains("active")) {
+          activeSection.classList.add("active");
+        }
+
+        if (activeTab && !activeTab.classList.contains("active")) {
+          activeTab.classList.add("active");
+        }
+      });
     </script>
-</body>
+  </body>
 </html>
