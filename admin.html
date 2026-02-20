@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subjects Online - Admin Dashboard</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="Css/Index.css">
+    <link rel="stylesheet" href="Css/admin.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+
+    <nav class="nav">
+        <h2 style="margin-left: 20px;" class="title">Subjects Online Admin</h2>
+        <div> 
+            <a href="index.html">Back to Home</a>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <div class="admin-header">
+            <span class="section-badge">Admin Tools</span>
+            <h2>Code Generator Dashboard</h2>
+            <p>Fill out the details below to generate the exact code snippet needed to add a new PDF or Video to any chapter.</p>
+        </div>
+
+        <div class="admin-grid">
+            <!-- Left Side: Form -->
+            <div class="admin-panel">
+                <h3><i class="fas fa-plus-circle"></i> Add New Content</h3>
+                <form id="generatorForm">
+                    <div class="form-group">
+                        <label for="contentType">Content Type</label>
+                        <select id="contentType" required>
+                            <option value="pdf">PDF Document</option>
+                            <option value="video">Video</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contentTitle">Title</label>
+                        <input type="text" id="contentTitle" placeholder="e.g., Lect 1-2 Dr.MZ chapter 1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contentPath">File Path</label>
+                        <input type="text" id="contentPath" placeholder="e.g., ../../../../../Assets/Accounting/file.mp4" value="../../../../../Assets/" required>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col">
+                            <label for="contentSize">File Size</label>
+                            <input type="text" id="contentSize" placeholder="e.g., 3.4 MB" required>
+                        </div>
+                        <div class="col">
+                            <label for="contentDate">Upload Date</label>
+                            <input type="date" id="contentDate" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="generate-btn">
+                        <i class="fas fa-magic"></i> Generate Code
+                    </button>
+                </form>
+            </div>
+
+            <!-- Right Side: Result -->
+            <div class="admin-panel result-panel">
+                <div class="result-header">
+                    <h3><i class="fas fa-code"></i> Generated Snippet</h3>
+                    <button class="copy-btn" id="copyBtn">
+                        <i class="far fa-copy"></i> Copy code
+                    </button>
+                </div>
+                <p class="instruction-text">Copy this block and paste it inside the <code>pdfFiles</code> array in the HTML file of the chapter.</p>
+                <div class="code-container">
+                    <pre><code id="generatedCode">// Your code will appear here...</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script references -->
+    <script src="Scripts/admin.js"></script>
+    <script>
+        // Set today's date automatically
+        document.getElementById('contentDate').valueAsDate = new Date();
+    </script>
+</body>
+</html>

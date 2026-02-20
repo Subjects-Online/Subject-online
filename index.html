@@ -2,79 +2,94 @@
 <html lang="en" dir="ltr">
 
 <head>
-    <title>Subjects Online </title>
+    <title>Subjects Online — Your College, One Link</title>
     <script defer src="https://cloud.umami.is/script.js"
         data-website-id="31d71665-7827-44ae-934b-7f68bc397123"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Subjects Online — Your entire college curriculum in one place. Lectures, summaries, and resources for every subject.">
     <meta property="og:title" content="Subjects Online">
     <meta property="og:description" content="College in one link">
     <meta property="og:image" content="https://subjects-online.github.io/Subject-online/preview.png">
     <meta property="og:url" content="https://subjects-online.github.io/Subject-online/">
     <meta name="google" content="notranslate">
-    <link rel="stylesheet" href="Css/Index.css">
-    <link rel="stylesheet" href="Css/media&animation.css">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Storm&display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="shortcut icon" href="Imgs/IMG-20260122-WA0000.jpg" type="image/x-icon">
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="shortcut icon" href="Imgs/IMG-20260122-WA0000.jpg" type="image/x-icon">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="Css/Index.css">
+    <link rel="stylesheet" href="Css/media&animation.css">
+
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 
 <body>
-    <!-- Start Nav Bar  -->
-    
-    <!-- End Nav Bar  -->
 
+    <!-- Starfield Background -->
+    <canvas id="starfield"></canvas>
+
+    
+
+    <!-- ═══════════════════ HERO SECTION ═══════════════════ -->
     <section class="hero">
         <nav class="nav">
-        <h2 style="margin-left: 20px;" class="title">Subjects Online</h2>
-        <div> <a href="#subjects">Subjects</a>
-            <a class="New" href="doctors-news.html">Doctors News</a>
-            <a href="Favorites.html">Favorites <span></span></a>
-            <a href="#contact">Contact Us</a>
-        </div>
-    </nav>
-        
-            <!-- <div class="container"> -->
-                <div class="main">
-                <div class="hero-badge">Subjects Online</div>
-                <br>
-                <div class="icons">
-                    <div class="learn">College In One Link</div>
-                    <a href="./subjects/accounting.html"><span><i style="color: white;" class="fas fa-calculator fa-1.9x"></i> </span></a>
-                    <a href="./subjects/Ais.html"><span>💻</span></a>
-                    <a href="./subjects/economics.html"><span>📈</span></a>
-                    <a href="./subjects/public-Finance.html"><span>🏛️</span></a>
-                    <a href="./subjects/english.html"><span>🌐</span></a>
-                    <a href="./subjects/statistics.html"><span>📊</span></a>
-                    <a href="./subjects/Marketing.html"><span>🏭</span></a>
-                </div>
-                    </div>
+            <h2 class="title">Subjects Online</h2>
+            
+
+<div>
+                <a href="#subjects">Subjects</a>
+                <a class="New" href="doctors-news.html">Doctors News</a>
+                <a href="Favorites.html">Favorites</a>
+                <a href="#contact">Contact Us</a>
             </div>
+        </nav>
+
+        <div class="main">
+            <div class="hero-badge">Subjects Online</div>
+            <div class="icons">
+                <div class="learn">College In One Link</div>
+                <a href="./subjects/accounting.html"><span><i style="color: white;" class="fas fa-calculator fa-1.9x"></i></span></a>
+                <a href="./subjects/Ais.html"><span>💻</span></a>
+                <a href="./subjects/economics.html"><span>📈</span></a>
+                <a href="./subjects/public-Finance.html"><span>🏛️</span></a>
+                <a href="./subjects/english.html"><span>🌐</span></a>
+                <a href="./subjects/statistics.html"><span>📊</span></a>
+                <a href="./subjects/Marketing.html"><span>🏭</span></a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
     </section>
+
+    <!-- ═══════════════════ SUBJECTS SECTION ═══════════════════ -->
     <section class="subjects" id="subjects">
         <div class="subjects-container">
             <div class="subjects-header">
-                <span style="font-size: 1.5rem;
-                color: WHITE;"
-                class="section-badge">Our Courses</span>
+                <span class="section-badge">Our Courses</span>
                 <h2>Explore Your Learning Journey</h2>
-                <p>Choose from our comprehensive collection of subjects designed to enhance your knowledge and skills
-                </p>
+                <p>Choose from our comprehensive collection of subjects designed to enhance your knowledge and skills</p>
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="subjectSearch" class="search-input" placeholder="Search subjects..." autocomplete="off">
+                    <span id="searchCount" class="search-count"></span>
+                </div>
             </div>
         </div>
-        </div>
+
         <div class="subjects-grid-new" id="subjectsGrid">
-            <!-- Accounting -->
+
+            <!-- ── Accounting ─────────────── -->
             <div class="subject-card-new" data-color="purple">
                 <div class="card-glow"></div>
                 <div class="card-pattern"></div>
@@ -82,27 +97,26 @@
                     <div class="card-icon"><i style="color: white;" class="fas fa-calculator fa-1.9x"></i></div>
                     <div class="icon-ring"></div>
                 </div>
-                <!-- Accounting -->
                 <div class="card-content">
-                    <div class=" media card-number">01</div>
+                    <div class="card-number">01</div>
                     <h3>Intermediate Accounting 2</h3>
                     <div class="card-stats">
-                        <span><i class="fas fa-book-open"></i> 2 Item</span>
+                        <span><i class="fas fa-book"></i> 2 Item
+</span>
                     </div>
                     <div class="card-actions">
                         <a href="subjects/accounting.html" class="start-btn">
-                            
-                            <i class='fas fa-book-open'></i>
+                            <i class="fas fa-book-open"></i>
                             Start Learning
                         </a>
-                        <button class="favorite-btn" style="width: 100px;" onclick="toggleFavorite(1)">
-                            <i class="far fa-heart fa-2x"></i>
+                        <button class="favorite-btn" onclick="toggleFavorite(1)">
+                            <i class="far fa-heart fa-lg"></i>
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- AIS -->
+            <!-- ── AIS ────────────────────── -->
             <div class="subject-card-new" data-color="indigo">
                 <div class="card-glow"></div>
                 <div class="card-pattern"></div>
@@ -111,23 +125,25 @@
                     <div class="icon-ring"></div>
                 </div>
                 <div class="card-content">
-                    <div  class="card-number">02</div>
+                    <div class="card-number">02</div>
                     <h3>Accounting Information Systems</h3>
                     <div class="card-stats">
-                        <span><i class="fas fa-book-open"></i> 4 Item</span>
+                        <span><i class="fas fa-book"></i> 4 Item
+</span>
                     </div>
                     <div class="card-actions">
                         <a href="subjects/Ais.html" class="start-btn">
-                            <i class='fas fa-book-open'></i>
+                            <i class="fas fa-book-open"></i>
                             Start Learning
                         </a>
-                        <button class="favorite-btn" style="width: 100px;" onclick="toggleFavorite(7)">
-                            <i class="far fa-heart fa-2x"></i>
+                        <button class="favorite-btn" onclick="toggleFavorite(7)">
+                            <i class="far fa-heart fa-lg"></i>
                         </button>
                     </div>
                 </div>
             </div>
-            <!-- Economics -->
+
+            <!-- ── Economics ───────────────── -->
             <div class="subject-card-new" data-color="green">
                 <div class="card-glow"></div>
                 <div class="card-pattern"></div>
@@ -139,21 +155,22 @@
                     <div class="card-number">03</div>
                     <h3>Micro Economics</h3>
                     <div class="card-stats">
-                        <span><i class="fas fa-book"></i> 0 Item</span>
+                        <span><i class="fas fa-book"></i> 0 Item
+</span>
                     </div>
                     <div class="card-actions">
                         <a href="subjects/economics.html" class="start-btn">
-                            <i class='fas fa-book-open'></i>
+                            <i class="fas fa-book-open"></i>
                             Start Learning
                         </a>
-                        <button class="favorite-btn" style="width: 100px;" onclick="toggleFavorite(2)">
-                            <i class="far fa-heart fa-2x"></i>
+                        <button class="favorite-btn" onclick="toggleFavorite(2)">
+                            <i class="far fa-heart fa-lg"></i>
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Public Finance -->
+            <!-- ── Public Finance ─────────── -->
             <div class="subject-card-new" data-color="orange">
                 <div class="card-glow"></div>
                 <div class="card-pattern"></div>
@@ -165,21 +182,22 @@
                     <div class="card-number">04</div>
                     <h3>Public Finance 2</h3>
                     <div class="card-stats">
-                        <span><i class="fas fa-book"></i> 0 Item</span>
+                        <span><i class="fas fa-book"></i> 0 Item
+</span>
                     </div>
                     <div class="card-actions">
                         <a href="subjects/public-Finance.html" class="start-btn">
-                            <i class='fas fa-book-open'></i>
+                            <i class="fas fa-book-open"></i>
                             Start Learning
                         </a>
-                        <button class="favorite-btn" style="width: 100px;" onclick="toggleFavorite(3)">
-                            <i class="far fa-heart fa-2x"></i>
+                        <button class="favorite-btn" onclick="toggleFavorite(3)">
+                            <i class="far fa-heart fa-lg"></i>
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- English -->
+            <!-- ── English ────────────────── -->
             <div class="subject-card-new" data-color="blue">
                 <div class="card-glow"></div>
                 <div class="card-pattern"></div>
@@ -189,23 +207,24 @@
                 </div>
                 <div class="card-content">
                     <div class="card-number">05</div>
-                    <h3>English </h3>
+                    <h3>English</h3>
                     <div class="card-stats">
-                        <span><i class="fas fa-book"></i> 0 Item</span>
+                        <span><i class="fas fa-book"></i> 0 Item
+</span>
                     </div>
                     <div class="card-actions">
                         <a href="subjects/english.html" class="start-btn">
-                            <i class='fas fa-book-open'></i>
+                           <i class="fas fa-book-open"></i>
                             Start Learning
                         </a>
-                        <button class="favorite-btn" style="width: 100px;" onclick="toggleFavorite(4)">
-                            <i class="far fa-heart fa-2x"></i>
+                        <button class="favorite-btn" onclick="toggleFavorite(4)">
+                            <i class="far fa-heart fa-lg"></i>
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Statistics -->
+            <!-- ── Statistics ─────────────── -->
             <div class="subject-card-new" data-color="violet">
                 <div class="card-glow"></div>
                 <div class="card-pattern"></div>
@@ -217,21 +236,22 @@
                     <div class="card-number">06</div>
                     <h3>Statistics</h3>
                     <div class="card-stats">
-                        <span><i class="fas fa-book"></i> 0 Item</span>
+                        <span><i class="fas fa-book"></i> 0 Item
+</span>
                     </div>
                     <div class="card-actions">
                         <a href="subjects/statistics.html" class="start-btn">
-                            <i class='fas fa-book-open'></i>
+                            <i class="fas fa-book-open"></i>
                             Start Learning
                         </a>
-                        <button class="favorite-btn" style="width: 100px;" onclick="toggleFavorite(5)">
-                            <i class="far fa-heart fa-2x"></i>
+                        <button class="favorite-btn" onclick="toggleFavorite(5)">
+                            <i class="far fa-heart fa-lg"></i>
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Marketing -->
+            <!-- ── Marketing ──────────────── -->
             <div class="subject-card-new" data-color="pink">
                 <div class="card-glow"></div>
                 <div class="card-pattern"></div>
@@ -241,165 +261,292 @@
                 </div>
                 <div class="card-content">
                     <div class="card-number">07</div>
-                    <h3> Marketing</h3>
+                    <h3>Marketing</h3>
                     <div class="card-stats">
-                        <span><i class="fas fa-book-open"></i> 3 Item</span>
+                        <span><i class="fas fa-book"></i> 3 Item
+</span>
                     </div>
                     <div class="card-actions">
                         <a href="subjects/Marketing.html" class="start-btn">
-                            <i class='fas fa-book-open'></i>
+                            <i class="fas fa-book-open"></i>
                             Start Learning
                         </a>
-                        <button class="favorite-btn " style="width: 100px;" onclick="toggleFavorite(6)">
-                            <i class="far fa-heart fa-2x"></i>
+                        <button class="favorite-btn" onclick="toggleFavorite(6)">
+                            <i class="far fa-heart fa-lg"></i>
                         </button>
                     </div>
                 </div>
             </div>
 
-
-            <!-- Political  -->
+            <!-- ── Political Science ──────── -->
             <div class="subject-card-new" data-color="pink">
                 <div class="card-glow"></div>
                 <div class="card-pattern"></div>
                 <div class="card-icon-wrapper">
-                    <div class="card-icon"><img style="width: 80%;"
-                            src="https://cdn-icons-png.flaticon.com/512/17977/17977774.png" alt=""></div>
+                    <div class="card-icon"><img style="width: 70%;" src="https://cdn-icons-png.flaticon.com/512/17977/17977774.png" alt=""></div>
                     <div class="icon-ring"></div>
                 </div>
                 <div class="card-content">
-                    <div  class=" card-number">08</div>
-                    <h3> Political Science</h3>
+                    <div class="card-number">08</div>
+                    <h3>Political Science</h3>
                     <div class="card-stats">
-                        <span><i class="fas fa-book-open"></i> 3 Item</span>
+                        <span><i class="fas fa-book"></i> 3 Item
+</span>
                     </div>
                     <div class="card-actions">
                         <a href="subjects/Political.html" class="start-btn">
-                            <i class='fas fa-book-open'></i>
+                            <i class="fas fa-book-open"></i>
                             Start Learning
                         </a>
-                        <button class="favorite-btn " style="width: 100px;" onclick="toggleFavorite(6)">
-                            <i class="far fa-heart fa-2x"></i>
+                        <button class="favorite-btn" onclick="toggleFavorite(6)">
+                            <i class="far fa-heart fa-lg"></i>
                         </button>
                     </div>
                 </div>
             </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
+
         </div>
     </section>
 
+    <!-- ═══════════════════ POMODORO TIMER WIDGET ═══════════════════ -->
+    <div class="pomodoro-widget" id="pomodoroWidget">
+        <div class="pomodoro-header" onclick="togglePomodoro()">
+            <i class="fas fa-clock"></i>
+            <span>Study Timer</span>
+            <i class="fas fa-chevron-up pomodoro-toggle" id="pomodoroToggle"></i>
+        </div>
+        <div class="pomodoro-body" id="pomodoroBody">
+            <div class="pomodoro-display" id="pomodoroDisplay">25:00</div>
+            <div class="pomodoro-label" id="pomodoroLabel">Focus Time</div>
+            <div class="pomodoro-progress">
+                <div class="pomodoro-progress-bar" id="pomodoroProgress"></div>
+            </div>
+            <div class="pomodoro-controls">
+                <button class="pomo-btn" onclick="startPomodoro()" id="pomoStart"><i class="fas fa-play"></i></button>
+                <button class="pomo-btn" onclick="pausePomodoro()" id="pomoPause" style="display:none"><i class="fas fa-pause"></i></button>
+                <button class="pomo-btn" onclick="resetPomodoro()"><i class="fas fa-redo"></i></button>
+            </div>
+            <div class="pomodoro-sessions">
+                <span id="pomoSessions">Sessions: 0</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════ FOOTER ═══════════════════ -->
+    <footer id="contact">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 50px; margin-bottom: 40px;">
+                <!-- Company Info -->
+                <div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 20px;">Subjects Online</h3>
+                    <p style="line-height: 1.8; margin-bottom: 24px; font-size: 0.95rem;">
+                        Your comprehensive platform for learning management, finance, economics, and more. Empowering
+                        students worldwide.
+                    </p>
+                    <div style="display: flex; gap: 12px;">
+                        <a href="https://www.facebook.com/ahmed.tamer.952116?mibextid=ZbWKwL"
+                            style="width: 42px; height: 42px; background: linear-gradient(135deg, #6366f1, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://chat.whatsapp.com/BmUhhJti1rWFKQHWGpQSL1?mode=gi_t"
+                            style="width: 42px; height: 42px; background: linear-gradient(135deg, #22c55e, #16a34a); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ahmed-tamer-0b2b93356?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                            style="width: 42px; height: 42px; background: linear-gradient(135deg, #0077b5, #005885); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 style="font-size: 1.1rem; margin-bottom: 20px;">Quick Links</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 14px;">
+                            <a href="#subjects" style="text-decoration: none; transition: color 0.3s ease;">All Subjects</a>
+                        </li>
+                        <li style="margin-bottom: 14px;">
+                            <a href="Favorites.html" style="text-decoration: none; transition: color 0.3s ease;">My Favorites</a>
+                        </li>
+                        <li style="margin-bottom: 14px;">
+                            <a href="doctors-news.html" style="text-decoration: none; transition: color 0.3s ease;">Doctors News</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 style="font-size: 1.1rem; margin-bottom: 20px;">Contact Info</h4>
+                    <div style="display: flex; flex-direction: column; gap: 14px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-envelope" style="color: #a78bfa;"></i>
+                            <span>support@subjectsonline.com</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-phone" style="color: #a78bfa;"></i>
+                            <span>+20 123 456 7890</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-map-marker-alt" style="color: #a78bfa;"></i>
+                            <span>Cairo, Egypt</span>
+                        </div>
+                        <div style="margin-top: 12px;">
+                            <a href="#contact"
+                                style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white !important; padding: 10px 22px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease;">
+                                <i class="fas fa-paper-plane"></i> Contact Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div style="border-top: 1px solid rgba(255, 255, 255, 0.06); padding-top: 28px; text-align: center;">
+                <p style="margin: 0; font-size: 0.9rem;">
+                    &copy; 2026 Subjects Online. All rights reserved. Developed By Ahmed Tamer for students worldwide.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════ SCRIPTS ═══════════════════ -->
     <script src="vendor/typed.js/typed.umd.min.js"></script>
     <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+
     <script>
-        
-        // Sample subjects data (same as favorites.html)
+        /* ── Starfield Canvas Animation ────────────────────── */
+        (function () {
+            const canvas = document.getElementById('starfield');
+            const ctx = canvas.getContext('2d');
+            let stars = [];
+            const STAR_COUNT = 200;
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = document.documentElement.scrollHeight;
+            }
+
+            function createStars() {
+                stars = [];
+                for (let i = 0; i < STAR_COUNT; i++) {
+                    stars.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        r: Math.random() * 1.5 + 0.3,
+                        alpha: Math.random() * 0.8 + 0.2,
+                        speed: Math.random() * 0.3 + 0.05,
+                        drift: (Math.random() - 0.5) * 0.15
+                    });
+                }
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                stars.forEach(s => {
+                    s.alpha += s.speed * 0.02 * (Math.random() > 0.5 ? 1 : -1);
+                    s.alpha = Math.max(0.1, Math.min(1, s.alpha));
+                    s.x += s.drift;
+                    s.y -= s.speed * 0.3;
+                    if (s.y < 0) { s.y = canvas.height; s.x = Math.random() * canvas.width; }
+                    if (s.x < 0) s.x = canvas.width;
+                    if (s.x > canvas.width) s.x = 0;
+
+                    ctx.beginPath();
+                    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(200, 210, 255, ${s.alpha})`;
+                    ctx.fill();
+                });
+                requestAnimationFrame(draw);
+            }
+
+            window.addEventListener('resize', () => { resize(); createStars(); });
+            resize();
+            createStars();
+            draw();
+
+            // Re-size canvas when page height changes (scroll-based)
+            let lastH = 0;
+            setInterval(() => {
+                const h = document.documentElement.scrollHeight;
+                if (h !== lastH) { lastH = h; resize(); }
+            }, 2000);
+        })();
+
+        /* ── Favorites Logic ───────────────────────────────── */
         const subjects = [
             { id: 1, name: 'Intermediate Accounting 2', icon: '📊', description: '', url: 'subjects/accounting.html' },
-            { id: 2, name: 'Accounting Information Systems', icon: '💻', description: '', url: 'subjects/Ais.html' } ,
+            { id: 2, name: 'Accounting Information Systems', icon: '💻', description: '', url: 'subjects/Ais.html' },
             { id: 3, name: 'Micro Economics', icon: '📈', description: '', url: 'subjects/economics.html' },
             { id: 4, name: 'Public Finance', icon: '🏛️', description: '', url: 'subjects/public-Finance.html' },
             { id: 5, name: 'English', icon: '🌐', description: '', url: 'subjects/english.html' },
             { id: 6, name: 'Statistics', icon: '📊', description: '', url: 'subjects/statistics.html' },
             { id: 7, name: 'Marketing', icon: '🏭', description: '', url: 'subjects/marketing.html' },
-            { id: 8, name: 'Political Science', icon: '', description: '', url: 'subjects/Political.html.html' } ,
+            { id: 8, name: 'Political Science', icon: '', description: '', url: 'subjects/Political.html' },
         ];
-        // Load favorites from localStorage with user-specific storage
+
         function loadFavorites() {
-            // Create a unique key for each user based on browser/session
             const userId = getUserId();
-            const favorites = JSON.parse(localStorage.getItem(`favorites_${userId}`) || '[]');
-            return favorites;
+            return JSON.parse(localStorage.getItem(`favorites_${userId}`) || '[]');
         }
 
-        // Save favorites to localStorage with user-specific storage
         function saveFavorites(favorites) {
             const userId = getUserId();
             localStorage.setItem(`favorites_${userId}`, JSON.stringify(favorites));
         }
 
-        // Get or create a unique user ID
         function getUserId() {
             let userId = localStorage.getItem('subjects_online_user_id');
             if (!userId) {
-                // Check if user is already registered
-
                 const hasVisitedBefore = localStorage.getItem('subjects_online_visited');
                 if (!hasVisitedBefore) {
-                    // First time visitor - ask for name
                     const username = prompt('Please enter your name to continue:');
                     if (username && username.trim()) {
-
-                        // Create user ID with username
                         const cleanUsername = username.trim().replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
                         const timestamp = Date.now();
                         const random = Math.random().toString(36).substr(2, 5);
                         userId = `${cleanUsername}_${timestamp}_${random}`;
                         localStorage.setItem('subjects_online_user_id', userId);
                         localStorage.setItem(`user_name_${userId}`, username.trim());
-
-                        // Show welcome notification for new user
                         setTimeout(() => {
                             showNotification(`Welcome ${username.trim()}! 👋 Your favorites will be saved automatically.`);
                         }, 1000);
                     } else {
-
-                        // If user cancels, use default ID
                         userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
                         localStorage.setItem('subjects_online_user_id', userId);
                         localStorage.setItem(`user_name_${userId}`, 'Anonymous');
                         setTimeout(() => {
-                            showNotification('Welcome to Subjects Online! 👋 Your favorites will be saved automatically.');
+                            showNotification('Welcome to Subjects Online! 👋');
                         }, 1000);
                     }
-
-                    // Mark as visited
                     localStorage.setItem('subjects_online_visited', 'true');
                 } else {
-                    // Returning visitor but no ID (cleared data)
                     userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
                     localStorage.setItem('subjects_online_user_id', userId);
                     localStorage.setItem(`user_name_${userId}`, 'Returning User');
-                    setTimeout(() => {
-                        showNotification('Welcome back! 👋 Your favorites will be saved automatically.');
-                    }, 1000);
+                    setTimeout(() => { showNotification('Welcome back! 👋'); }, 1000);
                 }
             }
             return userId;
         }
 
-        // Get user display name
         function getUserName() {
             const userId = getUserId();
             return localStorage.getItem(`user_name_${userId}`) || 'Anonymous';
         }
 
-        // Get user statistics
         function getUserStats() {
             const userId = getUserId();
             const favorites = loadFavorites();
             const firstVisit = localStorage.getItem(`first_visit_${userId}`) || new Date().toISOString();
             const visitCount = parseInt(localStorage.getItem(`visit_count_${userId}`) || '0') + 1;
-
-            // Update visit count
-
             localStorage.setItem(`visit_count_${userId}`, visitCount.toString());
             if (!localStorage.getItem(`first_visit_${userId}`)) {
                 localStorage.setItem(`first_visit_${userId}`, firstVisit);
             }
-            return {
-                userId: userId,
-                favoritesCount: favorites.length,
-                visitCount: visitCount,
-                firstVisit: firstVisit,
-                lastVisit: new Date().toISOString()
-            };
+            return { userId, favoritesCount: favorites.length, visitCount, firstVisit, lastVisit: new Date().toISOString() };
         }
 
-        // Clear user data (for testing or reset)
         function clearUserData() {
             const userId = getUserId();
             localStorage.removeItem(`favorites_${userId}`);
@@ -409,15 +556,9 @@
             showNotification('All your data has been cleared! 🗑️');
         }
 
-        // Export user data (for backup)
         function exportUserData() {
             const userId = getUserId();
-            const userData = {
-                userId: userId,
-                favorites: loadFavorites(),
-                stats: getUserStats(),
-                exportDate: new Date().toISOString()
-            };
+            const userData = { userId, favorites: loadFavorites(), stats: getUserStats(), exportDate: new Date().toISOString() };
             const dataStr = JSON.stringify(userData, null, 2);
             const dataBlob = new Blob([dataStr], { type: 'application/json' });
             const url = URL.createObjectURL(dataBlob);
@@ -429,7 +570,6 @@
             showNotification('Your data has been exported! 💾');
         }
 
-        // Import user data (for restore)
         function importUserData(file) {
             const reader = new FileReader();
             reader.onload = function (e) {
@@ -450,7 +590,6 @@
             reader.readAsText(file);
         }
 
-        // Add subject to favorites
         function addToFavorites(subjectId) {
             const favorites = loadFavorites();
             if (!favorites.includes(subjectId)) {
@@ -460,10 +599,6 @@
                 updateFavoriteButtons();
             }
         }
-
-        // Remove subject from favorites
-
-
 
         function removeFromFavorites(subjectId) {
             const favorites = loadFavorites();
@@ -475,21 +610,17 @@
                 updateFavoriteButtons();
             }
         }
-        // Check if subject is in favorite
+
         function isFavorite(subjectId) {
-            const favorites = loadFavorites();
-            return favorites.includes(subjectId);
+            return loadFavorites().includes(subjectId);
         }
-        // Toggle favorite (add/remove)
+
         function toggleFavorite(subjectId) {
-            if (isFavorite(subjectId)) {
-                removeFromFavorites(subjectId);
-            } else {
-                addToFavorites(subjectId);
-            }
+            if (isFavorite(subjectId)) removeFromFavorites(subjectId);
+            else addToFavorites(subjectId);
             updateFavoriteButtons();
         }
-        // Update favorite buttons on the page
+
         function updateFavoriteButtons() {
             const cards = document.querySelectorAll('.subject-card-new');
             cards.forEach((card, index) => {
@@ -506,22 +637,26 @@
                 }
             });
         }
-        // Show notification
+
         function showNotification(message) {
             const notification = document.createElement('div');
             notification.style.cssText = `
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
-            z-index: 10000;
-            animation: slideInRight 0.5s ease-out;
-            font-weight: 600;
-        `;
+                position: fixed;
+                top: 90px;
+                right: 20px;
+                background: rgba(8, 12, 24, 0.85);
+                backdrop-filter: blur(20px);
+                color: white;
+                padding: 16px 28px;
+                border-radius: 16px;
+                border: 1px solid rgba(99, 102, 241, 0.3);
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(99, 102, 241, 0.15);
+                z-index: 10000;
+                animation: slideInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                font-weight: 600;
+                font-size: 0.9rem;
+                font-family: 'Inter', system-ui, sans-serif;
+            `;
             notification.textContent = message;
             document.body.appendChild(notification);
             setTimeout(() => {
@@ -529,218 +664,182 @@
                 setTimeout(() => notification.remove(), 500);
             }, 3000);
         }
-        // Check if user is blocked
+
         function isUserBlocked() {
             const userId = getUserId();
-            const blockedUsers = JSON.parse(localStorage.getItem('blocked_users') || '[]');
-            return blockedUsers.includes(userId);
+            return JSON.parse(localStorage.getItem('blocked_users') || '[]').includes(userId);
         }
-        // Add click handlers to favorite buttons
+
         document.addEventListener('DOMContentLoaded', function () {
-            // Check if user is blocked
             if (isUserBlocked()) {
-                showNotification('Your account has been blocked! 🚫 Please contact support.', '#ef4444');
-                // Disable all interactive elements
+                showNotification('Your account has been blocked! 🚫');
                 document.querySelectorAll('.start-btn, .favorite-btn').forEach(btn => {
                     btn.style.pointerEvents = 'none';
                     btn.style.opacity = '0.5';
                 });
                 return;
             }
-            // Initialize favorite buttons
             updateFavoriteButtons();
-            // Add click handlers to favorite buttons
-            document.querySelectorAll('.favorite-btn').forEach((btn) => {
-                // Remove inline onclick handlers to prevent double execution
+            document.querySelectorAll('.favorite-btn').forEach(btn => {
                 btn.removeAttribute('onclick');
-                // Get subjectId from data attribute or use the button's position
                 const card = btn.closest('.subject-card-new');
                 const allCards = Array.from(document.querySelectorAll('.subject-card-new'));
                 const subjectId = allCards.indexOf(card) + 1;
                 btn.addEventListener('click', function (e) {
                     e.preventDefault();
                     e.stopPropagation();
-                    if (isUserBlocked()) {
-                        showNotification('Your account is blocked! 🚫', '#ef4444');
-                        return;
-                    }
+                    if (isUserBlocked()) { showNotification('Your account is blocked! 🚫'); return; }
                     toggleFavorite(subjectId);
                 });
             });
+
+            // Scroll Reveal for cards
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, i) => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = `fadeInUp 0.6s ${i * 0.08}s cubic-bezier(0.4, 0, 0.2, 1) both`;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.subject-card-new').forEach(card => {
+                card.style.opacity = '0';
+                observer.observe(card);
+            });
         });
 
-        // Add CSS animations
-        const style = document.createElement('style');
-        style.textContent = `
-    @keyframes slideInRight {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-    }
+        // Notification slide animations
+        const notifStyle = document.createElement('style');
+        notifStyle.textContent = `
+            @keyframes slideInRight { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+            @keyframes slideOutRight { from { transform: translateX(0); opacity: 1; } to { transform: translateX(120%); opacity: 0; } }
+            @keyframes heartBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+            .favorite-btn i { transition: all 0.3s ease; }
+            .favorite-btn i.fas { color: #ef4444 !important; animation: heartBeat 0.6s ease-in-out; }
+        `;
+        document.head.appendChild(notifStyle);
 
-    @keyframes slideOutRight {
-        from { transform: translateX(0); opacity: 1; }
-        to { transform: translateX(100%); opacity: 0; }
-    }
+        /* ── Search Filter ─────────────────────────────────── */
+        const searchInput = document.getElementById('subjectSearch');
+        const searchCount = document.getElementById('searchCount');
+        if (searchInput) {
+            searchInput.addEventListener('input', function () {
+                const query = this.value.toLowerCase().trim();
+                const cards = document.querySelectorAll('.subject-card-new');
+                let visible = 0;
+                cards.forEach(card => {
+                    const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
+                    const match = !query || title.includes(query);
+                    card.style.display = match ? '' : 'none';
+                    card.style.opacity = match ? '1' : '0';
+                    if (match) visible++;
+                });
+                searchCount.textContent = query ? `${visible} found` : '';
+            });
+        }
 
-    .favorite-btn i {
-        transition: all 0.3s ease;
-    }
+        /* ── Pomodoro Timer ────────────────────────────────── */
+        let pomoInterval = null;
+        let pomoTime = 25 * 60; // 25 minutes
+        let pomoTotal = 25 * 60;
+        let pomoRunning = false;
+        let pomoIsBreak = false;
+        let pomoSessions = parseInt(localStorage.getItem('pomo_sessions') || '0');
+        let pomodoroOpen = false;
 
-    .favorite-btn i.fas {
-        color: #ef4444 !important;
-        animation: heartBeat 0.6s ease-in-out;
-    }
+        document.getElementById('pomoSessions').textContent = `Sessions: ${pomoSessions}`;
 
-    @keyframes heartBeat {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.2); }
-    }
+        function togglePomodoro() {
+            pomodoroOpen = !pomodoroOpen;
+            const body = document.getElementById('pomodoroBody');
+            const toggle = document.getElementById('pomodoroToggle');
+            body.style.display = pomodoroOpen ? 'flex' : 'none';
+            toggle.style.transform = pomodoroOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
 
-    .card-actions {
-        display: flex;
-        gap: 10px;
-        margin-top:130px;
-    }
+        function updatePomodoroDisplay() {
+            const mins = Math.floor(pomoTime / 60).toString().padStart(2, '0');
+            const secs = (pomoTime % 60).toString().padStart(2, '0');
+            document.getElementById('pomodoroDisplay').textContent = `${mins}:${secs}`;
+            const pct = ((pomoTotal - pomoTime) / pomoTotal) * 100;
+            document.getElementById('pomodoroProgress').style.width = `${pct}%`;
+        }
 
-    .start-btn {
-        flex: 1;
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
-        color: white;
-        border: none;
-        padding: 12px 20px;
-        border-radius: 10px;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-    }
-    .start-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
-    }
+        function startPomodoro() {
+            if (pomoRunning) return;
+            pomoRunning = true;
+            document.getElementById('pomoStart').style.display = 'none';
+            document.getElementById('pomoPause').style.display = 'inline-flex';
+            pomoInterval = setInterval(() => {
+                pomoTime--;
+                updatePomodoroDisplay();
+                if (pomoTime <= 0) {
+                    clearInterval(pomoInterval);
+                    pomoRunning = false;
+                    // Play sound
+                    try {
+                        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.frequency.value = pomoIsBreak ? 523 : 880;
+                        osc.type = 'sine';
+                        gain.gain.value = 0.3;
+                        osc.start();
+                        setTimeout(() => { osc.stop(); ctx.close(); }, 600);
+                    } catch (e) {}
 
-    .favorite-btn {
-        background: linear-gradient(135deg, #f59e0b, #d97706);
-        color: white;
-        border: none;
-        padding: 12px;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        width: 50px;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+                    if (!pomoIsBreak) {
+                        pomoSessions++;
+                        localStorage.setItem('pomo_sessions', pomoSessions);
+                        document.getElementById('pomoSessions').textContent = `Sessions: ${pomoSessions}`;
+                        showNotification(`🎉 Focus session #${pomoSessions} complete! Take a break.`);
+                        pomoIsBreak = true;
+                        pomoTime = 5 * 60;
+                        pomoTotal = 5 * 60;
+                        document.getElementById('pomodoroLabel').textContent = 'Break Time';
+                        document.getElementById('pomodoroDisplay').parentElement.classList.add('pomo-break');
+                    } else {
+                        showNotification('☕ Break over! Ready for another focus session?');
+                        pomoIsBreak = false;
+                        pomoTime = 25 * 60;
+                        pomoTotal = 25 * 60;
+                        document.getElementById('pomodoroLabel').textContent = 'Focus Time';
+                        document.getElementById('pomodoroDisplay').parentElement.classList.remove('pomo-break');
+                    }
+                    updatePomodoroDisplay();
+                    document.getElementById('pomoStart').style.display = 'inline-flex';
+                    document.getElementById('pomoPause').style.display = 'none';
+                }
+            }, 1000);
+        }
 
-    .favorite-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
-    }
-`;
-        document.head.appendChild(style);
-    </script>
-    <footer id="contact" style="
-     background-image: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-    color: white;
-    padding: 60px 20px 30px;
-    margin-top: 80px;
-">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <div style="display: grid; grid-template-columns:  1fr 1fr 1fr; gap: 40px; margin-bottom: 40px;">
-                <!-- Company Info -->
-                <div>
-                    <h3 style="font-size: 1.5rem; margin-bottom: 20px; color: #ffffff;">Subjects Online</h3>
-                    <p style="color: #94a3b8; line-height: 1.6; margin-bottom: 20px;">
-                        Your comprehensive platform for learning management, finance, economics, and more. Empowering
-                        students worldwide.
-                    </p>
-                    <div style="display: flex; gap: 15px;">
-                        <a href="https://www.facebook.com/ahmed.tamer.952116?mibextid=ZbWKwL"
-                            style="width: 40px; height: 40px; background: linear-gradient(135deg, #6366f1, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://chat.whatsapp.com/BmUhhJti1rWFKQHWGpQSL1?mode=gi_t"
-                            style="width: 40px; height: 40px; background: linear-gradient(135deg, #1df21d, #37971e); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/ahmed-tamer-0b2b93356?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                            style="width: 40px; height: 40px; background: linear-gradient(135deg, #0077b5, #005885); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-                <!-- Quick Links -->
+        function pausePomodoro() {
+            if (!pomoRunning) return;
+            pomoRunning = false;
+            clearInterval(pomoInterval);
+            document.getElementById('pomoStart').style.display = 'inline-flex';
+            document.getElementById('pomoPause').style.display = 'none';
+        }
 
-                <div>
-                    <h4 style="font-size: 1.2rem; margin-bottom: 20px; color: #ffffff;">Quick Links</h4>
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li style="margin-bottom: 12px;">
-                            <a href="#subjects"
-                                style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">All
-                                Subjects</a>
-                        </li>
-                        <li style="margin-bottom: 12px;">
-                            <a href="Favorites.html"
-                                style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">My
-                                Favorites</a>
-                        </li>
-                        <li style="margin-bottom: 12px;">
-                            <a href="doctors-news.html"
-                                style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">Doctors
-                                News</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Contact -->
-                <div>
-                    <h4 style="font-size: 1.2rem; margin-bottom: 20px; color: #ffffff;">Contact Info</h4>
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <div style="display: flex; align-items: center; gap: 10px; color: #94a3b8;">
-                            <i class="fas fa-envelope"></i>
-                            <span>support@subjectsonline.com</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px; color: #94a3b8;">
-                            <i class="fas fa-phone"></i>
-                            <span>+20 123 456 7890</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px; color: #94a3b8;">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Cairo, Egypt</span>
-                        </div>
-                        <div style="margin-top: 15px;">
-
-                            <a href="#contact"
-                                style="display: inline-block; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
-                                <i class="fas fa-paper-plane"></i> Contact Us
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Bottom Bar -->
-            <div style="
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 30px;
-            text-align: center;
-            color: #94a3b8;
-        ">
-
-                <p style="margin: 0;">
-                    &copy; 2026 Subjects Online. All rights reserved. Developed By Ahmed Tamer for students worldwide.
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
+        function resetPomodoro() {
+            pausePomodoro();
+            pomoIsBreak = false;
+            pomoTime = 25 * 60;
+            pomoTotal = 25 * 60;
+            document.getElementById('pomodoroLabel').textContent = 'Focus Time';
+            document.getElementById('pomodoroDisplay').parentElement.classList.remove('pomo-break');
+            updatePomodoroDisplay();
+        }
     
-</body>
+            
+    </script>
 
+    </body>
 </html>
+
+
+
+

@@ -2,10 +2,8 @@
 
 <html lang="en" dir="ltr">
   <head>
-    <script
-      defer
-      src="https://cloud.umami.is/script.js"
-      data-website-id="31d71665-7827-44ae-934b-7f68bc397123"></script>
+     <script defer src="https://cloud.umami.is/script.js"
+        data-website-id="31d71665-7827-44ae-934b-7f68bc397123"></script>
     <meta charset="UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,10 +14,9 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet" />
 
-    <link rel="stylesheet" href="../../Css/main.css" />
+    
 
-    <link rel="stylesheet" href="../../Css/subject-theme.css" />
-    <link rel="stylesheet" href="../../../../../Css/Subjects.css" />
+    <link rel="stylesheet" href="../../../../../Css/content-pages.css" />
 
     <!-- PDF Viewer Modal -->
 
@@ -237,22 +234,18 @@
       /* Breadcrumb Styling */
 
       .breadcrumb {
-        position: sticky;
-        top: 10px;
-        background: linear-gradient(
-          135deg,
-          rgba(139, 92, 246, 0.1),
-          rgba(139, 92, 246, 0.05)
-        );
-        backdrop-filter: blur(15px);
-        border: 1px solid rgba(139, 92, 246, 0.2);
-        border-radius: 12px;
-        padding: 12px 20px;
-        margin-bottom: 20px;
-        width: 45%;
-        margin: 30px auto;
-        display: flex;
-        justify-content: space-evenly;
+       position: sticky;
+    top: 10px;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05));
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    width: 45%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-evenly;
       }
 
       .breadcrumb a {
@@ -352,7 +345,31 @@
         padding: 0 15px;
       }
 
+      .pdf-card {
+        background: rgba(255, 255, 255, 0.03);
 
+        border: 10px double rgba(255, 255, 255, 0.08);
+
+        border-radius: 50px;
+
+        padding: 25px;
+
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+        color: #e6edf7;
+
+        position: relative;
+
+        overflow: hidden;
+
+        backdrop-filter: blur(10px);
+
+        min-height: 200px;
+
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+        cursor: pointer;
+      }
 
       .card-glow {
         position: absolute;
@@ -774,7 +791,7 @@
         .subject-header h1 {
           font-size: 1.5rem;
         }
-        .breadcrumb {
+        .breadcrumb{
           display: none;
         }
       }
@@ -837,6 +854,8 @@
 
       <div class="subject-header">
         <h1>📚 Chapter 2</h1>
+
+        
       </div>
 
       <div class="pdf-grid" id="pdfGrid">
@@ -931,7 +950,7 @@
 
         // Set PDF source
 
-        pdfViewer.src = pdfPath + "#toolbar=0&navpanes=0&scrollbar=0";
+       pdfViewer.src = pdfPath + "#toolbar=&scrollbar=0&pagemode=bookmarks";
 
         // Set download button
 

@@ -8,8 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chapter 1: Introduction to Economics - Subject Online</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../../Css/main.css" />
-  <link rel="stylesheet" href="../../Css/subject-theme.css" />
+  <link rel="stylesheet" href="../../../../Css/main.css" />
+    <link rel="stylesheet" href="../../../../Css/content-pages.css" />
+  
   <!-- PDF Viewer Modal -->
   <div id="pdfModal" class="modal">
     <div class="modal-content">
@@ -555,7 +556,7 @@
     gtag("js", new Date());
     gtag("config", "G-XXXXXXX");
   </script>
-</head>
+  </head>
 
 <body>
   <div class="container">
@@ -666,13 +667,12 @@
       modalTitle.textContent = pdfTitle;
 
       // Set PDF source
-      pdfViewer.src = pdfPath + "#toolbar=0&navpanes=0&scrollbar=0";
+      pdfViewer.src = pdfPath;
 
       // Set download button
       downloadBtn.onclick = () => {
         const link = document.createElement("a");
-        link.href = pdfPath;
-        link.download = pdfTitle.toLowerCase().replace(/\s+/g, "-") + ".pdf";
+       pdfViewer.src = pdfPath + "#toolbar=&scrollbar=0&pagemode=bookmarks";        link.download = pdfTitle.toLowerCase().replace(/\s+/g, "-") + ".pdf";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);

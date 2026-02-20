@@ -1,106 +1,65 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+<head>
     <title>My Favorites - Subjects Online</title>
-    <script
-      defer
-      src="https://cloud.umami.is/script.js"
-      data-website-id="31d71665-7827-44ae-934b-7f68bc397123"></script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:title" content="Subjects Online" />
-    <meta property="og:description" content="College in one link" />
-    <meta
-      property="og:image"
-      content="https://subjects-online.github.io/Subject-online/preview.png" />
-    <meta
-      property="og:url"
-      content="https://subjects-online.github.io/Subject-online/" />
-    <meta name="google" content="notranslate" />
-    <link rel="stylesheet" href="Css/Index.css" />
-    <link rel="stylesheet" href="Css/media&animation.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="Css/Favorite.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Storm&display=swap"
-      rel="stylesheet" />
+    <script defer src="https://cloud.umami.is/script.js"
+        data-website-id="31d71665-7827-44ae-934b-7f68bc397123"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Subjects Online">
+    <meta property="og:description" content="College in one link">
+    <meta property="og:image" content="https://subjects-online.github.io/Subject-online/preview.png">
+    <meta property="og:url" content="https://subjects-online.github.io/Subject-online/">
+    <meta name="google" content="notranslate">
+    <link rel="stylesheet" href="Css/Index.css">
+    <link rel="stylesheet" href="Css/media&animation.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="Css/Favorite.css">
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Storm&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
 
-  <body>
-    <!-- Start Nav Bar  -->
+<body>
+    <canvas id="starfield" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none;"></canvas>
+    
+    <!-- ------------------- NAVIGATION ------------------- -->
     <nav class="nav">
-      <h2 style="margin-left: 20px" class="title">Subjects Online</h2>
-      <div>
-          <a href="index.html">Home</a>
-        <a href="index.html#subjects">Subjects</a>
-        <a class="New" href="doctors-news.html">Doctors News</a>
-      </div>
-    </nav>
-
-    <!-- End Nav Bar  -->
-    <div class="favorites-container">
-      <div class="favorites-header">
-        <h1>My Favorites ❤️</h1>
-        <p>
-          Your favorite subjects all in one place. Quick access to the courses
-          you love!
-        </p>
-        <div
-          style="
-            margin-top: 20px;
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-          ">
-          <button
-            onclick="exportUserData()"
-            style="
-              padding: 10px 20px;
-              background: linear-gradient(135deg, #10b981, #059669);
-              color: white;
-              border: none;
-              border-radius: 10px;
-              cursor: pointer;
-              font-weight: 600;
-              transition: all 0.3s ease;
-            ">
-            <i class="fas fa-download"></i> Export Data
-          </button>
-          <button
-            onclick="clearUserData()"
-            style="
-              padding: 10px 20px;
-              background: linear-gradient(135deg, #ef4444, #dc2626);
-              color: white;
-              border: none;
-              border-radius: 10px;
-              cursor: pointer;
-              font-weight: 600;
-              transition: all 0.3s ease;
-            ">
-            <i class="fas fa-trash"></i> Clear Data
-          </button>
+        <h2 class="title">Subjects Online</h2>
+        <div>
+            <a href="index.html#subjects">Subjects</a>
+            <a class="New" href="doctors-news.html">Doctors News</a>
+            <a href="Favorites.html" style="background: rgba(255, 255, 255, 0.1); border-radius: 12px;">Favorites</a>
+            <a href="index.html#contact">Contact Us</a>
         </div>
-      </div>
-      <div class="favorites-grid" id="favoritesGrid">
+    </nav>
+<div class="favorites-container">
+    <div class="favorites-header">
+        <h1>My Favorites ❤️</h1>
+        <p>Your favorite subjects all in one place. Quick access to the courses you love!</p>
+        <div style="margin-top: 20px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <button onclick="exportUserData()" style="padding: 10px 20px; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
+                <i class="fas fa-download"></i> Export Data
+            </button>
+            <button onclick="clearUserData()" style="padding: 10px 20px; background: linear-gradient(135deg, #ef4444, #dc2626); color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
+                <i class="fas fa-trash"></i> Clear Data
+            </button>
+        </div>
+    </div>
+    <div class="favorites-grid" id="favoritesGrid">
         <!-- Favorites will be dynamically added here -->
-      </div>
-      <div class="empty-favorites" id="emptyFavorites" style="display: none">
+    </div>
+    <div class="empty-favorites" id="emptyFavorites" style="display: none;">
         <div class="empty-icon">💔</div>
         <h2>No favorites yet!</h2>
         <p>Start exploring subjects and add your favorites to see them here.</p>
         <a href="index.html#subjects" class="browse-btn">
-          <i class="fas fa-book-open"></i>
-          Browse Subjects
+            <i class="fas fa-book-open"></i>
+            Browse Subjects
         </a>
-      </div>
     </div>
-    <script src="Scripts/Favorites.js"></script>
-  </body>
+</div>
+<script src="Scripts/Favorites.js"></script>
+<script src="Scripts/starfield.js"></script></body>
 </html>
