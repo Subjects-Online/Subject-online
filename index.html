@@ -1,845 +1,523 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html lang="en">
 <head>
-    <title>Subjects Online — Your College, One Link</title>
-    <script defer src="https://cloud.umami.is/script.js"
-        data-website-id="31d71665-7827-44ae-934b-7f68bc397123"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Subjects Online — Your entire college curriculum in one place. Lectures, summaries, and resources for every subject.">
-    <meta property="og:title" content="Subjects Online">
-    <meta property="og:description" content="College in one link">
-    <meta property="og:image" content="https://subjects-online.github.io/Subject-online/preview.png">
-    <meta property="og:url" content="https://subjects-online.github.io/Subject-online/">
-    <meta name="google" content="notranslate">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subjects Online | Premium Learning Platform</title>
+  <meta name="description" content="Your all-in-one academic resource hub — course content, quizzes, summaries, Q&A, and exam reviews for every subject." />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/index.css" />
+  <style>
+    /* ── Hero ──────────────────────────────────────── */
+    .hero {
+      padding: 5rem 2rem 3rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1.2rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(79,142,247,0.3);
+      background: rgba(79,142,247,0.08);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-blue);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.2rem, 7vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, var(--accent-blue) 20%, var(--accent-purple) 60%, var(--accent-pink) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 540px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+      backdrop-filter: blur(12px);
+    }
+    .btn-outline:hover { border-color: var(--glass-border-hover); color: var(--text-primary); background: var(--bg-card-hover); }
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    /* ── Stats Row ─────────────────────────────────── */
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      padding: 1.5rem 2rem;
+      margin-bottom: 1rem;
+    }
+    .stat-item { text-align: center; }
+    .stat-item .val {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-item .label { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="shortcut icon" href="Imgs/IMG-20260122-WA0000.jpg" type="image/x-icon">
+    /* ── Subjects Grid ─────────────────────────────── */
+    .subjects-section { padding: 1rem 2rem 4rem; max-width: 1200px; margin: 0 auto; }
+    .subjects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+    .subject-card {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: 1.75rem;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+      backdrop-filter: blur(50px);
+    }
+    .subject-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--card-color), transparent);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .subject-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at top left, var(--card-alpha), transparent 60%);
+      opacity: 0;
+      transition: var(--transition);
+      pointer-events: none;
+    }
+    .subject-card:hover {
+      border-color: var(--card-border-hover);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px var(--card-shadow);
+    }
+    .subject-card:hover::before { opacity: 1; }
+    .subject-card:hover::after { opacity: 1; }
+    .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
+    .card-icon-wrap {
+      width: 56px; height: 56px;
+      border-radius: var(--radius-md);
+      background: var(--card-icon-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      position: relative;
+      z-index: 1;
+    }
+    .card-arrow {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+    .subject-card:hover .card-arrow {
+      background: var(--card-icon-bg);
+      color: var(--card-color);
+      border-color: var(--card-border-hover);
+    }
+    .card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 0.35rem;
+      position: relative;
+      z-index: 1;
+    }
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+      position: relative;
+      z-index: 1;
+    }
+    .card-sections {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      position: relative;
+      z-index: 1;
+    }
+    .card-section-badge {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-pill);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .fav-star {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      font-size: 1rem;
+      color: var(--card-color);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .subject-card.is-fav .fav-star { opacity: 1; z-index: 2; }
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="Css/Index.css">
-    <link rel="stylesheet" href="Css/media&animation.css">
+    /* ── Quick Links row ───────────────────────────── */
+    .quick-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding: 0 2rem 3rem;
+    }
+    .quick-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.4rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: var(--transition);
+      backdrop-filter: blur(12px);
+    }
+    .quick-link:hover { border-color: var(--glass-border-hover); color: var(--text-primary); background: var(--bg-card-hover); transform: translateY(-2px); }
 
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    /* ── Responsive ────────────────────────────────── */
+    @media (max-width: 640px) {
+      .hero { padding: 3.5rem 1.25rem 2rem; }
+      .subjects-section { padding: 1rem 1rem 3rem; }
+      .subjects-grid { grid-template-columns: 1fr; }
+      .stats-row { gap: 1.5rem; }
+    }
+  </style>
 </head>
-
 <body>
+  <!-- Starfield -->
+  <canvas id="starfield-canvas"></canvas>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
 
-    <!-- Starfield Background -->
-    <canvas id="starfield"></canvas>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo"><span>📚</span> Subjects Online</a>
+    <div class="nav-links">
+      <a href="index.html" class="active"><span class="icon">🏠</span> Home</a>
+      <a href="doctors-news.html"><span class="icon"></span> Doctors News</a>
+      <a href="favorites.html" class="nav-favorites-btn"><span class="icon">⭐</span> Favorites</a>
+    </div>
+    <div class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
 
-    
+  <!-- Mobile nav -->
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html">🏠 Home</a>
+    <a href="doctors-news.html"> Doctors News</a>
+    <a href="favorites.html">⭐ Favorites</a>
+  </div>
 
-    <!-- ═══════════════════ HERO SECTION ═══════════════════ -->
-    <section class="hero">
-        <nav class="nav">
-            <h2 class="title">Subjects Online</h2>
-            
-
-<div>
-                <a href="#subjects">Subjects</a>
-                <a class="New" href="doctors-news.html">Doctors News</a>
-                <a href="Favorites.html">Favorites</a>
-                <a href="#contact">Contact Us</a>
-            </div>
-        </nav>
-
-        <div class="main">
-            <div class="hero-badge">Subjects Online</div>
-            <div class="icons">
-                <div class="learn">College In One Link</div>
-                <a href="./subjects/accounting.html"><span><i style="color: white;" class="fas fa-calculator fa-1.9x"></i></span></a>
-                <a href="./subjects/Ais.html"><span>💻</span></a>
-                <a href="./subjects/economics.html"><span>📈</span></a>
-                <a href="./subjects/public-Finance.html"><span>🏛️</span></a>
-                <a href="./subjects/english.html"><span>🌐</span></a>
-                <a href="./subjects/statistics.html"><span>📊</span></a>
-                <a href="./subjects/Marketing.html"><span>🏭</span></a>
-            </div>
-        </div>
-
-        <div class="scroll-indicator">
-            <span>Scroll</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </section>
-
-    <!-- ═══════════════════ SUBJECTS SECTION ═══════════════════ -->
-    <section class="subjects" id="subjects">
-        <div class="subjects-container">
-            <div class="subjects-header">
-                <span class="section-badge">Our Courses</span>
-                <h2>Explore Your Learning Journey</h2>
-                <p>Choose from our comprehensive collection of subjects designed to enhance your knowledge and skills</p>
-                <!-- Search Bar -->
-                <div class="search-container">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" id="subjectSearch" class="search-input" placeholder="Search subjects..." autocomplete="off">
-                    <span id="searchCount" class="search-count"></span>
-                </div>
-            </div>
-        </div>
-
-        <div class="subjects-grid-new" id="subjectsGrid">
-
-            <!-- ── Accounting ─────────────── -->
-            <div class="subject-card-new" data-color="purple">
-                <div class="card-glow"></div>
-                <div class="card-pattern"></div>
-                <div class="card-icon-wrapper">
-                    <div class="card-icon"><i style="color: white;" class="fas fa-calculator fa-1.9x"></i></div>
-                    <div class="icon-ring"></div>
-                </div>
-                <div class="card-content">
-                    <div class="card-number">01</div>
-                    <h3>Intermediate Accounting 2</h3>
-                    <div class="card-stats">
-                        <span><i class="fas fa-book"></i> 2 Item
-</span>
-                    </div>
-                    <div class="card-actions">
-                        <a href="subjects/accounting.html" class="start-btn">
-                            <i class="fas fa-book-open"></i>
-                            Start Learning
-                        </a>
-                        <button class="favorite-btn" onclick="toggleFavorite(1)">
-                            <i class="far fa-heart fa-lg"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ── AIS ────────────────────── -->
-            <div class="subject-card-new" data-color="indigo">
-                <div class="card-glow"></div>
-                <div class="card-pattern"></div>
-                <div class="card-icon-wrapper">
-                    <div class="card-icon">💻</div>
-                    <div class="icon-ring"></div>
-                </div>
-                <div class="card-content">
-                    <div class="card-number">02</div>
-                    <h3>Accounting Information Systems</h3>
-                    <div class="card-stats">
-                        <span><i class="fas fa-book"></i> 4 Item
-</span>
-                    </div>
-                    <div class="card-actions">
-                        <a href="subjects/Ais.html" class="start-btn">
-                            <i class="fas fa-book-open"></i>
-                            Start Learning
-                        </a>
-                        <button class="favorite-btn" onclick="toggleFavorite(7)">
-                            <i class="far fa-heart fa-lg"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ── Economics ───────────────── -->
-            <div class="subject-card-new" data-color="green">
-                <div class="card-glow"></div>
-                <div class="card-pattern"></div>
-                <div class="card-icon-wrapper">
-                    <div class="card-icon">📈</div>
-                    <div class="icon-ring"></div>
-                </div>
-                <div class="card-content">
-                    <div class="card-number">03</div>
-                    <h3>Micro Economics</h3>
-                    <div class="card-stats">
-                        <span><i class="fas fa-book"></i> 0 Item
-</span>
-                    </div>
-                    <div class="card-actions">
-                        <a href="subjects/economics.html" class="start-btn">
-                            <i class="fas fa-book-open"></i>
-                            Start Learning
-                        </a>
-                        <button class="favorite-btn" onclick="toggleFavorite(2)">
-                            <i class="far fa-heart fa-lg"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ── Public Finance ─────────── -->
-            <div class="subject-card-new" data-color="orange">
-                <div class="card-glow"></div>
-                <div class="card-pattern"></div>
-                <div class="card-icon-wrapper">
-                    <div class="card-icon">🏛️</div>
-                    <div class="icon-ring"></div>
-                </div>
-                <div class="card-content">
-                    <div class="card-number">04</div>
-                    <h3>Public Finance 2</h3>
-                    <div class="card-stats">
-                        <span><i class="fas fa-book"></i> 0 Item
-</span>
-                    </div>
-                    <div class="card-actions">
-                        <a href="subjects/public-Finance.html" class="start-btn">
-                            <i class="fas fa-book-open"></i>
-                            Start Learning
-                        </a>
-                        <button class="favorite-btn" onclick="toggleFavorite(3)">
-                            <i class="far fa-heart fa-lg"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ── English ────────────────── -->
-            <div class="subject-card-new" data-color="blue">
-                <div class="card-glow"></div>
-                <div class="card-pattern"></div>
-                <div class="card-icon-wrapper">
-                    <div class="card-icon">🌐</div>
-                    <div class="icon-ring"></div>
-                </div>
-                <div class="card-content">
-                    <div class="card-number">05</div>
-                    <h3>English</h3>
-                    <div class="card-stats">
-                        <span><i class="fas fa-book"></i> 0 Item
-</span>
-                    </div>
-                    <div class="card-actions">
-                        <a href="subjects/english.html" class="start-btn">
-                           <i class="fas fa-book-open"></i>
-                            Start Learning
-                        </a>
-                        <button class="favorite-btn" onclick="toggleFavorite(4)">
-                            <i class="far fa-heart fa-lg"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ── Statistics ─────────────── -->
-            <div class="subject-card-new" data-color="violet">
-                <div class="card-glow"></div>
-                <div class="card-pattern"></div>
-                <div class="card-icon-wrapper">
-                    <div class="card-icon">📊</div>
-                    <div class="icon-ring"></div>
-                </div>
-                <div class="card-content">
-                    <div class="card-number">06</div>
-                    <h3>Statistics</h3>
-                    <div class="card-stats">
-                        <span><i class="fas fa-book"></i> 0 Item
-</span>
-                    </div>
-                    <div class="card-actions">
-                        <a href="subjects/statistics.html" class="start-btn">
-                            <i class="fas fa-book-open"></i>
-                            Start Learning
-                        </a>
-                        <button class="favorite-btn" onclick="toggleFavorite(5)">
-                            <i class="far fa-heart fa-lg"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ── Marketing ──────────────── -->
-            <div class="subject-card-new" data-color="pink">
-                <div class="card-glow"></div>
-                <div class="card-pattern"></div>
-                <div class="card-icon-wrapper">
-                    <div class="card-icon">🏭</div>
-                    <div class="icon-ring"></div>
-                </div>
-                <div class="card-content">
-                    <div class="card-number">07</div>
-                    <h3>Marketing</h3>
-                    <div class="card-stats">
-                        <span><i class="fas fa-book"></i> 3 Item
-</span>
-                    </div>
-                    <div class="card-actions">
-                        <a href="subjects/Marketing.html" class="start-btn">
-                            <i class="fas fa-book-open"></i>
-                            Start Learning
-                        </a>
-                        <button class="favorite-btn" onclick="toggleFavorite(6)">
-                            <i class="far fa-heart fa-lg"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ── Political Science ──────── -->
-            <div class="subject-card-new" data-color="pink">
-                <div class="card-glow"></div>
-                <div class="card-pattern"></div>
-                <div class="card-icon-wrapper">
-                    <div class="card-icon"><img style="width: 70%;" src="https://cdn-icons-png.flaticon.com/512/17977/17977774.png" alt=""></div>
-                    <div class="icon-ring"></div>
-                </div>
-                <div class="card-content">
-                    <div class="card-number">08</div>
-                    <h3>Political Science</h3>
-                    <div class="card-stats">
-                        <span><i class="fas fa-book"></i> 3 Item
-</span>
-                    </div>
-                    <div class="card-actions">
-                        <a href="subjects/Political.html" class="start-btn">
-                            <i class="fas fa-book-open"></i>
-                            Start Learning
-                        </a>
-                        <button class="favorite-btn" onclick="toggleFavorite(6)">
-                            <i class="far fa-heart fa-lg"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ═══════════════════ POMODORO TIMER WIDGET ═══════════════════ -->
-    <div class="pomodoro-widget" id="pomodoroWidget">
-        <div class="pomodoro-header" onclick="togglePomodoro()">
-            <i class="fas fa-clock"></i>
-            <span>Study Timer</span>
-            <i class="fas fa-chevron-up pomodoro-toggle" id="pomodoroToggle"></i>
-        </div>
-        <div class="pomodoro-body" id="pomodoroBody">
-            <div class="pomodoro-display" id="pomodoroDisplay">25:00</div>
-            <div class="pomodoro-label" id="pomodoroLabel">Focus Time</div>
-            <div class="pomodoro-progress">
-                <div class="pomodoro-progress-bar" id="pomodoroProgress"></div>
-            </div>
-            <div class="pomodoro-controls">
-                <button class="pomo-btn" onclick="startPomodoro()" id="pomoStart"><i class="fas fa-play"></i></button>
-                <button class="pomo-btn" onclick="pausePomodoro()" id="pomoPause" style="display:none"><i class="fas fa-pause"></i></button>
-                <button class="pomo-btn" onclick="resetPomodoro()"><i class="fas fa-redo"></i></button>
-            </div>
-            <div class="pomodoro-sessions">
-                <span id="pomoSessions">Sessions: 0</span>
-            </div>
-        </div>
+  <!-- Page -->
+  <main class="page-wrapper">
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-eyebrow">🎓 Academic Platform</div>
+      <h1>Subjects <span class="gradient">Online</span><br/></h1>
+      <p>Everything you need — course content, quizzes, section solutions, summaries, Q&A and final reviews — all in one beautifully designed platform.</p>
+      <div class="hero-actions">
+        <a href="#subjects" class="btn-primary">📘 Browse Subjects</a>
+        <a href="doctors-news.html" class="btn-outline"> Doctors News</a>
+      </div>
     </div>
 
-    <!-- ═══════════════════ FOOTER ═══════════════════ -->
-    <footer id="contact">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <div style="display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 50px; margin-bottom: 40px;">
-                <!-- Company Info -->
-                <div>
-                    <h3 style="font-size: 1.5rem; margin-bottom: 20px;">Subjects Online</h3>
-                    <p style="line-height: 1.8; margin-bottom: 24px; font-size: 0.95rem;">
-                        Your comprehensive platform for learning management, finance, economics, and more. Empowering
-                        students worldwide.
-                    </p>
-                    <div style="display: flex; gap: 12px;">
-                        <a href="https://www.facebook.com/ahmed.tamer.952116?mibextid=ZbWKwL"
-                            style="width: 42px; height: 42px; background: linear-gradient(135deg, #6366f1, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://chat.whatsapp.com/BmUhhJti1rWFKQHWGpQSL1?mode=gi_t"
-                            style="width: 42px; height: 42px; background: linear-gradient(135deg, #22c55e, #16a34a); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/ahmed-tamer-0b2b93356?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                            style="width: 42px; height: 42px; background: linear-gradient(135deg, #0077b5, #005885); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-item"><div class="val">8</div><div class="label">Subjects</div></div>
+      <div class="stat-item"><div class="val">7</div><div class="label">Sections Each</div></div>
+      <div class="stat-item"><div class="val">∞</div><div class="label">Resources</div></div>
+      <div class="stat-item"><div class="val">100%</div><div class="label">Free Access</div></div>
+    </div>
 
-                <!-- Quick Links -->
-                <div>
-                    <h4 style="font-size: 1.1rem; margin-bottom: 20px;">Quick Links</h4>
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li style="margin-bottom: 14px;">
-                            <a href="#subjects" style="text-decoration: none; transition: color 0.3s ease;">All Subjects</a>
-                        </li>
-                        <li style="margin-bottom: 14px;">
-                            <a href="Favorites.html" style="text-decoration: none; transition: color 0.3s ease;">My Favorites</a>
-                        </li>
-                        <li style="margin-bottom: 14px;">
-                            <a href="doctors-news.html" style="text-decoration: none; transition: color 0.3s ease;">Doctors News</a>
-                        </li>
-                    </ul>
-                </div>
+    <!-- Search -->
+    <div class="subjects-section" id="subjects">
+      <div class="search-wrapper" style="margin-bottom:2rem;">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search subjects…" autocomplete="off" />
+      </div>
 
-                <!-- Contact -->
-                <div>
-                    <h4 style="font-size: 1.1rem; margin-bottom: 20px;">Contact Info</h4>
-                    <div style="display: flex; flex-direction: column; gap: 14px;">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-envelope" style="color: #a78bfa;"></i>
-                            <span>support@subjectsonline.com</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-phone" style="color: #a78bfa;"></i>
-                            <span>+20 123 456 7890</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-map-marker-alt" style="color: #a78bfa;"></i>
-                            <span>Cairo, Egypt</span>
-                        </div>
-                        <div style="margin-top: 12px;">
-                            <a href="#contact"
-                                style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white !important; padding: 10px 22px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease;">
-                                <i class="fas fa-paper-plane"></i> Contact Us
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <!-- Subjects Grid -->
+      <div class="subjects-grid" id="subjects-grid"></div>
 
-            <!-- Bottom Bar -->
-            <div style="border-top: 1px solid rgba(255, 255, 255, 0.06); padding-top: 28px; text-align: center;">
-                <p style="margin: 0; font-size: 0.9rem;">
-                    &copy; 2026 Subjects Online. All rights reserved. Developed By Ahmed Tamer for students worldwide.
-                </p>
-            </div>
+      <!-- No results -->
+      <div id="no-results" style="display:none;" class="empty-state">
+        <span class="empty-icon">🔭</span>
+        <h3>No subjects found</h3>
+        <p>Try a different search term.</p>
+      </div>
+    </div>
+
+    <!-- Quick links -->
+    <div class="quick-links">
+      <a href="doctors-news.html" class="quick-link"> Doctors News</a>
+      <a href="favorites.html" class="quick-link">⭐ My Favorites</a>
+      <a href="admin.html" class="quick-link">⚙️ Admin Panel</a>
+    </div>
+  </main>
+
+  <!-- Premium Footer (home page only) -->
+  <footer class="site-footer">
+    <div class="footer-main">
+
+      <!-- Brand -->
+      <div class="footer-col footer-brand">
+        <div class="footer-logo">📚 Subjects Online</div>
+        <p class="footer-desc">Your comprehensive platform for learning management, finance, economics, and more. Empowering students worldwide.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn facebook" title="Facebook" aria-label="Facebook">f</a>
+          <a href="https://wa.me/" target="_blank" class="social-btn whatsapp" title="WhatsApp" aria-label="WhatsApp">&#10003;</a>
+          <a href="#" class="social-btn linkedin" title="LinkedIn" aria-label="LinkedIn">in</a>
         </div>
-    </footer>
+      </div>
 
-    <!-- ═══════════════════ SCRIPTS ═══════════════════ -->
-    <script src="vendor/typed.js/typed.umd.min.js"></script>
-    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html#subjects">All Subjects</a></li>
+          <li><a href="favorites.html">My Favorites</a></li>
+          <li><a href="doctors-news.html">Doctors News</a></li>
+        </ul>
+      </div>
 
-    <script>
-        /* ── Starfield Canvas Animation ────────────────────── */
-        (function () {
-            const canvas = document.getElementById('starfield');
-            const ctx = canvas.getContext('2d');
-            let stars = [];
-            const STAR_COUNT = 200;
+      <!-- Contact -->
+      <div class="footer-col">
+        <div class="footer-col-title">Contact Info</div>
+        <ul class="footer-contact-list">
+          <li><span class="fc-icon">&#9993;</span> support@subjectsonline.com</li>
+          <li><span class="fc-icon">&#9742;</span> +20 123 456 7890</li>
+          <li><span class="fc-icon">&#9679;</span> Cairo, Egypt</li>
+        </ul>
+        <a href="https://t.me/" target="_blank" class="footer-contact-btn">&#9992; Contact Us</a>
+      </div>
 
-            function resize() {
-                canvas.width = window.innerWidth;
-                canvas.height = document.documentElement.scrollHeight;
-            }
+    </div>
+    <div class="footer-bottom">
+      © 2026 Subjects Online. All rights reserved. Developed By Ahmed Tamer for students worldwide.
+    </div>
+  </footer>
 
-            function createStars() {
-                stars = [];
-                for (let i = 0; i < STAR_COUNT; i++) {
-                    stars.push({
-                        x: Math.random() * canvas.width,
-                        y: Math.random() * canvas.height,
-                        r: Math.random() * 1.5 + 0.3,
-                        alpha: Math.random() * 0.8 + 0.2,
-                        speed: Math.random() * 0.3 + 0.05,
-                        drift: (Math.random() - 0.5) * 0.15
-                    });
-                }
-            }
+  <!-- Modals -->
+  <div class="pdf-modal-overlay" id="pdf-modal-overlay">
+    <div class="pdf-modal">
+      <div class="pdf-modal-header">
+        <span class="pdf-modal-title" id="pdf-modal-title">Document</span>
+        <button class="pdf-modal-close" id="pdf-modal-close">✕</button>
+      </div>
+      <div class="pdf-modal-body">
+        <iframe id="pdf-iframe" title="PDF Viewer"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="video-modal-overlay" id="video-modal-overlay">
+    <div class="video-modal">
+      <div class="video-modal-header">
+        <span class="pdf-modal-title" id="video-modal-title">Video Lesson</span>
+        <button class="video-modal-close" id="video-modal-close">✕</button>
+      </div>
+      <div class="video-wrapper">
+        <iframe id="video-iframe" allow="autoplay; fullscreen" allowfullscreen title="Video"></iframe>
+      </div>
+    </div>
+  </div>
 
-            function draw() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                stars.forEach(s => {
-                    s.alpha += s.speed * 0.02 * (Math.random() > 0.5 ? 1 : -1);
-                    s.alpha = Math.max(0.1, Math.min(1, s.alpha));
-                    s.x += s.drift;
-                    s.y -= s.speed * 0.3;
-                    if (s.y < 0) { s.y = canvas.height; s.x = Math.random() * canvas.width; }
-                    if (s.x < 0) s.x = canvas.width;
-                    if (s.x > canvas.width) s.x = 0;
+  <div id="toast-container" class="toast-container"></div>
 
-                    ctx.beginPath();
-                    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(200, 210, 255, ${s.alpha})`;
-                    ctx.fill();
-                });
-                requestAnimationFrame(draw);
-            }
+  <script src="scripts/main.js"></script>
+  <script>
+    /* ── Subjects Data ───────────────────────────── */
+    const SUBJECTS = [
+      {
+        id: 'accounting',
+        title: 'Accounting',
+        desc: 'Financial principles, statements, and managerial accounting fundamentals.',
+        icon: '📊',
+        color: '#f472b6',
+        rgb: '244,114,182',
+        url: 'subjects/accounting.html',
+        sections: ['Course Content','Quizzes','Sections','Summaries','Q&A','Final Review']
+      },
+      {
+        id: 'ais',
+        title: 'AIS',
+        desc: 'Accounting Information Systems — data flow, controls and digital accounting.',
+        icon: '💻',
+        color: '#8b5cf6',
+        rgb: '139,92,246',
+        url: 'subjects/ais.html',
+        sections: ['Course Content','Quizzes','Sections','Summaries','Q&A','Final Review']
+      },
+      {
+        id: 'economics',
+        title: 'Economics',
+        desc: 'Micro & macro economics, markets, supply and demand, GDP and more.',
+        icon: '📈',
+        color: '#34d399',
+        rgb: '52,211,153',
+        url: 'subjects/economics.html',
+        sections: ['Course Content','Quizzes','Sections','Summaries','Q&A','Final Review']
+      },
+      {
+        id: 'marketing',
+        title: 'Marketing',
+        desc: 'Marketing mix, consumer behavior, branding and digital strategies.',
+        icon: '📣',
+        color: '#fb923c',
+        rgb: '251,146,60',
+        url: 'subjects/marketing.html',
+        sections: ['Course Content','Quizzes','Sections','Summaries','Q&A','Final Review']
+      },
+      {
+        id: 'political-science',
+        title: 'Political Science',
+        desc: 'Political systems, governance, international relations and public policy.',
+        icon: '🏛️',
+        color: '#60a5fa',
+        rgb: '96,165,250',
+        url: 'subjects/political-science.html',
+        sections: ['Course Content','Quizzes','Sections','Summaries','Q&A','Final Review']
+      },
+      {
+        id: 'english',
+        title: 'English',
+        desc: 'Academic writing, literature, grammar, comprehension and language skills.',
+        icon: '✍️',
+        color: '#fbbf24',
+        rgb: '251,191,36',
+        url: 'subjects/english.html',
+        sections: ['Course Content','Quizzes','Sections','Summaries','Q&A','Final Review']
+      },
+      {
+        id: 'statistics',
+        title: 'Statistics',
+        desc: 'Data analysis, probability, regression and statistical inference.',
+        icon: '📉',
+        color: '#a78bfa',
+        rgb: '167,139,250',
+        url: 'subjects/statistics.html',
+        sections: ['Course Content','Quizzes','Sections','Summaries','Q&A','Final Review']
+      },
+      {
+        id: 'Puplic-Finance',
+        title: 'Puplic Finance',
+        desc: 'Political systems, governance, international relations and public policy.',
+        icon: '🏛️',
+        color: '#60a5fa',
+        rgb: '96,165,250',
+        url: 'subjects/Puplic-Finance.html',
+        sections: ['Course Content','Quizzes','Sections','Summaries','Q&A','Final Review']
+      },
+    ];
 
-            window.addEventListener('resize', () => { resize(); createStars(); });
-            resize();
-            createStars();
-            draw();
-
-            // Re-size canvas when page height changes (scroll-based)
-            let lastH = 0;
-            setInterval(() => {
-                const h = document.documentElement.scrollHeight;
-                if (h !== lastH) { lastH = h; resize(); }
-            }, 2000);
-        })();
-
-        /* ── Favorites Logic ───────────────────────────────── */
-        const subjects = [
-            { id: 1, name: 'Intermediate Accounting 2', icon: '📊', description: '', url: 'subjects/accounting.html' },
-            { id: 2, name: 'Accounting Information Systems', icon: '💻', description: '', url: 'subjects/Ais.html' },
-            { id: 3, name: 'Micro Economics', icon: '📈', description: '', url: 'subjects/economics.html' },
-            { id: 4, name: 'Public Finance', icon: '🏛️', description: '', url: 'subjects/public-Finance.html' },
-            { id: 5, name: 'English', icon: '🌐', description: '', url: 'subjects/english.html' },
-            { id: 6, name: 'Statistics', icon: '📊', description: '', url: 'subjects/statistics.html' },
-            { id: 7, name: 'Marketing', icon: '🏭', description: '', url: 'subjects/marketing.html' },
-            { id: 8, name: 'Political Science', icon: '', description: '', url: 'subjects/Political.html' },
-        ];
-
-        function loadFavorites() {
-            const userId = getUserId();
-            return JSON.parse(localStorage.getItem(`favorites_${userId}`) || '[]');
-        }
-
-        function saveFavorites(favorites) {
-            const userId = getUserId();
-            localStorage.setItem(`favorites_${userId}`, JSON.stringify(favorites));
-        }
-
-        function getUserId() {
-            let userId = localStorage.getItem('subjects_online_user_id');
-            if (!userId) {
-                const hasVisitedBefore = localStorage.getItem('subjects_online_visited');
-                if (!hasVisitedBefore) {
-                    const username = prompt('Please enter your name to continue:');
-                    if (username && username.trim()) {
-                        const cleanUsername = username.trim().replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-                        const timestamp = Date.now();
-                        const random = Math.random().toString(36).substr(2, 5);
-                        userId = `${cleanUsername}_${timestamp}_${random}`;
-                        localStorage.setItem('subjects_online_user_id', userId);
-                        localStorage.setItem(`user_name_${userId}`, username.trim());
-                        setTimeout(() => {
-                            showNotification(`Welcome ${username.trim()}! 👋 Your favorites will be saved automatically.`);
-                        }, 1000);
-                    } else {
-                        userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-                        localStorage.setItem('subjects_online_user_id', userId);
-                        localStorage.setItem(`user_name_${userId}`, 'Anonymous');
-                        setTimeout(() => {
-                            showNotification('Welcome to Subjects Online! 👋');
-                        }, 1000);
-                    }
-                    localStorage.setItem('subjects_online_visited', 'true');
-                } else {
-                    userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-                    localStorage.setItem('subjects_online_user_id', userId);
-                    localStorage.setItem(`user_name_${userId}`, 'Returning User');
-                    setTimeout(() => { showNotification('Welcome back! 👋'); }, 1000);
-                }
-            }
-            return userId;
-        }
-
-        function getUserName() {
-            const userId = getUserId();
-            return localStorage.getItem(`user_name_${userId}`) || 'Anonymous';
-        }
-
-        function getUserStats() {
-            const userId = getUserId();
-            const favorites = loadFavorites();
-            const firstVisit = localStorage.getItem(`first_visit_${userId}`) || new Date().toISOString();
-            const visitCount = parseInt(localStorage.getItem(`visit_count_${userId}`) || '0') + 1;
-            localStorage.setItem(`visit_count_${userId}`, visitCount.toString());
-            if (!localStorage.getItem(`first_visit_${userId}`)) {
-                localStorage.setItem(`first_visit_${userId}`, firstVisit);
-            }
-            return { userId, favoritesCount: favorites.length, visitCount, firstVisit, lastVisit: new Date().toISOString() };
-        }
-
-        function clearUserData() {
-            const userId = getUserId();
-            localStorage.removeItem(`favorites_${userId}`);
-            localStorage.removeItem(`first_visit_${userId}`);
-            localStorage.removeItem(`visit_count_${userId}`);
-            localStorage.removeItem('subjects_online_user_id');
-            showNotification('All your data has been cleared! 🗑️');
-        }
-
-        function exportUserData() {
-            const userId = getUserId();
-            const userData = { userId, favorites: loadFavorites(), stats: getUserStats(), exportDate: new Date().toISOString() };
-            const dataStr = JSON.stringify(userData, null, 2);
-            const dataBlob = new Blob([dataStr], { type: 'application/json' });
-            const url = URL.createObjectURL(dataBlob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `subjects_online_backup_${userId}.json`;
-            link.click();
-            URL.revokeObjectURL(url);
-            showNotification('Your data has been exported! 💾');
-        }
-
-        function importUserData(file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                try {
-                    const userData = JSON.parse(e.target.result);
-                    if (userData.favorites && Array.isArray(userData.favorites)) {
-                        const userId = getUserId();
-                        localStorage.setItem(`favorites_${userId}`, JSON.stringify(userData.favorites));
-                        updateFavoriteButtons();
-                        showNotification('Data imported successfully! 📥');
-                    } else {
-                        showNotification('Invalid data format! ❌');
-                    }
-                } catch (error) {
-                    showNotification('Failed to import data! ❌');
-                }
-            };
-            reader.readAsText(file);
-        }
-
-        function addToFavorites(subjectId) {
-            const favorites = loadFavorites();
-            if (!favorites.includes(subjectId)) {
-                favorites.push(subjectId);
-                saveFavorites(favorites);
-                showNotification('Added to favorites! ❤️');
-                updateFavoriteButtons();
-            }
-        }
-
-        function removeFromFavorites(subjectId) {
-            const favorites = loadFavorites();
-            const index = favorites.indexOf(subjectId);
-            if (index > -1) {
-                favorites.splice(index, 1);
-                saveFavorites(favorites);
-                showNotification('Removed from favorites 💔');
-                updateFavoriteButtons();
-            }
-        }
-
-        function isFavorite(subjectId) {
-            return loadFavorites().includes(subjectId);
-        }
-
-        function toggleFavorite(subjectId) {
-            if (isFavorite(subjectId)) removeFromFavorites(subjectId);
-            else addToFavorites(subjectId);
-            updateFavoriteButtons();
-        }
-
-        function updateFavoriteButtons() {
-            const cards = document.querySelectorAll('.subject-card-new');
-            cards.forEach((card, index) => {
-                const subjectId = index + 1;
-                const heartIcon = card.querySelector('.favorite-btn i');
-                if (isFavorite(subjectId)) {
-                    heartIcon.classList.remove('far');
-                    heartIcon.classList.add('fas');
-                    heartIcon.style.color = '#ef4444';
-                } else {
-                    heartIcon.classList.remove('fas');
-                    heartIcon.classList.add('far');
-                    heartIcon.style.color = '';
-                }
-            });
-        }
-
-        function showNotification(message) {
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 90px;
-                right: 20px;
-                background: rgba(8, 12, 24, 0.85);
-                backdrop-filter: blur(20px);
-                color: white;
-                padding: 16px 28px;
-                border-radius: 16px;
-                border: 1px solid rgba(99, 102, 241, 0.3);
-                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(99, 102, 241, 0.15);
-                z-index: 10000;
-                animation: slideInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-                font-weight: 600;
-                font-size: 0.9rem;
-                font-family: 'Inter', system-ui, sans-serif;
-            `;
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            setTimeout(() => {
-                notification.style.animation = 'slideOutRight 0.5s ease-out';
-                setTimeout(() => notification.remove(), 500);
-            }, 3000);
-        }
-
-        function isUserBlocked() {
-            const userId = getUserId();
-            return JSON.parse(localStorage.getItem('blocked_users') || '[]').includes(userId);
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            if (isUserBlocked()) {
-                showNotification('Your account has been blocked! 🚫');
-                document.querySelectorAll('.start-btn, .favorite-btn').forEach(btn => {
-                    btn.style.pointerEvents = 'none';
-                    btn.style.opacity = '0.5';
-                });
-                return;
-            }
-            updateFavoriteButtons();
-            document.querySelectorAll('.favorite-btn').forEach(btn => {
-                btn.removeAttribute('onclick');
-                const card = btn.closest('.subject-card-new');
-                const allCards = Array.from(document.querySelectorAll('.subject-card-new'));
-                const subjectId = allCards.indexOf(card) + 1;
-                btn.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    if (isUserBlocked()) { showNotification('Your account is blocked! 🚫'); return; }
-                    toggleFavorite(subjectId);
-                });
-            });
-
-            // Scroll Reveal for cards
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, i) => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animation = `fadeInUp 0.6s ${i * 0.08}s cubic-bezier(0.4, 0, 0.2, 1) both`;
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.subject-card-new').forEach(card => {
-                card.style.opacity = '0';
-                observer.observe(card);
-            });
-        });
-
-        // Notification slide animations
-        const notifStyle = document.createElement('style');
-        notifStyle.textContent = `
-            @keyframes slideInRight { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-            @keyframes slideOutRight { from { transform: translateX(0); opacity: 1; } to { transform: translateX(120%); opacity: 0; } }
-            @keyframes heartBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
-            .favorite-btn i { transition: all 0.3s ease; }
-            .favorite-btn i.fas { color: #ef4444 !important; animation: heartBeat 0.6s ease-in-out; }
+    function renderSubjects(list) {
+      const grid = document.getElementById('subjects-grid');
+      const noRes = document.getElementById('no-results');
+      grid.innerHTML = '';
+      if (list.length === 0) { noRes.style.display = 'block'; return; }
+      noRes.style.display = 'none';
+      list.forEach((s, i) => {
+        const fav = isFavorite(s.id);
+        const card = document.createElement('a');
+        card.href = s.url;
+        card.className = 'subject-card reveal' + (fav ? ' is-fav' : '');
+        card.style.cssText = `
+          --card-color:${s.color};
+          --card-alpha:rgba(${s.rgb},0.06);
+          --card-border-hover:rgba(${s.rgb},0.35);
+          --card-shadow:rgba(${s.rgb},0.18);
+          --card-icon-bg:rgba(${s.rgb},0.15);
+          animation-delay:${i*0.05}s;
         `;
-        document.head.appendChild(notifStyle);
+        card.innerHTML = `
+          <div class="fav-star">⭐</div>
+          <div class="card-top">
+            <div class="card-icon-wrap">${s.icon}</div>
+            <div class="card-arrow">→</div>
+          </div>
+          <div class="card-title">${s.title}</div>
+          <div class="card-desc">${s.desc}</div>
+          <div class="card-sections">
+            ${s.sections.map(sec => `<span class="card-section-badge">${sec}</span>`).join('')}
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
 
-        /* ── Search Filter ─────────────────────────────────── */
-        const searchInput = document.getElementById('subjectSearch');
-        const searchCount = document.getElementById('searchCount');
-        if (searchInput) {
-            searchInput.addEventListener('input', function () {
-                const query = this.value.toLowerCase().trim();
-                const cards = document.querySelectorAll('.subject-card-new');
-                let visible = 0;
-                cards.forEach(card => {
-                    const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
-                    const match = !query || title.includes(query);
-                    card.style.display = match ? '' : 'none';
-                    card.style.opacity = match ? '1' : '0';
-                    if (match) visible++;
-                });
-                searchCount.textContent = query ? `${visible} found` : '';
-            });
-        }
+    renderSubjects(SUBJECTS);
 
-        /* ── Pomodoro Timer ────────────────────────────────── */
-        let pomoInterval = null;
-        let pomoTime = 25 * 60; // 25 minutes
-        let pomoTotal = 25 * 60;
-        let pomoRunning = false;
-        let pomoIsBreak = false;
-        let pomoSessions = parseInt(localStorage.getItem('pomo_sessions') || '0');
-        let pomodoroOpen = false;
-
-        document.getElementById('pomoSessions').textContent = `Sessions: ${pomoSessions}`;
-
-        function togglePomodoro() {
-            pomodoroOpen = !pomodoroOpen;
-            const body = document.getElementById('pomodoroBody');
-            const toggle = document.getElementById('pomodoroToggle');
-            body.style.display = pomodoroOpen ? 'flex' : 'none';
-            toggle.style.transform = pomodoroOpen ? 'rotate(0deg)' : 'rotate(180deg)';
-        }
-
-        function updatePomodoroDisplay() {
-            const mins = Math.floor(pomoTime / 60).toString().padStart(2, '0');
-            const secs = (pomoTime % 60).toString().padStart(2, '0');
-            document.getElementById('pomodoroDisplay').textContent = `${mins}:${secs}`;
-            const pct = ((pomoTotal - pomoTime) / pomoTotal) * 100;
-            document.getElementById('pomodoroProgress').style.width = `${pct}%`;
-        }
-
-        function startPomodoro() {
-            if (pomoRunning) return;
-            pomoRunning = true;
-            document.getElementById('pomoStart').style.display = 'none';
-            document.getElementById('pomoPause').style.display = 'inline-flex';
-            pomoInterval = setInterval(() => {
-                pomoTime--;
-                updatePomodoroDisplay();
-                if (pomoTime <= 0) {
-                    clearInterval(pomoInterval);
-                    pomoRunning = false;
-                    // Play sound
-                    try {
-                        const ctx = new (window.AudioContext || window.webkitAudioContext)();
-                        const osc = ctx.createOscillator();
-                        const gain = ctx.createGain();
-                        osc.connect(gain);
-                        gain.connect(ctx.destination);
-                        osc.frequency.value = pomoIsBreak ? 523 : 880;
-                        osc.type = 'sine';
-                        gain.gain.value = 0.3;
-                        osc.start();
-                        setTimeout(() => { osc.stop(); ctx.close(); }, 600);
-                    } catch (e) {}
-
-                    if (!pomoIsBreak) {
-                        pomoSessions++;
-                        localStorage.setItem('pomo_sessions', pomoSessions);
-                        document.getElementById('pomoSessions').textContent = `Sessions: ${pomoSessions}`;
-                        showNotification(`🎉 Focus session #${pomoSessions} complete! Take a break.`);
-                        pomoIsBreak = true;
-                        pomoTime = 5 * 60;
-                        pomoTotal = 5 * 60;
-                        document.getElementById('pomodoroLabel').textContent = 'Break Time';
-                        document.getElementById('pomodoroDisplay').parentElement.classList.add('pomo-break');
-                    } else {
-                        showNotification('☕ Break over! Ready for another focus session?');
-                        pomoIsBreak = false;
-                        pomoTime = 25 * 60;
-                        pomoTotal = 25 * 60;
-                        document.getElementById('pomodoroLabel').textContent = 'Focus Time';
-                        document.getElementById('pomodoroDisplay').parentElement.classList.remove('pomo-break');
-                    }
-                    updatePomodoroDisplay();
-                    document.getElementById('pomoStart').style.display = 'inline-flex';
-                    document.getElementById('pomoPause').style.display = 'none';
-                }
-            }, 1000);
-        }
-
-        function pausePomodoro() {
-            if (!pomoRunning) return;
-            pomoRunning = false;
-            clearInterval(pomoInterval);
-            document.getElementById('pomoStart').style.display = 'inline-flex';
-            document.getElementById('pomoPause').style.display = 'none';
-        }
-
-        function resetPomodoro() {
-            pausePomodoro();
-            pomoIsBreak = false;
-            pomoTime = 25 * 60;
-            pomoTotal = 25 * 60;
-            document.getElementById('pomodoroLabel').textContent = 'Focus Time';
-            document.getElementById('pomodoroDisplay').parentElement.classList.remove('pomo-break');
-            updatePomodoroDisplay();
-        }
-    
-            
-    </script>
-
-    </body>
+    /* Search */
+    const searchInput = document.getElementById('search-input');
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.toLowerCase().trim();
+      renderSubjects(q ? SUBJECTS.filter(s => s.title.toLowerCase().includes(q) || s.desc.toLowerCase().includes(q)) : SUBJECTS);
+    });
+  </script>
+</body>
 </html>
-
-
-
-

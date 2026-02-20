@@ -1,65 +1,225 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-    <title>My Favorites - Subjects Online</title>
-    <script defer src="https://cloud.umami.is/script.js"
-        data-website-id="31d71665-7827-44ae-934b-7f68bc397123"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Subjects Online">
-    <meta property="og:description" content="College in one link">
-    <meta property="og:image" content="https://subjects-online.github.io/Subject-online/preview.png">
-    <meta property="og:url" content="https://subjects-online.github.io/Subject-online/">
-    <meta name="google" content="notranslate">
-    <link rel="stylesheet" href="Css/Index.css">
-    <link rel="stylesheet" href="Css/media&animation.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="Css/Favorite.css">
-    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Storm&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>My Favorites | Subjects Online</title>
+  <meta name="description" content="Your favorite subjects bookmarked for quick access."/>
+  <link rel="stylesheet" href="styles/main.css"/>
+  <style>
+    /* ── Hero ──────────────────────────────────────── */
+    .fav-hero {
+      padding: 4rem 2rem 2rem;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .fav-hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.2rem, 6vw, 3.5rem);
+      font-weight: 900;
+      letter-spacing: -1px;
+      background: linear-gradient(135deg, #fbbf24, #fb923c, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.75rem;
+    }
+    .fav-hero p { color: var(--text-secondary); font-size: 1rem; line-height: 1.6; }
 
+    /* ── Grid ──────────────────────────────────────── */
+    .fav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+      max-width: 1100px;
+      margin: 2rem auto 4rem;
+      padding: 0 1.5rem;
+    }
+
+    /* ── Fav Card ────────────────────────────────────── */
+    .fav-card {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: 1.75rem;
+      position: relative;
+      overflow: hidden;
+      display: block;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .fav-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--card-color);
+      opacity: 0.8;
+    }
+    .fav-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at top left, var(--card-alpha), transparent 60%);
+      pointer-events: none;
+    }
+    .fav-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--card-border);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .fav-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+    .fav-icon { font-size: 2.5rem; }
+    .fav-remove {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: rgba(255,80,80,0.1);
+      border: 1px solid rgba(255,80,80,0.2);
+      color: #ff6b6b;
+      font-size: 0.875rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--transition);
+      cursor: pointer;
+      z-index: 2;
+      position: relative;
+    }
+    .fav-remove:hover { background: rgba(255,80,80,0.25); transform: scale(1.1); }
+    .fav-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+      position: relative;
+      z-index: 1;
+    }
+    .fav-open {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--card-color);
+      margin-top: 0.75rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Empty State ───────────────────────────────── */
+    .fav-empty {
+      text-align: center;
+      padding: 5rem 2rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .fav-empty .big-star {
+      font-size: 5rem;
+      display: block;
+      margin-bottom: 1.5rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    .fav-empty h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+    .fav-empty p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem; }
+
+    @media (max-width: 640px) {
+      .fav-hero { padding: 3rem 1.25rem 1.5rem; }
+      .fav-grid { grid-template-columns: 1fr; padding: 0 1rem; }
+    }
+  </style>
+</head>
 <body>
-    <canvas id="starfield" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none;"></canvas>
-    
-    <!-- ------------------- NAVIGATION ------------------- -->
-    <nav class="nav">
-        <h2 class="title">Subjects Online</h2>
-        <div>
-            <a href="index.html#subjects">Subjects</a>
-            <a class="New" href="doctors-news.html">Doctors News</a>
-            <a href="Favorites.html" style="background: rgba(255, 255, 255, 0.1); border-radius: 12px;">Favorites</a>
-            <a href="index.html#contact">Contact Us</a>
-        </div>
-    </nav>
-<div class="favorites-container">
-    <div class="favorites-header">
-        <h1>My Favorites ❤️</h1>
-        <p>Your favorite subjects all in one place. Quick access to the courses you love!</p>
-        <div style="margin-top: 20px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-            <button onclick="exportUserData()" style="padding: 10px 20px; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
-                <i class="fas fa-download"></i> Export Data
-            </button>
-            <button onclick="clearUserData()" style="padding: 10px 20px; background: linear-gradient(135deg, #ef4444, #dc2626); color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
-                <i class="fas fa-trash"></i> Clear Data
-            </button>
-        </div>
+  <canvas id="starfield-canvas"></canvas>
+  <div class="orb orb-1"></div><div class="orb orb-2"></div>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo"><span>📚</span> Subjects Online</a>
+    <div class="nav-links">
+      <a href="index.html"><span class="icon">🏠</span> Home</a>
+      <a href="doctors-news.html"><span class="icon">🩺</span> Doctors News</a>
+      <a href="favorites.html" class="nav-favorites-btn active"><span class="icon">⭐</span> Favorites</a>
     </div>
-    <div class="favorites-grid" id="favoritesGrid">
-        <!-- Favorites will be dynamically added here -->
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html">🏠 Home</a>
+    <a href="doctors-news.html">🩺 Doctors News</a>
+    <a href="favorites.html">⭐ Favorites</a>
+  </div>
+
+  <main class="page-wrapper">
+    <div class="fav-hero">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.4rem 1.2rem;border-radius:999px;border:1px solid rgba(251,191,36,0.3);background:rgba(251,191,36,0.08);font-size:0.8rem;font-weight:600;color:#fbbf24;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:1rem;">
+        ⭐ Bookmarked
+      </div>
+      <h1>My Favorites</h1>
+      <p>Your starred subjects — jump to any course instantly, right from here.</p>
     </div>
-    <div class="empty-favorites" id="emptyFavorites" style="display: none;">
-        <div class="empty-icon">💔</div>
-        <h2>No favorites yet!</h2>
-        <p>Start exploring subjects and add your favorites to see them here.</p>
-        <a href="index.html#subjects" class="browse-btn">
-            <i class="fas fa-book-open"></i>
-            Browse Subjects
-        </a>
+
+    <!-- Favorites grid -->
+    <div id="fav-grid" class="fav-grid"></div>
+
+    <!-- Empty state (hidden when favorites exist) -->
+    <div id="fav-empty" class="fav-empty" style="display:none;">
+      <span class="big-star">⭐</span>
+      <h2>No Favorites Yet</h2>
+      <p>Visit any subject page and tap the ☆ star to add it here for quick access.</p>
+      <a href="index.html" class="btn-primary">📚 Browse Subjects</a>
     </div>
-</div>
-<script src="Scripts/Favorites.js"></script>
-<script src="Scripts/starfield.js"></script></body>
+  </main>
+
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="scripts/main.js"></script>
+  <script>
+    function renderFavorites() {
+      const favs = getFavorites();
+      const grid = document.getElementById('fav-grid');
+      const empty = document.getElementById('fav-empty');
+      grid.innerHTML = '';
+
+      if (favs.length === 0) {
+        empty.style.display = 'block';
+        return;
+      }
+      empty.style.display = 'none';
+
+      favs.forEach(sub => {
+        const card = document.createElement('a');
+        card.href = sub.url;
+        card.className = 'fav-card reveal';
+        card.style.cssText = `
+          --card-color:${sub.color};
+          --card-alpha:rgba(${sub.rgb},0.07);
+          --card-border:rgba(${sub.rgb},0.3);
+        `;
+        card.innerHTML = `
+          <div class="fav-card-top">
+            <span class="fav-icon">${sub.icon}</span>
+            <button class="fav-remove" data-id="${sub.id}" title="Remove from Favorites">✕</button>
+          </div>
+          <div class="fav-title">${sub.title}</div>
+          <div class="fav-open">Open Subject →</div>
+        `;
+        // Remove button handler
+        card.querySelector('.fav-remove').addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleFavorite(sub);
+          renderFavorites();
+        });
+        grid.appendChild(card);
+      });
+    }
+
+    renderFavorites();
+  </script>
+</body>
 </html>

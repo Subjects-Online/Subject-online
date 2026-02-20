@@ -1,0 +1,144 @@
+/* ===================================================
+   index.css — Home Page Specific Styles
+   =================================================== */
+
+/* ── Empty State (no search results) ─────────────── */
+.empty-state {
+  text-align: center;
+  padding: 5rem 2rem;
+  color: var(--text-muted);
+}
+.empty-state .empty-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+  animation: float 3s ease-in-out infinite;
+}
+.empty-state h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+.empty-state p {
+  font-size: 0.9rem;
+}
+
+/* ── Premium Footer (home page only) ─────────── */
+.site-footer {
+  margin-top: 4rem;
+  background: rgba(5,6,15,0.95);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 0;
+  text-align: left;
+}
+.footer-main {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1.3fr;
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 2rem 2.5rem;
+}
+@media (max-width: 700px) {
+  .footer-main { grid-template-columns: 1fr; gap: 2rem; padding: 2rem 1.5rem; }
+  .footer-col, .footer-brand { text-align: center; }
+  .footer-socials { justify-content: center; }
+  .footer-contact-list li { justify-content: center; }
+  .footer-desc { max-width: 100%; }
+}
+.footer-logo {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+.footer-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+  max-width: 260px;
+}
+.footer-socials {
+  display: flex;
+  gap: 0.6rem;
+}
+.social-btn {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  transition: var(--transition);
+  text-decoration: none;
+}
+.social-btn.facebook { background: #3b5998; color: #fff; }
+.social-btn.whatsapp { background: #25d366; color: #fff; }
+.social-btn.linkedin  { background: #0077b5; color: #fff; }
+.social-btn:hover { transform: translateY(-3px); filter: brightness(1.15); }
+
+.footer-col-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+.footer-links {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.footer-links a {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: var(--transition);
+}
+.footer-links a:hover { color: var(--text-primary); }
+
+.footer-contact-list {
+  list-style: none;
+  padding: 0; margin: 0 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.footer-contact-list li {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.fc-icon { font-size: 0.8rem; }
+
+.footer-contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition);
+  box-shadow: 0 0 18px rgba(99,102,241,0.35);
+}
+.footer-contact-btn:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(99,102,241,0.55); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 1.1rem 2rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  max-width: 100%;
+}

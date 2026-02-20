@@ -1,97 +1,589 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subjects Online - Admin Dashboard</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="Css/Index.css">
-    <link rel="stylesheet" href="Css/admin.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Admin Panel | Subjects Online</title>
+  <meta name="description" content="Admin code generator for adding content to the Subjects Online platform."/>
+  <link rel="stylesheet" href="styles/main.css"/>
+  <style>
+    .admin-hero {
+      padding: 3.5rem 2rem 2rem;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .admin-hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem,5vw,3rem);
+      font-weight: 900;
+      letter-spacing: -1px;
+      background: linear-gradient(135deg, #34d399, #4f8ef7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    .admin-hero p { color: var(--text-secondary); font-size: 0.95rem; }
+
+    .admin-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 2rem auto 4rem;
+      padding: 0 1.5rem;
+    }
+    @media (max-width: 860px) { .admin-layout { grid-template-columns: 1fr; } }
+
+    .admin-card {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      margin-bottom: 0;
+    }
+    .admin-card h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Form */
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--glass-border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text-primary);
+      font-size: 0.875rem;
+      outline: none;
+      transition: var(--transition);
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--accent-green);
+      box-shadow: 0 0 0 3px rgba(52,211,153,0.15);
+    }
+    .form-group select option { background: #0d0f1e; }
+
+    /* Output */
+    .output-wrap { position: relative; }
+    .output-code {
+      width: 100%;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.78rem;
+      color: #7dd3fc;
+      white-space: pre-wrap;
+      word-break: break-all;
+      min-height: 200px;
+      resize: vertical;
+      outline: none;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: var(--radius-pill);
+      background: rgba(52,211,153,0.15);
+      border: 1px solid rgba(52,211,153,0.3);
+      color: #34d399;
+      font-size: 0.75rem;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .copy-btn:hover { background: rgba(52,211,153,0.3); }
+
+    /* Instruction card */
+    .instruction-step {
+      display: flex;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .instruction-step:last-child { border-bottom: none; }
+    .step-num {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: rgba(52,211,153,0.15);
+      color: #34d399;
+      font-size: 0.75rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-text { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+    .step-text code {
+      background: rgba(255,255,255,0.08);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      color: #7dd3fc;
+    }
+
+    .generate-btn {
+      width: 100%;
+      padding: 0.85rem;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, #34d399, #4f8ef7);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition: var(--transition);
+      box-shadow: 0 0 20px rgba(52,211,153,0.25);
+      margin-top: 0.5rem;
+    }
+    .generate-btn:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(52,211,153,0.4); }
+
+    .home-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      transition: var(--transition);
+    }
+    .home-link:hover { color: var(--text-primary); border-color: var(--glass-border-hover); }
+
+    /* Right column stacked cards */
+    .right-col { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    /* Folder tree */
+    .folder-tree {
+      font-size: 0.75rem;
+      color: #7dd3fc;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      line-height: 1.7;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+    }
+</style>
+
+  <!-- Password Gate Styles -->
+  <style>
+    #admin-gate {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #060812;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem;
+    }
+    .gate-box {
+      width: min(400px, 100%);
+      background: #0d0f1e;
+      border: 1px solid rgba(52,211,153,0.25);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 0 60px rgba(52,211,153,0.12);
+    }
+    .gate-box h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem; font-weight: 900;
+      background: linear-gradient(135deg, #34d399, #4f8ef7);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; margin-bottom: 0.5rem;
+    }
+    .gate-box p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem; }
+    .gate-input {
+      width: 100%; padding: 0.85rem 1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(52,211,153,0.2);
+      background: rgba(255,255,255,0.04);
+      color: #fff; font-size: 1rem;
+      outline: none; text-align: center;
+      letter-spacing: 0.1em;
+      transition: border-color 0.2s;
+      margin-bottom: 1rem;
+    }
+    .gate-input:focus { border-color: #34d399; box-shadow: 0 0 0 3px rgba(52,211,153,0.15); }
+    .gate-btn {
+      width: 100%; padding: 0.85rem;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #34d399, #4f8ef7);
+      color: #fff; font-size: 0.95rem; font-weight: 700;
+      transition: 0.2s; box-shadow: 0 0 20px rgba(52,211,153,0.25);
+    }
+    .gate-btn:hover { transform: translateY(-2px); }
+    .gate-error { color: #f87171; font-size: 0.8rem; margin-top: 0.75rem; display: none; }
+    /* API key card */
+    .api-key-status {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.78rem; padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(52,211,153,0.1);
+      border: 1px solid rgba(52,211,153,0.2);
+      color: #34d399; margin-bottom: 0.75rem;
+    }
+    .api-key-status.missing { background: rgba(248,113,113,0.1); border-color: rgba(248,113,113,0.2); color: #f87171; }
+  </style>
 </head>
 <body>
-    <div class="stars"></div>
-    <div class="twinkling"></div>
+  <!-- ── Password Gate ── -->
+  <div id="admin-gate">
+    <div class="gate-box">
+      <div style="font-size:2.5rem;margin-bottom:0.75rem;">🔐</div>
+      <h2 id="gate-title">Admin Panel</h2>
+      <p id="gate-desc">Enter your admin password to continue</p>
+      <input type="password" class="gate-input" id="gate-input" placeholder="••••••••" autocomplete="current-password"/>
+      <button class="gate-btn" id="gate-btn">Enter</button>
+      <div class="gate-error" id="gate-error">❌ Wrong password</div>
+    </div>
+  </div>
 
-    <nav class="nav">
-        <h2 style="margin-left: 20px;" class="title">Subjects Online Admin</h2>
-        <div> 
-            <a href="index.html">Back to Home</a>
-        </div>
-    </nav>
 
-    <div class="admin-container">
-        <div class="admin-header">
-            <span class="section-badge">Admin Tools</span>
-            <h2>Code Generator Dashboard</h2>
-            <p>Fill out the details below to generate the exact code snippet needed to add a new PDF or Video to any chapter.</p>
-        </div>
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo"><span>&#128218;</span> Subjects Online</a>
+    <div class="nav-links">
+      <a href="index.html"><span class="icon">&#127968;</span> Home</a>
+      <a href="doctors-news.html"><span class="icon">&#129690;</span> Doctors News</a>
+      <a href="favorites.html" class="nav-favorites-btn"><span class="icon">&#11088;</span> Favorites</a>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html">&#127968; Home</a>
+    <a href="doctors-news.html">Doctors News</a>
+    <a href="favorites.html">&#11088; Favorites</a>
+  </div>
 
-        <div class="admin-grid">
-            <!-- Left Side: Form -->
-            <div class="admin-panel">
-                <h3><i class="fas fa-plus-circle"></i> Add New Content</h3>
-                <form id="generatorForm">
-                    <div class="form-group">
-                        <label for="contentType">Content Type</label>
-                        <select id="contentType" required>
-                            <option value="pdf">PDF Document</option>
-                            <option value="video">Video</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="contentTitle">Title</label>
-                        <input type="text" id="contentTitle" placeholder="e.g., Lect 1-2 Dr.MZ chapter 1" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="contentPath">File Path</label>
-                        <input type="text" id="contentPath" placeholder="e.g., ../../../../../Assets/Accounting/file.mp4" value="../../../../../Assets/" required>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col">
-                            <label for="contentSize">File Size</label>
-                            <input type="text" id="contentSize" placeholder="e.g., 3.4 MB" required>
-                        </div>
-                        <div class="col">
-                            <label for="contentDate">Upload Date</label>
-                            <input type="date" id="contentDate" required>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="generate-btn">
-                        <i class="fas fa-magic"></i> Generate Code
-                    </button>
-                </form>
-            </div>
-
-            <!-- Right Side: Result -->
-            <div class="admin-panel result-panel">
-                <div class="result-header">
-                    <h3><i class="fas fa-code"></i> Generated Snippet</h3>
-                    <button class="copy-btn" id="copyBtn">
-                        <i class="far fa-copy"></i> Copy code
-                    </button>
-                </div>
-                <p class="instruction-text">Copy this block and paste it inside the <code>pdfFiles</code> array in the HTML file of the chapter.</p>
-                <div class="code-container">
-                    <pre><code id="generatedCode">// Your code will appear here...</code></pre>
-                </div>
-            </div>
-        </div>
+  <main class="page-wrapper" id="admin-main" style="display:none;">
+    <div class="admin-hero">
+      <a href="index.html" class="home-link" style="margin-bottom:1.5rem;display:inline-flex;">&#8592; Back to Home</a>
+      <h1>&#9881;&#65039; Admin Panel</h1>
+      <p>Generate HTML snippets to add PDF lectures and videos to any subject page. Just fill in the form, copy the code, and paste it into the subject HTML file.</p>
     </div>
 
-    <!-- Script references -->
-    <script src="Scripts/admin.js"></script>
-    <script>
-        // Set today's date automatically
-        document.getElementById('contentDate').valueAsDate = new Date();
-    </script>
+    <div class="admin-layout">
+      <!-- ── Gemini API Key & Settings ── -->
+      <div class="admin-card" style="grid-column:1/-1;">
+        <h2>🔑 AI Settings <span style="font-size:0.75rem;font-weight:500;color:var(--text-muted);">(Gemini API Key — stored locally only)</span></h2>
+        <div style="display:grid;grid-template-columns:1fr auto auto;gap:0.75rem;align-items:end;">
+          <div class="form-group" style="margin:0;">
+            <label>Gemini API Key</label>
+            <input type="password" id="gemini-key-input" placeholder="AIzaSy…" autocomplete="off"/>
+          </div>
+          <button class="generate-btn" style="width:auto;padding:0.7rem 1.5rem;margin:0;" id="save-key-btn">💾 Save Key</button>
+          <button class="generate-btn" style="width:auto;padding:0.7rem 1.25rem;margin:0;background:rgba(248,113,113,0.15);border:1px solid rgba(248,113,113,0.25);color:#f87171;box-shadow:none;" id="clear-key-btn">🗑 Clear</button>
+        </div>
+        <div id="key-status" class="api-key-status missing" style="margin-top:0.75rem;">⚠ No API key saved</div>
+        <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.5rem;">Get a free key from <a href="https://aistudio.google.com/apikey" target="_blank" style="color:#34d399;">aistudio.google.com</a> — it never leaves your browser.</p>
+      </div>
+
+      <!-- Generator Form -->
+      <div class="admin-card">
+        <h2>&#128196; Content Generator</h2>
+
+        <div class="form-group">
+          <label>Subject</label>
+          <select id="gen-subject">
+            <option value="accounting">&#128202; Accounting</option>
+            <option value="ais">&#128187; AIS</option>
+            <option value="economics">&#128200; Economics</option>
+            <option value="marketing">&#128227; Marketing</option>
+            <option value="political-science">&#127963;&#65039; Political Science</option>
+            <option value="english">&#9997;&#65039; English</option>
+            <option value="statistics">&#128201; Statistics</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Target Section (Panel)</label>
+          <select id="gen-panel" onchange="renderLecUrls()">
+            <option value="content">&#128214; Course Content</option>
+            <option value="quizzes">&#9999;&#65039; Quizzes</option>
+            <option value="sections">&#128221; Sections</option>
+            <option value="summaries">&#128273; Summaries &amp; Keywords</option>
+            <option value="qa">&#10067; Questions &amp; Answers</option>
+            <option value="final">&#127942; Final Review</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Title (e.g. Chapter 1)</label>
+          <input type="text" id="gen-title" placeholder="e.g. Chapter 1 – Introduction" />
+        </div>
+
+        <div class="form-group">
+          <label>Unique ID (for progress tracking)</label>
+          <input type="text" id="gen-id" placeholder="e.g. acc-ch1" />
+        </div>
+
+        <div class="form-group">
+          <label>Number of Lectures / Parts</label>
+          <select id="gen-count" onchange="renderLecUrls()">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3" selected>3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </div>
+
+        <!-- Dynamic per-lecture URL fields -->
+        <div id="lecture-url-fields"></div>
+
+        <button class="generate-btn" id="generate-btn">&#10024; Generate Code</button>
+      </div>
+
+      <!-- Output + Instructions + Folder Guide -->
+      <div class="right-col">
+        <!-- Output -->
+        <div class="admin-card">
+          <h2>&#128203; Generated Code</h2>
+          <div class="output-wrap">
+            <textarea class="output-code" id="output-code" readonly>// Fill in the form and click "Generate Code"</textarea>
+            <button class="copy-btn" id="copy-btn">&#128203; Copy</button>
+          </div>
+          <p style="font-size:0.78rem;color:var(--text-muted);margin-top:0.75rem;">
+            Paste the generated entry into the <strong>SUBJECT_CONTENT</strong> object inside the subject HTML file.
+          </p>
+        </div>
+
+        <!-- Instructions -->
+        <div class="admin-card">
+          <h2>&#128214; How to Use</h2>
+          <div class="instruction-step"><div class="step-num">1</div><div class="step-text">اختار المادة والقسم وعدد المحاضرات.</div></div>
+          <div class="instruction-step"><div class="step-num">2</div><div class="step-text">اكتب عنوان وحجم وتاريخ كل محاضرة في الحقول.</div></div>
+          <div class="instruction-step"><div class="step-num">3</div><div class="step-text">اضغط <strong>Generate Code</strong> ثم <strong>Copy</strong>.</div></div>
+          <div class="instruction-step"><div class="step-num">4</div><div class="step-text">افتح <code>subjects/[subject].html</code> وابحث عن <code>SUBJECT_CONTENT</code> في الـ script.</div></div>
+          <div class="instruction-step"><div class="step-num">5</div><div class="step-text">الصق الـ chapter object جوا المصفوفة المناسبة (content / quizzes / ...).</div></div>
+          <div class="instruction-step"><div class="step-num">6</div><div class="step-text">المسار: <code>../pdfs/accounting/ch1-lec1.pdf</code> — للفيديو: رابط YouTube.</div></div>
+        </div>
+
+        <!-- Folder structure guide -->
+        <div class="admin-card">
+          <h2>&#128193; Folder Structure</h2>
+          <pre class="folder-tree">SO/
+&#9500;&#9472;&#9472; pdfs/
+&#9474;   &#9500;&#9472;&#9472; accounting/
+&#9474;   &#9474;   &#9500;&#9472;&#9472; ch1-lec1.pdf
+&#9474;   &#9474;   &#9500;&#9472;&#9472; ch1-lec2.pdf
+&#9474;   &#9474;   &#9492;&#9472;&#9472; ch2-lec1.pdf
+&#9474;   &#9500;&#9472;&#9472; ais/
+&#9474;   &#9500;&#9472;&#9472; economics/
+&#9474;   &#9500;&#9472;&#9472; marketing/
+&#9474;   &#9500;&#9472;&#9472; political-science/
+&#9474;   &#9500;&#9472;&#9472; english/
+&#9474;   &#9492;&#9472;&#9472; statistics/
+&#9492;&#9472;&#9472; subjects/
+    &#9492;&#9472;&#9472; accounting.html</pre>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer><p>Made with <span>&#9829;</span> for students &middot; Subjects Online &copy; 2026</p></footer>
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="scripts/main.js"></script>
+  <script>
+    const PANEL_LABELS = {
+      content:'Lecture', quizzes:'Part', sections:'Problem',
+      summaries:'Part', qa:'Set', final:'Part'
+    };
+    const PANEL_ICONS_MAP = {
+      content:'\uD83D\uDCD6', quizzes:'\u270F\uFE0F', sections:'\uD83D\uDCDD',
+      summaries:'\uD83D\uDD11', qa:'\u2753', final:'\uD83C\uDFC6'
+    };
+
+    // Render per-lecture fields dynamically (title + path + size + date)
+    function renderLecUrls() {
+      const count = parseInt(document.getElementById('gen-count').value);
+      const panel = document.getElementById('gen-panel').value;
+      const lbl   = PANEL_LABELS[panel] || 'Lecture';
+      const wrap  = document.getElementById('lecture-url-fields');
+      wrap.innerHTML = '';
+      for (let i = 1; i <= count; i++) {
+        const fg = document.createElement('div');
+        fg.style.cssText = 'background:rgba(255,255,255,0.02);border:1px solid var(--glass-border);border-radius:10px;padding:0.85rem;margin-bottom:0.75rem;';
+        fg.innerHTML = `
+          <div style="font-size:0.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.6rem;">${lbl} ${i}</div>
+          <div class="form-group" style="margin-bottom:.5rem;">
+            <label>Title</label>
+            <input type="text" id="gen-lec-title-${i}" placeholder="e.g. Lect ${i} Dr.MZ chapter 1" />
+          </div>
+          <div class="form-group" style="margin-bottom:.5rem;">
+            <label>Path / URL <span style="font-weight:400;color:var(--text-muted);">(optional)</span></label>
+            <input type="text" id="gen-lec-path-${i}" placeholder="../pdfs/accounting/ch1-lec${i}.pdf" />
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;">
+            <div class="form-group" style="margin-bottom:0;">
+              <label>Size</label>
+              <input type="text" id="gen-lec-size-${i}" placeholder="e.g. 3.4 MB" />
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label>Date</label>
+              <input type="date" id="gen-lec-date-${i}" />
+            </div>
+          </div>
+        `;
+        wrap.appendChild(fg);
+      }
+    }
+
+    // Auto-fill ID when the field is focused and empty
+    document.getElementById('gen-id').addEventListener('focus', function() {
+      if (!this.value) {
+        const sub   = document.getElementById('gen-subject').value;
+        const panel = document.getElementById('gen-panel').value;
+        const t = document.getElementById('gen-title').value
+          .replace(/\s+/g, '-').toLowerCase().replace(/[^a-z0-9-]/g, '').substring(0, 20);
+        this.value = `${sub.substring(0,3)}-${panel.substring(0,3)}-${t || Date.now()}`;
+      }
+    });
+
+    // Generate SUBJECT_CONTENT chapter entry
+    document.getElementById('generate-btn').addEventListener('click', () => {
+      const subject = document.getElementById('gen-subject').value;
+      const panel   = document.getElementById('gen-panel').value;
+      const title   = document.getElementById('gen-title').value.trim();
+      const id      = document.getElementById('gen-id').value.trim() || `item-${Date.now()}`;
+      const count   = parseInt(document.getElementById('gen-count').value);
+
+      if (!title) { showToast('اكتب عنوان الـ chapter', 'warning'); return; }
+
+      const iconMap = { content:'\u{1F4D6}', quizzes:'\u270F\uFE0F', sections:'\u{1F4DD}', summaries:'\u{1F511}', qa:'\u2753', final:'\u{1F3C6}' };
+      const icon = iconMap[panel] || '\u{1F4C4}';
+
+      // Build lectures array
+      let lectures = '';
+      for (let i = 1; i <= count; i++) {
+        const t = (document.getElementById(`gen-lec-title-${i}`)?.value || '').trim();
+        const p = (document.getElementById(`gen-lec-path-${i}`)?.value || '').trim();
+        const s = (document.getElementById(`gen-lec-size-${i}`)?.value || '').trim();
+        const d = (document.getElementById(`gen-lec-date-${i}`)?.value || '').trim();
+        if (t || p) {
+          lectures += `          { title: "${t || 'Lecture '+i}"${p ? `, path: "${p}"` : ''}${s ? `, size: "${s}"` : ''}${d ? `, date: "${d}"` : ''} },\n`;
+        }
+      }
+
+      const code =
+`// ── Paste this inside SUBJECT_CONTENT.${panel} array in subjects/${subject}.html ──
+{
+  title: "${title}",
+  icon: "${icon}", id: "${id}",
+  lectures: [
+${lectures || '    // no lectures yet\n'}  ]
+},`;
+
+      document.getElementById('output-code').value = code;
+      showToast('Code generated! \u2728', 'success');
+    });
+
+    // Copy to clipboard
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      const code = document.getElementById('output-code').value;
+      navigator.clipboard.writeText(code).then(() => {
+        showToast('Copied! \uD83D\uDCCB', 'success');
+      }).catch(() => {
+        document.getElementById('output-code').select();
+        document.execCommand('copy');
+        showToast('Copied! \uD83D\uDCCB', 'success');
+      });
+    });
+
+    // Initialize URL fields on load
+    renderLecUrls();
+
+    /* ── Password Gate ───────────────────────────── */
+    const GATE_SESS = 'so_admin_unlocked';
+    // SHA-256 hash — password is never stored in plaintext
+    const CORRECT_HASH = '821c5b6a30d3e209abbeb118e663853eae491da199896132a826f6bdf8d1c214';
+    const main = document.getElementById('admin-main');
+    const gate = document.getElementById('admin-gate');
+
+    async function sha256(str) {
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+    }
+
+    function unlockAdmin() {
+      gate.style.display = 'none';
+      main.style.display = '';
+      sessionStorage.setItem(GATE_SESS, '1');
+      updateKeyStatus();
+    }
+
+    async function tryEnter() {
+      const val = document.getElementById('gate-input').value;
+      const err = document.getElementById('gate-error');
+      if (!val) return;
+      const hash = await sha256(val);
+      if (hash === CORRECT_HASH) {
+        unlockAdmin();
+      } else {
+        err.textContent = '❌ Wrong password';
+        err.style.display = 'block';
+        document.getElementById('gate-input').value = '';
+        document.getElementById('gate-input').focus();
+      }
+    }
+
+    // Auto-unlock if already authenticated this session
+    if (sessionStorage.getItem(GATE_SESS)) {
+      unlockAdmin();
+    }
+
+    document.getElementById('gate-btn').addEventListener('click', tryEnter);
+    document.getElementById('gate-input').addEventListener('keydown', e => {
+      if (e.key === 'Enter') tryEnter();
+    });
+
+    /* ── Gemini API Key ───────────────────────────── */
+    const AI_KEY  = 'so_gemini_key';
+
+    function updateKeyStatus() {
+      const el  = document.getElementById('key-status');
+      const key = localStorage.getItem(AI_KEY);
+      if (key) {
+        el.className = 'api-key-status';
+        el.textContent = '✅ API key saved — AI explain is active';
+        document.getElementById('gemini-key-input').placeholder = '••••••••••••••••••••';
+      } else {
+        el.className = 'api-key-status missing';
+        el.textContent = '⚠ No API key saved';
+      }
+    }
+
+    document.getElementById('save-key-btn').addEventListener('click', () => {
+      const val = document.getElementById('gemini-key-input').value.trim();
+      if (!val) { showToast('Enter your Gemini API key first', 'warning'); return; }
+      localStorage.setItem(AI_KEY, val);
+      document.getElementById('gemini-key-input').value = '';
+      updateKeyStatus();
+      showToast('API key saved! 🔑', 'success');
+    });
+
+    document.getElementById('clear-key-btn').addEventListener('click', () => {
+      localStorage.removeItem(AI_KEY);
+      document.getElementById('gemini-key-input').value = '';
+      updateKeyStatus();
+      showToast('API key cleared', 'info');
+    });
+  </script>
 </body>
 </html>
