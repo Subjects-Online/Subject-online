@@ -1,322 +1,624 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Accounting | Subjects Online</title>
-  <meta name="description" content="Accounting course content, quizzes, sections, summaries, Q&A, and final review materials."/>
-  <link rel="stylesheet" href="../styles/main.css"/>
-  <link rel="stylesheet" href="../styles/subject.css"/>
-  <style>
-    :root {
-      --subject-color: #f472b6;
-      --subject-color-alpha: rgba(244,114,182,0.12);
-      --subject-r: 244; --subject-g: 114; --subject-b: 182;
-    }
-  </style>
-</head>
-<body data-subject="accounting">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Accounting | Subjects Online</title>
+    <meta
+      name="description"
+      content="Accounting course content, quizzes, sections, summaries, Q&A, and final review materials." />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/subject.css" />
+    <style>
+      :root {
+        --subject-color: #f472b6;
+        --subject-color-alpha: rgba(244, 114, 182, 0.12);
+        --subject-r: 244;
+        --subject-g: 114;
+        --subject-b: 182;
+      }
+    </style>
+  </head>
+  <body data-subject="accounting">
+    <canvas id="starfield-canvas"></canvas>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
 
-  <canvas id="starfield-canvas"></canvas>
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-
-  <!-- Navbar -->
-  <nav class="navbar">
-    <a href="../index.html" class="nav-logo"><span>📚</span> Subjects Online</a>
-    <div class="nav-links">
-      <a href="../index.html"><span class="icon">🏠</span> Home</a>
-      <a href="../doctors-news.html"><span class="icon">🩺</span> Doctors News</a>
-      <a href="../Favorites.html" class="nav-favorites-btn"><span class="icon">⭐</span> Favorites</a>
-    </div>
-    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-  </nav>
-  <div class="mobile-nav" id="mobile-nav">
-    <a href="../index.html">🏠 Home</a>
-    <a href="../doctors-news.html">🩺 Doctors News</a>
-    <a href="../Favorites.html">⭐ Favorites</a>
-  </div>
-
-  <main class="page-wrapper">
-    <!-- Hero -->
-    <div class="subject-hero">
-      <a href="../index.html" class="subject-back-btn">← Back</a>
-      <button class="subject-fav-btn" id="subject-fav-btn"
-        data-subject='{"id":"accounting","title":"Accounting","icon":"📊","color":"#f472b6","rgb":"244,114,182","url":"subjects/accounting.html"}'
-        title="Add to Favorites">☆</button>
-      <span class="subject-icon">📊</span>
-      <h1>Accounting</h1>
-      <p>Financial principles, managerial accounting, and statement analysis.</p>
-      <div class="subject-stats">
-        <span class="stat"><span class="count">6</span> Sections</span>
-        <span class="stat">·</span>
-        <span class="stat">Updated <span class="count">2026</span></span>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <a href="../index.html" class="nav-logo"
+        ><span>📚</span> Subjects Online</a
+      >
+      <div class="nav-links">
+        <a href="../index.html"><span class="icon">🏠</span> Home</a>
+        <a href="../doctors-news.html"
+          ><span class="icon">🩺</span> Doctors News</a
+        >
+        <a href="../Favorites.html" class="nav-favorites-btn"
+          ><span class="icon">⭐</span> Favorites</a
+        >
       </div>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="../index.html">🏠 Home</a>
+      <a href="../doctors-news.html">🩺 Doctors News</a>
+      <a href="../Favorites.html">⭐ Favorites</a>
     </div>
 
-    <!-- Progress -->
-    <div style="max-width:1100px;margin:1.5rem auto;padding:0 1.5rem;">
-      <div class="progress-bar-wrapper">
-        <div class="progress-bar-header">
-          <span class="progress-bar-label">📈 My Progress</span>
-          <span class="progress-bar-pct" id="progress-pct">0%</span>
+    <main class="page-wrapper">
+      <!-- Hero -->
+      <div class="subject-hero">
+        <a href="../index.html" class="subject-back-btn">← Back</a>
+        <button
+          class="subject-fav-btn"
+          id="subject-fav-btn"
+          data-subject='{"id":"accounting","title":"Accounting","icon":"📊","color":"#f472b6","rgb":"244,114,182","url":"subjects/accounting.html"}'
+          title="Add to Favorites">
+          ☆
+        </button>
+        <span class="subject-icon">📊</span>
+        <h1>Accounting</h1>
+        <p>
+          Financial principles, managerial accounting, and statement analysis.
+        </p>
+        <div class="subject-stats">
+          <span class="stat"><span class="count">6</span> Sections</span>
+          <span class="stat">·</span>
+          <span class="stat">Updated <span class="count">2026</span></span>
         </div>
-        <div class="progress-bar-track">
-          <div class="progress-bar-fill" id="progress-bar-fill" style="width:0%"></div>
+      </div>
+
+      <!-- Progress -->
+      <div style="max-width: 1100px; margin: 1.5rem auto; padding: 0 1.5rem">
+        <div class="progress-bar-wrapper">
+          <div class="progress-bar-header">
+            <span class="progress-bar-label">📈 My Progress</span>
+            <span class="progress-bar-pct" id="progress-pct">0%</span>
+          </div>
+          <div class="progress-bar-track">
+            <div
+              class="progress-bar-fill"
+              id="progress-bar-fill"
+              style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs-container">
+        <div class="tabs-nav">
+          <button class="tab-btn active" data-tab="content">
+            <span class="tab-icon">📖</span> Course Content
+          </button>
+          <button class="tab-btn" data-tab="quizzes">
+            <span class="tab-icon">✏️</span> Quizzes
+          </button>
+          <button class="tab-btn" data-tab="sections">
+            <span class="tab-icon">📝</span> Sections
+          </button>
+          <button class="tab-btn" data-tab="summaries">
+            <span class="tab-icon">🔑</span> Summaries & Keywords
+          </button>
+          <button class="tab-btn" data-tab="qa">
+            <span class="tab-icon">❓</span> Questions & Answers
+          </button>
+          <button class="tab-btn" data-tab="final">
+            <span class="tab-icon">🏆</span> Final Review
+          </button>
+          <button class="tab-btn" data-tab="videos">
+            <span class="tab-icon">🎬</span> Videos
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab Panels -->
+      <div class="tabs-content">
+        <!-- 1. Course Content -->
+        <div class="tab-panel active" id="panel-content">
+          <div class="content-grid">
+            <div
+              class="content-card"
+              onclick="
+                showToast('No content uploaded yet for this chapter', 'info')
+              ">
+              <div class="content-card-icon">📖</div>
+              <div class="content-card-info">
+                <div class="content-card-title">Chapter 1</div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Lecture</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-cont-ch1"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+            <div
+              class="content-card"
+              onclick="
+                showToast('No content uploaded yet for this chapter', 'info')
+              ">
+              <div class="content-card-icon">📖</div>
+              <div class="content-card-info">
+                <div class="content-card-title">Chapter 2</div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Lecture</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-cont-ch2"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+            <div
+              class="content-card"
+              onclick="
+                showToast('No content uploaded yet for this chapter', 'info')
+              ">
+              <div class="content-card-icon">📖</div>
+              <div class="content-card-info">
+                <div class="content-card-title">Chapter 3</div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Lecture</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-cont-ch3"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+            <div
+              class="content-card"
+              onclick="
+                showToast('No content uploaded yet for this chapter', 'info')
+              ">
+              <div class="content-card-icon">📖</div>
+              <div class="content-card-info">
+                <div class="content-card-title">Chapter 4</div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Lecture</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-cont-ch4"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Quizzes -->
+        <div class="tab-panel" id="panel-quizzes">
+          <div class="content-grid">
+            <div
+              class="content-card"
+              onclick="
+                showToast('No solution uploaded yet for this quiz', 'info')
+              ">
+              <div class="content-card-icon">✏️</div>
+              <div class="content-card-info">
+                <div class="content-card-title">Quiz 1</div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Solution</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-quiz-1"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+            <div
+              class="content-card"
+              onclick="
+                showToast('No solution uploaded yet for this quiz', 'info')
+              ">
+              <div class="content-card-icon">✏️</div>
+              <div class="content-card-info">
+                <div class="content-card-title">Quiz 2</div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Solution</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-quiz-2"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+            <div
+              class="content-card"
+              onclick="
+                showToast('No solution uploaded yet for this quiz', 'info')
+              ">
+              <div class="content-card-icon">✏️</div>
+              <div class="content-card-info">
+                <div class="content-card-title">Quiz 3</div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Solution</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-quiz-3"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+            <div
+              class="content-card"
+              onclick="
+                showToast('No solution uploaded yet for this quiz', 'info')
+              ">
+              <div class="content-card-icon">✏️</div>
+              <div class="content-card-info">
+                <div class="content-card-title">Quiz 4</div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Solution</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-quiz-4"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Sections -->
+        <div class="tab-panel" id="panel-sections">
+          <div class="content-grid">
+            <div
+              class="content-card"
+              onclick="
+                showToast('No solution uploaded yet for this section', 'info')
+              ">
+              <div class="content-card-icon">📝</div>
+              <div class="content-card-info">
+                <div class="content-card-title">Section 1</div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Solution</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-sec-1"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+            <div
+              class="content-card"
+              onclick="
+                showToast('No solution uploaded yet for this section', 'info')
+              ">
+              <div class="content-card-icon">📝</div>
+              <div class="content-card-info">
+                <div class="content-card-title">Section 2</div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Solution</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-sec-2"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+            <div
+              class="content-card"
+              onclick="
+                showToast('No solution uploaded yet for this section', 'info')
+              ">
+              <div class="content-card-icon">📝</div>
+              <div class="content-card-info">
+                <div class="content-card-title">Section 3</div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Solution</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-sec-3"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+            <div
+              class="content-card"
+              onclick="
+                showToast('No solution uploaded yet for this section', 'info')
+              ">
+              <div class="content-card-icon">📝</div>
+              <div class="content-card-info">
+                <div class="content-card-title">Section 4</div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Solution</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-sec-4"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Summaries & Keywords -->
+        <div class="tab-panel" id="panel-summaries">
+          <div class="content-grid">
+            <div
+              class="content-card"
+              onclick="
+                showToast('No summary uploaded yet for this chapter', 'info')
+              ">
+              <div class="content-card-icon">🔑</div>
+              <div class="content-card-info">
+                <div class="content-card-title">
+                  Chapter 1 — Summary & Keywords
+                </div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Summary</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-sum-ch1"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+            <div
+              class="content-card"
+              onclick="
+                showToast('No summary uploaded yet for this chapter', 'info')
+              ">
+              <div class="content-card-icon">🔑</div>
+              <div class="content-card-info">
+                <div class="content-card-title">
+                  Chapter 2 — Summary & Keywords
+                </div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Summary</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-sum-ch2"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+            <div
+              class="content-card"
+              onclick="
+                showToast('No summary uploaded yet for this chapter', 'info')
+              ">
+              <div class="content-card-icon">🔑</div>
+              <div class="content-card-info">
+                <div class="content-card-title">
+                  Chapter 3 — Summary & Keywords
+                </div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Summary</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-sum-ch3"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+            <div
+              class="content-card"
+              onclick="
+                showToast('No summary uploaded yet for this chapter', 'info')
+              ">
+              <div class="content-card-icon">🔑</div>
+              <div class="content-card-info">
+                <div class="content-card-title">
+                  Chapter 4 — Summary & Keywords
+                </div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Summary</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-sum-ch4"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Q&A -->
+        <div class="tab-panel" id="panel-qa">
+          <div class="content-grid">
+            <div
+              class="content-card"
+              onclick="
+                showToast('No Q&A uploaded yet for this chapter', 'info')
+              ">
+              <div class="content-card-icon">❓</div>
+              <div class="content-card-info">
+                <div class="content-card-title">Chapter 1 — Q&A</div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Questions</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-qa-ch1"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+            <div
+              class="content-card"
+              onclick="
+                showToast('No Q&A uploaded yet for this chapter', 'info')
+              ">
+              <div class="content-card-icon">❓</div>
+              <div class="content-card-info">
+                <div class="content-card-title">Chapter 2 — Q&A</div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Questions</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-qa-ch2"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+            <div
+              class="content-card"
+              onclick="
+                showToast('No Q&A uploaded yet for this chapter', 'info')
+              ">
+              <div class="content-card-icon">❓</div>
+              <div class="content-card-info">
+                <div class="content-card-title">Chapter 3 — Q&A</div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Questions</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-qa-ch3"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+            <div
+              class="content-card"
+              onclick="
+                showToast('No Q&A uploaded yet for this chapter', 'info')
+              ">
+              <div class="content-card-icon">❓</div>
+              <div class="content-card-info">
+                <div class="content-card-title">Chapter 4 — Q&A</div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Questions</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-qa-ch4"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Final Review -->
+        <div class="tab-panel" id="panel-final">
+          <div class="content-grid">
+            <div
+              class="content-card"
+              onclick="showToast('No final review uploaded yet', 'info')">
+              <div class="content-card-icon">🏆</div>
+              <div class="content-card-info">
+                <div class="content-card-title">Chapter 1 — Final Review</div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Review</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-fin-ch1"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+            <div
+              class="content-card"
+              onclick="showToast('No final review uploaded yet', 'info')">
+              <div class="content-card-icon">🏆</div>
+              <div class="content-card-info">
+                <div class="content-card-title">Chapter 2 — Final Review</div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Review</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-fin-ch2"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+            <div
+              class="content-card"
+              onclick="showToast('No final review uploaded yet', 'info')">
+              <div class="content-card-icon">🏆</div>
+              <div class="content-card-info">
+                <div class="content-card-title">Chapter 3 — Final Review</div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Review</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-fin-ch3"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+            <div
+              class="content-card"
+              onclick="showToast('No final review uploaded yet', 'info')">
+              <div class="content-card-icon">🏆</div>
+              <div class="content-card-info">
+                <div class="content-card-title">Chapter 4 — Final Review</div>
+                <div class="content-card-meta">
+                  <span class="content-card-type type-pdf">📄 Review</span>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                class="progress-check"
+                id="acc-fin-ch4"
+                style="margin-left: auto; flex-shrink: 0" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Videos -->
+        <div class="tab-panel" id="panel-videos"></div>
+      </div>
+    </main>
+
+    <!-- Modals -->
+    <div class="pdf-modal-overlay" id="pdf-modal-overlay">
+      <div class="pdf-modal">
+        <div class="pdf-modal-header">
+          <span class="pdf-modal-title" id="pdf-modal-title">Document</span>
+          <button class="pdf-modal-close" id="pdf-modal-close">✕</button>
+        </div>
+        <div class="pdf-modal-body">
+          <iframe id="pdf-iframe" title="PDF Viewer"></iframe>
         </div>
       </div>
     </div>
-
-    <!-- Tabs -->
-    <div class="tabs-container">
-      <div class="tabs-nav">
-        <button class="tab-btn active" data-tab="content"><span class="tab-icon">📖</span> Course Content</button>
-        <button class="tab-btn" data-tab="quizzes"><span class="tab-icon">✏️</span> Quizzes</button>
-        <button class="tab-btn" data-tab="sections"><span class="tab-icon">📝</span> Sections</button>
-        <button class="tab-btn" data-tab="summaries"><span class="tab-icon">🔑</span> Summaries & Keywords</button>
-        <button class="tab-btn" data-tab="qa"><span class="tab-icon">❓</span> Questions & Answers</button>
-        <button class="tab-btn" data-tab="final"><span class="tab-icon">🏆</span> Final Review</button>
-        <button class="tab-btn" data-tab="videos"><span class="tab-icon">🎬</span> Videos</button>
+    <div class="video-modal-overlay" id="video-modal-overlay">
+      <div class="video-modal">
+        <div class="video-modal-header">
+          <span class="pdf-modal-title" id="video-modal-title">Video</span>
+          <button class="video-modal-close" id="video-modal-close">✕</button>
+        </div>
+        <div class="video-wrapper">
+          <iframe
+            id="video-iframe"
+            allow="autoplay; fullscreen"
+            allowfullscreen
+            title="Video"></iframe>
+        </div>
       </div>
     </div>
+    <div id="toast-container" class="toast-container"></div>
 
-    <!-- Tab Panels -->
-    <div class="tabs-content">
-
-      <!-- 1. Course Content -->
-      <div class="tab-panel active" id="panel-content">
-        <div class="content-grid">
-          <div class="content-card" onclick="showToast('No content uploaded yet for this chapter','info')">
-            <div class="content-card-icon">📖</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Chapter 1</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Lecture</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-cont-ch1" style="margin-left:auto;flex-shrink:0">
-          </div>
-          <div class="content-card" onclick="showToast('No content uploaded yet for this chapter','info')">
-            <div class="content-card-icon">📖</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Chapter 2</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Lecture</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-cont-ch2" style="margin-left:auto;flex-shrink:0">
-          </div>
-          <div class="content-card" onclick="showToast('No content uploaded yet for this chapter','info')">
-            <div class="content-card-icon">📖</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Chapter 3</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Lecture</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-cont-ch3" style="margin-left:auto;flex-shrink:0">
-          </div>
-          <div class="content-card" onclick="showToast('No content uploaded yet for this chapter','info')">
-            <div class="content-card-icon">📖</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Chapter 4</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Lecture</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-cont-ch4" style="margin-left:auto;flex-shrink:0">
-          </div>
-        </div>
-      </div>
-
-      <!-- 2. Quizzes -->
-      <div class="tab-panel" id="panel-quizzes">
-        <div class="content-grid">
-          <div class="content-card" onclick="showToast('No solution uploaded yet for this quiz','info')">
-            <div class="content-card-icon">✏️</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Quiz 1</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Solution</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-quiz-1" style="margin-left:auto;flex-shrink:0">
-          </div>
-          <div class="content-card" onclick="showToast('No solution uploaded yet for this quiz','info')">
-            <div class="content-card-icon">✏️</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Quiz 2</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Solution</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-quiz-2" style="margin-left:auto;flex-shrink:0">
-          </div>
-          <div class="content-card" onclick="showToast('No solution uploaded yet for this quiz','info')">
-            <div class="content-card-icon">✏️</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Quiz 3</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Solution</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-quiz-3" style="margin-left:auto;flex-shrink:0">
-          </div>
-          <div class="content-card" onclick="showToast('No solution uploaded yet for this quiz','info')">
-            <div class="content-card-icon">✏️</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Quiz 4</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Solution</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-quiz-4" style="margin-left:auto;flex-shrink:0">
-          </div>
-        </div>
-      </div>
-
-      <!-- 3. Sections -->
-      <div class="tab-panel" id="panel-sections">
-        <div class="content-grid">
-          <div class="content-card" onclick="showToast('No solution uploaded yet for this section','info')">
-            <div class="content-card-icon">📝</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Section 1</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Solution</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-sec-1" style="margin-left:auto;flex-shrink:0">
-          </div>
-          <div class="content-card" onclick="showToast('No solution uploaded yet for this section','info')">
-            <div class="content-card-icon">📝</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Section 2</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Solution</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-sec-2" style="margin-left:auto;flex-shrink:0">
-          </div>
-          <div class="content-card" onclick="showToast('No solution uploaded yet for this section','info')">
-            <div class="content-card-icon">📝</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Section 3</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Solution</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-sec-3" style="margin-left:auto;flex-shrink:0">
-          </div>
-          <div class="content-card" onclick="showToast('No solution uploaded yet for this section','info')">
-            <div class="content-card-icon">📝</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Section 4</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Solution</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-sec-4" style="margin-left:auto;flex-shrink:0">
-          </div>
-        </div>
-      </div>
-
-      <!-- 4. Summaries & Keywords -->
-      <div class="tab-panel" id="panel-summaries">
-        <div class="content-grid">
-          <div class="content-card" onclick="showToast('No summary uploaded yet for this chapter','info')">
-            <div class="content-card-icon">🔑</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Chapter 1 — Summary & Keywords</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Summary</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-sum-ch1" style="margin-left:auto;flex-shrink:0">
-          </div>
-          <div class="content-card" onclick="showToast('No summary uploaded yet for this chapter','info')">
-            <div class="content-card-icon">🔑</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Chapter 2 — Summary & Keywords</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Summary</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-sum-ch2" style="margin-left:auto;flex-shrink:0">
-          </div>
-          <div class="content-card" onclick="showToast('No summary uploaded yet for this chapter','info')">
-            <div class="content-card-icon">🔑</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Chapter 3 — Summary & Keywords</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Summary</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-sum-ch3" style="margin-left:auto;flex-shrink:0">
-          </div>
-          <div class="content-card" onclick="showToast('No summary uploaded yet for this chapter','info')">
-            <div class="content-card-icon">🔑</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Chapter 4 — Summary & Keywords</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Summary</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-sum-ch4" style="margin-left:auto;flex-shrink:0">
-          </div>
-        </div>
-      </div>
-
-      <!-- 5. Q&A -->
-      <div class="tab-panel" id="panel-qa">
-        <div class="content-grid">
-          <div class="content-card" onclick="showToast('No Q&A uploaded yet for this chapter','info')">
-            <div class="content-card-icon">❓</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Chapter 1 — Q&A</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Questions</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-qa-ch1" style="margin-left:auto;flex-shrink:0">
-          </div>
-          <div class="content-card" onclick="showToast('No Q&A uploaded yet for this chapter','info')">
-            <div class="content-card-icon">❓</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Chapter 2 — Q&A</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Questions</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-qa-ch2" style="margin-left:auto;flex-shrink:0">
-          </div>
-          <div class="content-card" onclick="showToast('No Q&A uploaded yet for this chapter','info')">
-            <div class="content-card-icon">❓</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Chapter 3 — Q&A</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Questions</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-qa-ch3" style="margin-left:auto;flex-shrink:0">
-          </div>
-          <div class="content-card" onclick="showToast('No Q&A uploaded yet for this chapter','info')">
-            <div class="content-card-icon">❓</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Chapter 4 — Q&A</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Questions</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-qa-ch4" style="margin-left:auto;flex-shrink:0">
-          </div>
-        </div>
-      </div>
-
-      <!-- 6. Final Review -->
-      <div class="tab-panel" id="panel-final">
-        <div class="content-grid">
-          <div class="content-card" onclick="showToast('No final review uploaded yet','info')">
-            <div class="content-card-icon">🏆</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Chapter 1 — Final Review</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Review</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-fin-ch1" style="margin-left:auto;flex-shrink:0">
-          </div>
-          <div class="content-card" onclick="showToast('No final review uploaded yet','info')">
-            <div class="content-card-icon">🏆</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Chapter 2 — Final Review</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Review</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-fin-ch2" style="margin-left:auto;flex-shrink:0">
-          </div>
-          <div class="content-card" onclick="showToast('No final review uploaded yet','info')">
-            <div class="content-card-icon">🏆</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Chapter 3 — Final Review</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Review</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-fin-ch3" style="margin-left:auto;flex-shrink:0">
-          </div>
-          <div class="content-card" onclick="showToast('No final review uploaded yet','info')">
-            <div class="content-card-icon">🏆</div>
-            <div class="content-card-info">
-              <div class="content-card-title">Chapter 4 — Final Review</div>
-              <div class="content-card-meta"><span class="content-card-type type-pdf">📄 Review</span></div>
-            </div><input type="checkbox" class="progress-check" id="acc-fin-ch4" style="margin-left:auto;flex-shrink:0">
-          </div>
-        </div>
-      </div>
-
-      <!-- 7. Videos -->
-      <div class="tab-panel" id="panel-videos"></div>
-
-    </div>
-  </main>
-
-
-
-  <!-- Modals -->
-  <div class="pdf-modal-overlay" id="pdf-modal-overlay">
-    <div class="pdf-modal">
-      <div class="pdf-modal-header">
-        <span class="pdf-modal-title" id="pdf-modal-title">Document</span>
-        <button class="pdf-modal-close" id="pdf-modal-close">✕</button>
-      </div>
-      <div class="pdf-modal-body"><iframe id="pdf-iframe" title="PDF Viewer"></iframe></div>
-    </div>
-  </div>
-  <div class="video-modal-overlay" id="video-modal-overlay">
-    <div class="video-modal">
-      <div class="video-modal-header">
-        <span class="pdf-modal-title" id="video-modal-title">Video</span>
-        <button class="video-modal-close" id="video-modal-close">✕</button>
-      </div>
-      <div class="video-wrapper"><iframe id="video-iframe" allow="autoplay;fullscreen" allowfullscreen title="Video"></iframe></div>
-    </div>
-  </div>
-  <div id="toast-container" class="toast-container"></div>
-
-  <!-- ================================================
+    <!-- ================================================
        SUBJECT CONTENT DATA
        ================================================
        كل chapter له:
@@ -329,77 +631,140 @@
            size   : حجم الملف (اختياري)
            date   : تاريخ الرفع    (اختياري)
        ================================================ -->
-  <script>
-  window.SUBJECT_CONTENT = {
+    <script>
+      window.SUBJECT_CONTENT = {
+        content: [
+          {
+            title: "Chapter 1 – Introduction to Accounting",
+            icon: "📖",
+            id: "acc-cont-ch1",
+            lectures: [
+              {
+                title: "Lect 1-2 Dr.MZ",
+                path: "../pdfs/accounting/Acquisition__Disposition_of_Property_Plant_and_Equipment.pdf",
+                size: "3.4 MB",
+                date: "2026-02-16",
+              },
+              {
+                title: "Lect 3 Dr.MZ",
+                path: "../pdfs/accounting/Non-Monetary_Asset_Exchanges.pdf",
+                size: "1.798 KB",
+                date: "2026-02-22",
+              },
+              {},
+            ],
+          },
+          {
+            title: "Chapter 2 – Financial Statements",
+            icon: "📖",
+            id: "acc-cont-ch2",
+            lectures: [
+              /* أضف المحاضرات هنا */
+            ],
+          },
+          {
+            title: "Chapter 3 – The Accounting Cycle",
+            icon: "📖",
+            id: "acc-cont-ch3",
+            lectures: [],
+          },
+          {
+            title: "Chapter 4 – Merchandising Operations",
+            icon: "📖",
+            id: "acc-cont-ch4",
+            lectures: [],
+          },
+        ],
 
-    content: [
-      {
-        title: "Chapter 1 – Introduction to Accounting",
-        icon: "📖", id: "acc-cont-ch1",
-        lectures: [
-          { title: "Lect 1-2 Dr.MZ",  path: "../pdfs/accounting/Acquisition__Disposition_of_Property_Plant_and_Equipment.pdf", size: "3.4 MB", date: "2026-02-16" },
-          {},
-          {  },
-        ]
-      },
-      {
-        title: "Chapter 2 – Financial Statements",
-        icon: "📖", id: "acc-cont-ch2",
-        lectures: [
-          /* أضف المحاضرات هنا */
-        ]
-      },
-      {
-        title: "Chapter 3 – The Accounting Cycle",
-        icon: "📖", id: "acc-cont-ch3",
-        lectures: []
-      },
-      {
-        title: "Chapter 4 – Merchandising Operations",
-        icon: "📖", id: "acc-cont-ch4",
-        lectures: []
-      },
-    ],
+        quizzes: [
+          { title: "Quiz 1", icon: "✏️", id: "acc-quiz-1", lectures: [] },
+          { title: "Quiz 2", icon: "✏️", id: "acc-quiz-2", lectures: [] },
+          { title: "Quiz 3", icon: "✏️", id: "acc-quiz-3", lectures: [] },
+        ],
 
-    quizzes: [
-      { title: "Quiz 1", icon: "✏️", id: "acc-quiz-1", lectures: [] },
-      { title: "Quiz 2", icon: "✏️", id: "acc-quiz-2", lectures: [] },
-      { title: "Quiz 3", icon: "✏️", id: "acc-quiz-3", lectures: [] },
-    ],
+        sections: [
+          { title: "Section 1", icon: "📝", id: "acc-sec-1", lectures: [] },
+          { title: "Section 2", icon: "📝", id: "acc-sec-2", lectures: [] },
+          { title: "Section 3", icon: "📝", id: "acc-sec-3", lectures: [] },
+        ],
 
-    sections: [
-      { title: "Section 1", icon: "📝", id: "acc-sec-1", lectures: [] },
-      { title: "Section 2", icon: "📝", id: "acc-sec-2", lectures: [] },
-      { title: "Section 3", icon: "📝", id: "acc-sec-3", lectures: [] },
-    ],
+        summaries: [
+          {
+            title: "Chapter 1 — Summary",
+            icon: "🔑",
+            id: "acc-sum-ch1",
+            lectures: [],
+          },
+          {
+            title: "Chapter 2 — Summary",
+            icon: "🔑",
+            id: "acc-sum-ch2",
+            lectures: [],
+          },
+        ],
 
-    summaries: [
-      { title: "Chapter 1 — Summary", icon: "🔑", id: "acc-sum-ch1", lectures: [] },
-      { title: "Chapter 2 — Summary", icon: "🔑", id: "acc-sum-ch2", lectures: [] },
-    ],
+        qa: [
+          {
+            title: "Chapter 1 — Q&A",
+            icon: "❓",
+            id: "acc-qa-ch1",
+            lectures: [],
+          },
+          {
+            title: "Chapter 2 — Q&A",
+            icon: "❓",
+            id: "acc-qa-ch2",
+            lectures: [],
+          },
+        ],
 
-    qa: [
-      { title: "Chapter 1 — Q&A", icon: "❓", id: "acc-qa-ch1", lectures: [] },
-      { title: "Chapter 2 — Q&A", icon: "❓", id: "acc-qa-ch2", lectures: [] },
-    ],
+        final: [
+          {
+            title: "Final Review Sheet",
+            icon: "🏆",
+            id: "acc-fin-1",
+            lectures: [],
+          },
+        ],
 
-    final: [
-      { title: "Final Review Sheet", icon: "🏆", id: "acc-fin-1", lectures: [] },
-    ],
+        videos: [
+          {
+            title: "Chapter 1 Videos",
+            icon: "🎬",
+            id: "acc-vid-ch1",
+            lectures: [
+              {
+                title: "Lect 1-2 Dr.MZ",
+                path: "../pdfs/accounting/تحديد_تكلفة_الأصول_الثابتة.mp4",
+                size: "63 MB",
+                date: "2026-02-20",
+              },
+            ],
+          },
+          {
+            title: "Chapter 2 Videos",
+            icon: "🎬",
+            id: "acc-vid-ch2",
+            lectures: [],
+          },
+          {
+            title: "Chapter 3 Videos",
+            icon: "🎬",
+            id: "acc-vid-ch3",
+            lectures: [],
+          },
+          {
+            title: "Chapter 4 Videos",
+            icon: "🎬",
+            id: "acc-vid-ch4",
+            lectures: [],
+          },
+        ],
+      };
+    </script>
 
-    videos: [
-      { title: "Chapter 1 Videos", icon: "🎬", id: "acc-vid-ch1", lectures: [{ title: "Lect 5 Dr.MZ",  path: "../pdfs/accounting/تحديد_تكلفة_الأصول_الثابتة.mp4", size: "1.8 MB", date: "2026-02-20" }] },
-      { title: "Chapter 2 Videos", icon: "🎬", id: "acc-vid-ch2", lectures: [] },
-      { title: "Chapter 3 Videos", icon: "🎬", id: "acc-vid-ch3", lectures: [] },
-      { title: "Chapter 4 Videos", icon: "🎬", id: "acc-vid-ch4", lectures: [ ] },
-    ],
-
-  };
-  </script>
-
-  <script src="../scripts/main.js"></script>
-  <script src="../scripts/subject.js"></script>
-  <script src="../scripts/ai.js"></script>
-
-</body>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/subject.js"></script>
+    <script src="../scripts/ai.js"></script>
+  </body>
 </html>
