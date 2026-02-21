@@ -7,6 +7,8 @@
   <meta name="description" content="Your all-in-one academic resource hub — course content, quizzes, summaries, Q&A, and exam reviews for every subject." />
   <link rel="stylesheet" href="styles/main.css" />
   <link rel="stylesheet" href="styles/index.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#4f8ef7" />
   <style>
     /* ── Hero ──────────────────────────────────────── */
     .hero {
@@ -73,6 +75,66 @@
       backdrop-filter: blur(12px);
     }
     .btn-outline:hover { border-color: var(--glass-border-hover); color: var(--text-primary); background: var(--bg-card-hover); }
+
+    /* ── Install Button Navbar ─────────────────────── */
+    .nav-install-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, rgba(79, 142, 247, 0.15), rgba(139, 92, 246, 0.15));
+      border: 1px solid rgba(79, 142, 247, 0.3);
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .nav-install-btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: all 0.5s ease;
+    }
+    .nav-install-btn:hover {
+      background: linear-gradient(135deg, rgba(79, 142, 247, 0.25), rgba(139, 92, 246, 0.25));
+      border-color: rgba(79, 142, 247, 0.6);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(79, 142, 247, 0.2);
+    }
+    .nav-install-btn:hover::before {
+      left: 100%;
+    }
+    .nav-install-btn.downloading {
+      pointer-events: none;
+      animation: pulse-download 1s infinite alternate;
+    }
+    .nav-install-btn.downloading .install-icon {
+      animation: bounce-down 0.8s infinite;
+    }
+    @keyframes pulse-download {
+      0% { box-shadow: 0 0 0 0 rgba(79, 142, 247, 0.4); }
+      100% { box-shadow: 0 0 0 10px rgba(79, 142, 247, 0); }
+    }
+    @keyframes bounce-down {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(3px); }
+    }
+    @media (max-width: 640px) {
+      .nav-install-btn {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+      }
+      .hide-on-mobile {
+        display: none; /* Hide text on very small screens, keep icon */
+      }
+    }
 
     /* ── Stats Row ─────────────────────────────────── */
     .stats-row {
@@ -262,6 +324,9 @@
       <a href="doctors-news.html"><span class="icon"></span> Doctors News</a>
       <a href="Favorites.html" class="nav-favorites-btn"><span class="icon">⭐</span> Favorites</a>
     </div>
+    <button id="nav-install-btn" class="nav-install-btn" style="margin-left: auto; margin-right: 1rem;">
+      <span class="install-icon">📲</span> <span class="hide-on-mobile">Install App</span>
+    </button>
     <div class="hamburger" id="hamburger" aria-label="Open menu">
       <span></span><span></span><span></span>
     </div>
@@ -272,6 +337,9 @@
     <a href="index.html">🏠 Home</a>
     <a href="doctors-news.html"> Doctors News</a>
     <a href="Favorites.html">⭐ Favorites</a>
+    <a href="#" id="mobile-install-btn" class="nav-install-btn" style="margin-top: 1rem; justify-content: center;">
+      <span class="install-icon">📲</span> <span>Install App</span>
+    </a>
   </div>
 
   <!-- Page -->
@@ -517,6 +585,60 @@
     searchInput.addEventListener('input', () => {
       const q = searchInput.value.toLowerCase().trim();
       renderSubjects(q ? SUBJECTS.filter(s => s.title.toLowerCase().includes(q) || s.desc.toLowerCase().includes(q)) : SUBJECTS);
+    });
+
+    /* PWA Install Logic */
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('Service Worker registered', reg))
+          .catch(err => console.error('Service Worker auto-registration failed', err));
+      });
+    }
+
+    let deferredPrompt;
+    const navInstallBtn = document.getElementById('nav-install-btn');
+    const mobileInstallBtn = document.getElementById('mobile-install-btn');
+
+    // Handle the install prompt event
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      // Show both buttons (desktop and mobile nav)
+      navInstallBtn.style.display = 'inline-flex';
+      mobileInstallBtn.style.display = 'inline-flex';
+    });
+
+    const handleInstallClick = async (btn) => {
+      if (deferredPrompt) {
+        // Add downloading effect
+        btn.classList.add('downloading');
+        
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        
+        if (outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+        btn.classList.remove('downloading');
+        deferredPrompt = null;
+      } else {
+        alert('الموقع متثبت بالفعل عندك كأبلكيشن، أو متصفحك مش بيدعم الخاصية دي حالياً.');
+      }
+    };
+
+    navInstallBtn.addEventListener('click', (e) => handleInstallClick(navInstallBtn));
+    mobileInstallBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent navigating to #
+        handleInstallClick(mobileInstallBtn);
+    });
+
+    window.addEventListener('appinstalled', () => {
+      navInstallBtn.style.display = 'none';
+      mobileInstallBtn.style.display = 'none';
+      console.log('App was installed successfully!');
     });
   </script>
 </body>
