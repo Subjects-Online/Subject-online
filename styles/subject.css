@@ -341,7 +341,7 @@
   overflow: hidden;
   transition: var(--transition);
   margin-bottom: 0.75rem;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px) !important;
 }
 .chapter-accordion:hover {
   border-color: rgba(var(--subject-r), var(--subject-g), var(--subject-b), 0.25);
