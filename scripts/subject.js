@@ -85,13 +85,13 @@
   }
 
   const PANEL_CONFIG = {
-    content:   { label: 'Lecture', icon: '📖' },
-    quizzes:   { label: 'Part',    icon: '✏️' },
-    sections:  { label: 'Problem', icon: '📝' },
-    summaries: { label: 'Part',    icon: '🔑' },
-    qa:        { label: 'Set',     icon: '❓' },
-    final:     { label: 'Part',    icon: '🏆' },
-    videos:    { label: 'Video',   icon: '🎬' },
+    content: { label: "Lecture", icon: "📖" },
+    quizzes: { label: "Quiz", icon: "✏️" },
+    sections: { label: "Section", icon: "📝" },
+    summaries: { label: "PDF", icon: "🔑" },
+    qa: { label: "PDF", icon: "❓" },
+    final: { label: "PDF", icon: "🏆" },
+    videos: { label: "Video", icon: "🎬" },
   };
 
   // ── Build one lecture row ────────────────────────
