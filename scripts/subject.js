@@ -136,7 +136,7 @@
     const checked  = saved[cbId] ? 'checked' : '';
     const subtitle = lectures.length > 0
       ? `${lectures.length} ${cfg.label}${lectures.length !== 1 ? 's' : ''}`
-      : 'لسه فيه محاضرات';
+      : 'لسه منزلش حاجة هنا ';
 
     const rows = lectures.length > 0
       ? lectures.map((lec, i) => buildLectureRow(lec, i + 1, cbId)).join('')
