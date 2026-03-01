@@ -476,7 +476,7 @@
 .lecture-name {
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: white;
   transition: var(--transition);
   white-space: nowrap;
   overflow: hidden;
@@ -708,7 +708,7 @@
 /* ================================================================
    AI Explain Button
    ================================================================ */
-.lec-ai-btn {
+/* .lec-ai-btn {
   width: 26px; height: 26px;
   border-radius: 50%;
   background: rgba(139,92,246,0.12);
@@ -725,7 +725,7 @@
   border-color: rgba(139,92,246,0.55);
   box-shadow: 0 0 10px rgba(139,92,246,0.4);
   transform: scale(1.12);
-}
+} */
 
 /* ================================================================
    AI Explain Slide Panel
