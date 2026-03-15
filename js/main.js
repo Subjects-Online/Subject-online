@@ -196,7 +196,7 @@ function renderHomeCards() {
     { href: "doctors-news.html", icon: "📰", title: "Doctors News", desc: "Latest announcements, notes, and updates from your professors — delivered instantly.", grad: "135deg,#059669,#06b6d4", color: "#059669", tag1: "Stay Updated", tag2: "All Professors", pills: ["Announcements", "Notes", "Reminders", "Updates"] },
     { href: "personal-dev.html", icon: "🌱", title: "Self Development", desc: "Build the mindset, habits, and skills that make you unstoppable beyond the classroom.", grad: "135deg,#f59e0b,#ec4899", color: "#f59e0b", tag1: "Grow Every Day", tag2: "6 Categories", pills: ["Mindset", "Productivity", "Focus", "Goal Setting"] },
     { href: "favorites.html", icon: "⭐", title: "Favorites", desc: "Easily access your saved lectures, summaries, and videos in one convenient place.", grad: "135deg,#eab308,#f97316", color: "#eab308", tag1: "Quick Access", tag2: "Your Picks", pills: ["Saved Items", "Bookmarks", "Quick Nav"] },
-    { href: "special.html", icon: "💎", title: "Special Archive", desc: "Exclusive PDF materials & interactive study mode for top core subjects.", grad: "135deg,#6366f1,#a855f7", color: "#a855f7", tag1: "Premium", tag2: "PDF & Interactive", pills: ["Elite Content", "Smart Study", "Fast Access"] },
+    { href: "special.html", icon: "💎", title: "Special Subject", desc: "Exclusive PDF materials & interactive study mode for top core subjects.", grad: "135deg,#6366f1,#a855f7", color: "#a855f7", tag1: "Premium", tag2: "PDF & Interactive", pills: ["Elite Content", "Smart Study", "Fast Access"] },
   ];
 
   container.innerHTML = cards.map((c, i) => `
@@ -351,7 +351,8 @@ function toggleChapter(btn, color) {
     ch.lectures.forEach((lec, i) => {
       const [ico, lbl] = typeMap[lec.type] || ["📖", "Content"];
       const hasContent = !!lec.content || (lec.interactive && lec.interactive.length > 0);
-      const isCompleted = (subjProg.pdfs.includes(lec.id) || subjProg.videos.includes(lec.id));
+      const isCompleted = (subjProg.pdfs.includes(lec.id) || subjProg.videos.includes(lec.id)) ||
+        (lec.content && (subjProg.pdfs.includes(lec.content) || subjProg.videos.includes(lec.content)));
       const resetBtnHTML = isCompleted ? `<button class="lec-reset-btn" onclick="resetProgress(event, '${window._currentSubjectId}', '${lec.id}', '${lec.type}', '${lec.content || ''}')" title="Reset Progress">✕</button>` : "";
       const iconRight = isCompleted ? `<span class="lec-open" style="color:#10b981">✅</span>` : (hasContent ? `<span class="lec-open">▶</span>` : "");
 
@@ -464,7 +465,10 @@ function openViewer(lec, subjectId) {
     // Save as pending instead of auto-completing
     localStorage.setItem("so_pending_progress", JSON.stringify({
       subjectId,
-      lecId: lec.id,
+      id: lec.id,
+      title: lec.title || "Lecture",
+      type: lec.type || (lec.content.endsWith(".pdf") ? "pdf" : "video"),
+      content: lec.content,
       timestamp: Date.now()
     }));
   }
@@ -603,7 +607,8 @@ function askProgress(pending) {
   // DON'T ask if already completed
   const progressData = JSON.parse(localStorage.getItem("so_progress") || "{}");
   const subjProg = progressData[pending.subjectId] || { pdfs: [], videos: [] };
-  if (subjProg.pdfs.includes(pending.id) || subjProg.videos.includes(pending.id)) {
+  if (subjProg.pdfs.includes(pending.id) || subjProg.videos.includes(pending.id) ||
+      (pending.content && (subjProg.pdfs.includes(pending.content) || subjProg.videos.includes(pending.content)))) {
     localStorage.removeItem("so_pending_progress");
     return;
   }
@@ -655,8 +660,8 @@ function saveProgress(subjectId, lec) {
     const data = JSON.parse(localStorage.getItem("so_progress") || "{}");
     if (!data[subjectId]) data[subjectId] = { pdfs: [], videos: [] };
     const type = (lec.type === "video") ? "videos" : "pdfs";
-    const itemId = lec.id;
-    if (!data[subjectId][type].includes(itemId)) {
+    const itemId = lec.id || lec.content; // Use ID if available, else content path
+    if (itemId && !data[subjectId][type].includes(itemId)) {
       data[subjectId][type].push(itemId);
       localStorage.setItem("so_progress", JSON.stringify(data));
 
@@ -667,25 +672,25 @@ function saveProgress(subjectId, lec) {
           openedBtn.innerHTML = "✅";
           openedBtn.style.color = "#10b981";
         }
-        
+
         // DYNAMICALLY show the reset button if not already there
         if (!lecItem.querySelector(".lec-reset-btn")) {
-           const actions = lecItem.querySelector(".lec-actions");
-           if (actions) {
-             const rb = document.createElement("button");
-             rb.className = "lec-reset-btn";
-             rb.title = "Reset Progress";
-             rb.innerHTML = "✕";
-             rb.onclick = (e) => resetProgress(e, subjectId, lec.id, lec.type, lec.content || "");
-             actions.insertBefore(rb, openedBtn);
-           }
+          const actions = lecItem.querySelector(".lec-actions");
+          if (actions) {
+            const rb = document.createElement("button");
+            rb.className = "lec-reset-btn";
+            rb.title = "Reset Progress";
+            rb.innerHTML = "✕";
+            rb.onclick = (e) => resetProgress(e, subjectId, lec.id, lec.type, lec.content || "");
+            actions.insertBefore(rb, openedBtn);
+          }
         }
       }
     }
   } catch (e) { }
 }
 
-window.resetProgress = function(e, subjectId, lecId, type, content) {
+window.resetProgress = function (e, subjectId, lecId, type, content) {
   if (e) { e.preventDefault(); e.stopPropagation(); }
   if (!confirm("Are you sure you want to reset progress for this item?")) return;
 
@@ -693,15 +698,22 @@ window.resetProgress = function(e, subjectId, lecId, type, content) {
     const data = JSON.parse(localStorage.getItem("so_progress") || "{}");
     if (data[subjectId]) {
       const typeKey = (type === "video") ? "videos" : "pdfs";
-      const idxP = data[subjectId].pdfs.indexOf(lecId);
-      const idxV = data[subjectId].videos.indexOf(lecId);
-      
-      if (idxP > -1 || idxV > -1) {
-        if (idxP > -1) data[subjectId].pdfs.splice(idxP, 1);
-        if (idxV > -1) data[subjectId].videos.splice(idxV, 1);
+      // Try removing by ID OR Content path
+      const idxP_id = data[subjectId].pdfs.indexOf(lecId);
+      const idxV_id = data[subjectId].videos.indexOf(lecId);
+      const idxP_co = content ? data[subjectId].pdfs.indexOf(content) : -1;
+      const idxV_co = content ? data[subjectId].videos.indexOf(content) : -1;
+
+      let found = false;
+      if (idxP_id > -1) { data[subjectId].pdfs.splice(idxP_id, 1); found = true; }
+      if (idxV_id > -1) { data[subjectId].videos.splice(idxV_id, 1); found = true; }
+      if (idxP_co > -1) { data[subjectId].pdfs.splice(idxP_co, 1); found = true; }
+      if (idxV_co > -1) { data[subjectId].videos.splice(idxV_co, 1); found = true; }
+
+      if (found) {
         localStorage.setItem("so_progress", JSON.stringify(data));
-        
-        // Update UI
+
+        // Update UI surgically
         const lecItem = document.querySelector(`.lec-item[data-id="${lecId}"]`);
         if (lecItem) {
           const openedIcon = lecItem.querySelector(".lec-open");
@@ -712,11 +724,11 @@ window.resetProgress = function(e, subjectId, lecId, type, content) {
           }
           if (resetBtn) resetBtn.remove();
         }
-        
+
         renderProgressSection();
         renderDashboard();
         renderSpecialPage();
-        initSubjectPage();
+        // REMOVED initSubjectPage() to prevent accordion closing
       }
     }
   } catch (err) { console.error("Reset failed", err); }
@@ -765,7 +777,7 @@ function renderProgressSection() {
     subjTotals[sub.id] = { pdfs: 0, videos: 0 };
     const content = CONTENT[sub.id] || {};
     const special = SPECIAL_CONTENT[sub.id] || [];
-    
+
     // Standard Content
     Object.values(content).forEach(sections => {
       sections.forEach(ch => {
@@ -1245,6 +1257,7 @@ function initSearch() {
             ch.forEach(lec => {
               if (lec.title && lec.title.toLowerCase().includes(query)) {
                 results.push({
+                  id: lec.id,
                   type: lec.type || 'file',
                   sid: sid,
                   sname: sub ? sub.name : '',
@@ -1487,7 +1500,7 @@ function renderSpecialPage() {
 
   grid.innerHTML = subjects.map(s => {
     const materials = SPECIAL_CONTENT[s.id] || [];
-    
+
     return `
       <div class="sp-card au">
         <div class="sp-badge">SMART LESSONS</div>
@@ -1500,18 +1513,18 @@ function renderSpecialPage() {
         </div>
         <div class="sp-list">
           ${materials.length > 0 ? materials.map(m => {
-            const isCompleted = (progress[s.id] && progress[s.id].pdfs.includes(m.id));
-            const resetHTML = isCompleted ? `<span class="lec-reset-btn" style="margin-right:8px; width:20px; height:20px;" onclick="resetProgress(event, '${s.id}', '${m.id}', 'file', ''); return false;">✕</span>` : "";
-            const statusIcon = isCompleted ? '<span style="color:#10b981">✅</span>' : '<i>✨</i>';
-            
-            return `
+      const isCompleted = (progress[s.id] && progress[s.id].pdfs.includes(m.id));
+      const resetHTML = isCompleted ? `<span class="lec-reset-btn" style="margin-right:8px; width:20px; height:20px;" onclick="resetProgress(event, '${s.id}', '${m.id}', 'file', ''); return false;">✕</span>` : "";
+      const statusIcon = isCompleted ? '<span style="color:#10b981">✅</span>' : '<i>✨</i>';
+
+      return `
               <a href="#" class="sp-item" onclick="openViewer(${JSON.stringify(m).replace(/"/g, '&quot;')}, '${s.id}'); return false;">
                 ${resetHTML}
                 ${statusIcon}
                 <span>${m.title}</span>
               </a>
             `;
-          }).join("") : '<div style="padding:20px; color:var(--muted); font-size:13px;">Expanding Library...</div>'}
+    }).join("") : '<div style="padding:20px; color:var(--muted); font-size:13px;">Expanding Library...</div>'}
         </div>
         <a href="subject.html?id=${s.id}" class="btn btn-ghost" style="width:100%; margin-top:10px; font-size:11px;">View Subject Browser</a>
       </div>

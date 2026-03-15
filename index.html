@@ -28,7 +28,7 @@
         <a href="doctors-news.html" class="nav-link">Doctors News</a>
         <a href="favorites.html" class="nav-link">Favorites</a>
         <a href="personal-dev.html" class="nav-link">Self Development</a>
-        <a href="special.html" class="nav-link">Archive</a>
+        <a href="special.html" class="nav-link">Special</a>
         <a href="settings.html" class="nav-link">Settings</a>
       </div>
       <div class="nav-right">
@@ -52,7 +52,7 @@
       <a href="doctors-news.html" class="mobile-link">Doctors News</a>
       <a href="favorites.html" class="mobile-link">Favorites</a>
       <a href="personal-dev.html" class="mobile-link">Self Development</a>
-      <a href="special.html" class="mobile-link">Archive</a>
+      <a href="special.html" class="mobile-link">Special</a>
       <a href="settings.html" class="mobile-link">Settings</a>
       <button class="theme-btn" style="margin-top: 16px; width: 100%" onclick="toggleTheme()">
         <span class="theme-ico">🌙</span>
@@ -75,11 +75,12 @@
     <section class="home-hero">
       <div class="container hero-inner">
         <div id="home-greeting"></div>
-        
+
         <div class="hero-search-wrap au d1">
           <div class="search-box">
             <span class="search-ico">🔍</span>
-            <input type="text" id="global-search" placeholder="Search for subjects, PDFs, or videos..." autocomplete="off">
+            <input type="text" id="global-search" placeholder="Search for subjects, PDFs, or videos..."
+              autocomplete="off">
             <div id="search-results" class="search-results-panel"></div>
           </div>
         </div>
@@ -124,46 +125,48 @@
       </div>
     </section>
 
-      <!-- PROGRESS SECTION -->
-      <section class="home-progress-sec" id="home-progress-sec">
-        <div class="container">
-          <div class="cards-label au">
-            <span class="line"></span><span>Show Your Progress</span><span class="line"></span>
+    <!-- PROGRESS SECTION -->
+    <section class="home-progress-sec" id="home-progress-sec">
+      <div class="container">
+        <div class="cards-label au">
+          <span class="line"></span><span>Show Your Progress</span><span class="line"></span>
+        </div>
+        <div class="progress-container au">
+          <!-- Global Circular Progress -->
+          <div class="global-progress glass">
+            <div class="circular-progress" id="global-pdf-progress">
+              <svg viewBox="0 0 100 100">
+                <circle class="bg" cx="50" cy="50" r="45"></circle>
+                <circle class="fg pdf-fg" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283">
+                </circle>
+              </svg>
+              <div class="progress-content">
+                <div class="progress-val" id="pdf-val">0%</div>
+                <div class="progress-lbl">PDFs Read</div>
+                <div class="progress-count" id="pdf-count">0 / 0</div>
+              </div>
+            </div>
+            <div class="circular-progress" id="global-vid-progress">
+              <svg viewBox="0 0 100 100">
+                <circle class="bg" cx="50" cy="50" r="45"></circle>
+                <circle class="fg vid-fg" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283">
+                </circle>
+              </svg>
+              <div class="progress-content">
+                <div class="progress-val" id="vid-val">0%</div>
+                <div class="progress-lbl">Videos Watched</div>
+                <div class="progress-count" id="vid-count">0 / 0</div>
+              </div>
+            </div>
           </div>
-          <div class="progress-container au">
-            <!-- Global Circular Progress -->
-            <div class="global-progress glass">
-              <div class="circular-progress" id="global-pdf-progress">
-                <svg viewBox="0 0 100 100">
-                  <circle class="bg" cx="50" cy="50" r="45"></circle>
-                  <circle class="fg pdf-fg" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283"></circle>
-                </svg>
-                <div class="progress-content">
-                  <div class="progress-val" id="pdf-val">0%</div>
-                  <div class="progress-lbl">PDFs Read</div>
-                  <div class="progress-count" id="pdf-count">0 / 0</div>
-                </div>
-              </div>
-              <div class="circular-progress" id="global-vid-progress">
-                <svg viewBox="0 0 100 100">
-                  <circle class="bg" cx="50" cy="50" r="45"></circle>
-                  <circle class="fg vid-fg" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283"></circle>
-                </svg>
-                <div class="progress-content">
-                  <div class="progress-val" id="vid-val">0%</div>
-                  <div class="progress-lbl">Videos Watched</div>
-                  <div class="progress-count" id="vid-count">0 / 0</div>
-                </div>
-              </div>
-            </div>
 
-            <!-- Subject Progress Cards -->
-            <div class="subject-progress-grid" id="subject-progress-grid">
-              <!-- Rendered via JS -->
-            </div>
+          <!-- Subject Progress Cards -->
+          <div class="subject-progress-grid" id="subject-progress-grid">
+            <!-- Rendered via JS -->
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
     <!-- BANNER -->
     <section class="home-banner">
@@ -204,7 +207,7 @@
                 <a href="subjects.html">Browse Subjects</a>
                 <a href="doctors-news.html">Doctors News</a>
                 <a href="favorites.html">Favorites</a>
-                <a href="special.html">Special Archive</a>
+                <a href="special.html">Special Subjects</a>
                 <a href="settings.html">Settings</a>
                 <a href="personal-dev.html">Self Development</a>
               </div>
