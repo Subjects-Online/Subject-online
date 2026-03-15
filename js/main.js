@@ -37,7 +37,7 @@ function applyAccentColor(color) {
   // For simplicity, let's just use the color provided and a slightly transparent version for glow
   root.style.setProperty('--glow', `${color}4d`); // 4d = ~30% alpha
   // If we want a gradient effect, we can derive a second color or just use the same
-  root.style.setProperty('--accent2', color); 
+  root.style.setProperty('--accent2', color);
 }
 function toggleTheme() {
   const current = document.documentElement.getAttribute("data-theme");
@@ -99,12 +99,12 @@ function isFavorite(type, subjectId, lecId = null) {
   if (type === "item") return favs.items.some(i => i.subjectId === subjectId && i.lecId === lecId);
   return false;
 }
-window.toggleFavorite = function(e, type, subjectId, lecId = null) {
+window.toggleFavorite = function (e, type, subjectId, lecId = null) {
   e.preventDefault();
   e.stopPropagation();
-  
+
   const favs = getFavorites();
-  
+
   if (type === "subject") {
     const idx = favs.subjects.indexOf(subjectId);
     if (idx > -1) favs.subjects.splice(idx, 1);
@@ -114,9 +114,9 @@ window.toggleFavorite = function(e, type, subjectId, lecId = null) {
     if (existingIdx > -1) favs.items.splice(existingIdx, 1);
     else favs.items.push({ subjectId, lecId });
   }
-  
+
   localStorage.setItem("so_favorites", JSON.stringify(favs));
-  
+
   const btn = e.currentTarget;
   if (btn.classList.contains("active")) {
     btn.classList.remove("active");
@@ -134,7 +134,7 @@ function renderSubjectCards() {
 
   const settings = getSettings();
   let sortedSubjects = [...SUBJECTS];
-  
+
   if (settings.sortMode === "alphabetical") {
     sortedSubjects.sort((a, b) => a.name.localeCompare(b.name));
   } else if (settings.sortMode === "reverse") {
@@ -149,7 +149,7 @@ function renderSubjectCards() {
       return idxA - idxB;
     });
   }
-  
+
   // If favorite subjects are set, bring them to front
   if (settings.favSubjects && settings.favSubjects.length > 0) {
     const favs = [];
@@ -350,13 +350,14 @@ function toggleChapter(btn, color) {
 
     ch.lectures.forEach((lec, i) => {
       const [ico, lbl] = typeMap[lec.type] || ["📖", "Content"];
-      const hasContent = !!lec.content;
-      const isCompleted = hasContent && (subjProg.pdfs.includes(lec.content) || subjProg.videos.includes(lec.content));
+      const hasContent = !!lec.content || (lec.interactive && lec.interactive.length > 0);
+      const isCompleted = (subjProg.pdfs.includes(lec.id) || subjProg.videos.includes(lec.id));
+      const resetBtnHTML = isCompleted ? `<button class="lec-reset-btn" onclick="resetProgress(event, '${window._currentSubjectId}', '${lec.id}', '${lec.type}', '${lec.content || ''}')" title="Reset Progress">✕</button>` : "";
       const iconRight = isCompleted ? `<span class="lec-open" style="color:#10b981">✅</span>` : (hasContent ? `<span class="lec-open">▶</span>` : "");
 
       const isFav = isFavorite("item", window._currentSubjectId, lec.id);
       const favBtnHTML = `<button class="fav-btn item-fav ${isFav ? 'active' : ''}" onclick="toggleFavorite(event, 'item', '${window._currentSubjectId}', '${lec.id}')" title="Toggle Favorite">${isFav ? '⭐' : '☆'}</button>`;
-      
+
       const btn2 = document.createElement("button");
       btn2.className = "lec-item";
       btn2.style.cssText = `--acc:${color}`;
@@ -371,6 +372,7 @@ function toggleChapter(btn, color) {
         <span class="lec-badge">${lbl}</span>
         <div class="lec-actions">
           ${hasContent ? favBtnHTML : ''}
+          ${resetBtnHTML}
           ${iconRight}
         </div>
       `;
@@ -445,12 +447,12 @@ function openViewer(lec, subjectId) {
   if (interactiveBtn) {
     // Only allow for Statistics
     if (subjectId === 'statistics' || (lec.interactive && lec.interactive.length > 0)) {
-       interactiveBtn.style.display = "inline-block";
-       interactiveBtn.dataset.lecId = lec.id;
-       interactiveBtn.dataset.subId = subjectId;
-       interactiveBtn.textContent = "✨ Interactive Mode";
+      interactiveBtn.style.display = "inline-block";
+      interactiveBtn.dataset.lecId = lec.id;
+      interactiveBtn.dataset.subId = subjectId;
+      interactiveBtn.textContent = "✨ Interactive Mode";
     } else {
-       interactiveBtn.style.display = "none";
+      interactiveBtn.style.display = "none";
     }
   }
 
@@ -528,9 +530,9 @@ function renderInteractiveStats(subId, lecId) {
               ${step.image ? `<img src="${step.image}" class="iv-img" />` : ''}
               <div class="iv-actions">
                 ${idx > 0 ? `<button class="btn btn-ghost" onclick="showStep(${idx - 1})">Back</button>` : ''}
-                ${idx < lecItem.interactive.length - 1 ? 
-                  `<button class="btn btn-primary" onclick="showStep(${idx + 1})">Next Step</button>` : 
-                  `<button class="btn btn-primary" onclick="completeInteractive('${subId}', '${lecId}')">Finish Lesson</button>`}
+                ${idx < lecItem.interactive.length - 1 ?
+      `<button class="btn btn-primary" onclick="showStep(${idx + 1})">Next Step</button>` :
+      `<button class="btn btn-primary" onclick="completeInteractive('${subId}', '${lecId}')">Finish Lesson</button>`}
               </div>
             </div>
           </div>
@@ -540,7 +542,7 @@ function renderInteractiveStats(subId, lecId) {
   `;
 }
 
-window.showStep = function(idx) {
+window.showStep = function (idx) {
   document.querySelectorAll(".iv-step").forEach(s => s.classList.remove("active"));
   document.getElementById(`step-${idx}`).classList.add("active");
   const steps = document.querySelectorAll(".iv-step").length;
@@ -548,16 +550,38 @@ window.showStep = function(idx) {
   document.getElementById("iv-prog").style.width = `${progress}%`;
 }
 
-window.completeInteractive = function(subId, lecId) {
+window.completeInteractive = function (subId, lecId) {
   alert("Great job! You've completed this interactive lesson.");
   // Add to progress
   const progress = JSON.parse(localStorage.getItem("so_progress") || "{}");
   if (!progress[subId]) progress[subId] = { pdfs: [], videos: [] };
   if (!progress[subId].pdfs.includes(lecId)) progress[subId].pdfs.push(lecId);
   localStorage.setItem("so_progress", JSON.stringify(progress));
-  
+
   // Update UI and close
+  const lecItem = document.querySelector(`.lec-item[data-id="${lecId}"]`);
+  if (lecItem) {
+    const openedBtn = lecItem.querySelector(".lec-open");
+    if (openedBtn) {
+      openedBtn.innerHTML = "✅";
+      openedBtn.style.color = "#10b981";
+    }
+    if (!lecItem.querySelector(".lec-reset-btn")) {
+      const actions = lecItem.querySelector(".lec-actions");
+      if (actions) {
+        const rb = document.createElement("button");
+        rb.className = "lec-reset-btn";
+        rb.title = "Reset Progress";
+        rb.innerHTML = "✕";
+        rb.onclick = (e) => resetProgress(e, subId, lecId, "file", "");
+        actions.insertBefore(rb, openedBtn);
+      }
+    }
+  }
+
   renderProgressSection();
+  renderDashboard();
+  renderSpecialPage(); // Update Archive if open
   closeViewer();
 }
 
@@ -575,6 +599,14 @@ function closeViewer() {
 
 function askProgress(pending) {
   if (!pending) return;
+
+  // DON'T ask if already completed
+  const progressData = JSON.parse(localStorage.getItem("so_progress") || "{}");
+  const subjProg = progressData[pending.subjectId] || { pdfs: [], videos: [] };
+  if (subjProg.pdfs.includes(pending.id) || subjProg.videos.includes(pending.id)) {
+    localStorage.removeItem("so_pending_progress");
+    return;
+  }
 
   let dialog = document.getElementById("progress-dialog-overlay");
   if (!dialog) {
@@ -623,29 +655,82 @@ function saveProgress(subjectId, lec) {
     const data = JSON.parse(localStorage.getItem("so_progress") || "{}");
     if (!data[subjectId]) data[subjectId] = { pdfs: [], videos: [] };
     const type = (lec.type === "video") ? "videos" : "pdfs";
-    const itemId = lec.content;
+    const itemId = lec.id;
     if (!data[subjectId][type].includes(itemId)) {
       data[subjectId][type].push(itemId);
       localStorage.setItem("so_progress", JSON.stringify(data));
 
-      const openedBtn = document.querySelector(`.lec-item[data-id="${lec.id}"] .lec-open`);
-      if (openedBtn) {
-        openedBtn.innerHTML = "✅";
-        openedBtn.style.color = "#10b981";
+      const lecItem = document.querySelector(`.lec-item[data-id="${lec.id}"]`);
+      if (lecItem) {
+        const openedBtn = lecItem.querySelector(".lec-open");
+        if (openedBtn) {
+          openedBtn.innerHTML = "✅";
+          openedBtn.style.color = "#10b981";
+        }
+        
+        // DYNAMICALLY show the reset button if not already there
+        if (!lecItem.querySelector(".lec-reset-btn")) {
+           const actions = lecItem.querySelector(".lec-actions");
+           if (actions) {
+             const rb = document.createElement("button");
+             rb.className = "lec-reset-btn";
+             rb.title = "Reset Progress";
+             rb.innerHTML = "✕";
+             rb.onclick = (e) => resetProgress(e, subjectId, lec.id, lec.type, lec.content || "");
+             actions.insertBefore(rb, openedBtn);
+           }
+        }
       }
     }
   } catch (e) { }
 }
+
+window.resetProgress = function(e, subjectId, lecId, type, content) {
+  if (e) { e.preventDefault(); e.stopPropagation(); }
+  if (!confirm("Are you sure you want to reset progress for this item?")) return;
+
+  try {
+    const data = JSON.parse(localStorage.getItem("so_progress") || "{}");
+    if (data[subjectId]) {
+      const typeKey = (type === "video") ? "videos" : "pdfs";
+      const idxP = data[subjectId].pdfs.indexOf(lecId);
+      const idxV = data[subjectId].videos.indexOf(lecId);
+      
+      if (idxP > -1 || idxV > -1) {
+        if (idxP > -1) data[subjectId].pdfs.splice(idxP, 1);
+        if (idxV > -1) data[subjectId].videos.splice(idxV, 1);
+        localStorage.setItem("so_progress", JSON.stringify(data));
+        
+        // Update UI
+        const lecItem = document.querySelector(`.lec-item[data-id="${lecId}"]`);
+        if (lecItem) {
+          const openedIcon = lecItem.querySelector(".lec-open");
+          const resetBtn = lecItem.querySelector(".lec-reset-btn");
+          if (openedIcon) {
+            openedIcon.innerHTML = "▶";
+            openedIcon.style.color = "";
+          }
+          if (resetBtn) resetBtn.remove();
+        }
+        
+        renderProgressSection();
+        renderDashboard();
+        renderSpecialPage();
+        initSubjectPage();
+      }
+    }
+  } catch (err) { console.error("Reset failed", err); }
+};
 
 function closeViewer() {
   const overlay = document.getElementById("mv-overlay");
   if (!overlay) return;
   overlay.classList.remove("open");
   document.body.style.overflow = "";
-  
+
   const body = document.getElementById("mv-body");
   if (body) body.innerHTML = "";
-  
+
   isInteractive = false;
   const btn = document.getElementById("mv-interactive-toggle");
   if (btn) btn.style.display = "none";
@@ -679,10 +764,13 @@ function renderProgressSection() {
   SUBJECTS.forEach(sub => {
     subjTotals[sub.id] = { pdfs: 0, videos: 0 };
     const content = CONTENT[sub.id] || {};
+    const special = SPECIAL_CONTENT[sub.id] || [];
+    
+    // Standard Content
     Object.values(content).forEach(sections => {
       sections.forEach(ch => {
         ch.forEach(lec => {
-          if (lec.content) {
+          if (lec.content || (lec.interactive && lec.interactive.length > 0)) {
             if (lec.type === "video") {
               totalVids++;
               subjTotals[sub.id].videos++;
@@ -693,6 +781,19 @@ function renderProgressSection() {
           }
         });
       });
+    });
+
+    // Special Content
+    special.forEach(lec => {
+      if (lec.content || (lec.interactive && lec.interactive.length > 0)) {
+        if (lec.type === "video") {
+          totalVids++;
+          subjTotals[sub.id].videos++;
+        } else {
+          totalPdfs++;
+          subjTotals[sub.id].pdfs++;
+        }
+      }
     });
   });
 
@@ -762,7 +863,7 @@ function renderProgressSection() {
 function renderGreeting() {
   const container = document.getElementById("home-greeting");
   if (!container) return;
-  
+
   const settings = getSettings();
   const heroEye = document.querySelector(".hero-eye");
   const heroTitle = document.querySelector(".hero-title");
@@ -815,17 +916,17 @@ function renderSettingsPage() {
   if (!container || typeof SUBJECTS === "undefined") return;
 
   const settings = getSettings();
-  
+
   // Fill inputs
   const nameInput = document.getElementById("set-name");
   if (nameInput) nameInput.value = settings.name || "";
-  
+
   const sortSelect = document.getElementById("set-sort");
   if (sortSelect) sortSelect.value = settings.sortMode || "default";
-  
+
   const themeSelect = document.getElementById("set-theme");
   if (themeSelect) themeSelect.value = settings.theme || "dark";
-  
+
   const colorInput = document.getElementById("set-color");
   if (colorInput) colorInput.value = settings.accentColor || "#7c3aed";
 
@@ -851,8 +952,8 @@ function renderSubjectOrderList() {
 
   const settings = getSettings();
   if (_localCustomOrder.length === 0) {
-    _localCustomOrder = settings.customOrder && settings.customOrder.length === SUBJECTS.length 
-      ? [...settings.customOrder] 
+    _localCustomOrder = settings.customOrder && settings.customOrder.length === SUBJECTS.length
+      ? [...settings.customOrder]
       : SUBJECTS.map(s => s.id);
   }
 
@@ -872,7 +973,7 @@ function renderSubjectOrderList() {
   }).join("");
 }
 
-window.moveSubjectOrder = function(idx, dir) {
+window.moveSubjectOrder = function (idx, dir) {
   const targetIdx = idx + dir;
   if (targetIdx < 0 || targetIdx >= _localCustomOrder.length) return;
   const temp = _localCustomOrder[idx];
@@ -881,24 +982,24 @@ window.moveSubjectOrder = function(idx, dir) {
   renderSubjectOrderList();
 };
 
-window.saveUserSettings = function() {
+window.saveUserSettings = function () {
   const name = document.getElementById("set-name").value;
   const sortMode = document.getElementById("set-sort").value;
   const theme = document.getElementById("set-theme").value;
   const accentColor = document.getElementById("set-color").value;
-  
+
   const favSubjects = [];
   document.querySelectorAll("#set-fav-subs input:checked").forEach(cb => favSubjects.push(cb.value));
 
   const customOrder = [..._localCustomOrder];
-  
+
   updateSettings({ name, sortMode, theme, favSubjects, customOrder, accentColor });
-  
+
   // Apply changes immediately
   document.documentElement.setAttribute("data-theme", theme);
   applyAccentColor(accentColor);
   updateThemeBtn(theme);
-  
+
   const saveBtn = document.querySelector(".save-settings-btn");
   if (saveBtn) {
     const originalText = saveBtn.textContent;
@@ -917,7 +1018,7 @@ function renderFavoritesPage() {
   if (!container || typeof SUBJECTS === "undefined") return;
 
   const favs = getFavorites();
-  
+
   // Render Subjects
   const subjGrid = document.getElementById("fav-subjects-grid");
   if (subjGrid) {
@@ -949,20 +1050,20 @@ function renderFavoritesPage() {
     } else {
       const typeMap = { lecture: ["📖", "Lecture"], video: ["🎬", "Video"], summary: ["🔑", "Summary"], file: ["📄", "PDF"] };
       let itemsHTML = '';
-      
+
       favs.items.forEach((favItem, i) => {
         const sub = SUBJECTS.find(s => s.id === favItem.subjectId);
-        if(!sub) return;
-        
+        if (!sub) return;
+
         let foundLec = null;
         Object.values(CONTENT[sub.id] || {}).forEach(sec => {
           sec.forEach(ch => {
             ch.forEach(lec => {
-              if(lec.id === favItem.lecId) foundLec = lec;
+              if (lec.id === favItem.lecId) foundLec = lec;
             });
           });
         });
-        
+
         if (foundLec) {
           const [ico, lbl] = typeMap[foundLec.type] || ["📖", "Content"];
           const escapedLec = JSON.stringify(foundLec).replace(/'/g, "&apos;").replace(/"/g, "&quot;");
@@ -1125,7 +1226,7 @@ function initSearch() {
     }
 
     const results = [];
-    
+
     // Search Subjects
     if (typeof SUBJECTS !== "undefined") {
       SUBJECTS.forEach(s => {
@@ -1143,12 +1244,12 @@ function initSearch() {
           chapters.forEach(ch => {
             ch.forEach(lec => {
               if (lec.title && lec.title.toLowerCase().includes(query)) {
-                results.push({ 
-                  type: lec.type || 'file', 
-                  sid: sid, 
-                  sname: sub ? sub.name : '', 
-                  name: lec.title, 
-                  link: lec.content 
+                results.push({
+                  type: lec.type || 'file',
+                  sid: sid,
+                  sname: sub ? sub.name : '',
+                  name: lec.title,
+                  link: lec.content
                 });
               }
             });
@@ -1261,7 +1362,7 @@ function renderDashboard() {
       const tot = getSubjectTotals(s.id);
       const prg = progress[s.id] || { pdfs: [], videos: [] };
       const pct = tot.pdfs + tot.videos > 0 ? Math.round(((prg.pdfs.length + prg.videos.length) / (tot.pdfs + tot.videos)) * 100) : 0;
-      
+
       return `
         <div class="dash-item au">
           <div class="di-left">
@@ -1312,11 +1413,18 @@ function getSubjectTotals(subjectId) {
     Object.values(CONTENT[subjectId]).forEach(sections => {
       sections.forEach(chapters => {
         chapters.forEach(lec => {
-          if (lec.content) {
+          if (lec.content || (lec.interactive && lec.interactive.length > 0)) {
             if (lec.type === "video") videos++; else pdfs++;
           }
         });
       });
+    });
+  }
+  if (typeof SPECIAL_CONTENT !== "undefined" && SPECIAL_CONTENT[subjectId]) {
+    SPECIAL_CONTENT[subjectId].forEach(lec => {
+      if (lec.content || (lec.interactive && lec.interactive.length > 0)) {
+        if (lec.type === "video") videos++; else pdfs++;
+      }
     });
   }
   return { pdfs, videos };
@@ -1328,13 +1436,13 @@ function trackRecent(item) {
   // item { id, sid, name, type }
   const settings = getSettings();
   let recents = JSON.parse(localStorage.getItem("so_recents") || "[]");
-  
+
   // Remove duplicate
   recents = recents.filter(r => r.name !== item.name || r.sid !== item.sid);
-  
+
   // Add to front
   recents.unshift(item);
-  
+
   // Keep last 4
   localStorage.setItem("so_recents", JSON.stringify(recents.slice(0, 4)));
 }
@@ -1352,7 +1460,7 @@ function renderRecents() {
 
   container.style.display = "block";
   const subjects = typeof SUBJECTS !== "undefined" ? SUBJECTS : [];
-  
+
   grid.innerHTML = recents.map(r => {
     const sub = subjects.find(s => s.id === r.sid);
     const icon = r.type === "video" ? "🎬" : "📄";
@@ -1374,47 +1482,38 @@ function renderSpecialPage() {
   const grid = document.getElementById("special-page-grid");
   if (!grid) return;
 
-  const targetIds = ["accounting", "eco", "political-science", "statistics"];
-  const subjects = SUBJECTS.filter(s => targetIds.includes(s.id));
+  // Use SPECIAL_CONTENT for this page
+  const subjects = SUBJECTS.filter(s => SPECIAL_CONTENT[s.id]);
 
   grid.innerHTML = subjects.map(s => {
-    const materials = [];
-    const subContent = CONTENT[s.id] || {};
+    const materials = SPECIAL_CONTENT[s.id] || [];
     
-    // Flatten and find all PDFs
-    Object.values(subContent).forEach(section => {
-      if (Array.isArray(section)) {
-        section.forEach(chapter => {
-          if (Array.isArray(chapter)) {
-            chapter.forEach(lec => {
-              if (lec.type === 'file') {
-                materials.push(lec);
-              }
-            });
-          }
-        });
-      }
-    });
-
     return `
       <div class="sp-card au">
-        <div class="sp-badge">ELITE ARCHIVE</div>
+        <div class="sp-badge">SMART LESSONS</div>
         <div class="sp-card-head">
           <div class="sp-card-icon" style="background:linear-gradient(${s.grad}); color:white;">${s.icon}</div>
           <div class="sp-card-info">
             <h3>${s.name}</h3>
-            <p>${materials.length} Premium Documents</p>
+            <p>${materials.length} Premium Explorations</p>
           </div>
         </div>
         <div class="sp-list">
-          ${materials.length > 0 ? materials.map(m => `
-            <a href="#" class="sp-item" onclick="openViewer(${JSON.stringify(m).replace(/"/g, '&quot;')}, '${s.id}'); return false;">
-              <i>📄</i>
-              <span>${m.title}</span>
-            </a>
-          `).join("") : '<div style="padding:20px; color:var(--muted); font-size:13px;">Coming soon...</div>'}
+          ${materials.length > 0 ? materials.map(m => {
+            const isCompleted = (progress[s.id] && progress[s.id].pdfs.includes(m.id));
+            const resetHTML = isCompleted ? `<span class="lec-reset-btn" style="margin-right:8px; width:20px; height:20px;" onclick="resetProgress(event, '${s.id}', '${m.id}', 'file', ''); return false;">✕</span>` : "";
+            const statusIcon = isCompleted ? '<span style="color:#10b981">✅</span>' : '<i>✨</i>';
+            
+            return `
+              <a href="#" class="sp-item" onclick="openViewer(${JSON.stringify(m).replace(/"/g, '&quot;')}, '${s.id}'); return false;">
+                ${resetHTML}
+                ${statusIcon}
+                <span>${m.title}</span>
+              </a>
+            `;
+          }).join("") : '<div style="padding:20px; color:var(--muted); font-size:13px;">Expanding Library...</div>'}
         </div>
-        <a href="subject.html?id=${s.id}" class="btn btn-ghost" style="width:100%; margin-top:10px; font-size:11px;">View All in Subject Browser</a>
+        <a href="subject.html?id=${s.id}" class="btn btn-ghost" style="width:100%; margin-top:10px; font-size:11px;">View Subject Browser</a>
       </div>
     `;
   }).join("");

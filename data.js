@@ -666,6 +666,49 @@ const CONTENT = {
   "public-finance": {},
 };
 
+const SPECIAL_CONTENT = {
+  accounting: [
+    {
+      id: "sp-acc-1",
+      title: "PPE Discovery",
+      interactive: [
+        { title: "The Concept", content: "Property, Plant, and Equipment (PPE) are the physical foundations of a business. They aren't for sale; they are for use." },
+        { title: "Cost Components", content: "The cost of PPE includes everything needed to get it ready—purchase price, taxes, and even the platform it sits on." }
+      ]
+    }
+  ],
+  eco: [
+    {
+      id: "sp-eco-1",
+      title: "Utility Journey",
+      interactive: [
+        { title: "Satisfying Needs", content: "In economics, utility is the measure of happiness. But be careful—happiness fades with every extra unit you consume." },
+        { title: "The Curve", content: "Diminishing marginal utility explains why your second pizza slice is never as exciting as the first." }
+      ]
+    }
+  ],
+  statistics: [
+    {
+      id: "sp-stat-1",
+      title: "Probability Masterclass",
+      interactive: [
+        { title: "Randomness", content: "A random variable maps outcomes to numbers. It's the bridge between raw data and mathematical models." },
+        { title: "Distributions", content: "How data is spread—discrete or continuous—defines which statistical tools we use to predict the future." }
+      ]
+    }
+  ],
+  "political-science": [
+    {
+      id: "sp-pol-1",
+      title: "Power & Systems",
+      interactive: [
+        { title: "Political Entities", content: "States, governments, and international organizations are the actors on the global stage." },
+        { title: "Governance", content: "How power is distributed—democracy, autocracy, or oligarchy—shapes the destiny of nations." }
+      ]
+    }
+  ]
+};
+
 // Helper: get chapters for a subject+section
 function getChapters(subjectId, sectionId) {
   const raw = (CONTENT[subjectId] || {})[sectionId] || [];

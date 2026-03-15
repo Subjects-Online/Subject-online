@@ -1841,6 +1841,28 @@ body {
   transform: translate(2px, -2px);
 }
 
+.lec-reset-btn {
+  background: var(--bg2);
+  color: var(--muted);
+  border: 1px solid var(--border);
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  cursor: pointer;
+  transition: all var(--tr);
+  margin-right: 5px;
+}
+.lec-reset-btn:hover {
+  background: #ef4444;
+  color: white;
+  border-color: #ef4444;
+  transform: scale(1.1);
+}
+
 @media (max-width: 900px) {
   .subj-layout {
     grid-template-columns: 1fr;
