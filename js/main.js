@@ -619,20 +619,26 @@ function renderGreeting() {
   if (!container) return;
   
   const settings = getSettings();
+  const heroEye = document.querySelector(".hero-eye");
+  const heroTitle = document.querySelector(".hero-title");
+  const heroSub = document.querySelector(".hero-sub");
+
   if (settings.name) {
+    if (heroEye) heroEye.style.display = "none";
+    if (heroTitle) heroTitle.style.display = "none";
+    if (heroSub) heroSub.style.display = "none";
+
     container.innerHTML = `
       <div class="greeting-wrap au d1">
         <h2>Hello, <span class="g-text">${settings.name}</span>! 👋</h2>
-        <p>Glad to see you back. What are we studying today?</p>
+        <p>Glad to see you back. What subject are you going to master today?</p>
       </div>
     `;
   } else {
-    container.innerHTML = `
-      <div class="greeting-wrap au d1">
-        <h2>Welcome to <span class="g-text">Subjects Online</span></h2>
-        <p>Stay organized, study smart, and level up your skills.</p>
-      </div>
-    `;
+    if (heroEye) heroEye.style.display = "";
+    if (heroTitle) heroTitle.style.display = "";
+    if (heroSub) heroSub.style.display = "";
+    container.innerHTML = "";
   }
 }
 
