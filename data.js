@@ -381,10 +381,16 @@ const CONTENT = {
       // Chapter 1
       [
         {
-          id: "lec2",
+          id: "lec1",
           title: "Section 1-2 'HandWriting'",
           type: "file",
           content: "./pdfs/economics/Section1-2(Eco) (S.O).pdf",
+        },
+        {
+          id: "lec2",
+          title: "Section 3 'HandWriting'",
+          type: "file",
+          content: "./pdfs/economics/Section 3 (Eco) Susbjects Online V2 .pdf",
         },
       ],
       [], // Chapter 2
@@ -737,7 +743,7 @@ const CONTENT = {
       [], // Chapter 4
     ],
   },
- 
+
   ais: {
     "course-content": [
       // Chapter 1
@@ -929,18 +935,23 @@ const CONTENT = {
             "./pdfs/Puplic/Section_(1)__Public_Finance_(2)__Full_QA_with_Explanations_.pdf",
         },
         {
-          id: "lec1",
+          id: "lec2",
           title: "section 1 Dr.Abeer اخطاء معدلة",
           type: "file",
           content:
             "./pdfs/Puplic/Section 1 Public Finance 2 الاخطاء متعدلة .pdf",
         },
         {
-          id: "lec1",
-          title: "section 1 'HandWriting' Dr.Abeer  ",
+          id: "lec3",
+          title: "section 1-2 'HandWriting' Dr.Abeer  ",
           type: "file",
-          content:
-            "./pdfs/Puplic/Sections1-2(Public) (S.O).pdf",
+          content: "./pdfs/Puplic/Sections1-2(Public) (S.O).pdf",
+        },
+        {
+          id: "lec4",
+          title: "section 3 'HandWriting' Dr.Abeer  ",
+          type: "file",
+          content: "./pdfs/Puplic/Section 3 (Public) Subjects Online V2.pdf",
         },
       ],
     ],
