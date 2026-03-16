@@ -43,7 +43,389 @@
   --card: rgba(255, 255, 255, 0.8);
 }
 
-/* ===== RESET ===== */
+/* ===== FESTIVE THEMES ===== */
+[data-festive="kahk"] {
+  --bg: #fff9f0;
+  --bg2: #f8ead6;
+  --text: #5d4037;
+  --muted: #8d6e63;
+  --faint: #bcaaa4;
+  --accent: #d4a373;
+  --accent2: #bc6c25;
+  --border: rgba(93, 64, 55, 0.1);
+  --border-h: rgba(212, 163, 115, 0.5);
+  --surface: rgba(212, 163, 115, 0.08);
+  --surface-h: rgba(212, 163, 115, 0.15);
+  --glow: rgba(212, 163, 115, 0.3);
+  --nav: rgba(255, 249, 240, 0.9);
+  --card: rgba(255, 255, 255, 0.6);
+}
+
+[data-festive="biscuit"] {
+  --bg: #fefae0;
+  --bg2: #f4f1de;
+  --text: #bc6c25;
+  --muted: #8a5a44;
+  --faint: #a0785a;
+  --accent: #dda15e;
+  --accent2: #bc6c25;
+  --border: rgba(188, 108, 37, 0.1);
+  --border-h: rgba(221, 161, 94, 0.5);
+  --surface: rgba(221, 161, 94, 0.08);
+  --surface-h: rgba(221, 161, 94, 0.15);
+  --glow: rgba(221, 161, 94, 0.3);
+  --nav: rgba(254, 250, 224, 0.9);
+  --card: rgba(255, 255, 255, 0.6);
+}
+
+[data-festive="balloons"] {
+  --bg: #fdf2f8;
+  --bg2: #fce7f3;
+  --text: #831843;
+  --muted: #be185d;
+  --faint: #db2777;
+  --accent: #ec4899;
+  --accent2: #d946ef;
+  --border: rgba(236, 72, 153, 0.1);
+  --border-h: rgba(236, 72, 153, 0.5);
+  --surface: rgba(236, 72, 153, 0.08);
+  --surface-h: rgba(236, 72, 153, 0.15);
+  --glow: rgba(236, 72, 153, 0.3);
+  --nav: rgba(253, 242, 248, 0.9);
+  --card: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="dark"][data-festive="kahk"] {
+  --bg: #1a140f;
+  --bg2: #2d1f18;
+  --text: #fff3e0;
+  --muted: #d7ccc8;
+  --border: rgba(212, 163, 115, 0.25);
+  --surface: rgba(212, 163, 115, 0.12);
+  --card: rgba(45, 31, 24, 0.85);
+  --nav: rgba(26, 20, 15, 0.95);
+}
+
+[data-theme="dark"][data-festive="biscuit"] {
+  --bg: #181c14;
+  --bg2: #283618;
+  --text: #fefae0;
+  --muted: #dda15e;
+  --border: rgba(188, 108, 37, 0.25);
+  --surface: rgba(188, 108, 37, 0.12);
+  --card: rgba(40, 54, 24, 0.85);
+  --nav: rgba(24, 28, 20, 0.95);
+}
+
+[data-theme="dark"][data-festive="balloons"] {
+  --bg: #1a0614;
+  --bg2: #2d0b24;
+  --text: #fdf2f8;
+  --muted: #f9a8d4;
+  --border: rgba(236, 72, 153, 0.25);
+  --surface: rgba(236, 72, 153, 0.12);
+  --card: rgba(45, 11, 36, 0.85);
+  --nav: rgba(26, 6, 20, 0.95);
+}
+
+/* ===== FESTIVE BUTTON DESIGNS ===== */
+[data-festive="kahk"] .btn-primary {
+  background: radial-gradient(circle at 50% 30%, #fff 0%, transparent 60%), #d4a373;
+  color: #5d4037;
+  border-radius: 99px;
+  box-shadow: 0 4px 0 #bc6c25, 0 8px 15px rgba(0,0,0,0.2);
+  border: 4px solid #fff9f0;
+}
+[data-festive="kahk"] .btn-primary:hover {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 2px 0 #bc6c25, 0 4px 10px rgba(0,0,0,0.2);
+}
+
+[data-festive="biscuit"] .btn-primary {
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(0,0,0,0.1) 2px, transparent 2.5px),
+    radial-gradient(circle at 50% 20%, rgba(0,0,0,0.1) 2px, transparent 2.5px),
+    radial-gradient(circle at 80% 20%, rgba(0,0,0,0.1) 2px, transparent 2.5px),
+    radial-gradient(circle at 20% 50%, rgba(0,0,0,0.1) 2px, transparent 2.5px),
+    radial-gradient(circle at 50% 50%, rgba(0,0,0,0.1) 2px, transparent 2.5px),
+    radial-gradient(circle at 80% 50%, rgba(0,0,0,0.1) 2px, transparent 2.5px),
+    radial-gradient(circle at 20% 80%, rgba(0,0,0,0.1) 2px, transparent 2.5px),
+    radial-gradient(circle at 50% 80%, rgba(0,0,0,0.1) 2px, transparent 2.5px),
+    radial-gradient(circle at 80% 80%, rgba(0,0,0,0.1) 2px, transparent 2.5px),
+    #dda15e;
+  border-radius: 12px;
+  color: #5d3d1e;
+  box-shadow: 0 5px 0 #bc6c25;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+[data-festive="biscuit"] .btn-primary:hover {
+  transform: translateY(2px);
+  box-shadow: 0 3px 0 #bc6c25;
+}
+
+[data-festive="balloons"] .btn-primary {
+  background: linear-gradient(to bottom, #f9a8d4 0%, #ec4899 100%);
+  border-radius: 50px;
+  border: none;
+  box-shadow: inset 0 -4px 10px rgba(0,0,0,0.2), 0 5px 15px rgba(236,72,153,0.4);
+  position: relative;
+  overflow: hidden;
+}
+[data-festive="balloons"] .btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 15%;
+  width: 70%;
+  height: 40%;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50% 50% 70% 70%;
+}
+[data-festive="balloons"] .btn-primary:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: inset 0 -4px 10px rgba(0,0,0,0.2), 0 8px 25px rgba(236,72,153,0.6);
+}
+
+/* === EXTENDED FESTIVE ELEMENTS === */
+
+/* Arrows & Action Buttons */
+[data-festive="kahk"] .fc-arr, [data-festive="kahk"] .sc-arr, [data-festive="kahk"] .dn-action-btn, [data-festive="kahk"] .ch-chev {
+  background: #fff9f0;
+  color: #5d4037 !important;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #d4a373;
+  box-shadow: 0 2px 0 #bc6c25;
+  transition: all 0.2s;
+}
+[data-festive="biscuit"] .fc-arr, [data-festive="biscuit"] .sc-arr, [data-festive="biscuit"] .dn-action-btn, [data-festive="biscuit"] .ch-chev {
+  background: #dda15e;
+  color: #5d3d1e !important;
+  border-radius: 6px;
+  width: 34px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 0 #bc6c25;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+[data-festive="balloons"] .fc-arr, [data-festive="balloons"] .sc-arr, [data-festive="balloons"] .dn-action-btn, [data-festive="balloons"] .ch-chev {
+  background: #ec4899;
+  color: #fff !important;
+  border-radius: 50%;
+  box-shadow: inset -2px -2px 5px rgba(0,0,0,0.2), 0 3px 6px rgba(236,72,153,0.3);
+}
+
+/* Favorite Buttons */
+[data-festive="kahk"] .fav-btn.active {
+  background: #fff9f0 !important;
+  border: 2px solid #d4a373 !important;
+  box-shadow: 0 3px 0 #bc6c25 !important;
+  border-radius: 50% !important;
+}
+[data-festive="biscuit"] .fav-btn.active {
+  background: #dda15e !important;
+  box-shadow: 0 3px 0 #bc6c25 !important;
+  border-radius: 8px !important;
+}
+
+/* Status Pills & Chips */
+[data-festive="kahk"] .s-pill, [data-festive="kahk"] .stat-chip, [data-festive="kahk"] .pd-chip, [data-festive="kahk"] .fc-pill, [data-festive="kahk"] .fc-tag {
+  background: #fff;
+  border: 2px solid #d4a373;
+  color: #5d4037 !important;
+  box-shadow: 0 2px 0 #bc6c25;
+}
+[data-festive="biscuit"] .s-pill, [data-festive="biscuit"] .stat-chip, [data-festive="biscuit"] .pd-chip, [data-festive="biscuit"] .fc-pill, [data-festive="biscuit"] .fc-tag {
+  background: #fefae0;
+  border: 1px dashed #bc6c25;
+  color: #bc6c25 !important;
+  border-radius: 4px;
+}
+[data-festive="balloons"] .s-pill, [data-festive="balloons"] .stat-chip, [data-festive="balloons"] .pd-chip, [data-festive="balloons"] .fc-pill, [data-festive="balloons"] .fc-tag {
+  background: rgba(236, 72, 153, 0.1);
+  border: 1px solid #ec4899;
+  color: #be185d !important;
+  box-shadow: 0 0 10px rgba(236, 72, 153, 0.2);
+}
+
+/* Specific Arrow Correction for Hover */
+[data-festive] .feat-card:hover .fc-arr, 
+[data-festive] .subject-card:hover .sc-arr {
+  transform: translateX(5px) scale(1.1);
+}
+
+/* === FESTIVE CARD TRANSFORMATIONS === */
+
+/* General Card Shape Overrides */
+[data-festive="kahk"] .feat-card, 
+[data-festive="kahk"] .subject-card, 
+[data-festive="kahk"] .dn-subject-card,
+[data-festive="kahk"] .sp-card,
+[data-festive="kahk"] .dn-news-card,
+[data-festive="kahk"] .pd-card,
+[data-festive="kahk"] .banner-card {
+  border-radius: 60px 40px 70px 50px !important; /* Organic cookie shape */
+  box-shadow: inset 0 0 15px rgba(255,255,255,0.4), 0 10px 30px rgba(0,0,0,0.1);
+  border: 3px solid #d4a373 !important;
+}
+
+[data-festive="biscuit"] .feat-card, 
+[data-festive="biscuit"] .subject-card, 
+[data-festive="biscuit"] .dn-subject-card,
+[data-festive="biscuit"] .sp-card,
+[data-festive="biscuit"] .dn-news-card,
+[data-festive="biscuit"] .pd-card,
+[data-festive="biscuit"] .banner-card {
+  border-radius: 12px !important;
+  border: 2px solid #bc6c25 !important;
+  background: var(--card); 
+}
+
+[data-festive="balloons"] .feat-card, 
+[data-festive="balloons"] .subject-card, 
+[data-festive="balloons"] .dn-subject-card,
+[data-festive="balloons"] .sp-card,
+[data-festive="balloons"] .dn-news-card,
+[data-festive="balloons"] .pd-card,
+[data-festive="balloons"] .banner-card {
+  border-radius: 40px !important;
+  border: 2px solid #ec4899 !important;
+}
+
+/* Corner Decorations */
+[data-festive] .feat-card::after, 
+[data-festive] .subject-card::after,
+[data-festive] .dn-subject-card::after,
+[data-festive] .dn-news-card::after,
+[data-festive] .pd-card::after,
+[data-festive] .banner-card::after {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  opacity: 0.8;
+  z-index: 10;
+}
+[data-festive="kahk"] .feat-card::after, 
+[data-festive="kahk"] .subject-card::after,
+[data-festive="kahk"] .dn-subject-card::after,
+[data-festive="kahk"] .dn-news-card::after,
+[data-festive="kahk"] .pd-card::after,
+[data-festive="kahk"] .banner-card::after { content: "🍪"; }
+
+[data-festive="biscuit"] .feat-card::after, 
+[data-festive="biscuit"] .subject-card::after,
+[data-festive="biscuit"] .dn-subject-card::after,
+[data-festive="biscuit"] .dn-news-card::after,
+[data-festive="biscuit"] .pd-card::after,
+[data-festive="biscuit"] .banner-card::after { content: "🍞"; }
+
+[data-festive="balloons"] .feat-card::after, 
+[data-festive="balloons"] .subject-card::after,
+[data-festive="balloons"] .dn-subject-card::after,
+[data-festive="balloons"] .dn-news-card::after,
+[data-festive="balloons"] .pd-card::after,
+[data-festive="balloons"] .banner-card::after { content: "🎈"; }
+
+/* Specific Inner Pattern for Biscuit Cards */
+[data-festive="biscuit"] .feat-card, 
+[data-festive="biscuit"] .subject-card,
+[data-festive="biscuit"] .circular-progress {
+  background-image: radial-gradient(circle at 10px 10px, rgba(0,0,0,0.03) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+/* === FESTIVE PROGRESS BARS === */
+
+/* Circular Progress as Cookies */
+[data-festive="kahk"] .circular-progress {
+  border-radius: 50%;
+  background: #fdf0d5; /* Kahk color */
+  border: 4px solid #d4a373;
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.8), 0 0 30px var(--glow);
+  color: #5d4037 !important; /* Force dark text for contrast on light cookie */
+}
+[data-festive="kahk"] .circular-progress .fg {
+  stroke: var(--accent2); /* Use accent for progress stroke */
+  stroke-width: 10px;
+}
+[data-festive="kahk"] .circular-progress *,
+[data-festive="kahk"] .circular-progress .progress-val,
+[data-festive="kahk"] .circular-progress .progress-lbl,
+[data-festive="kahk"] .circular-progress .progress-count {
+  color: #5d4037 !important;
+}
+
+[data-festive="biscuit"] .circular-progress {
+  border-radius: 15px; /* Boxy biscuit */
+  background: #faedcd;
+  border: 3px dashed #bc6c25;
+  color: #bc6c25 !important;
+}
+[data-festive="biscuit"] .circular-progress .fg {
+  stroke: #bc6c25;
+  stroke-width: 12px;
+}
+[data-festive="biscuit"] .circular-progress *,
+[data-festive="biscuit"] .circular-progress .progress-val,
+[data-festive="biscuit"] .circular-progress .progress-lbl,
+[data-festive="biscuit"] .circular-progress .progress-count {
+  color: #bc6c25 !important;
+}
+
+/* Horizontal Progress Bars as Mini Biscuits */
+[data-festive="kahk"] .sp-bar-bg, 
+[data-festive="kahk"] .di-bar-bg {
+  border-radius: 10px;
+  background: #fdf0d5 !important;
+  border: 1px solid #d4a373;
+  height: 12px !important;
+}
+[data-festive="kahk"] .sp-bar-fg, 
+[data-festive="kahk"] .di-bar-fg {
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(255,255,255,0.5);
+}
+
+[data-festive="biscuit"] .sp-bar-bg, 
+[data-festive="biscuit"] .di-bar-bg {
+  border-radius: 4px;
+  background: #faedcd !important;
+  border: 1px solid #bc6c25;
+  height: 14px !important;
+}
+
+/* === FESTIVE BACKGROUND PATTERNS === */
+
+[data-festive="kahk"] .grid-bg {
+  background-image: 
+    radial-gradient(circle at 2px 2px, var(--accent) 1px, transparent 0),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='10' y='50' font-size='35' opacity='0.15'%3E🍪%3C/text%3E%3C/svg%3E");
+  background-size: 30px 30px, 150px 150px;
+  opacity: 0.4 !important;
+}
+
+[data-festive="biscuit"] .grid-bg {
+  background-image: 
+    radial-gradient(circle at 2px 2px, var(--accent) 1px, transparent 0),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='10' y='50' font-size='35' opacity='0.15'%3E🍞%3C/text%3E%3C/svg%3E");
+  background-size: 30px 30px, 180px 180px;
+  opacity: 0.4 !important;
+}
+
+[data-festive="balloons"] .grid-bg {
+  background-image: 
+    radial-gradient(circle at 2px 2px, var(--accent) 1px, transparent 0),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='10' y='50' font-size='35' opacity='0.15'%3E🎈%3C/text%3E%3C/svg%3E");
+  background-size: 30px 30px, 220px 220px;
+  opacity: 0.4 !important;
+}
 *,
 *::before,
 *::after {
@@ -118,6 +500,10 @@ body {
   left: -180px;
   animation: f1 10s ease-in-out infinite alternate;
 }
+[data-festive="kahk"] .orb1 { background: radial-gradient(circle, rgba(212, 163, 115, 0.3), transparent 70%); }
+[data-festive="biscuit"] .orb1 { background: radial-gradient(circle, rgba(221, 161, 94, 0.3), transparent 70%); }
+[data-festive="balloons"] .orb1 { background: radial-gradient(circle, rgba(236, 72, 153, 0.3), transparent 70%); }
+
 .orb2 {
   width: 650px;
   height: 650px;
@@ -126,6 +512,9 @@ body {
   right: -180px;
   animation: f2 12s ease-in-out infinite alternate;
 }
+[data-festive="kahk"] .orb2 { background: radial-gradient(circle, rgba(188, 108, 37, 0.2), transparent 70%); }
+[data-festive="biscuit"] .orb2 { background: radial-gradient(circle, rgba(188, 108, 37, 0.2), transparent 70%); }
+[data-festive="balloons"] .orb2 { background: radial-gradient(circle, rgba(217, 70, 239, 0.2), transparent 70%); }
 .grid-bg {
   position: absolute;
   inset: 0;
@@ -140,6 +529,18 @@ body {
     black 10%,
     transparent 75%
   );
+}
+[data-festive="kahk"] .grid-bg,
+[data-festive="biscuit"] .grid-bg {
+  background-image: radial-gradient(circle at 2px 2px, var(--accent) 1px, transparent 0);
+  background-size: 32px 32px;
+  opacity: 0.2;
+}
+[data-festive="balloons"] .grid-bg {
+  background-image: radial-gradient(circle at 2px 2px, var(--accent) 1px, transparent 0),
+                    radial-gradient(circle at 16px 16px, var(--accent2) 1px, transparent 0);
+  background-size: 40px 40px;
+  opacity: 0.25;
 }
 @keyframes f1 {
   from {
@@ -228,8 +629,8 @@ body {
 .g-text {
   background: linear-gradient(135deg, var(--accent), var(--accent2), #ec4899);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* ===== BACK LINK ===== */

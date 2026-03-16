@@ -6,7 +6,7 @@
 
 // ===== THEME & SETTINGS =====
 function getSettings() {
-  const defaults = { name: "", theme: "dark", favSubjects: [], sortMode: "default", customOrder: [], accentColor: "#7c3aed" };
+  const defaults = { name: "", theme: "dark", festive: "off", favSubjects: [], sortMode: "default", customOrder: [], accentColor: "#7c3aed" };
   const saved = localStorage.getItem("so_settings");
   const res = saved ? { ...defaults, ...JSON.parse(saved) } : defaults;
   // Migrate old favSubject if exists
@@ -25,9 +25,26 @@ function updateSettings(newSettings) {
 function initTheme() {
   const settings = getSettings();
   const theme = settings.theme || "dark";
+  const festive = settings.festive || "off";
   document.documentElement.setAttribute("data-theme", theme);
+  if (festive !== "off") {
+    document.documentElement.setAttribute("data-festive", festive);
+  } else {
+    document.documentElement.removeAttribute("data-festive");
+  }
   applyAccentColor(settings.accentColor || "#7c3aed");
   updateThemeBtn(theme);
+  applyFestiveIcons();
+}
+function applyFestiveIcons() {
+  const festive = document.documentElement.getAttribute("data-festive") || "off";
+  const logoMaps = { off: "📚", kahk: "🍪", biscuit: "🍞", balloons: "🎈" };
+
+  // Update Logo Icons
+  const logoSpans = document.querySelectorAll(".nav-logo span:first-child");
+  logoSpans.forEach(s => s.textContent = logoMaps[festive] || "📚");
+
+  // Update Theme Buttons already handled by updateThemeBtn which we will enhance
 }
 function applyAccentColor(color) {
   if (!color) return;
@@ -47,12 +64,27 @@ function toggleTheme() {
   updateThemeBtn(next);
 }
 function updateThemeBtn(theme) {
+  const festive = document.documentElement.getAttribute("data-festive") || "off";
   const btns = document.querySelectorAll(".theme-btn");
+  const festiveIcons = { kahk: "🍪", biscuit: "🍞", balloons: "🎈" };
+
   btns.forEach(b => {
     const ico = b.querySelector(".theme-ico");
     const lbl = b.querySelector(".theme-label");
-    if (ico) ico.textContent = theme === "dark" ? "🌙" : "☀️";
-    if (lbl) lbl.textContent = theme === "dark" ? "Dark" : "Light";
+    if (ico) {
+      if (festive !== "off") {
+        ico.textContent = festiveIcons[festive] || "🍪";
+      } else {
+        ico.textContent = theme === "dark" ? "🌙" : "☀️";
+      }
+    }
+    if (lbl) {
+      if (festive !== "off") {
+        lbl.textContent = festive.charAt(0).toUpperCase() + festive.slice(1);
+      } else {
+        lbl.textContent = theme === "dark" ? "Dark" : "Light";
+      }
+    }
   });
 }
 
@@ -608,7 +640,7 @@ function askProgress(pending) {
   const progressData = JSON.parse(localStorage.getItem("so_progress") || "{}");
   const subjProg = progressData[pending.subjectId] || { pdfs: [], videos: [] };
   if (subjProg.pdfs.includes(pending.id) || subjProg.videos.includes(pending.id) ||
-      (pending.content && (subjProg.pdfs.includes(pending.content) || subjProg.videos.includes(pending.content)))) {
+    (pending.content && (subjProg.pdfs.includes(pending.content) || subjProg.videos.includes(pending.content)))) {
     localStorage.removeItem("so_pending_progress");
     return;
   }
@@ -909,7 +941,7 @@ function renderGreeting() {
     container.innerHTML = `
       <div class="greeting-wrap au d1">
         <h2>Hello, <span class="g-text">${settings.name}</span>! 👋</h2>
-        <p>Glad to see you back. What subject are you going to master today?</p>
+        <p>اهلا بيك كل سنة وانت طيب عيد سعيد عليك كحكك وبسكوتك يباشا وشايك والعيال كبرت بقا وكدا ها </p>
         ${bubblesHtml}
       </div>
     `;
@@ -941,6 +973,9 @@ function renderSettingsPage() {
 
   const colorInput = document.getElementById("set-color");
   if (colorInput) colorInput.value = settings.accentColor || "#7c3aed";
+
+  const festiveSelect = document.getElementById("set-festive");
+  if (festiveSelect) festiveSelect.value = settings.festive || "off";
 
   const favSubjectsSelect = document.getElementById("set-fav-subs");
   if (favSubjectsSelect) {
@@ -998,6 +1033,7 @@ window.saveUserSettings = function () {
   const name = document.getElementById("set-name").value;
   const sortMode = document.getElementById("set-sort").value;
   const theme = document.getElementById("set-theme").value;
+  const festive = document.getElementById("set-festive").value;
   const accentColor = document.getElementById("set-color").value;
 
   const favSubjects = [];
@@ -1005,12 +1041,18 @@ window.saveUserSettings = function () {
 
   const customOrder = [..._localCustomOrder];
 
-  updateSettings({ name, sortMode, theme, favSubjects, customOrder, accentColor });
+  updateSettings({ name, sortMode, theme, festive, favSubjects, customOrder, accentColor });
 
   // Apply changes immediately
   document.documentElement.setAttribute("data-theme", theme);
+  if (festive !== "off") {
+    document.documentElement.setAttribute("data-festive", festive);
+  } else {
+    document.documentElement.removeAttribute("data-festive");
+  }
   applyAccentColor(accentColor);
   updateThemeBtn(theme);
+  applyFestiveIcons();
 
   const saveBtn = document.querySelector(".save-settings-btn");
   if (saveBtn) {
