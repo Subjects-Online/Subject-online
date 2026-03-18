@@ -421,10 +421,16 @@ const CONTENT = {
           content: "./pdfs/english/Lect 4 (English) (S.O).pdf",
         },
         {
-          id: "lec3",
+          id: "lec4",
           title: "Lect5 'HandWriting'",
           type: "file",
           content: "./pdfs/english/Lect 5 (English) (S.O).pdf",
+        },
+        {
+          id: "lec4",
+          title: "Lect6 'HandWriting'",
+          type: "file",
+          content: "./pdfs/english/Lect 6 (English) (S.O V2).pdf",
         },
       ],
       [], // Chapter 2
@@ -792,6 +798,12 @@ const CONTENT = {
           type: "file",
           content: "./pdfs/ais/Lects (AIS) (S.O).pdf",
         },
+        {
+          id: "lec5",
+          title: "Lect 6 'HandWriting'",
+          type: "file",
+          content: "./pdfs/ais/Notes On Lect 6 (AIS) (S.O V2).pdf",
+        },
       ], // Chapter 3
       [], // Chapter 4
       //------
@@ -903,9 +915,15 @@ const CONTENT = {
         },
         {
           id: "lec5",
-          title: "Lect 2-5 Dr.Abeer",
+          title: "Lect 2-5 Dr.Abeer 'HandWriting'",
           type: "file",
           content: "./pdfs/Puplic/Lect2-5 (Public) (S.O).pdf",
+        },
+        {
+          id: "lec6",
+          title: "Lect 6 Dr.Abeer 'HandWriting'",
+          type: "file",
+          content: "./pdfs/Puplic/Lect 6 (Public) (S.O V2).pdf",
         },
       ],
     ],
