@@ -856,6 +856,12 @@ const CONTENT = {
           type: "video",
           content: "./pdfs/ais/Lect 5 (AIS) (S.O).mp4",
         },
+        {
+          id: "vid6",
+          title: "Lect 6 Dr.S.R",
+          type: "video",
+          content: "./pdfs/ais/Lect 6 (AIS) (S.O V2).mp4",
+        },
       ], // Chapter 2
 
       [], // Chapter 3
