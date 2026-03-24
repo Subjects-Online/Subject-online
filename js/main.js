@@ -104,7 +104,7 @@ function renderNavProfile() {
   profile.href = "settings.html";
   profile.className = "nav-profile au";
 
-  const isEmoji = !settings.avatar || settings.avatar.length <= 2;
+  const isEmoji = !settings.avatar || settings.avatar.length < 10;
   const avatarContent = isEmoji ? `<span>${settings.avatar || "👤"}</span>` : `<img src="${settings.avatar}" alt="Avatar">`;
 
   profile.innerHTML = `
@@ -1081,7 +1081,7 @@ function renderGreeting() {
       `;
     }
 
-    const isEmoji = !settings.avatar || settings.avatar.length <= 2;
+    const isEmoji = !settings.avatar || settings.avatar.length < 10;
     const avatarHtml = isEmoji
       ? `<span>${settings.avatar || "👨‍🎓"}</span>`
       : `<img src="${settings.avatar}" alt="Avatar">`;
@@ -1116,7 +1116,7 @@ function renderSettingsPage() {
   if (avatarGrid) {
     const avatars = ["👨‍🎓", "👩‍🎓", "🧠", "📚", "🚀", "✨", "🔥", "💎", "🎯", "🌟"];
     const currentAvatar = settings.avatar || "👨‍🎓";
-    const isCustom = currentAvatar.length > 2;
+    const isCustom = currentAvatar.length > 20;
 
     avatarGrid.querySelectorAll(".avatar-option").forEach(o => o.remove());
 
