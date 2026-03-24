@@ -264,7 +264,7 @@ function initSubjectPage() {
   if (!id || typeof SUBJECTS === "undefined") return;
 
   window._currentSubjectId = id;
-  const subject = SUBJECTS.find(s => s.id === id);
+  const subject = SUBJECTS.find(s => s.id.toLowerCase() === id.toLowerCase());
   if (!subject) { location.href = "subjects.html"; return; }
 
   // Header
@@ -1160,7 +1160,7 @@ function buildSiteContext() {
   ctx += "الموقع ده بيخدم طلاب كلية التجارة. فيه المواد دي:\n\n";
 
   SUBJECTS.forEach(sub => {
-    ctx += `📚 مادة: ${sub.name} (${sub.nameAr}) — ${sub.desc}\n`;
+    ctx += `📚 مادة: ${sub.name} (ID: ${sub.id})\n`;
     const subContent = CONTENT[sub.id] || {};
 
     Object.entries(subContent).forEach(([sectionId, chapters]) => {
@@ -1269,7 +1269,6 @@ function initAiAssistant() {
       </div>
     </div>
     <div class="ai-messages" id="ai-messages">
-      <div class="ai-msg ai-msg-bot" dir="auto">أهلاً بيك! أنا الـ AT AI Tutor بتاعك، جاهز أساعدك في أي وقت. اسألني أي حاجة.</div>
     </div>
     <div class="ai-input-area">
       <input type="text" class="ai-input" id="ai-input" placeholder="اسألني عن أي حاجة..." autocomplete="off">
@@ -1310,8 +1309,10 @@ function initAiAssistant() {
   // Restore history on load
   if (chatHistory.length > 0) {
     chatHistory.forEach(msg => appendMsg(msg.content, msg.role === "user", true));
-    setTimeout(() => msgsContainer.scrollTop = msgsContainer.scrollHeight, 100);
+  } else {
+    appendMsg("أهلاً بيك! أنا الـ AT AI Tutor بتاعك، جاهز أساعدك في أي وقت. اسألني أي حاجة.", false, true);
   }
+  setTimeout(() => msgsContainer.scrollTop = msgsContainer.scrollHeight, 100);
 
   const showTyping = () => {
     const d = document.createElement("div");
@@ -1340,7 +1341,10 @@ function initAiAssistant() {
     const apiKey = typeof GROQ_API_KEY !== 'undefined' ? GROQ_API_KEY : "YOUR_GROQ_API_KEY_HERE";
 
     if (!apiKey || apiKey === "YOUR_GROQ_API_KEY_HERE") {
-      appendMsg("عذراً، لم يتم إعداد مفتاح API بعد.", false);
+      const errorMsg = "عذراً، لم يتم إعداد مفتاح API بعد.";
+      appendMsg(errorMsg, false);
+      chatHistory.push({ role: "assistant", content: errorMsg });
+      localStorage.setItem("so_ai_history", JSON.stringify(chatHistory));
       return;
     }
 
@@ -1377,7 +1381,8 @@ ${buildSiteContext()}
 - لفتح صفحة مادة معينة (مثلاً مادة المحاسبة اللي الأي دي بتاعها accounting): [ACTION: OPEN_SUBJECT_accounting]
 - لفتح المطور الذاتي: [ACTION: OPEN_SELF_DEV]
 - لفتح الدارك مود أو اللايت مود: [ACTION: TOGGLE_THEME]
-متكتبش الأكواد دي غير لو هو طلب منك تفتح حاجة.`;
+- لإضافة المادة الحالية للمفضلة: [ACTION: TOGGLE_FAVORITE]
+متكتبش الأكواد دي غير لو هو طلب منك تفتح حاجة أو ينفذ أمر.`;
               })()
             },
             ...chatHistory.slice(-20).map(m => ({
@@ -1411,7 +1416,8 @@ ${buildSiteContext()}
         if (aiText) {
           appendMsg(aiText, false);
           chatHistory.push({ role: "assistant", content: aiText });
-          if (chatHistory.length > 50) chatHistory = chatHistory.slice(-50);
+          // Limit history size to prevent context overflow but keep some memory
+          if (chatHistory.length > 30) chatHistory = chatHistory.slice(-30);
           localStorage.setItem("so_ai_history", JSON.stringify(chatHistory));
         }
       } else {
@@ -1439,8 +1445,12 @@ function executeAiAction(action) {
     window.location.href = "personal-dev.html";
   } else if (action === "TOGGLE_THEME") {
     toggleTheme();
+  } else if (action === "TOGGLE_FAVORITE") {
+    if (window._currentSubjectId) {
+      toggleFavorite(null, 'subject', window._currentSubjectId);
+    }
   } else if (action.startsWith("OPEN_SUBJECT_")) {
-    const subjectId = action.replace("OPEN_SUBJECT_", "");
+    const subjectId = action.replace("OPEN_SUBJECT_", "").toLowerCase();
     window.location.href = `subject.html?id=${subjectId}`;
   }
 }
