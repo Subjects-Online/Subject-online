@@ -251,9 +251,38 @@
   <script src="js/api-key.js"></script>
   <script src="js/main.js"></script>
   <script src="js/translations.js"></script>
+  <script src="https://unpkg.com/scrollreveal@4/dist/scrollreveal.min.js"></script>
   <script>
     if ("serviceWorker" in navigator)
       navigator.serviceWorker.register("./sw.js");
+
+    // ===== SCROLL REVEAL =====
+    const sr = ScrollReveal({
+      reset: false,
+      mobile: true
+    });
+
+    // Main sections: scale up from small
+    sr.reveal('.home-cards-sec, .home-progress-sec, .home-banner, .recently-viewed-sec', {
+      delay: 80,
+      distance: '0px',
+      scale: 0.85,
+      opacity: 0,
+      duration: 850,
+      easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+    });
+
+    // Individual cards: staggered pop-up
+    sr.reveal('.feat-card, .subject-card, .sp-card, .dn-news-card', {
+      delay: 60,
+      distance: '24px',
+      origin: 'bottom',
+      scale: 0.88,
+      opacity: 0,
+      duration: 700,
+      easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+      interval: 90
+    });
   </script>
 </body>
 
