@@ -303,6 +303,14 @@ function renderSubjectCards() {
     </a>
   `;
   }).join("");
+
+  // Trigger ScrollReveal on newly rendered subject cards
+  if (window.sr) {
+    window.sr.reveal('.subject-card', {
+      distance: '0px', scale: 0.85, opacity: 0,
+      duration: 700, easing: 'cubic-bezier(0.22,1,0.36,1)', interval: 90, delay: 50
+    });
+  }
 }
 
 // ===== HOME CARDS =====
@@ -340,6 +348,14 @@ function renderHomeCards() {
       <div class="fc-glow" style="background:linear-gradient(${c.grad})"></div>
     </a>
   `).join("");
+
+  // Trigger ScrollReveal on newly rendered feature cards
+  if (window.sr) {
+    window.sr.reveal('.feat-card', {
+      distance: '0px', scale: 0.85, opacity: 0,
+      duration: 750, easing: 'cubic-bezier(0.22,1,0.36,1)', interval: 100, delay: 60
+    });
+  }
 }
 
 // ===== SUBJECT PAGE =====
@@ -987,6 +1003,14 @@ function renderProgressSection() {
       </div>
     `;
   }).join("");
+
+  // Trigger ScrollReveal on newly rendered subject progress cards
+  if (window.sr) {
+    window.sr.reveal('.sp-card', {
+      distance: '0px', scale: 0.85, opacity: 0,
+      duration: 700, easing: 'cubic-bezier(0.22,1,0.36,1)', interval: 90, delay: 60
+    });
+  }
 }
 
 

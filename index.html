@@ -256,33 +256,44 @@
     if ("serviceWorker" in navigator)
       navigator.serviceWorker.register("./sw.js");
 
-    // ===== SCROLL REVEAL =====
-    const sr = ScrollReveal({
+    // ===== SCROLL REVEAL — per element =====
+    const sr = window.sr = ScrollReveal({
       reset: false,
-      mobile: true
-    });
-
-    // Main sections: scale up from small
-    sr.reveal('.home-cards-sec, .home-progress-sec, .home-banner, .recently-viewed-sec', {
-      delay: 80,
+      mobile: true,
       distance: '0px',
-      scale: 0.85,
+      scale: 0.82,
       opacity: 0,
-      duration: 850,
+      duration: 750,
       easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+      interval: 100
     });
 
-    // Individual cards: staggered pop-up
-    sr.reveal('.feat-card, .subject-card, .sp-card, .dn-news-card', {
-      delay: 60,
-      distance: '24px',
-      origin: 'bottom',
-      scale: 0.88,
-      opacity: 0,
-      duration: 700,
-      easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
-      interval: 90
-    });
+    // Feature / home cards
+    sr.reveal('.feat-card', { interval: 100, delay: 50 });
+
+    // Subject cards (browse subjects page)
+    sr.reveal('.subject-card', { interval: 90, delay: 50 });
+
+    // Circular progress circles
+    sr.reveal('.circular-progress', { interval: 150, delay: 80 });
+
+    // Subject progress cards
+    sr.reveal('.sp-card', { interval: 90, delay: 60 });
+
+    // News cards
+    sr.reveal('.dn-news-card, .dn-subject-card', { interval: 100, delay: 60 });
+
+    // Personal dev cards
+    sr.reveal('.pd-card', { interval: 100, delay: 60 });
+
+    // Section labels
+    sr.reveal('.cards-label', { scale: 0.9, duration: 600, interval: 0 });
+
+    // Banner card
+    sr.reveal('.banner-card', { scale: 0.9, duration: 800 });
+
+    // Recents grid items
+    sr.reveal('.recents-grid .feat-card, .recents-grid .subject-card', { interval: 80 });
   </script>
 </body>
 
