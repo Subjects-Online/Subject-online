@@ -1290,23 +1290,38 @@ body {
 }
 
 .fc-cta {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 16px 24px 0;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  margin: auto 24px 0;
   font-size: 14px;
   font-weight: 700;
-  border-top: 1px solid var(--border);
-  margin-top: auto;
+  border-radius: 99px;
+  border: 1px solid currentColor;
+  width: max-content;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+  opacity: 0.85;
+}
+
+.feat-card:hover .fc-cta {
+  opacity: 1;
+}
+
+.fc-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .fc-arr {
-  font-size: 20px;
-  transition: transform var(--tr);
+  font-size: 18px;
+  transition: transform 0.3s ease;
 }
 
-.feat-card:hover .fc-arr {
-  transform: translateX(6px);
+.fc-cta:hover .fc-arr, .feat-card:hover .fc-arr {
+  transform: translateX(4px);
 }
 
 .fc-glow {
