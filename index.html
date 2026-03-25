@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Subjects Online — Your #1 Study Platform</title>
+  <title data-i18n="app_title">Subjects Online — Your #1 Study Platform</title>
   <meta name="description"
     content="Perfectly organized course materials, professor updates, and personal growth — all in one place." />
   <link rel="manifest" href="manifest.json" />
@@ -22,19 +22,19 @@
         <span class="logo-text">Subjects<span class="logo-accent">Online</span></span>
       </a>
       <div class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="subjects.html" class="nav-link">Browse Subjects</a>
+        <a href="index.html" class="nav-link" data-i18n="nav_home">Home</a>
+        <a href="subjects.html" class="nav-link" data-i18n="nav_browse">Browse Subjects</a>
         <!-- <a href="dashboard.html" class="nav-link">Dashboard</a> -->
-        <a href="doctors-news.html" class="nav-link">Doctors News</a>
-        <a href="favorites.html" class="nav-link">Favorites</a>
-        <a href="personal-dev.html" class="nav-link">Self Development</a>
+        <a href="doctors-news.html" class="nav-link" data-i18n="nav_news">Doctors News</a>
+        <a href="favorites.html" class="nav-link" data-i18n="nav_favorites">Favorites</a>
+        <a href="personal-dev.html" class="nav-link" data-i18n="nav_selfdev">Self Development</a>
         <a href="special.html" class="nav-link">Special</a>
-        <a href="settings.html" class="nav-link">Settings</a>
+        <a href="settings.html" class="nav-link" data-i18n="nav_settings">Settings</a>
       </div>
       <div class="nav-right">
         <button class="theme-btn" onclick="toggleTheme()">
           <span class="theme-ico">🌙</span>
-          <span class="theme-label">Dark</span>
+          <span class="theme-label" data-i18n="theme_dark">Dark</span>
         </button>
         <button class="hamburger" aria-label="Toggle menu">
           <span></span><span></span><span></span>
@@ -46,24 +46,24 @@
   <!-- MOBILE MENU -->
   <div class="mobile-menu">
     <div class="mobile-menu-inner">
-      <a href="index.html" class="mobile-link">Home</a>
-      <a href="subjects.html" class="mobile-link">Browse Subjects</a>
+      <a href="index.html" class="mobile-link" data-i18n="nav_home">Home</a>
+      <a href="subjects.html" class="mobile-link" data-i18n="nav_browse">Browse Subjects</a>
       <!-- <a href="dashboard.html" class="mobile-link">Dashboard</a> -->
-      <a href="doctors-news.html" class="mobile-link">Doctors News</a>
-      <a href="favorites.html" class="mobile-link">Favorites</a>
-      <a href="personal-dev.html" class="mobile-link">Self Development</a>
+      <a href="doctors-news.html" class="mobile-link" data-i18n="nav_news">Doctors News</a>
+      <a href="favorites.html" class="mobile-link" data-i18n="nav_favorites">Favorites</a>
+      <a href="personal-dev.html" class="mobile-link" data-i18n="nav_selfdev">Self Development</a>
       <a href="special.html" class="mobile-link">Special</a>
-      <a href="settings.html" class="mobile-link">Settings</a>
+      <a href="settings.html" class="mobile-link" data-i18n="nav_settings">Settings</a>
       <button class="theme-btn" style="margin-top: 16px; width: 100%" onclick="toggleTheme()">
         <span class="theme-ico">🌙</span>
-        <span class="theme-label">Dark</span>
+        <span class="theme-label" data-i18n="theme_dark">Dark</span>
       </button>
     </div>
   </div>
   <div class="menu-backdrop"></div>
 
   <!-- PAGE -->
-  <div class="page" style="padding-top: 70px; overflow: hidden">
+  <div class="page" style="padding-top: 70px;">
     <!-- BG -->
     <div class="bg-wrap">
       <div class="orb orb1"></div>
@@ -78,164 +78,179 @@
 
         <div class="hero-search-wrap au d1">
           <div class="search-box">
-            <span class="search-ico">🔍</span>
-            <input type="text" id="global-search" placeholder="Search for subjects, PDFs, or videos..."
-              autocomplete="off">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="subject-search" placeholder="Search subjects, doctors..."
+              data-i18n="search_placeholder" autocomplete="off">
             <div id="search-results" class="search-results-panel"></div>
           </div>
         </div>
         <div class="hero-eye au">
           <span class="eye-dot"></span>
-          <span>Your #1 Study Platform</span>
+          <span data-i18n="home_eye">Your #1 Study Platform</span>
         </div>
         <h1 class="hero-title au d1">
           <span class="l1">Subjects Online</span>
         </h1>
-        <p class="hero-sub au d2">
+        <p class="hero-sub au d2" data-i18n="home_sub">
           <strong>Subjects Online</strong> brings you perfectly organized
           course materials, professor updates, and personal growth — all in
           one stunning platform.
         </p>
         <div class="hero-cta au d3">
-          <a href="subjects.html" class="btn btn-primary"><span>🚀</span> Get Started</a>
+          <a href="subjects.html" class="btn btn-primary"><span style="margin-right:8px">🚀</span> <span
+              data-i18n="btn_get_started">Get Started</span></a>
           <div class="hero-pills">
-            <span class="s-pill"><span>📚</span> 8 Subjects</span>
-            <span class="s-pill"><span>7 Sections</span>Each Subjects </span>
+            <span class="s-pill"><span style="margin-right:8px">📚</span> <span data-i18n="home_pills_1">8
+                Subjects</span></span>
+            <span class="s-pill"><span data-i18n="home_pills_2">7 Sections Each Subjects</span></span>
 
           </div>
         </div>
       </div>
     </section>
 
-    <!-- RECENTS -->
-    <section class="recently-viewed-sec au" id="recents-section" style="display: none; padding: 40px 0 20px;">
-      <div class="container text-center">
-        <div class="cards-label" style="text-align: center; margin-bottom: 24px;"><span>🕒</span> Resume Studying</div>
-        <div class="recents-grid" id="recents-grid"></div>
-      </div>
-    </section>
-
-    <!-- CARDS -->
-    <section class="home-cards-sec">
-      <div class="container">
-        <div class="cards-label au">
-          <span class="line"></span><span>What's inside</span><span class="line"></span>
+    <!-- CONTENT OVERLAY WRAPPER FOR SCROLL ANIMATION -->
+    <div class="main-content-overlay"
+      style="position: relative; z-index: 10; background: var(--bg); border-top-left-radius: 40px; border-top-right-radius: 40px; box-shadow: 0 -20px 40px rgba(0,0,0,0.2); padding-bottom: 20px; transition: background 0.3s;">
+      <!-- RECENTS -->
+      <section class="recently-viewed-sec au" id="recents-section" style="display: none; padding: 40px 0 20px;">
+        <div class="container text-center">
+          <div class="cards-label" style="text-align: center; margin-bottom: 24px;"><span
+              style="margin-right:8px">🕒</span> <span data-i18n="home_resume">Resume Studying</span></div>
+          <div class="recents-grid" id="recents-grid"></div>
         </div>
-        <div class="home-cards" id="home-cards"></div>
-      </div>
-    </section>
+      </section>
 
-    <!-- PROGRESS SECTION -->
-    <section class="home-progress-sec" id="home-progress-sec">
-      <div class="container">
-        <div class="cards-label au">
-          <span class="line"></span><span>Show Your Progress</span><span class="line"></span>
+      <!-- CARDS -->
+      <section class="home-cards-sec">
+        <div class="container">
+          <div class="cards-label au">
+            <span class="line"></span><span data-i18n="home_inside">What's inside</span><span class="line"></span>
+          </div>
+          <div class="home-cards" id="home-cards"></div>
         </div>
-        <div class="progress-container au">
-          <!-- Global Circular Progress -->
-          <div class="global-progress glass">
-            <div class="circular-progress" id="global-pdf-progress">
-              <svg viewBox="0 0 100 100">
-                <circle class="bg" cx="50" cy="50" r="45"></circle>
-                <circle class="fg pdf-fg" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283">
-                </circle>
-              </svg>
-              <div class="progress-content">
-                <div class="progress-val" id="pdf-val">0%</div>
-                <div class="progress-lbl">PDFs Read</div>
-                <div class="progress-count" id="pdf-count">0 / 0</div>
+      </section>
+
+      <!-- PROGRESS SECTION -->
+      <section class="home-progress-sec" id="home-progress-sec">
+        <div class="container">
+          <div class="cards-label au">
+            <span class="line"></span><span data-i18n="home_progress_title">Show Your Progress</span><span
+              class="line"></span>
+          </div>
+          <div class="progress-container au">
+            <!-- Global Circular Progress -->
+            <div class="global-progress glass">
+              <div class="circular-progress" id="global-pdf-progress">
+                <svg viewBox="0 0 100 100">
+                  <circle class="bg" cx="50" cy="50" r="45"></circle>
+                  <circle class="fg pdf-fg" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283">
+                  </circle>
+                </svg>
+                <div class="progress-content">
+                  <div class="progress-val" id="pdf-val">0%</div>
+                  <div class="progress-lbl" data-i18n="prog_pdf">PDFs Read</div>
+                  <div class="progress-count" id="pdf-count">0 / 0</div>
+                </div>
+              </div>
+              <div class="circular-progress" id="global-vid-progress">
+                <svg viewBox="0 0 100 100">
+                  <circle class="bg" cx="50" cy="50" r="45"></circle>
+                  <circle class="fg vid-fg" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283">
+                  </circle>
+                </svg>
+                <div class="progress-content">
+                  <div class="progress-val" id="vid-val">0%</div>
+                  <div class="progress-lbl" data-i18n="prog_vid">Videos Watched</div>
+                  <div class="progress-count" id="vid-count">0 / 0</div>
+                </div>
               </div>
             </div>
-            <div class="circular-progress" id="global-vid-progress">
-              <svg viewBox="0 0 100 100">
-                <circle class="bg" cx="50" cy="50" r="45"></circle>
-                <circle class="fg vid-fg" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283">
-                </circle>
-              </svg>
-              <div class="progress-content">
-                <div class="progress-val" id="vid-val">0%</div>
-                <div class="progress-lbl">Videos Watched</div>
-                <div class="progress-count" id="vid-count">0 / 0</div>
-              </div>
-            </div>
-          </div>
 
-          <!-- Subject Progress Cards -->
-          <div class="subject-progress-grid" id="subject-progress-grid">
-            <!-- Rendered via JS -->
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- BANNER -->
-    <section class="home-banner">
-      <div class="container">
-        <div class="banner-card glass as">
-          <div class="banner-left">
-            <span class="banner-emoji">✨</span>
-            <div>
-              <h3>Built for Faculty of Commerce students</h3>
-              <p>
-                Fresh content uploaded regularly. Bookmark the site and stay
-                ahead.
-              </p>
-            </div>
-          </div>
-          <a href="subjects.html" class="btn btn-primary">Explore Now</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-inner au">
-          <div class="footer-top">
-            <div class="footer-brand">
-              <a href="index.html" class="nav-logo">
-                <span>📚</span>
-                <span class="logo-text">Subjects<span class="logo-accent">Online</span></span>
-              </a>
-              <p class="footer-desc">Your #1 Study Platform. Perfectly organized course materials, professor updates,
-                and personal growth — all in one place.</p>
-            </div>
-            <div class="footer-links">
-              <div class="footer-col">
-                <h4>Quick Links</h4>
-                <a href="index.html">Home</a>
-                <a href="subjects.html">Browse Subjects</a>
-                <a href="doctors-news.html">Doctors News</a>
-                <a href="favorites.html">Favorites</a>
-                <a href="special.html">Special Subjects</a>
-                <a href="settings.html">Settings</a>
-                <a href="personal-dev.html">Self Development</a>
-              </div>
-              <div class="footer-col">
-                <h4>Connect</h4>
-                <a href="#">Facebook </a>
-                <a href="#">Telegram </a>
-                <a href="https://chat.whatsapp.com/BmUhhJti1rWFKQHWGpQSL1">Whatsapp Group</a>
-              </div>
-            </div>
-          </div>
-          <div class="footer-bottom">
-            <p>&copy; 2026 Subjects Online. Dev By Ahmed Tamer All rights reserved.</p>
-            <div class="footer-socials">
-              <a href="#" class="social-btn">✨</a>
-              <a href="#" class="social-btn">🚀</a>
-              <a href="#" class="social-btn">🎓</a>
+            <!-- Subject Progress Cards -->
+            <div class="subject-progress-grid" id="subject-progress-grid">
+              <!-- Rendered via JS -->
             </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </section>
+
+      <!-- BANNER -->
+      <section class="home-banner">
+        <div class="container">
+          <div class="banner-card glass as">
+            <div class="banner-left">
+              <span class="banner-emoji">✨</span>
+              <div>
+                <h3 data-i18n="banner_title">Built for Faculty of Commerce students</h3>
+                <p data-i18n="banner_sub">
+                  Fresh content uploaded regularly. Bookmark the site and stay
+                  ahead.
+                </p>
+              </div>
+            </div>
+            <a href="subjects.html" class="btn btn-primary" data-i18n="banner_btn">Explore Now</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-inner au">
+            <div class="footer-top">
+              <div class="footer-brand">
+                <a href="index.html" class="nav-logo">
+                  <span>📚</span>
+                  <span class="logo-text">Subjects<span class="logo-accent">Online</span></span>
+                </a>
+                <p class="footer-desc" data-i18n="footer_desc">Your #1 Study Platform. Perfectly organized course
+                  materials, professor updates,
+                  and personal growth — all in one place.</p>
+              </div>
+              <div class="footer-links">
+                <div class="footer-col">
+                  <h4 data-i18n="footer_quick">Quick Links</h4>
+                  <a href="index.html" data-i18n="nav_home">Home</a>
+                  <a href="subjects.html" data-i18n="nav_browse">Browse Subjects</a>
+                  <a href="doctors-news.html" data-i18n="nav_news">Doctors News</a>
+                  <a href="favorites.html" data-i18n="nav_favorites">Favorites</a>
+                  <a href="special.html" data-i18n="footer_special">Special Subjects</a>
+                  <a href="settings.html" data-i18n="nav_settings">Settings</a>
+                  <a href="personal-dev.html" data-i18n="nav_selfdev">Self Development</a>
+                </div>
+                <div class="footer-col">
+                  <h4 data-i18n="footer_connect">Connect</h4>
+                  <a href="#">Facebook </a>
+                  <a href="#">Telegram </a>
+                  <a href="https://chat.whatsapp.com/BmUhhJti1rWFKQHWGpQSL1" data-i18n="footer_whatsapp">Whatsapp
+                    Group</a>
+                </div>
+              </div>
+            </div>
+            <div class="footer-bottom">
+              <p data-i18n="footer_rights">&copy; 2026 Subjects Online. Dev By Ahmed Tamer All rights reserved.</p>
+              <div class="footer-socials">
+                <a href="#" class="social-btn">✨</a>
+                <a href="#" class="social-btn">🚀</a>
+                <a href="#" class="social-btn">🎓</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div> <!-- END CONTENT OVERLAY WRAPPER -->
   </div>
 
+
   <script src="data.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
   <script src="js/config.js"></script>
   <script src="js/api-key.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/translations.js"></script>
   <script>
     if ("serviceWorker" in navigator)
       navigator.serviceWorker.register("./sw.js");

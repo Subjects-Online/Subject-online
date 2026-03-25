@@ -11,37 +11,37 @@
 }
 
 [data-theme="dark"] {
-  --bg: #07071a;
-  --bg2: #0f0f2e;
-  --surface: rgba(255, 255, 255, 0.04);
-  --surface-h: rgba(255, 255, 255, 0.08);
-  --border: rgba(255, 255, 255, 0.08);
-  --border-h: rgba(124, 58, 237, 0.5);
-  --text: #f1f5f9;
+  --bg: #0b0f19;
+  --bg2: #151e2e;
+  --surface: rgba(255, 255, 255, 0.03);
+  --surface-h: rgba(255, 255, 255, 0.07);
+  --border: rgba(255, 255, 255, 0.1);
+  --border-h: rgba(139, 92, 246, 0.6);
+  --text: #f8fafc;
   --muted: #94a3b8;
-  --faint: #475569;
-  --accent: #7c3aed;
+  --faint: #334155;
+  --accent: #8b5cf6;
   --accent2: #3b82f6;
-  --glow: rgba(124, 58, 237, 0.3);
-  --nav: rgba(7, 7, 26, 0.85);
-  --card: rgba(255, 255, 255, 0.04);
+  --glow: rgba(139, 92, 246, 0.35);
+  --nav: rgba(11, 15, 25, 0.85);
+  --card: rgba(17, 24, 39, 0.6);
 }
 
 [data-theme="light"] {
-  --bg: #f0f4ff;
-  --bg2: #e8edff;
-  --surface: rgba(255, 255, 255, 0.7);
-  --surface-h: rgba(255, 255, 255, 0.95);
-  --border: rgba(124, 58, 237, 0.12);
-  --border-h: rgba(124, 58, 237, 0.4);
+  --bg: #f8fafc;
+  --bg2: #f1f5f9;
+  --surface: rgba(255, 255, 255, 0.8);
+  --surface-h: rgba(255, 255, 255, 1);
+  --border: rgba(0, 0, 0, 0.08);
+  --border-h: rgba(124, 58, 237, 0.5);
   --text: #0f172a;
-  --muted: #475569;
-  --faint: #94a3b8;
+  --muted: #64748b;
+  --faint: #cbd5e1;
   --accent: #7c3aed;
   --accent2: #2563eb;
-  --glow: rgba(124, 58, 237, 0.15);
-  --nav: rgba(240, 244, 255, 0.85);
-  --card: rgba(255, 255, 255, 0.8);
+  --glow: rgba(124, 58, 237, 0.2);
+  --nav: rgba(248, 250, 252, 0.85);
+  --card: rgba(255, 255, 255, 0.9);
 }
 
 /* ===== FESTIVE THEMES ===== */
@@ -485,7 +485,7 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100vw;
 }
 
@@ -498,7 +498,7 @@ body {
   transition:
     background var(--tr),
     color var(--tr);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* ===== SCROLLBAR ===== */
@@ -1039,13 +1039,16 @@ body {
 }
 
 /* ==================== HOME ==================== */
+/* ===== HERO ===== */
 .home-hero {
-  position: relative;
-  z-index: 10;
-  min-height: calc(100vh - 70px);
+  position: sticky;
+  top: 70px;
+  min-height: calc(100vh - 120px);
   display: flex;
-  align-items: center;
-  padding: 80px 0 60px;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;
+  padding: 40px 0 60px;
 }
 
 .hero-inner {

@@ -58,39 +58,53 @@
     <div class="container" id="settings-container" style="position:relative;z-index:1">
       <div class="set-container">
         <div class="set-header">
-          <div class="badge au">⚙️ Preferences</div>
-          <h1 class="au d1">User <span class="g-text">Settings</span></h1>
-          <p class="au d2">Personalize your experience on Subjects Online</p>
+          <div class="badge au" data-i18n="set_pref">⚙️ Preferences</div>
+          <h1 class="au d1" data-i18n="set_title">Profile <span class="g-text">Settings</span></h1>
+          <p class="au d2" data-i18n="set_desc">Personalize your experience on Subjects Online</p>
         </div>
 
+
         <div class="set-group au d2" style="animation-delay: 0.1s">
-          <label for="set-name">Your Name</label>
-          <input type="text" id="set-name" class="set-control" placeholder="Enter your name (e.g. Ahmed)">
+          <label for="set-name" data-i18n="set_name">Your Name</label>
+          <input type="text" id="set-name" class="set-control" placeholder="Enter your name">
+        </div>
+
+        <div class="set-group au d2" style="animation-delay: 0.12s">
+          <label for="set-phone" data-i18n="set_phone">Phone Number (Optional)</label>
+          <input type="tel" id="set-phone" class="set-control" placeholder="e.g. +20 123 456 789">
+        </div>
+
+        <div class="set-group au d2" style="animation-delay: 0.13s">
+          <label for="set-lang" data-i18n="set_lang">Interface Language</label>
+          <select id="set-lang" class="set-control" onchange="previewLanguage(this.value)">
+            <option value="en" data-i18n="lang_en">English</option>
+            <option value="ar" data-i18n="lang_ar">Arabic (العربية)</option>
+          </select>
         </div>
 
         <div class="set-group au d2" style="animation-delay: 0.15s">
-          <label>Profile Picture</label>
+          <label data-i18n="set_avatar">Profile Picture</label>
           <div class="avatar-grid" id="set-avatar-grid">
             <!-- Dynamically filled -->
             <div class="custom-avatar-btn" onclick="document.getElementById('set-avatar-upload').click()">
-              <span>📁 Upload Photo</span>
+              <span data-i18n="upload_photo">📁 Upload Your Photo</span>
               <input type="file" id="set-avatar-upload" hidden accept="image/*">
             </div>
           </div>
         </div>
 
         <div class="set-group au d2" style="animation-delay: 0.2s">
-          <label for="set-theme">Base Theme</label>
+          <label for="set-theme" data-i18n="set_theme">Base Theme</label>
           <select id="set-theme" class="set-control">
-            <option value="dark">Dark Mode (Default)</option>
-            <option value="light">Light Mode</option>
+            <option value="dark" data-i18n="set_theme_dark">Dark Mode (Default)</option>
+            <option value="light" data-i18n="set_theme_light">Light Mode</option>
           </select>
         </div>
 
         <div class="set-group au d2" style="animation-delay: 0.22s">
-          <label for="set-festive">Festive Overlay Theme</label>
+          <label for="set-festive" data-i18n="set_festive">Festive Overlay Theme</label>
           <select id="set-festive" class="set-control">
-            <option value="off">Off (Standard)</option>
+            <option value="off" data-i18n="set_festive_off">Off (Standard)</option>
             <option value="kahk">🍪 Kahk El Eid</option>
             <option value="biscuit">🍞 Golden Biscuit</option>
             <option value="balloons">🎈 Eid Balloons</option>
@@ -98,7 +112,7 @@
         </div>
 
         <div class="set-group au d2" style="animation-delay: 0.25s">
-          <label for="set-color">Accent Color</label>
+          <label for="set-color" data-i18n="set_color">Accent Color</label>
           <div style="display: flex; align-items: center; gap: 12px;">
             <input type="color" id="set-color" class="set-control"
               style="width: 60px; padding: 4px; height: 44px; cursor: pointer;">
@@ -108,7 +122,7 @@
         </div>
 
         <div class="set-group au d2" style="animation-delay: 0.3s">
-          <label>Favorite Subjects</label>
+          <label data-i18n="set_fav">Favorite Subjects</label>
           <div class="fav-subs-grid" id="set-fav-subs">
             <!-- Dynamically filled with checkboxes -->
           </div>
@@ -117,12 +131,12 @@
         </div>
 
         <div class="set-group au d2" style="animation-delay: 0.4s">
-          <label for="set-sort">Sort Subjects By</label>
+          <label for="set-sort" data-i18n="set_sort">Sort Subjects By</label>
           <select id="set-sort" class="set-control" onchange="toggleCustomOrder(this.value)">
-            <option value="default">Default Order</option>
-            <option value="alphabetical">Alphabetical (A-Z)</option>
-            <option value="reverse">Reverse Order</option>
-            <option value="custom">Custom Order (My Arrangement)</option>
+            <option value="default" data-i18n="set_sort_def">Default Order</option>
+            <option value="alphabetical" data-i18n="set_sort_az">Alphabetical (A-Z)</option>
+            <option value="reverse" data-i18n="set_sort_rev">Reverse Order</option>
+            <option value="custom" data-i18n="set_sort_cust">Custom Order (My Arrangement)</option>
           </select>
         </div>
 
@@ -133,7 +147,10 @@
           </div>
         </div>
 
-        <button class="save-settings-btn au as" onclick="saveUserSettings()">Save Changes</button>
+        <button class="save-settings-btn au as" onclick="saveUserSettings()" data-i18n="set_save">Save Changes</button>
+        <button class="save-settings-btn au as" onclick="handleLogout()"
+          style="background:#ef4444;margin-top:12px;box-shadow: 0 10px 20px -5px rgba(239, 68, 68, 0.3);"
+          data-i18n="set_logout">Logout</button>
       </div>
     </div>
   </div>
@@ -152,9 +169,30 @@
   </script>
 
   <script src="data.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
   <script src="js/config.js"></script>
   <script src="js/api-key.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/translations.js"></script>
+  <script>
+    function previewLanguage(val) {
+      const current = getSettings();
+      updateSettings({ ...current, lang: val });
+      if (typeof applyLanguage === "function") applyLanguage();
+    }
+
+    // Logout function for the button
+    async function handleLogout() {
+      if (typeof firebase !== 'undefined') {
+        await firebase.auth().signOut();
+      }
+      localStorage.removeItem("so_settings");
+      localStorage.removeItem("so_welcome_done_final");
+      location.href = "login.html";
+    }
+  </script>
   <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');</script>
 </body>
 

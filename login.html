@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,21 +9,21 @@
   <style>
     :root {
       --accent: #7c3aed;
-      --glow: rgba(124, 58, 237, 0.4);
-      --muted: #94a3b8;
-      --surface: rgba(255, 255, 255, 0.05);
-      --border: rgba(255, 255, 255, 0.1);
+      --glow: rgba(124, 58, 237, 0.2);
+      --muted: #64748b;
+      --surface: rgba(0, 0, 0, 0.05);
+      --border: rgba(0, 0, 0, 0.1);
     }
 
-    body, html {
+    body,
+    html {
       margin: 0;
       padding: 0;
       width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #020617;
+      min-height: 100%;
+      background: #f8fafc;
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      color: #fff;
+      color: #1e293b;
     }
 
     /* Mesh Gradient Orbs */
@@ -37,17 +38,54 @@
       position: absolute;
       border-radius: 50%;
       filter: blur(100px);
-      opacity: 0.4;
-      mix-blend-mode: screen;
+      opacity: 0.25;
+      mix-blend-mode: multiply;
     }
 
-    .orb-1 { width: 600px; height: 600px; background: #4f46e5; top: -10%; left: -10%; animation: orbFloat 25s infinite alternate; }
-    .orb-2 { width: 500px; height: 500px; background: #7c3aed; bottom: -10%; right: -10%; animation: orbFloat 20s infinite alternate-reverse; }
-    .orb-3 { width: 400px; height: 400px; background: #db2777; top: 40%; left: 40%; animation: orbFloat 15s infinite linear; }
+    .orb-1 {
+      width: 600px;
+      height: 600px;
+      background: #4f46e5;
+      top: -10%;
+      left: -10%;
+      animation: orbFloat 25s infinite alternate;
+    }
+
+    .orb-2 {
+      width: 500px;
+      height: 500px;
+      background: #7c3aed;
+      bottom: -10%;
+      right: -10%;
+      animation: orbFloat 20s infinite alternate-reverse;
+    }
+
+    .orb-3 {
+      width: 400px;
+      height: 400px;
+      background: #db2777;
+      top: 40%;
+      left: 40%;
+      animation: orbFloat 15s infinite linear;
+    }
+
+    .floating-shape {
+      position: absolute;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(219, 39, 119, 0.1));
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      z-index: -1;
+    }
 
     @keyframes orbFloat {
-      from { transform: translate(0, 0) scale(1) rotate(0deg); }
-      to { transform: translate(100px, 50px) scale(1.2) rotate(180deg); }
+      from {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+      }
+
+      to {
+        transform: translate(100px, 50px) scale(1.2) rotate(180deg);
+      }
     }
 
     .intro-screen {
@@ -57,7 +95,7 @@
       align-items: center;
       justify-content: center;
       z-index: 1000;
-      background: #020617;
+      background: #f8fafc;
       transition: opacity 0.8s ease-in-out;
     }
 
@@ -70,10 +108,12 @@
     .login-container {
       position: relative;
       width: 100%;
-      height: 100%;
+      min-height: 100vh;
       display: none;
       align-items: center;
       justify-content: center;
+      padding: 40px 20px;
+      box-sizing: border-box;
       opacity: 0;
       transform: scale(1.1);
       transition: opacity 0.8s ease-in-out, transform 0.8s ease-out;
@@ -85,42 +125,111 @@
     }
 
     .login-card {
-      width: 90%;
-      max-width: 480px;
-      padding: 50px 40px;
-      border-radius: 40px;
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(30px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      width: 100%;
+      max-width: 440px;
+      padding: 30px 25px;
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(40px);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.1);
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      z-index: 10;
     }
 
-    .login-card::before {
+    /* Animated Border Glow */
+    /* .login-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      inset: -2px;
+      background: conic-gradient(from 0deg, 
+        transparent, 
+        var(--accent), 
+        #db2777, 
+        transparent, 
+        var(--accent));
+      z-index: -1;
+      animation: rotateGlow 4s linear infinite;
+      opacity: 0.3;
+      border-radius: inherit;
+    }
+
+    @keyframes rotateGlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    } */
+
+    /* Corner Accents */
+    .card-accent {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: var(--glow);
+      filter: blur(40px);
+      border-radius: 50%;
+      z-index: -1;
+      opacity: 0.6;
+    }
+
+    .orb-1 {
+      width: 600px;
+      height: 600px;
+      background: #4f46e5;
+      top: -10%;
+      left: -10%;
+    }
+
+    .orb-2 {
+      width: 500px;
+      height: 500px;
+      background: #7c3aed;
+      bottom: -10%;
+      right: -10%;
+    }
+
+    .orb-3 {
+      width: 400px;
+      height: 400px;
+      background: #db2777;
+      top: 40%;
+      left: 40%;
+    }
+
+    .login-card::after {
+      content: '';
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 40px;
+      height: 40px;
+      border-top: 2px solid var(--accent);
+      border-right: 2px solid var(--accent);
+      border-radius: 0 15px 0 0;
+      opacity: 0.3;
     }
 
     .form-element {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(10px);
     }
 
     .login-input-wrap {
       position: relative;
-      margin-top: 30px;
+      margin-top: 25px;
+      /* More space for floating label */
     }
 
     .login-input {
       width: 100%;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(0, 0, 0, 0.03);
+      border: 1px solid rgba(0, 0, 0, 0.08);
       border-radius: 16px;
-      padding: 16px 20px;
-      color: #fff;
+      padding: 18px 20px 10px;
+      /* Adjusted for label */
+      color: #1e293b;
       font-size: 16px;
       outline: none;
       transition: all 0.3s;
@@ -129,20 +238,46 @@
 
     .login-input:focus {
       border-color: var(--accent);
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.1);
       box-shadow: 0 0 20px var(--glow);
     }
 
+    .floating-label {
+      position: absolute;
+      left: 20px;
+      top: 18px;
+      color: #94a3b8;
+      font-size: 14px;
+      font-weight: 500;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .login-input:focus+.floating-label,
+    .login-input:not(:placeholder-shown)+.floating-label {
+      top: -12px;
+      left: 12px;
+      font-size: 11px;
+      color: var(--accent);
+      background: #fff;
+      padding: 2px 8px;
+      border-radius: 6px;
+      box-shadow: 0 2px 10px rgba(124, 58, 237, 0.1);
+    }
+
     .avatar-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 15px;
-      margin: 25px 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 15px 0;
     }
 
     .avatar-option {
       aspect-ratio: 1;
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
       border: 2px solid transparent;
       border-radius: 50%;
       display: flex;
@@ -154,7 +289,7 @@
     }
 
     .avatar-option:hover {
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       transform: scale(1.15) rotate(10deg);
     }
 
@@ -166,11 +301,11 @@
     }
 
     .custom-avatar-btn {
-      grid-column: span 5;
+      width: 100%;
       padding: 12px;
       border-radius: 16px;
-      background: rgba(255,255,255,0.05);
-      border: 1px dashed rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px dashed rgba(255, 255, 255, 0.2);
       cursor: pointer;
       font-size: 14px;
       transition: 0.3s;
@@ -178,7 +313,7 @@
     }
 
     .custom-avatar-btn:hover {
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       border-color: var(--accent);
     }
 
@@ -201,124 +336,354 @@
       box-shadow: 0 15px 30px -5px rgba(124, 58, 237, 0.5);
       filter: brightness(1.1);
     }
+
+    .login-title {
+      font-size: 32px;
+      font-weight: 900;
+      text-align: center;
+      background: linear-gradient(90deg, #7c3aed, #db2777, #4f46e5, #7c3aed);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 4s linear infinite;
+      margin: 0 0 8px;
+      display: block;
+      letter-spacing: -1px;
+    }
+
+    @keyframes shine {
+      to {
+        background-position: 200% auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 10px;
+      }
+
+      .login-card {
+        padding: 20px 15px;
+        border-radius: 20px;
+      }
+
+      .avatar-option {
+        font-size: 18px;
+        height: 36px;
+        width: 36px;
+      }
+
+      .divider {
+        margin: 10px 0;
+      }
+
+      .google-btn {
+        padding: 8px;
+        margin-bottom: 10px;
+      }
+
+      .massive-title {
+        font-size: 50px !important;
+      }
+    }
+
+    #three-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .intro-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      margin-top: -10vh;
+    }
+
+    .massive-title {
+      font-size: 80px;
+      font-weight: 950;
+      letter-spacing: -3px;
+      white-space: nowrap;
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    .welcome-text {
+      font-family: 'Pacifico', cursive;
+      font-size: 32px;
+      color: var(--accent);
+      margin-top: 5px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .welcome-text span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(10px) rotate(10deg);
+    }
+
+    .login-prompt {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 0px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 500;
+      opacity: 0;
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
   <div class="bg-animation">
     <div class="modern-orb orb-1"></div>
     <div class="modern-orb orb-2"></div>
     <div class="modern-orb orb-3"></div>
+    <div class="floating-shape" style="width: 100px; height: 100px; top: 20%; left: 15%;"></div>
+    <div class="floating-shape" style="width: 150px; height: 150px; bottom: 15%; right: 10%; animation-duration: 25s;">
+    </div>
+    <div class="floating-shape"
+      style="width: 80px; height: 80px; top: 60%; left: 5%; border-radius: 50%; animation-duration: 15s;"></div>
   </div>
 
   <div class="intro-screen" id="intro-screen">
-    <!-- SVG Paths for Welcome (Handwritten style) -->
-    <svg class="welcome-svg" viewBox="0 0 500 150">
-      <g fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" id="welcome-paths">
-        <path d="M50,40 L60,110 L80,60 L100,110 L110,40" />
-        <path d="M150,80 C150,60 130,60 130,80 C130,100 150,110 160,100 L130,80" />
-        <path d="M180,30 L180,110" />
-        <path d="M230,70 C220,60 200,60 200,80 C200,100 220,110 230,100" />
-        <path d="M250,80 C250,60 280,60 280,80 C280,100 250,110 250,80" />
-        <path d="M300,110 L300,70 C300,50 320,50 320,70 L320,110 L340,70 C340,50 360,50 360,70 L360,110" />
-        <path d="M410,80 C410,60 390,60 390,80 C390,100 410,110 420,100 L390,80" />
-      </g>
-    </svg>
-  </div>
-
-  <div class="login-container" id="login-container">
-    <div class="login-card">
-      <div class="form-element" style="font-size: 50px; margin-bottom: 5px;">🚀</div>
-      <h2 class="form-element" style="font-size: 32px; margin: 0 0 10px;">Begin Journey</h2>
-      <p class="form-element" style="color: var(--muted); font-size: 15px;">Setup your academic identity</p>
-
-      <div class="login-input-wrap form-element">
-        <label style="text-align: left; display: block; color: #94a3b8; font-size: 13px; margin-bottom: 8px; font-weight: 500;">FULL NAME</label>
-        <input type="text" id="login-name" class="login-input" placeholder="What should we call you?" maxlength="20">
-      </div>
-
-      <div class="form-element" style="margin-top: 25px;">
-        <label style="text-align: left; display: block; color: #94a3b8; font-size: 13px; margin-bottom: 5px; font-weight: 500;">CHOOSE AVATAR</label>
-        <div class="avatar-grid" id="login-avatar-grid"></div>
-      </div>
-
-      <div class="form-element" style="margin-top: 5px;">
-        <button class="btn-primary" onclick="handleLoginSubmit()">Enter Universe →</button>
-      </div>
+    <canvas id="three-canvas"></canvas>
+    <div class="intro-content">
+      <h1 class="massive-title" id="massive-title">Subjects Online</h1>
+      <p class="welcome-text" id="welcome-text" dir="ltr">
+        <span>W</span><span>e</span><span>l</span><span>c</span><span>o</span><span>m</span><span>e</span>
+      </p>
+      <p class="login-prompt" id="login-prompt">Please login to continue</p>
     </div>
   </div>
 
+  <div class="login-container" id="login-container">
+    <div class="login-card" id="login-card-main">
+      <div class="card-accent accent-tr"></div>
+      <div class="card-accent accent-bl"></div>
+
+      <h2 class="form-element login-title" data-i18n="app_title">Subjects Online</h2>
+      <p class="form-element" style="color: var(--muted); font-size: 13px; text-align: center;" data-i18n="login_setup">Setup your academic
+        identity</p>
+
+      <!-- Google Sign In -->
+      <div class="form-element" style="margin-top: 15px; display: none;">
+        <button class="google-btn" onclick="handleGoogleLogin()">
+          <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="18" alt="google">
+          <span data-i18n="login_google">Continue with Google</span>
+        </button>
+      </div>
+
+      <div class="divider form-element" data-i18n="login_or" style="display: none;">OR</div>
+
+      <div class="login-input-wrap form-element">
+        <input type="text" id="login-name" class="login-input" placeholder=" " maxlength="20">
+        <label class="floating-label" data-i18n="login_name_label">Full Name (Required)</label>
+      </div>
+
+      <div class="login-input-wrap form-element" style="margin-top: 15px;">
+        <input type="tel" id="login-phone" class="login-input" placeholder=" ">
+        <label class="floating-label" data-i18n="login_phone_label">Phone Number (Optional)</label>
+      </div>
+
+      <div class="form-element" style="margin-top: 15px;">
+        <label style="text-align: left; display: block; color: var(--muted); font-size: 11px; margin-bottom: 4px; font-weight: 500;" data-i18n="login_lang_label">CHOOSE LANGUAGE</label>
+        <select id="login-lang" class="login-input" style="background: rgba(255,255,255,0.8); border: 2px solid rgba(0,0,0,0.05); color: #1e293b; padding: 12px; border-radius: 12px; cursor: pointer; width: 100%; box-sizing: border-box; font-size: 14px;" onchange="previewLanguage(this.value)">
+          <option value="en" data-i18n="lang_en" selected>English</option>
+          <option value="ar" data-i18n="lang_ar">Arabic (العربية)</option>
+        </select>
+      </div>
+
+
+      <div class="form-element" style="margin-top: 15px;">
+        <label
+          style="text-align: left; display: block; color: var(--muted); font-size: 11px; margin-bottom: 4px; font-weight: 500;" data-i18n="login_avatar_label">CHOOSE AVATAR</label>
+        <div class="avatar-grid" id="login-avatar-grid"></div>
+      </div>
+
+      <div class="form-element" style="margin-top: 15px;">
+        <button class="btn-primary" style="padding: 12px; font-size: 14px;" onclick="handleFinalSubmit()" data-i18n="login_enter">Enter</button>
+      </div>
+
+    </div>
+  </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <style>
+    .google-btn {
+      background: white;
+      color: #444;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: 0.3s;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .google-btn:hover {
+      background: #f8f8f8;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      margin: 20px 0;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .divider:not(:empty)::before {
+      margin-right: .5em;
+    }
+
+    .divider:not(:empty)::after {
+      margin-left: .5em;
+    }
+  </style>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const settings = typeof getSettings === 'function' ? getSettings() : { name: "" };
-      const introSeen = localStorage.getItem("so_welcome_done_final");
+      // Auth State Check
+      const checkAuth = () => {
+        if (typeof firebase !== 'undefined') {
+          firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+              const settings = getSettings();
+              if (settings.name) {
+                location.href = 'index.html';
+              }
+            }
+          });
+        }
+      };
 
+      const introSeen = localStorage.getItem("so_welcome_done_final");
+      const settings = getSettings();
       if (settings.name && introSeen) {
         location.href = 'index.html';
         return;
       }
 
-      // Fallback: If intro screen doesn't disappear in 8s, show form anyway
-      setTimeout(() => {
-        const intro = document.getElementById("intro-screen");
-        if (intro && intro.style.display !== "none") {
-          intro.style.display = "none";
-          const container = document.getElementById("login-container");
-          container.style.display = "flex";
-          container.classList.add("visible");
-          anime({
-                targets: '.form-element',
-                translateY: [20, 0],
-                opacity: [0, 1],
-                delay: anime.stagger(100),
-                easing: 'easeOutExpo',
-                duration: 800
-          });
-        }
-      }, 8000);
+      // Three.js Scene Setup (Self-rotating particles, no mouse parallax)
+      const canvas = document.getElementById('three-canvas');
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
 
-      // Initialize dasharray BEFORE starting the animation
-      document.querySelectorAll('#welcome-paths path').forEach(p => {
-        const len = p.getTotalLength();
-        p.style.strokeDasharray = len;
-        p.style.strokeDashoffset = len;
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.z = 5;
+
+      const particlesGeometry = new THREE.BufferGeometry();
+      const posArray = new Float32Array(2000 * 3);
+      for (let i = 0; i < 2000 * 3; i++) {
+        posArray[i] = (Math.random() - 0.5) * 15;
+      }
+      particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+      const particlesMaterial = new THREE.PointsMaterial({
+        size: 0.02,
+        color: 0x7c3aed,
+        transparent: true,
+        opacity: 0.5
+      });
+      const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+      scene.add(particlesMesh);
+
+      function animateThree() {
+        requestAnimationFrame(animateThree);
+        particlesMesh.rotation.y += 0.001;
+        particlesMesh.rotation.x += 0.0005;
+        renderer.render(scene, camera);
+      }
+      animateThree();
+
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
       });
 
-      // 1. Welcome Drawing (Snappier)
-      anime({
-        targets: '#welcome-paths path',
-        strokeDashoffset: [anime.setDashoffset, 0],
-        easing: 'easeInOutSine',
-        duration: 1200,
-        delay: anime.stagger(150),
-        complete: () => {
-          setTimeout(() => {
-            // Check if already has a name
-            const currentSettings = typeof getSettings === 'function' ? getSettings() : { name: "" };
-            
-            // Mark as seen
+      // Massive Title, Welcome & Prompt Animation
+      const title = document.getElementById('massive-title');
+      const welcomeLetters = document.querySelectorAll('#welcome-text span');
+      const prompt = document.getElementById('login-prompt');
+      anime.timeline({
+        easing: 'easeOutExpo',
+      })
+        .add({
+          targets: title,
+          opacity: [0, 1],
+          scale: [0.8, 1],
+          translateY: [20, 0],
+          duration: 1200,
+          delay: 500
+        })
+        .add({
+          targets: welcomeLetters,
+          opacity: [0, 1],
+          translateY: [10, 0],
+          rotate: [10, 0],
+          duration: 800,
+          delay: anime.stagger(100)
+        })
+        .add({
+          targets: prompt,
+          opacity: [0, 1],
+          translateY: [10, 0],
+          duration: 1000,
+          delay: 200
+        })
+        .add({
+          targets: [title, '#welcome-text', prompt],
+          translateY: [0, -50],
+          opacity: [1, 0],
+          duration: 1000,
+          delay: 1500,
+          complete: () => {
             localStorage.setItem("so_welcome_done_final", "true");
-
-            if (currentSettings.name) {
-              location.href = 'index.html';
-              return;
-            }
-
-            // 2. Transition to Login (Faster)
             const intro = document.getElementById("intro-screen");
             intro.style.opacity = "0";
-            
             setTimeout(() => {
               intro.style.display = "none";
               const container = document.getElementById("login-container");
               container.style.display = "flex";
               container.classList.add("visible");
-
-              // 3. Staggered Elements
               anime({
                 targets: '.form-element',
                 translateY: [20, 0],
@@ -328,18 +693,17 @@
                 duration: 800
               });
             }, 800);
-          }, 800); 
-        }
-      });
+          }
+        });
 
-      // Avatars and Mouse Parallax
+      // Setup Avatars
       const grid = document.getElementById("login-avatar-grid");
-      const avatars = ["👨‍🎓", "👩‍🎓", "🧠", "📚", "🚀", "✨", "🔥", "💎", "🎯", "🌟"];
+      const avatars = ["👨‍🎓", "👩‍🎓"];
       grid.innerHTML = avatars.map((a, i) => `
         <div class="avatar-option ${i === 0 ? "selected" : ""}" data-avatar="${a}" onclick="selectAvatar(this)">${a}</div>
       `).join("") + `
         <div class="custom-avatar-btn" onclick="document.getElementById('login-avatar-upload').click()">
-          <span>📁 Custom</span>
+          <span data-i18n="upload_photo">📁 Upload Your Photo</span>
           <input type="file" id="login-avatar-upload" hidden accept="image/*">
         </div>
       `;
@@ -362,7 +726,7 @@
             if (!preview) {
               preview = document.createElement("div");
               preview.className = "avatar-option custom-preview selected";
-              grid.insertBefore(preview, grid.querySelector(".custom-avatar-btn"));
+              grid.insertBefore(preview, grid.firstChild);
             }
             grid.querySelectorAll(".avatar-option").forEach(o => o.classList.remove("selected"));
             preview.classList.add("selected");
@@ -377,6 +741,79 @@
     function selectAvatar(el) {
       document.querySelectorAll(".avatar-option").forEach(o => o.classList.remove("selected"));
       el.classList.add("selected");
+    }
+
+    function previewLanguage(val) {
+      const current = getSettings();
+      updateSettings({ ...current, lang: val });
+      if (typeof applyLanguage === "function") applyLanguage();
+    }
+
+    async function handleFinalSubmit() {
+      const nameInput = document.getElementById("login-name");
+      const name = nameInput.value.trim();
+      if (!name) {
+        nameInput.style.borderColor = "#ef4444";
+        nameInput.focus();
+        return;
+      }
+
+      const phone = document.getElementById("login-phone").value.trim();
+      const lang = document.getElementById("login-lang").value;
+      const selectedAvatarNode = document.querySelector(".avatar-option.selected");
+      const avatar = selectedAvatarNode ? selectedAvatarNode.dataset.avatar : "👨‍🎓";
+
+      updateSettings({ name, phone, avatar, lang });
+
+      try {
+        const user = firebase.auth().currentUser;
+        if (user) {
+          await firebase.firestore().collection('users').doc(user.uid).set(
+            { name, phone, avatar, email: user.email, updatedAt: firebase.firestore.FieldValue.serverTimestamp() },
+            { merge: true }
+          );
+        }
+      } catch (e) {
+        console.warn("Firestore sync skipped:", e);
+      }
+
+      anime({
+        targets: '.login-card',
+        scale: [1, 0.85],
+        opacity: [1, 0],
+        duration: 700,
+        easing: 'easeInBack',
+        complete: () => { location.href = 'index.html'; }
+      });
+    }
+
+    async function handleGoogleLogin() {
+      if (typeof firebase === 'undefined') {
+        alert("Firebase not initialized. Please add your keys in js/config.js");
+        return;
+      }
+      const provider = new firebase.auth.GoogleAuthProvider();
+      try {
+        const result = await firebase.auth().signInWithPopup(provider);
+        const user = result.user;
+        document.getElementById('login-name').value = user.displayName || "";
+        if (user.photoURL) {
+          const grid = document.getElementById("login-avatar-grid");
+          let preview = grid.querySelector(".avatar-option.custom-preview");
+          if (!preview) {
+            preview = document.createElement("div");
+            preview.className = "avatar-option custom-preview selected";
+            grid.insertBefore(preview, grid.firstChild);
+          }
+          grid.querySelectorAll(".avatar-option").forEach(o => o.classList.remove("selected"));
+          preview.classList.add("selected");
+          preview.dataset.avatar = user.photoURL;
+          preview.innerHTML = `<img src="${user.photoURL}" alt="custom" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
+        }
+      } catch (error) {
+        console.error(error);
+        alert("Google Login Failed: " + error.message);
+      }
     }
   </script>
 </body>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Doctors News — Subjects Online</title>
+  <title data-i18n="news_page_title">Doctors News — Subjects Online</title>
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#7c3aed">
   <link rel="apple-touch-icon" href="icons/icon.svg">
@@ -17,32 +17,34 @@
       <a href="index.html" class="nav-logo"><span>📚</span><span class="logo-text">Subjects<span
             class="logo-accent">Online</span></span></a>
       <div class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="subjects.html" class="nav-link">Browse Subjects</a>
+        <a href="index.html" class="nav-link" data-i18n="nav_home">Home</a>
+        <a href="subjects.html" class="nav-link" data-i18n="nav_browse">Browse Subjects</a>
         <!-- <a href="dashboard.html" class="nav-link">Dashboard</a> -->
-        <a href="doctors-news.html" class="nav-link">Doctors News</a>
-        <a href="favorites.html" class="nav-link">Favorites</a>
-        <a href="personal-dev.html" class="nav-link">Self Development</a>
-        <a href="settings.html" class="nav-link">Settings</a>
+        <a href="doctors-news.html" class="nav-link" data-i18n="nav_news">Doctors News</a>
+        <a href="favorites.html" class="nav-link" data-i18n="nav_favorites">Favorites</a>
+        <a href="personal-dev.html" class="nav-link" data-i18n="nav_selfdev">Self Development</a>
+        <a href="special.html" class="nav-link" data-i18n="nav_archive">Archive</a>
+        <a href="settings.html" class="nav-link" data-i18n="nav_settings">Settings</a>
       </div>
       <div class="nav-right">
         <button class="theme-btn" onclick="toggleTheme()"><span class="theme-ico">🌙</span><span
-            class="theme-label">Dark</span></button>
+            class="theme-label" data-i18n="theme_dark">Dark</span></button>
         <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
       </div>
     </div>
   </nav>
   <div class="mobile-menu">
     <div class="mobile-menu-inner">
-      <a href="index.html" class="mobile-link">Home</a>
-      <a href="subjects.html" class="mobile-link">Browse Subjects</a>
+      <a href="index.html" class="mobile-link" data-i18n="nav_home">Home</a>
+      <a href="subjects.html" class="mobile-link" data-i18n="nav_browse">Browse Subjects</a>
       <!-- <a href="dashboard.html" class="mobile-link">Dashboard</a> -->
-      <a href="doctors-news.html" class="mobile-link">Doctors News</a>
-      <a href="favorites.html" class="mobile-link">Favorites</a>
-      <a href="personal-dev.html" class="mobile-link">Self Development</a>
-      <a href="settings.html" class="mobile-link">Settings</a>
+      <a href="doctors-news.html" class="mobile-link" data-i18n="nav_news">Doctors News</a>
+      <a href="favorites.html" class="mobile-link" data-i18n="nav_favorites">Favorites</a>
+      <a href="personal-dev.html" class="mobile-link" data-i18n="nav_selfdev">Self Development</a>
+      <a href="special.html" class="mobile-link" data-i18n="nav_archive">Archive</a>
+      <a href="settings.html" class="mobile-link" data-i18n="nav_settings">Settings</a>
       <button class="theme-btn" style="margin-top:16px;width:100%" onclick="toggleTheme()"><span
-          class="theme-ico">🌙</span><span class="theme-label">Dark</span></button>
+          class="theme-ico">🌙</span><span class="theme-label" data-i18n="theme_dark">Dark</span></button>
     </div>
   </div>
   <div class="menu-backdrop"></div>
@@ -55,9 +57,9 @@
     </div>
     <div class="container" style="position:relative;z-index:1">
       <div class="dn-header">
-        <div class="badge au">📚 Doctors News</div>
-        <h1 class="au d1">Doctors <span class="g-text">Announcements</span></h1>
-        <p class="au d2">Latest notes, updates, and announcements from your professors — all in one place</p>
+        <div class="badge au" data-i18n="news_badge">📚 Doctors News</div>
+        <h1 class="au d1" data-i18n="news_title">Doctors <span class="g-text">Announcements</span></h1>
+        <p class="au d2" data-i18n="news_desc">Latest notes, updates, and announcements from your professors — all in one place</p>
       </div>
       <div class="dn-grid">
       
@@ -65,17 +67,17 @@
       <div class="dn-subject-card au">
         <div class="dn-sub-header">
           <span class="dn-sub-icon">📒</span>
-          <h2>Accounting</h2>
+          <h2 data-i18n="sub_accounting">Accounting</h2>
         </div>
         <div class="dn-news-card">
           <div class="dn-quote-icon">❝</div>
-          <p class="dn-news-text">"Coming Soon..."</p>
+          <p class="dn-news-text" data-i18n="coming_soon">"Coming Soon..."</p>
           <hr class="dn-divider" />
           <div class="dn-doctor-info">
             <div class="dn-doc-avatar">MZ</div>
             <div class="dn-doc-details">
               <h4>Dr. MZ</h4>
-              <p>Doctor of Accounting</p>
+              <p data-i18n="doc_accounting">Doctor of Accounting</p>
             </div>
           </div>
           <a href="#" class="dn-action-btn">...</a>
@@ -86,17 +88,17 @@
       <div class="dn-subject-card au" style="animation-delay: 0.1s;">
         <div class="dn-sub-header">
           <span class="dn-sub-icon">📈</span>
-          <h2>Economics</h2>
+          <h2 data-i18n="sub_eco">Economics</h2>
         </div>
         <div class="dn-news-card">
           <div class="dn-quote-icon">❝</div>
-          <p class="dn-news-text">"Coming Soon..."</p>
+          <p class="dn-news-text" data-i18n="coming_soon">"Coming Soon..."</p>
           <hr class="dn-divider" />
           <div class="dn-doctor-info">
             <div class="dn-doc-avatar">DH</div>
             <div class="dn-doc-details">
               <h4>Dr. Hannan</h4>
-              <p>Doctor of Economics</p>
+              <p data-i18n="doc_eco">Doctor of Economics</p>
             </div>
           </div>
           <a href="#" class="dn-action-btn">...</a>
@@ -107,17 +109,17 @@
       <div class="dn-subject-card au" style="animation-delay: 0.2s;">
         <div class="dn-sub-header">
           <span class="dn-sub-icon">📝</span>
-          <h2>English</h2>
+          <h2 data-i18n="sub_eng">English</h2>
         </div>
         <div class="dn-news-card">
           <div class="dn-quote-icon">❝</div>
-          <p class="dn-news-text">"Coming Soon..."</p>
+          <p class="dn-news-text" data-i18n="coming_soon">"Coming Soon..."</p>
           <hr class="dn-divider" />
           <div class="dn-doctor-info">
             <div class="dn-doc-avatar">DE</div>
             <div class="dn-doc-details">
               <h4>Dr. Eman</h4>
-              <p>Doctor of English</p>
+              <p data-i18n="doc_eng">Doctor of English</p>
             </div>
           </div>
           <a href="#" class="dn-action-btn">...</a>
@@ -128,17 +130,17 @@
       <div class="dn-subject-card au" style="animation-delay: 0.3s;">
         <div class="dn-sub-header">
           <span class="dn-sub-icon">🏛️</span>
-          <h2>Political Science</h2>
+          <h2 data-i18n="sub_pol">Political Science</h2>
         </div>
         <div class="dn-news-card">
           <div class="dn-quote-icon">❝</div>
-          <p class="dn-news-text">"Coming Soon..."</p>
+          <p class="dn-news-text" data-i18n="coming_soon">"Coming Soon..."</p>
           <hr class="dn-divider" />
           <div class="dn-doctor-info">
             <div class="dn-doc-avatar">...</div>
             <div class="dn-doc-details">
               <h4>Dr. ...</h4>
-              <p>Doctor of Political Science</p>
+              <p data-i18n="doc_pol">Doctor of Political Science</p>
             </div>
           </div>
           <a href="#" class="dn-action-btn">...</a>
@@ -149,17 +151,17 @@
       <div class="dn-subject-card au" style="animation-delay: 0.4s;">
         <div class="dn-sub-header">
           <span class="dn-sub-icon">📣</span>
-          <h2>Marketing</h2>
+          <h2 data-i18n="sub_mark">Marketing</h2>
         </div>
         <div class="dn-news-card">
           <div class="dn-quote-icon">❝</div>
-          <p class="dn-news-text">"Coming Soon..."</p>
+          <p class="dn-news-text" data-i18n="coming_soon">"Coming Soon..."</p>
           <hr class="dn-divider" />
           <div class="dn-doctor-info">
             <div class="dn-doc-avatar">HM</div>
             <div class="dn-doc-details">
               <h4>Dr. HM</h4>
-              <p>Doctor of Marketing</p>
+              <p data-i18n="doc_mark">Doctor of Marketing</p>
             </div>
           </div>
           <a href="#" class="dn-action-btn">...</a>
@@ -170,17 +172,17 @@
       <div class="dn-subject-card au" style="animation-delay: 0.5s;">
         <div class="dn-sub-header">
           <span class="dn-sub-icon">📉</span>
-          <h2>Statistics</h2>
+          <h2 data-i18n="sub_stat">Statistics</h2>
         </div>
         <div class="dn-news-card">
           <div class="dn-quote-icon">❝</div>
-          <p class="dn-news-text">"Coming Soon..."</p>
+          <p class="dn-news-text" data-i18n="coming_soon">"Coming Soon..."</p>
           <hr class="dn-divider" />
           <div class="dn-doctor-info">
             <div class="dn-doc-avatar">...</div>
             <div class="dn-doc-details">
               <h4>Dr. ...</h4>
-              <p>Doctor of Statistics</p>
+              <p data-i18n="doc_stat">Doctor of Statistics</p>
             </div>
           </div>
           <a href="#" class="dn-action-btn">...</a>
@@ -191,17 +193,17 @@
       <div class="dn-subject-card au" style="animation-delay: 0.6s;">
         <div class="dn-sub-header">
           <span class="dn-sub-icon">💻</span>
-          <h2>AIS</h2>
+          <h2 data-i18n="sub_ais">AIS</h2>
         </div>
         <div class="dn-news-card">
           <div class="dn-quote-icon">❝</div>
-          <p class="dn-news-text">"Coming Soon..."</p>
+          <p class="dn-news-text" data-i18n="coming_soon">"Coming Soon..."</p>
           <hr class="dn-divider" />
           <div class="dn-doctor-info">
             <div class="dn-doc-avatar">SR</div>
             <div class="dn-doc-details">
               <h4>Dr. S.R</h4>
-              <p>Doctor of AIS</p>
+              <p data-i18n="doc_ais">Doctor of AIS</p>
             </div>
           </div>
           <a href="#" class="dn-action-btn">...</a>
@@ -212,17 +214,17 @@
       <div class="dn-subject-card au" style="animation-delay: 0.7s;">
         <div class="dn-sub-header">
           <span class="dn-sub-icon">🏦</span>
-          <h2>Public Finance</h2>
+          <h2 data-i18n="sub_pub">Public Finance</h2>
         </div>
         <div class="dn-news-card">
           <div class="dn-quote-icon">❝</div>
-          <p class="dn-news-text">"Coming Soon..."</p>
+          <p class="dn-news-text" data-i18n="coming_soon">"Coming Soon..."</p>
           <hr class="dn-divider" />
           <div class="dn-doctor-info">
             <div class="dn-doc-avatar">...</div>
             <div class="dn-doc-details">
               <h4>Dr. ...</h4>
-              <p>Doctor of Public Finance</p>
+              <p data-i18n="doc_pub">Doctor of Public Finance</p>
             </div>
           </div>
           <a href="#" class="dn-action-btn">...</a>
@@ -234,9 +236,13 @@
   </div>
 
   <script src="data.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
   <script src="js/config.js"></script>
   <script src="js/api-key.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/translations.js"></script>
   <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');</script>
 </body>
 

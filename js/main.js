@@ -5,21 +5,37 @@
 // ================================================================
 
 // ===== THEME & SETTINGS =====
+// ===== THEME & SETTINGS =====
+const defaultSettings = {
+  theme: 'dark',
+  festive: 'off',
+  lang: 'en'
+};
+
+// Track Last Visit
+if (typeof window !== 'undefined' && !window.lastVisitTimeSet) {
+  window.lastVisitTime = localStorage.getItem('lastVisit');
+  localStorage.setItem('lastVisit', new Date().toISOString());
+  window.lastVisitTimeSet = true;
+}
+
 function getSettings() {
-  const defaults = { name: "", avatar: "", theme: "dark", festive: "off", favSubjects: [], sortMode: "default", customOrder: [], accentColor: "#7c3aed" };
+  const defaults = { name: "", avatar: "", phone: "", lang: "en", theme: "dark", festive: "off", favSubjects: [], sortMode: "default", customOrder: [], accentColor: "#7c3aed" };
   const saved = localStorage.getItem("so_settings");
   const res = saved ? { ...defaults, ...JSON.parse(saved) } : defaults;
-  // Migrate old favSubject if exists
-  const oldSaved = JSON.parse(saved || "{}");
-  if (oldSaved.favSubject && res.favSubjects.length === 0) {
-    res.favSubjects = [oldSaved.favSubject];
-  }
   return res;
 }
 function updateSettings(newSettings) {
   const current = getSettings();
   const updated = { ...current, ...newSettings };
   localStorage.setItem("so_settings", JSON.stringify(updated));
+
+  // Sync with Firestore if logged in
+  if (typeof firebase !== 'undefined' && firebase.auth().currentUser) {
+    const user = firebase.auth().currentUser;
+    firebase.firestore().collection('users').doc(user.uid).set(updated, { merge: true }).catch(console.error);
+  }
+
   return updated;
 }
 function initTheme() {
@@ -35,6 +51,10 @@ function initTheme() {
   applyAccentColor(settings.accentColor || "#7c3aed");
   updateThemeBtn(theme);
   applyFestiveIcons();
+
+  if (typeof applyLanguage === 'function') {
+    applyLanguage();
+  }
 }
 function applyFestiveIcons() {
   const festive = document.documentElement.getAttribute("data-festive") || "off";
@@ -133,103 +153,27 @@ function renderNavProfile() {
   }
 }
 
-// ===== LOGIN MODAL =====
-function showLoginModal() {
-  if (document.getElementById("login-modal-overlay")) return;
+// ===== LOGIN & AUTH REDIRECT =====
+function checkLoginStatus() {
+  const settings = getSettings();
+  const path = location.pathname.split("/").pop() || "index.html";
 
-  const overlay = document.createElement("div");
-  overlay.id = "login-modal-overlay";
-  overlay.className = "login-modal-overlay";
-
-  const avatars = ["👨‍🎓", "👩‍🎓", "🧠", "📚", "🚀", "✨", "🔥", "💎", "🎯", "🌟"];
-
-  overlay.innerHTML = `
-    <div class="login-modal glass">
-      <span class="pd-icon">👋</span>
-      <h2>Welcome!</h2>
-      <p>Enter your name to personalize your study experience.</p>
-      
-      <div class="login-input-wrap">
-        <label for="login-name">Your Name</label>
-        <input type="text" id="login-name" class="login-input" placeholder="Enter your name" maxlength="20">
-      </div>
-
-      <span class="avatar-selector-label">Choose your avatar</span>
-      <div class="avatar-grid" id="login-avatar-grid">
-        ${avatars.map((a, i) => `
-          <div class="avatar-option ${i === 0 ? "selected" : ""}" data-avatar="${a}">${a}</div>
-        `).join("")}
-        <div class="custom-avatar-btn" onclick="document.getElementById('login-avatar-upload').click()">
-          <span>📁 Upload Photo</span>
-          <input type="file" id="login-avatar-upload" hidden accept="image/*">
-        </div>
-      </div>
-
-      <button class="btn btn-primary" style="width: 100%" onclick="handleLoginSubmit()">Start Learning 🚀</button>
-    </div>
-  `;
-
-  document.body.appendChild(overlay);
-  setTimeout(() => overlay.classList.add("open"), 10);
-
-  // Avatar Selection Logic
-  const options = overlay.querySelectorAll(".avatar-option");
-  options.forEach(opt => {
-    opt.addEventListener("click", () => {
-      options.forEach(o => o.classList.remove("selected"));
-      opt.classList.add("selected");
-    });
-  });
-
-  // Upload Logic
-  const uploader = document.getElementById("login-avatar-upload");
-  uploader.addEventListener("change", (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (re) => {
-        const base64 = re.target.result;
-        let preview = overlay.querySelector(".avatar-option.custom-preview");
-        if (!preview) {
-          preview = document.createElement("div");
-          preview.className = "avatar-option custom-preview selected";
-          const grid = document.getElementById("login-avatar-grid");
-          grid.insertBefore(preview, grid.querySelector(".custom-avatar-btn"));
-        }
-        options.forEach(o => o.classList.remove("selected"));
-        preview.classList.add("selected");
-        preview.dataset.avatar = base64;
-        preview.innerHTML = `<img src="${base64}" alt="custom">`;
-      };
-      reader.readAsDataURL(file);
-    }
-  });
-}
-
-window.handleLoginSubmit = function () {
-  const nameInput = document.getElementById("login-name");
-  const name = nameInput.value.trim();
-  if (!name) {
-    nameInput.style.borderColor = "#ef4444";
-    nameInput.placeholder = "Please enter your name!";
+  if (!settings.name && path !== "login.html") {
+    location.href = "login.html";
     return;
   }
+}
 
-  const selectedNode = document.querySelector(".avatar-option.selected");
-  const selectedAvatar = selectedNode ? selectedNode.dataset.avatar : "👨‍🎓";
+// Redirect if unauthenticated (called on pages that need auth)
+if (location.pathname.split("/").pop() !== "login.html") {
+  checkLoginStatus();
+}
 
-  updateSettings({ name, avatar: selectedAvatar });
-
-  const overlay = document.getElementById("login-modal-overlay");
-  overlay.classList.remove("open");
-  setTimeout(() => {
-    overlay.remove();
-    renderNavProfile();
-    renderGreeting();
-    if (typeof renderDashboard === 'function') renderDashboard();
-    if (typeof renderSettingsPage === 'function') renderSettingsPage();
-  }, 400);
-};
+function showLoginModal() {
+  // Disabled in favor of standalone login.html
+  location.href = "login.html";
+  return;
+}
 
 function initNavbar() {
   const hamburger = document.querySelector(".hamburger");
@@ -1084,14 +1028,36 @@ function renderGreeting() {
     const isEmoji = !settings.avatar || settings.avatar.length < 10;
     const avatarHtml = isEmoji
       ? `<span>${settings.avatar || "👨‍🎓"}</span>`
-      : `<img src="${settings.avatar}" alt="Avatar">`;
+      : `<img src="${settings.avatar}" alt="Avatar" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+
+    const lang = settings.lang || "en";
+    const hour = new Date().getHours();
+    let greetKey = 'greet_evening';
+    if (hour >= 5 && hour < 12) greetKey = 'greet_morning';
+    else if (hour >= 12 && hour < 17) greetKey = 'greet_afternoon';
+
+    let greetText = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[lang] && TRANSLATIONS[lang][greetKey])
+      ? TRANSLATIONS[lang][greetKey] : "Hello";
+
+    const timeNowStr = new Date().toLocaleTimeString(lang === 'ar' ? 'ar-EG' : 'en-US', { hour: '2-digit', minute: '2-digit' });
+    let lastVisitStr = "-";
+    if (window.lastVisitTime) {
+      const lvDate = new Date(window.lastVisitTime);
+      lastVisitStr = lvDate.toLocaleDateString(lang === 'ar' ? 'ar-EG' : 'en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    }
+
+    const timeLbl = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[lang]?.time_now) ? TRANSLATIONS[lang].time_now : "Local Time";
+    const visitLbl = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[lang]?.last_visit) ? TRANSLATIONS[lang].last_visit : "Last Seen";
 
     container.innerHTML = `
-      <div class="greeting-wrap au d1" style="display:flex; align-items:center; gap:20px; text-align:left;">
-        <div class="mobile-avatar" style="width:80px; height:80px; flex-shrink:0; font-size:40px; border-width:4px;">${avatarHtml}</div>
+      <div class="greeting-wrap au d1" style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; text-align:center;">
+        <div class="mobile-avatar" style="width:140px; height:140px; font-size:65px; border-width:6px; box-shadow: 0 10px 25px var(--glow);">${avatarHtml}</div>
         <div>
-          <h2 style="margin:0;">Hello, <span class="g-text">${settings.name}</span>! 👋</h2>
-          <p style="margin:5px 0 0;">اهلا بيك كل سنة وانت طيب عيد سعيد عليك كحكك وبسكوتك يباشا وشايك والعيال كبرت بقا وكدا ها </p>
+          <h2 style="margin:0; font-size:36px; font-weight:900; letter-spacing: -0.5px;">${greetText}, <span class="g-text">${settings.name}</span>! </h2>
+          <p style="margin:12px 0 0; font-size: 15px; color: var(--muted); display:flex; justify-content:center; gap:24px; flex-wrap:wrap; font-weight:500;">
+            <span><i style="font-style:normal; opacity: 0.8;">🕒</i> ${timeLbl}: ${timeNowStr}</span>
+            <span><i style="font-style:normal; opacity: 0.8;">📅</i> ${visitLbl}: ${lastVisitStr}</span>
+          </p>
         </div>
       </div>
       ${bubblesHtml}
@@ -1114,7 +1080,7 @@ function renderSettingsPage() {
 
   const avatarGrid = document.getElementById("set-avatar-grid");
   if (avatarGrid) {
-    const avatars = ["👨‍🎓", "👩‍🎓", "🧠", "📚", "🚀", "✨", "🔥", "💎", "🎯", "🌟"];
+    const avatars = ["👨‍🎓", "👩‍🎓"];
     const currentAvatar = settings.avatar || "👨‍🎓";
     const isCustom = currentAvatar.length > 2;
 
@@ -1165,6 +1131,9 @@ function renderSettingsPage() {
   const nameInput = document.getElementById("set-name");
   if (nameInput) nameInput.value = settings.name || "";
 
+  const langSelect = document.getElementById("set-lang");
+  if (langSelect) langSelect.value = settings.lang || "en";
+
   const sortSelect = document.getElementById("set-sort");
   if (sortSelect) sortSelect.value = settings.sortMode || "default";
 
@@ -1176,6 +1145,9 @@ function renderSettingsPage() {
 
   const festiveSelect = document.getElementById("set-festive");
   if (festiveSelect) festiveSelect.value = settings.festive || "off";
+
+  const phoneInput = document.getElementById("set-phone");
+  if (phoneInput) phoneInput.value = settings.phone || "";
 
   const favSubjectsSelect = document.getElementById("set-fav-subs");
   if (favSubjectsSelect) {
@@ -1236,8 +1208,9 @@ window.moveSubjectOrder = function (idx, dir) {
 };
 
 window.saveUserSettings = function () {
-  const name = document.getElementById("set-name").value;
-  const avatar = document.querySelector("#set-avatar-grid .avatar-option.selected")?.dataset.avatar || "👨‍🎓";
+  const name = (document.getElementById("set-name")?.value || "").trim() || getSettings().name;
+  const avatar = document.querySelector("#set-avatar-grid .avatar-option.selected")?.dataset.avatar || getSettings().avatar || "👨‍🎓";
+  const lang = document.getElementById("set-lang")?.value || getSettings().lang || "en";
   const sortMode = document.getElementById("set-sort").value;
   const theme = document.getElementById("set-theme").value;
   const festive = document.getElementById("set-festive").value;
@@ -1247,11 +1220,13 @@ window.saveUserSettings = function () {
   document.querySelectorAll("#set-fav-subs input:checked").forEach(cb => favSubjects.push(cb.value));
 
   const customOrder = [..._localCustomOrder];
+  const phone = document.getElementById("set-phone").value;
 
-  updateSettings({ name, avatar, sortMode, theme, festive, favSubjects, customOrder, accentColor });
+  updateSettings({ name, avatar, lang, sortMode, theme, festive, favSubjects, customOrder, accentColor, phone });
 
   renderNavProfile();
   renderGreeting();
+  updateNavProfile(); // Call the new function
 
   // Apply changes immediately
   document.documentElement.setAttribute("data-theme", theme);
@@ -1578,8 +1553,6 @@ function initAiAssistant() {
                 return `أنت مساعد ذكي ومدرس لطلاب الجامعة اسمك "AI Tutor".
 أهم قاعدة: اتكلم بالعامية المصرية الصميمة (زي ما المصريين بيتكلموا). ممنوع منعاً باتاً كتابة أي حروف صينية، أو لغات غريبة، أو كلام مش مفهوم. لو مش عارف حاجة قول "مش عارف" ببساطة. خليك طبيعي جداً وودود. ${nameNote}
 
-لو حد طلب منك شرح، اكتب شرح مفصل وطويل وواضح، واضرب أمثلة من الحياة اليومية. الطالب محتاج يفهم مش بس يقرأ.
-
 دي معلومات محتوى الموقع ونشاط وإحصائيات الطالب عشان تبقى فاهمه وعارف هو بيذاكر إيه مؤخراً (دي الـ Memory بتاعتك عنه):
 ${buildSiteContext()}
 
@@ -1756,6 +1729,29 @@ function renderSearchResults(results) {
   box.classList.add("open");
 }
 
+// Update Profile Nav with Avatar
+function updateNavProfile() {
+  const settings = getSettings();
+  if (!settings.name) return;
+  const lang = settings.lang || "en";
+  const profileText = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[lang]?.nav_settings) ? TRANSLATIONS[lang].nav_settings : "Profile";
+  const isEmoji = !settings.avatar || settings.avatar.length < 10;
+  const avatarHtml = isEmoji
+    ? `<span style="font-size:18px;">${settings.avatar || "👨‍🎓"}</span>`
+    : `<div style="width:24px; height:24px; border-radius:50%; overflow:hidden; border:1px solid var(--border);"><img src="${settings.avatar}" style="width:100%; height:100%; object-fit:cover;" alt="Avatar"></div>`;
+
+  const navLinks = document.querySelectorAll('.nav-link[href="settings.html"], .mobile-link[href="settings.html"]');
+  navLinks.forEach(link => {
+    link.innerHTML = `<div style="display:flex;align-items:center;gap:8px;">${avatarHtml}<span>${profileText}</span></div>`;
+    link.removeAttribute("data-i18n");
+  });
+}
+
+document.addEventListener("languageChanged", () => {
+  renderGreeting();
+  updateNavProfile();
+});
+
 // ===== INIT =====
 document.addEventListener("DOMContentLoaded", () => {
   const settings = getSettings();
@@ -1775,7 +1771,8 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSettingsPage();
   renderSpecialPage();
 
-  if (!settings.name) {
+  const path = location.pathname.split("/").pop() || "index.html";
+  if (!settings.name && path !== "login.html") {
     setTimeout(showLoginModal, 1000);
   }
 });
