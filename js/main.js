@@ -1,8 +1,6 @@
 // ================================================================
-// Subjects Online V2 — main.js
-// Handles: theme, navbar, page routing, subject cards,
-//          chapter accordion, media viewer
-// ================================================================
+
+checkMigration(); // Force migration for V2 updates before any other logic runs
 
 // ===== THEME & SETTINGS =====
 // ===== THEME & SETTINGS =====
@@ -37,6 +35,18 @@ function updateSettings(newSettings) {
 
   return updated;
 }
+function checkMigration() {
+  const MIGRATION_ID = "v2_final_clean";
+  const status = localStorage.getItem("so_migration_status");
+  if (status !== MIGRATION_ID) {
+    // Force reset for V2 update
+    localStorage.removeItem("so_settings");
+    localStorage.removeItem("so_welcome_done_final");
+    localStorage.setItem("so_migration_status", MIGRATION_ID);
+    console.log("Subjects Online V2: Migration triggered. Respecting user data refresh.");
+  }
+}
+
 function initTheme() {
   const settings = getSettings();
   const theme = settings.theme || "dark";
