@@ -785,6 +785,15 @@ const CONTENT = {
       [], // Chapter 3
       [], // Chapter 4
     ],
+    quizzes: [
+      [{
+        id: "lec1",
+        title: "Quiz 1 Dr.Magda",
+        type: "file",
+        content: "./pdfs/statistics/Quiz 1 (stat) (S.O V2).pdf",
+      },
+    ]
+    ],
   },
 
   ais: {
