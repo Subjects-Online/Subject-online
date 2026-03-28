@@ -786,13 +786,14 @@ const CONTENT = {
       [], // Chapter 4
     ],
     quizzes: [
-      [{
-        id: "lec1",
-        title: "Quiz 1 Dr.Magda",
-        type: "file",
-        content: "./pdfs/statistics/Quiz 1 (stat) (S.O V2).pdf",
-      },
-    ]
+      [
+        {
+          id: "lec1",
+          title: "Quiz 1 Dr.Magda",
+          type: "file",
+          content: "./pdfs/statistics/Quiz 1 (stat) (S.O V2).pdf",
+        },
+      ],
     ],
   },
 
@@ -820,6 +821,12 @@ const CONTENT = {
         },
       ],
       [
+        {
+          id: "lec6",
+          title: "Lect 4 DR.S.R",
+          type: "file",
+          content: "./pdfs/ais/Lect 4  (AIS) (S.O V2).pdf",
+        },
         {
           id: "lec4",
           title: "Lects 'HandWriting'",
