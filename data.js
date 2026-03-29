@@ -704,10 +704,16 @@ const CONTENT = {
           content: "./pdfs/statistics/Lect 6 (Stat) (S.O V2).pdf",
         },
         {
-          id: "lec5",
+          id: "lec7",
           title: "Lect1-4 'HandWriting' Dr.Magda",
           type: "file",
           content: "./pdfs/statistics/Lect1-4(Stat) (S.O).pdf",
+        },
+        {
+          id: "lec8",
+          title: "Lect 7 'HandWriting' Dr.Magda",
+          type: "file",
+          content: "./pdfs/statistics/Lect 7 (stat) (S.O V2) Hand Writing.pdf",
         },
       ],
       [], // Chapter 2
