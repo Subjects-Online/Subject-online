@@ -1114,7 +1114,7 @@ const CONTENT = {
         },
         {
           id: "lec5",
-          title: "section 4 'HandWriting' Dr.Abeer",
+          title: "section 4 'HandWriting' ",
           type: "file",
           content: "./pdfs/Puplic/Puplic section 4.pdf",
         },
