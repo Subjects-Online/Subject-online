@@ -312,6 +312,12 @@ const CONTENT = {
           type: "file",
           content: "./pdfs/accounting/Sum Of Lect 2 (Acc.) (S.O V2).pdf",
         },
+        {
+          id: "lec3",
+          title: "Summary of lect 3",
+          type: "file",
+          content: "./pdfs/accounting/Sum Of Lect 3 (Acc.) (S.O V2).pdf",
+        },
       ],
       [], // Chapter 2
       [], // Chapter 3
