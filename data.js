@@ -732,7 +732,14 @@ const CONTENT = {
           content: "./pdfs/marketing/Lect4 (Marketing) (S.O).pdf",
         },
       ], // Chapter 2
-      [], // Chapter 3
+      [
+        {
+          id: "lec5",
+          title: "Lect 5 Dr.Heba Mostafa",
+          type: "file",
+          content: "./pdfs/marketing/Lect 5 (Marketing) (S.O V2).pdf",
+        },
+      ], // Chapter 3
       [], // Chapter 4
     ],
     videos: [
