@@ -1052,7 +1052,14 @@ const CONTENT = {
         },
       ], // Chapter 2
 
-      [], // Chapter 3
+      [
+        {
+          id: "vid7",
+          title: "Lect 1 Part 2 Dr.M.Z",
+          type: "video",
+          content: "./pdfs/ais/Lect 1 Part 2 (Ais) (S.O V2).mp4",
+        },
+      ], // Chapter 3
 
       [], // Chapter 4
     ],
