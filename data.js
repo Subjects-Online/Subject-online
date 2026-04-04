@@ -735,9 +735,15 @@ const CONTENT = {
       [
         {
           id: "lec5",
-          title: "Lect 5 Dr.Heba Mostafa",
+          title: "Lect 5 Dr.Heba Mostafa 45 Page 💀",
           type: "file",
           content: "./pdfs/marketing/Lect 5 (Marketing) (S.O V2).pdf",
+        },
+        {
+          id: "lec5",
+          title: "Lect 5 Dr.Heba Mostafa Compressed",
+          type: "file",
+          content: "./pdfs/marketing/Lect 5 Marketing.pdf",
         },
       ], // Chapter 3
       [], // Chapter 4
