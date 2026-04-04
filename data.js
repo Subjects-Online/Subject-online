@@ -261,16 +261,22 @@ const CONTENT = {
       ], // Chapter 2
       [
         {
+          id: "vid8",
+          title: "Part 1 Dr.MZ",
+          type: "video",
+          content: "./pdfs/accounting/Part 1 Acc. (S.O V2).mp4",
+        },
+        {
           id: "vid7",
-          title: "Lect 7 Dr.MZ",
+          title: "Lect 7 Dr.Saeed",
           type: "video",
           content: "./pdfs/accounting/Lect 7 (Acc.) (S.O V2).mp4",
         },
         {
           id: "vid8",
-          title: "Part 1 Dr.MZ",
+          title: "Lect 8 Dr.Saeed",
           type: "video",
-          content: "./pdfs/accounting/Part 1 Acc. (S.O V2).mp4",
+          content: "./pdfs/accounting/Lect 8 Part 2 (ACC) (S.O V2).mp4",
         },
       ], // Chapter 3
       [], // Chapter 4
