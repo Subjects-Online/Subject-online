@@ -233,6 +233,12 @@ const CONTENT = {
           content: "./pdfs/accounting/Sum of Lect 1.mp4",
         },
         {
+          id: "vid1",
+          title: "Sum Of Lect 2",
+          type: "video",
+          content: "./pdfs/accounting/Sum of Lect 2 Accounting.mp4",
+        },
+        {
           id: "vid2",
           title: "Lect 3 Dr.MZ",
           type: "video",
